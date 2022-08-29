@@ -1,9 +1,11 @@
+import { BsGear } from 'react-icons/bs';
 import F from '../fieldsText';
 
 export default {
   name: 'siteSettings',
   type: 'document',
   title: 'Site settings',
+  icon: BsGear,
   fields: [
     {
       name: 'preview',

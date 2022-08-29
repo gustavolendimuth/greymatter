@@ -1,9 +1,17 @@
+import { FaUsers } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'community',
   type: 'document',
   title: 'Community',
+  icon: FaUsers,
+  groups: [
+    {
+      name: 'communityMembers',
+      title: 'Community Members',
+    },
+  ],
   fields: [
     {
       name: 'preview',
@@ -38,12 +46,18 @@ export default {
     {
       name: 'image',
       type: 'figure',
-      title: 'Icone',
+      title: 'Imagem',
     },
     {
       name: 'text',
       type: 'richText',
       title: 'Texto',
+    },
+    {
+      name: 'communityMembers',
+      title: 'Community',
+      type: 'communityMembersObject',
+      group: 'communityMembers',
     },
     {
       name: 'background',

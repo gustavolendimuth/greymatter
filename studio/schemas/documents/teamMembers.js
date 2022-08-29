@@ -1,9 +1,11 @@
+import { FaAddressCard } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'teamMembers',
   type: 'document',
   title: 'Team Members',
+  icon: FaAddressCard,
   fields: [
     {
       name: 'language',
@@ -53,6 +55,7 @@ export default {
       name: 'alt',
       type: 'string',
       title: 'Texto alternativo da Foto - SEO',
+      validation: (Rule) => Rule.required(),
       description: `Preencha este campo com um texto que descreva a imagem.
       Imagens com texto alternativo ajudam no ranking dos sites de busca.`,
     },

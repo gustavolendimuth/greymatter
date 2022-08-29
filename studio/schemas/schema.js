@@ -26,6 +26,7 @@ import card from './objects/card';
 import preview from './objects/preview';
 import video from './objects/video';
 import teamMembersObject from './objects/teamMembersObject';
+import communityMembersObject from './objects/communityMembersObject';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -52,5 +53,6 @@ export default createSchema({
     preview,
     video,
     teamMembersObject,
+    communityMembersObject,
   ]),
 });

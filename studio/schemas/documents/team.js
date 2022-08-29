@@ -1,13 +1,15 @@
+import { BsFillPeopleFill } from 'react-icons/bs';
 import F from '../fieldsText';
 
 export default {
   name: 'team',
   type: 'document',
   title: 'Team',
+  icon: BsFillPeopleFill,
   groups: [
     {
       name: 'teamMembers',
-      title: 'Membros da Equipe',
+      title: 'Team Members',
     },
   ],
   fields: [
@@ -42,16 +44,16 @@ export default {
       description: F.default.title.description,
     },
     {
-      name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
-    {
       name: 'teamMembers',
       title: 'Equipe',
       type: 'teamMembersObject',
       group: 'teamMembers',
+    },
+    {
+      name: 'background',
+      type: 'figure',
+      title: 'Imagem de fundo da seção',
+      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
     },
   ],
 };

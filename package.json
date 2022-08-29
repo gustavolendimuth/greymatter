@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Greymatter website",
   "scripts": {
-    "start": "cd ./site && react-scripts start && cd ../studio && sanity start",
+    "start": "cd ./site && react-scripts start",
+    "sanity": "cd ./studio && sanity start",
     "build": "rm -rf ./build && cd ./site && npm install && react-scripts build && mv build ../ && cd ../studio && sanity install && sanity build ../build/studio -y",
     "test": "cd site && react-scripts test",
     "eject": "cd site && react-scripts eject",

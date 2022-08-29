@@ -1,9 +1,11 @@
+import { FaLandmark } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'whatDoWeOffer',
   type: 'document',
   title: 'What do we offer',
+  icon: FaLandmark,
   fields: [
     {
       name: 'preview',

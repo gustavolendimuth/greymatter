@@ -1,9 +1,10 @@
+import { BsGlobe2 } from 'react-icons/bs';
+
 export default {
   name: 'language',
   type: 'document',
   title: 'Languages',
-  hidden: ({ currentUser }) => !(currentUser.roles
-    .find(({ name }) => name === 'administrator')),
+  icon: BsGlobe2,
   description: 'Adicione idiomas ao site.',
   fields: [
     {

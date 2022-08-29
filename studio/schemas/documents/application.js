@@ -1,9 +1,11 @@
+import { FaPenSquare } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'application',
   type: 'document',
   title: 'Application',
+  icon: FaPenSquare,
   fields: [
     {
       name: 'preview',

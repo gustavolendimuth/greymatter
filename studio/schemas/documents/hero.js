@@ -1,9 +1,11 @@
+import { BsTv } from 'react-icons/bs';
 import F from '../fieldsText';
 
 export default {
   name: 'hero',
   type: 'document',
   title: 'Banner',
+  icon: BsTv,
   fields: [
     {
       name: 'preview',

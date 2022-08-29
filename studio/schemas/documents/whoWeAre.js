@@ -1,9 +1,11 @@
+import { FaQuestion } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'whoWeAre',
   type: 'document',
   title: 'Who we are',
+  icon: FaQuestion,
   fields: [
     {
       name: 'preview',

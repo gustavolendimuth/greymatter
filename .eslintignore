@@ -1,4 +1,4 @@
 **/*.test.js
 /site/src/tests/*
 # site/src/index.js
-site/bootstrap_studio/*
+site/export/*

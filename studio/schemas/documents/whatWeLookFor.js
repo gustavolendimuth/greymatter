@@ -1,9 +1,11 @@
+import { FaSearch } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
   name: 'whatWeLookFor',
   type: 'document',
   title: 'What we look for',
+  icon: FaSearch,
   fields: [
     {
       name: 'preview',
