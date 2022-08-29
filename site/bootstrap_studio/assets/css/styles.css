@@ -1,0 +1,233 @@
+body {
+  font-family: SegoeUI;
+  --bs-primary: #7fa0ad;
+  --bs-primary-rgb: 127,160,173;
+  --bs-secondary: #516f8b;
+  --bs-secondary-rgb: 81,111,139;
+  --bs-light: #ffffff;
+  --bs-light-rgb: 255,255,255;
+  --bs-dark: #17365d;
+  --bs-dark-rgb: 23,54,93;
+  --bs-body-color: #7fa0ad;
+  --bs-body-font-size: 1.43rem;
+  --bs-info: #2b5667;
+  --bs-info-rgb: 43,86,103;
+}
+
+p {
+  letter-spacing: 0.03em;
+  margin-bottom: 0;
+}
+
+.application-header {
+  min-height: 100vh;
+  width: 100%;
+  background: url("../../assets/img/greymatter-hero-image.webp") center / cover no-repeat;
+}
+
+main {
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .navbar {
+    background: rgba(255,255,255,0.07);
+  }
+}
+
+.link {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--bs-light) !important;
+  /*padding-right: 1.5rem !important;*/
+  /*padding-left: 1.5rem !important;*/
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.section-title {
+  font-weight: 900;
+}
+
+.arrow-down {
+  font-size: 4.5rem;
+}
+
+@media (min-height: 1200px) and (max-width: 2300px) {
+  .hero-arrow-down {
+    color: var(--bs-primary) !important;
+  }
+}
+
+.section-container {
+  max-width: 350px !important;
+}
+
+@media (min-width: 992px) {
+  .card-text {
+    font-size: 1.4rem !important;
+  }
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+/* .spacer {
+  visibility: hidden;
+}
+
+@media (min-width: 992px) {
+  .spacer {
+    visibility: visible;
+  }
+} */
+
+@media (max-width: 760px) {
+  .what-we-look-for-title {
+    font-size: 2rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .what-do-we-offer-card-text {
+    font-size: 1.4rem !important;
+  }
+}
+
+.what-do-we-offer-card-text {
+  font-size: 1rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--bs-secondary);
+}
+
+@media (min-width: 992px) {
+  .what-do-we-offer-card {
+    padding: 2rem !important;
+  }
+}
+
+.what-do-we-offer-card {
+  border-radius: 1rem;
+  height: 100%;
+  border: 0.2rem solid var(--bs-primary);
+}
+
+@media (min-width: 992px) {
+  .wha-do-we-offer-card-icon {
+    max-width: 6rem !important;
+    max-height: 6rem !important;
+  }
+}
+
+.wha-do-we-offer-card-icon {
+  max-width: 4rem;
+  max-height: 4rem;
+}
+
+.team-section {
+  background: url("../../assets/img/greymatter-what-we-look-for-background.webp") bottom / cover no-repeat;
+  background-color: var(--bs-dark);
+  transform: rotate(180deg);
+  background-blend-mode: overlay;
+}
+
+@media (min-width: 992px) {
+  #team-container {
+    max-width: 1000px !important;
+  }
+}
+
+#team-container {
+  transform: rotate(180deg);
+  max-width: 650px;
+}
+
+.team-photo {
+  max-width: 200px;
+  border-radius: 50%;
+  max-height: 200px;
+}
+
+.community-card-name {
+  letter-spacing: 0.06rem;
+  color: var(--bs-primary);
+}
+
+.team-text {
+  letter-spacing: 0.06rem;
+  color: var(--bs-light);
+}
+
+.application-btn {
+  font-weight: 600 !important;
+  padding: 1rem 3rem !important;
+}
+
+footer {
+  width: 100%;
+}
+
+.footer-vr1-logo-text {
+  padding-top: 1rem;
+  line-height: 1.2rem;
+  width: 350px;
+  /*margin-bottom: -5px;*/
+}
+
+.footer-email-input {
+  max-width: 400px;
+  height: 100%;
+}
+
+.footer-subscribe-form {
+  width: 100%;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+}
+
+.footer-subscription-text {
+  max-width: 360px;
+}
+
+.link:hover {
+  color: var(--bs-primary) !important;
+}
+
+.semi-bold {
+  font-weight: 600 !important;
+}
+
+.link.footer-links {
+  padding: 0 !important;
+}
+
+.section.application-section {
+  min-height: calc(var(--vh, 1vh) * 80) !important;
+}
+
+.top {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bs-dark);
+  position: absolute;
+}
+
+.nav-item-link {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
