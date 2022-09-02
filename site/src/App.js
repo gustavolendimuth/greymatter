@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomeProvider from './context/HomeProvider';
 
 import './assets/css/bootstrap.min.css';
 import './assets/css/SegoeUI.css';
@@ -18,19 +19,11 @@ import Application from './Application';
 import Navbar from './components/Navbar';
 import Greymatter from './Greymatter';
 import TeamMembers from './TeamMembers';
+import Footer from './components/Footer';
 
 function App() {
-  useEffect(() => {
-    // const script = document.createElement('script');
-    // script.src = './assets/js/style.js';
-    // script.async = true;
-    // document.body.appendChild(script);
-    // return () => {
-    //   document.body.removeChild(script);
-    // };
-  }, []);
   return (
-    <>
+    <HomeProvider>
       <Navbar />
       <main>
         <BrowserRouter>
@@ -41,7 +34,8 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-    </>
+      <Footer />
+    </HomeProvider>
   );
 }
 

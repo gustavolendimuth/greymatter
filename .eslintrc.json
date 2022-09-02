@@ -78,7 +78,7 @@
     ],
         "max-len": [
       "error",
-      120
+      300
     ],
     "max-lines-per-function": [
       "off"
