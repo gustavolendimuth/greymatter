@@ -55,7 +55,7 @@ export default {
     },
     {
       name: 'communityMembers',
-      title: 'Community',
+      title: 'Comunidade',
       type: 'communityMembersObject',
       group: 'communityMembers',
     },

@@ -7,7 +7,6 @@ function resizeWindow() {
 }
 
 resizeWindow();
-console.log('Funcionou');
 
 // We listen to the resize event
 window.addEventListener('resize', () => {

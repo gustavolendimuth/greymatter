@@ -48,20 +48,6 @@
         ]
       }
     ],
-    "no-magic-numbers": [
-      "error",
-      {
-        "ignore": [
-          0,
-          1,
-          2,
-          100
-        ],
-        "ignoreArrayIndexes": true,
-        "enforceConst": true,
-        "detectObjects": false
-      }
-    ],
     "react/button-has-type": [
       "error",
       {
@@ -82,15 +68,6 @@
     "no-undef": [
       "off"
     ],
-    "max-len": [
-      "error",
-      {
-        "code": 90,
-        "ignoreComments": true,
-        "ignoreUrls": true,
-        "ignoreRegExpLiterals": true
-      }
-    ],
     "max-params": [
       "error",
       4
@@ -98,6 +75,10 @@
     "max-lines": [
       "error",
       250
+    ],
+        "max-len": [
+      "error",
+      120
     ],
     "max-lines-per-function": [
       "off"
@@ -257,7 +238,7 @@
     "react/jsx-max-depth": [
       "error",
       {
-        "max": 4
+        "max": 8
       }
     ],
     "react/jsx-no-useless-fragment": [

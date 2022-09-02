@@ -1,7 +1,7 @@
 export default {
   type: 'object',
   name: 'communityMembersObject',
-  title: 'Equipe',
+  title: 'Comunidade',
   fields: [
     {
       type: 'array',
