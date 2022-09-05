@@ -23,6 +23,10 @@
       }
     }
   ],
+  "api": {
+    "projectId": "yhcu3nao",
+    "dataset": "production"
+  },
   "plugins": [
     "@sanity/base",
     "@sanity/default-layout",
