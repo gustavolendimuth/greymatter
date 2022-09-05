@@ -1,7 +1,3 @@
-.what-we-look-for-section {
-  background: url('../img/greymatter-what-we-look-for-background.webp') center / cover space;
-}
-
 .what-we-look-for-card {
   background: var(--bs-info);
   border-radius: 12px;

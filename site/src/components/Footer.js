@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
+import greymatterLogoWhite from '../img/greymatter-logo-white.svg';
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
             <div className="row gx-1 justify-content-center">
               <div className="col-auto col-xxl-auto text-center">
-                <img src="assets/img/greymatter-logo-white.svg" width="113px" />
+                <img alt="Greymatter logo" src={ greymatterLogoWhite } width="113px" />
               </div>
               <div
                 className="col-12 col-sm-auto text-center text-lg-start d-flex d-xxl-flex justify-content-center mt-auto"
@@ -57,17 +58,18 @@ export default function Footer() {
                 </div>
               </form>
               <img
+                alt="Vieira Rezende logo"
                 className="p-5"
-                src="assets/img/greymatter-logo-vieira-rezende.webp"
+                src={ greymatterLogoVieiraRezende }
                 width="320px"
               />
             </div>
           </div>
         </div>
         <div className="d-flex justify-content-center align-content-around flex-wrap gap-4 p-3">
-          {/* <Link className="link" to="terms-and-conditions">Terms &amp; Conditions</Link> */}
-          <a className="link" href="#">Privacy Policy</a>
-          <a className="link" href="#">Cookies</a>
+          <a className="link" href="#terms-and-conditions">Terms &amp; Conditions</a>
+          <a className="link" href="#privacy-policy">Privacy Policy</a>
+          <a className="link" href="#cookies">Cookies</a>
         </div>
       </div>
     </footer>

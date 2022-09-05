@@ -1,29 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import sanityClient from '../sanityClient';
-import greymatterHeroGrayMatterSm from '../img/greymatter-hero-gray-matter-sm.svg';
-import greymatterHeroGrayMatterLg from '../img/greymatter-hero-gray-matter-lg.svg';
+/* eslint-disable sonarjs/no-identical-expressions */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect, useState, useContext } from 'react';
+import { toHTML } from '@portabletext/to-html';
+import parse from 'html-react-parser';
+import urlFor from '../services/urlFor';
 
-export default function HeroContent() {
-  const [heroContent, setHeroContent] = useState({});
+import sanityClient from '../services/sanityClient';
+import HomeContext from '../context/HomeContext';
+
+export default function Hero() {
+  const { languageId } = useContext(HomeContext);
+  const [heroText, setHeroText] = useState('');
+  const [heroImage, setHeroImage] = useState('');
+  const [heroSubTitle, setHeroSubtitle] = useState('');
 
   useEffect(() => {
+    // const params = { language: { _ref: languageId } };
     sanityClient.fetch(
-      `*[_type == "hero"]{
+      `*[_type == "hero" 
+          && language._ref == "${languageId}" 
+          && preview.isPreview == false] | order(_createdAt asc)[0] {
         background,
         image,
         language,
         subTitle,
         text,
       }`,
-    ).then((data) => setHeroContent(data))
+    )
+      .then((data) => {
+        if (data) {
+          setHeroText(toHTML(data.text));
+          setHeroImage(data.image);
+          setHeroSubtitle(data.subTitle);
+        }
+      })
       .catch((e) => console.error(e));
-  }, []);
-
-  useEffect(() => {
-    if (heroContent.length) {
-      console.log(heroContent[0].text[0].children[0].text);
-    }
-  }, [heroContent]);
+  }, [languageId]);
 
   return (
     <>
@@ -32,19 +45,19 @@ export default function HeroContent() {
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0">
             <img
               className="img-fluid d-lg-none gray-matter-logo"
-              src={ greymatterHeroGrayMatterSm }
-              alt="Greymatter logo"
+              src={ heroImage && urlFor(heroImage.imageSm.asset || heroImage.imageLg.asset).url() }
+              alt={ heroImage?.alt }
             />
             <img
               className="d-none d-lg-inline gray-matter-logo-lg"
-              src={ greymatterHeroGrayMatterLg }
-              alt="Greymatter logo"
+              src={ heroImage && urlFor(heroImage.imageLg.asset || heroImage.imageSm.asset).url() }
+              alt={ heroImage?.alt }
             />
 
           </div>
           <div className="col-12 col-lg-7 p-0">
             <div className="text-center text-lg-start text-light mb-0 hero-text">
-              { heroContent.length && heroContent[0].text[0].children[0].text }
+              { heroText && parse(heroText) }
             </div>
           </div>
         </div>
@@ -63,7 +76,7 @@ export default function HeroContent() {
         <div className="row">
           <div className="col-md-12 the-world-economy-container">
             <p className="text-center text-light the-world-economy-text">
-              {heroContent.length && heroContent[0].subTitle}
+              {heroSubTitle && heroSubTitle}
             </p>
           </div>
         </div>
@@ -77,6 +90,7 @@ export default function HeroContent() {
                 height="1em"
                 fill="currentColor"
                 className="text-light arrow-down hero-arrow-down"
+                alt="Arrow down"
               >
                 <path
                   d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"

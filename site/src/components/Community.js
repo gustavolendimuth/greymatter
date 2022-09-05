@@ -31,7 +31,11 @@ export default function Community() {
                   data-bs-placement="bottom"
                   title="Linkedin profile"
                 >
-                  <img src="assets/img/felipe-hanszmann.webp" className="team-photo" />
+                  <img
+                    alt="Alt"
+                    src="assets/img/felipe-hanszmann.webp"
+                    className="team-photo"
+                  />
                   <p className="fs-5 fw-bold text-center pt-2 community-card-name">Felipe Hanszmann</p>
                   <div
                     className="d-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center gap-1"
@@ -60,7 +64,10 @@ export default function Community() {
                   data-bs-placement="bottom"
                   title="Linkedin profile"
                 >
-                  <img src="assets/img/paulo-albert-weyland-vieira.webp" className="team-photo" />
+                  <img
+                    src="assets/img/paulo-albert-weyland-vieira.webp"
+                    className="team-photo"
+                  />
                   <p className="fs-5 fw-bold text-center pt-2 community-card-name">Paulo Vieira</p>
                   <div
                     className="d-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center gap-1"

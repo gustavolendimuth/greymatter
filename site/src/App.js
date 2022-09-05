@@ -15,11 +15,11 @@ import './css/what-we-offer.css';
 import './css/what-we-look-for.css';
 import './css/who-we-are.css';
 
-import Application from './Application';
 import Navbar from './components/Navbar';
-import Greymatter from './Greymatter';
-import TeamMembers from './TeamMembers';
+import Greymatter from './pages/Greymatter';
+import TeamMembers from './pages/TeamMembers';
 import Footer from './components/Footer';
+import ApplicationForm from './pages/ApplicationForm';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={ <Greymatter /> } path="/" exact />
-            <Route element={ <Application /> } path="/application" />
+            <Route element={ <ApplicationForm /> } path="/application" />
             <Route element={ <TeamMembers /> } path="/team-members" />
           </Routes>
         </BrowserRouter>
