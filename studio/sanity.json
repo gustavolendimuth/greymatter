@@ -4,10 +4,25 @@
     "name": "Greymatter",
     "basePath": "/studio"
   },
-  "api": {
-    "projectId": "yhcu3nao",
-    "dataset": "production"
-  },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Prod",
+      "default": true,
+      "api": {
+        "projectId": "yhcu3nao",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "test",
+      "title": "Test",
+      "api": {
+        "projectId": "yhcu3nao",
+        "dataset": "test"
+      }
+    }
+  ],
   "plugins": [
     "@sanity/base",
     "@sanity/default-layout",
