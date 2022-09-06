@@ -21,5 +21,15 @@
 }
 
 .team-members-text {
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
+
+.team-members-text p {
+  margin-bottom: 0.8rem;
+}
+
+.team-members-text h1, h2, h3, h4, h5 {
+  font-weight: 900;
+  margin-top: 1rem;
+}
+
