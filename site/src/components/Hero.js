@@ -40,9 +40,10 @@ export default function Hero() {
   return (
     <>
       <div className="container-sm d-flex justify-content-center">
-        <div className="row gy-4 gx-lg-5 gy-lg-0 mx-auto gray-matter-row">
+        <div className="row gy-4 gx-lg-5 gy-lg-0 mx-auto gray-matter-row align-items-start">
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0">
             <img
+              width="316px"
               className="img-fluid d-lg-none gray-matter-logo"
               src={ heroImage && urlFor(heroImage.imageSm.asset || heroImage.imageLg.asset).url() }
               alt={ heroImage?.alt }
