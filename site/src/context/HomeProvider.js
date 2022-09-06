@@ -38,7 +38,7 @@ export default function HomeProvider({ children }) {
           language.find((value) => value.code === 'pt-br')._id,
         );
       } else {
-        setLanguage(language[0]._id);
+        setLanguageId(language[0]._id);
       }
     }
   };

@@ -1,9 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import HomeContext from '../context/HomeContext';
 import navbarBackground from '../img/greymatter-navbar-background.webp';
 
 export default function Navbar() {
-  const { navbarConfig } = useContext(HomeContext);
+  const { navbarConfig, setLanguageId, languageId } = useContext(HomeContext);
+
+  const changeToPortuguese = () => {
+    setLanguageId('f5fe0465-f3c4-4821-b535-411d37ca783b');
+  };
+
+  const changeToEnglish = () => {
+    setLanguageId('d3761ab6-c643-40b1-9233-00802f961ce6');
+  };
+
+  useEffect(() => {
+    console.log(languageId);
+  }, [languageId]);
 
   return (
     <nav
@@ -67,6 +79,28 @@ export default function Navbar() {
                   Application
                 </a>
 
+              </li>
+              <li className="nav-item">
+                {
+                  languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
+                    ? (
+                      <button
+                        type="button"
+                        className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
+                        onClick={ changeToPortuguese }
+                      >
+                        Portuguese
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
+                        onClick={ changeToEnglish }
+                      >
+                        English
+                      </button>
+                    )
+                }
               </li>
             </ul>
           </div>

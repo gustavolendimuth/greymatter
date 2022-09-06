@@ -16,7 +16,6 @@ export default function Hero() {
   const [heroSubTitle, setHeroSubtitle] = useState('');
 
   useEffect(() => {
-    // const params = { language: { _ref: languageId } };
     sanityClient.fetch(
       `*[_type == "hero" 
           && language._ref == "${languageId}" 
