@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import HomeContext from '../context/HomeContext';
+import navbarBackground from '../img/greymatter-navbar-background.webp';
 
 export default function Navbar() {
+  const { navbarConfig } = useContext(HomeContext);
+
   return (
     <nav
       style={ {
         left: '0px',
         top: '0px',
         width: '100%',
-        position: 'absolute',
+        position: `${navbarConfig?.position}`,
         zIndex: '1000',
+        background: `url(${navbarConfig?.background && navbarBackground}) bottom / cover no-repeat`,
       } }
     >
       <nav className="navbar navbar-dark navbar-expand-sm py-3">

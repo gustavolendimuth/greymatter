@@ -34,6 +34,21 @@ export default {
       description: F.teamMembers.title.description,
     },
     {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      description: 'Clique no botão generate para gerar um link único para cada membro da equipe.',
+      validation: (Rule) => Rule.required(),
+      options: {
+        source: 'name',
+        maxLength: 200,
+        slugify: (input) => input
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .slice(0, 200),
+      },
+    },
+    {
       name: 'photoLg',
       type: 'image',
       title: 'Foto desktop',

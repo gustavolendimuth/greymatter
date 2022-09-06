@@ -1,29 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable max-len */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import HomeContext from '../context/HomeContext';
-import sanityClient from '../services/sanityClient';
 import TeamCard from './TeamCard';
 
 export default function Team() {
-  const { languageId } = useContext(HomeContext);
-  const [teamPageTitle, setTeamPageTitle] = useState();
-  const [teamMembers, setTeamMembers] = useState();
+  const { languageId, teamMembers, teamPageTitle, getTeamMembers } = useContext(HomeContext);
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "team" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        'members':teamMembers.teamMembers[]->{name, alt, photoLg, position, linkedin},
-        pageTitle,
-      }`,
-    ).then((data) => {
-      if (data) {
-        setTeamPageTitle(data.pageTitle);
-        setTeamMembers(data.members);
-      }
-    })
-      .catch((e) => console.error(e));
+    getTeamMembers();
   }, [languageId]);
 
   return (

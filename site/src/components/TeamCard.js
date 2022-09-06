@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import urlFor from '../services/urlFor';
 
-export default function TeamCard({ member: { alt, name, photoLg, position, linkedin } }) {
+export default function TeamCard({ member: { alt, name, photoLg, position, linkedin, slug } }) {
   return (
     <div className="col">
       <div
@@ -13,12 +14,14 @@ export default function TeamCard({ member: { alt, name, photoLg, position, linke
         data-bs-placement="bottom"
         title="Linkedin profile"
       >
-        <img
-          alt={ alt }
-          src={ photoLg && urlFor(photoLg.asset).url() }
-          className="team-photo"
-        />
-        <p className="fs-5 fw-bold text-center pt-2 team-text">{name}</p>
+        <Link className="text-decoration-none" to={ `/team-members/${slug.current}` }>
+          <img
+            alt={ alt }
+            src={ photoLg && urlFor(photoLg.asset).url() }
+            className="team-photo"
+          />
+          <p className="fs-5 fw-bold text-center pt-2 team-text">{name}</p>
+        </Link>
         <a className="text-decoration-none" href={ linkedin }>
           <div
             className="d-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center gap-1"

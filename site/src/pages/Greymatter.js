@@ -8,39 +8,19 @@ import WhoWeAreSection from '../components/WhoWeAre';
 import WhaDoWeOffer from '../components/WhaDoWeOffer';
 import Team from '../components/Team';
 // import Community from '../components/Community';
-import sanityClient from '../services/sanityClient';
 import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 
 export default function Greymatter() {
-  const { language, setLanguage, setLanguageId } = useContext(HomeContext);
+  const { language, setNavbarConfig, getLanguages, getLanguageId } = useContext(HomeContext);
 
   useEffect(() => {
-    if (!language) {
-      sanityClient.fetch(
-        `*[_type == "language"] {
-        abbreviation,
-        code,
-        language,
-        _id
-      }`,
-      ).then((data) => setLanguage(data))
-        .catch((e) => console.error(e));
-    }
+    setNavbarConfig({ background: false, position: 'absolute' });
+    getLanguages();
   }, []);
 
   useEffect(() => {
-    if (language) {
-      if (language.some((value) => value.code === 'en')) {
-        setLanguageId(
-          language.find((value) => value.code === 'en')._id,
-        );
-      } else {
-        setLanguageId(
-          language.find((value) => value.code === 'pt-br')._id,
-        );
-      }
-    }
+    getLanguageId();
   }, [language]);
 
   return (

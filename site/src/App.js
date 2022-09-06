@@ -24,17 +24,17 @@ import ApplicationForm from './pages/ApplicationForm';
 function App() {
   return (
     <HomeProvider>
-      <Navbar />
-      <main>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Navbar />
+        <main>
           <Routes>
             <Route element={ <Greymatter /> } path="/" exact />
-            <Route element={ <ApplicationForm /> } path="/application" />
-            <Route element={ <TeamMembers /> } path="/team-members" />
+            <Route element={ <ApplicationForm /> } path="/application" exact />
+            <Route element={ <TeamMembers /> } path="/team-members/:slug" exact />
           </Routes>
-        </BrowserRouter>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
+      </BrowserRouter>
     </HomeProvider>
   );
 }

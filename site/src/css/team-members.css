@@ -1,0 +1,25 @@
+.team-members-section {
+  padding-bottom: 2rem !important;
+}
+
+.team-members-title {
+  font-weight: 900;
+}
+
+.team-members-linkedin {
+  text-align: center;
+  width: 280px;
+}
+
+.team-members-position {
+  color: var(--bs-dark) !important;
+  font-size: 1.5rem !important;
+}
+
+.team-members-image {
+  max-width: 280px;
+}
+
+.team-members-text {
+  font-size: 1.15rem;
+}
