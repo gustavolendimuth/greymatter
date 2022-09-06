@@ -49,7 +49,10 @@ export default function Navbar() {
                   className="nav-link text-uppercase text-center link nav-item-link"
                   href="/#who-we-are"
                 >
-                  who we are
+                  {
+                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
+                      ? 'who we are' : 'Quem somos'
+                  }
                 </a>
 
               </li>
@@ -58,7 +61,10 @@ export default function Navbar() {
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
                   href="/#team"
                 >
-                  Team
+                  {
+                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
+                      ? 'Team' : 'Equipe'
+                  }
                 </a>
 
               </li>
@@ -67,7 +73,10 @@ export default function Navbar() {
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
                   href="/#community"
                 >
-                  Community
+                  {
+                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
+                      ? 'Community' : 'Comunidade'
+                  }
                 </a>
 
               </li>
@@ -76,7 +85,10 @@ export default function Navbar() {
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
                   href="/#application"
                 >
-                  Application
+                  {
+                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
+                      ? 'Application' : 'Fale conosco'
+                  }
                 </a>
 
               </li>
