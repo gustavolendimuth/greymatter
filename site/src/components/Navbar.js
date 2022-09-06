@@ -5,12 +5,14 @@ import navbarBackground from '../img/greymatter-navbar-background.webp';
 export default function Navbar() {
   const { navbarConfig, setLanguageId, languageId } = useContext(HomeContext);
 
+  const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
+
   const changeToPortuguese = () => {
     setLanguageId('f5fe0465-f3c4-4821-b535-411d37ca783b');
   };
 
   const changeToEnglish = () => {
-    setLanguageId('d3761ab6-c643-40b1-9233-00802f961ce6');
+    setLanguageId(englishId);
   };
 
   useEffect(() => {
@@ -50,8 +52,9 @@ export default function Navbar() {
                   href="/#who-we-are"
                 >
                   {
-                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
-                      ? 'who we are' : 'Quem somos'
+                    languageId && (
+                      languageId === englishId
+                        ? 'who we are' : 'Quem somos')
                   }
                 </a>
 
@@ -62,8 +65,9 @@ export default function Navbar() {
                   href="/#team"
                 >
                   {
-                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
-                      ? 'Team' : 'Equipe'
+                    languageId && (
+                      languageId === englishId
+                        ? 'Team' : 'Equipe')
                   }
                 </a>
 
@@ -74,8 +78,9 @@ export default function Navbar() {
                   href="/#community"
                 >
                   {
-                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
-                      ? 'Community' : 'Comunidade'
+                    languageId && (
+                      languageId === englishId
+                        ? 'Community' : 'Comunidade')
                   }
                 </a>
 
@@ -86,32 +91,35 @@ export default function Navbar() {
                   href="/#application"
                 >
                   {
-                    languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
-                      ? 'Application' : 'Fale conosco'
+                    languageId && (
+                      languageId === englishId
+                        ? 'Application' : 'Fale conosco')
                   }
                 </a>
 
               </li>
               <li className="nav-item">
                 {
-                  languageId === 'd3761ab6-c643-40b1-9233-00802f961ce6'
-                    ? (
-                      <button
-                        type="button"
-                        className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
-                        onClick={ changeToPortuguese }
-                      >
-                        Portuguese
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
-                        onClick={ changeToEnglish }
-                      >
-                        English
-                      </button>
-                    )
+                  languageId && (
+                    languageId === englishId
+                      ? (
+                        <button
+                          type="button"
+                          className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
+                          onClick={ changeToPortuguese }
+                        >
+                          Portuguese
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
+                          onClick={ changeToEnglish }
+                        >
+                          English
+                        </button>
+                      )
+                  )
                 }
               </li>
             </ul>
