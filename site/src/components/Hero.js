@@ -16,8 +16,9 @@ export default function Hero() {
   const [heroSubTitle, setHeroSubtitle] = useState('');
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "hero" 
+    if (languageId) {
+      sanityClient.fetch(
+        `*[_type == "hero" 
           && language._ref == "${languageId}" 
           && preview.isPreview == false] | order(_createdAt asc)[0] {
         background,
@@ -26,16 +27,23 @@ export default function Hero() {
         subTitle,
         text,
       }`,
-    )
-      .then((data) => {
-        if (data) {
-          setHeroText(toHTML(data.text));
-          setHeroImage(data.image);
-          setHeroSubtitle(data.subTitle);
-        }
-      })
-      .catch((e) => console.error(e));
+      )
+        .then((data) => {
+          if (data) {
+            setHeroText(toHTML(data.text));
+            setHeroImage(data.image);
+            setHeroSubtitle(data.subTitle);
+          }
+        })
+        .catch((e) => console.error(e));
+    }
   }, [languageId]);
+
+  useEffect(() => {
+    $('.hero-text').textfill({
+      innerTag: 'p',
+    });
+  }, [heroText]);
 
   return (
     <>
@@ -56,7 +64,7 @@ export default function Hero() {
 
           </div>
           <div className="col-12 col-lg-7 p-0">
-            <div className="text-center text-lg-start text-light mb-0 hero-text">
+            <div id="hero-text" className="text-center text-lg-start text-light mb-0 hero-text">
               { heroText && parse(heroText) }
             </div>
           </div>

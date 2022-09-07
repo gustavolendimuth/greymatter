@@ -7,14 +7,14 @@ import HomeContext from './HomeContext';
 import sanityClient from '../services/sanityClient';
 
 export default function HomeProvider({ children }) {
-  const [language, setLanguage] = useState();
+  const [languages, setLanguages] = useState();
   const [languageId, setLanguageId] = useState();
   const [navbarConfig, setNavbarConfig] = useState();
   const [teamMembers, setTeamMembers] = useState();
   const [teamPageTitle, setTeamPageTitle] = useState();
 
   const getLanguages = () => {
-    if (!language) {
+    if (!languages) {
       sanityClient.fetch(
         `*[_type == "language"] {
         abbreviation,
@@ -22,29 +22,35 @@ export default function HomeProvider({ children }) {
         language,
         _id
       }`,
-      ).then((data) => setLanguage(data))
+      ).then((data) => setLanguages(data))
         .catch((e) => console.error(e));
     }
   };
 
-  const getLanguageId = () => {
-    if (language && !languageId) {
-      if (language.some((value) => value.code === 'en')) {
+  const setDefaultLanguage = () => {
+    if (languages && !languageId) {
+      if (languages.some((value) => value.code === 'en')) {
         setLanguageId(
-          language.find((value) => value.code === 'en')._id,
+          languages.find((value) => value.code === 'en')._id,
         );
-      } else if (language.some((value) => value.code === 'pt-br')) {
+      } else if (languages.some((value) => value.code === 'pt-br')) {
         setLanguageId(
-          language.find((value) => value.code === 'pt-br')._id,
+          languages.find((value) => value.code === 'pt-br')._id,
         );
       } else {
-        setLanguageId(language[0]._id);
+        setLanguageId(languages[0]._id);
       }
     }
   };
 
+  const setLocalStorage = (key, value) => {
+    if (key && value) localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  const getLocalStorage = (key) => key && JSON.parse(localStorage.getItem(key));
+
   const getTeamMembers = () => {
-    if (!teamMembers && languageId) {
+    if (languageId) {
       sanityClient.fetch(
         `*[_type == "team" 
           && language._ref == "${languageId}" 
@@ -63,8 +69,8 @@ export default function HomeProvider({ children }) {
   };
 
   const contextValue = {
-    language,
-    setLanguage,
+    languages,
+    setLanguages,
     languageId,
     setLanguageId,
     navbarConfig,
@@ -75,7 +81,9 @@ export default function HomeProvider({ children }) {
     teamPageTitle,
     setTeamPageTitle,
     getLanguages,
-    getLanguageId,
+    setDefaultLanguage,
+    setLocalStorage,
+    getLocalStorage,
   };
 
   return (

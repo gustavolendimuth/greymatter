@@ -14,7 +14,10 @@ export default function TeamCard({ member: { alt, name, photoLg, position, linke
         data-bs-placement="bottom"
         title="Linkedin profile"
       >
-        <Link className="text-decoration-none" to={ `/team-members/${slug.current}` }>
+        <Link
+          className="text-decoration-none"
+          to={ `/team-members/${slug.current}` }
+        >
           <img
             alt={ alt }
             src={ photoLg && urlFor(photoLg.asset).url() }

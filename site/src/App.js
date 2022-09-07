@@ -1,6 +1,6 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomeProvider from './context/HomeProvider';
 
 import './assets/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
@@ -20,22 +20,52 @@ import Greymatter from './pages/Greymatter';
 import TeamMembers from './pages/TeamMembers';
 import Footer from './components/Footer';
 import ApplicationForm from './pages/ApplicationForm';
+import HomeContext from './context/HomeContext';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
+  const {
+    getTeamMembers,
+    languages,
+    getLanguages,
+    setDefaultLanguage,
+    languageId,
+    setLanguageId,
+    getLocalStorage,
+    setLocalStorage,
+  } = useContext(HomeContext);
+
+  useEffect(() => {
+    const value = getLocalStorage('languageId');
+    if (value) {
+      setLanguageId(value);
+    } else {
+      getLanguages();
+    }
+  }, []);
+
+  useEffect(() => {
+    setDefaultLanguage();
+  }, [languages]);
+
+  useEffect(() => {
+    getTeamMembers();
+    if (languageId) setLocalStorage('languageId', languageId);
+  }, [languageId]);
+
   return (
-    <HomeProvider>
-      <BrowserRouter>
-        <Navbar />
-        <main>
-          <Routes>
-            <Route element={ <Greymatter /> } path="/" exact />
-            <Route element={ <ApplicationForm /> } path="/application" exact />
-            <Route element={ <TeamMembers /> } path="/team-members/:slug" exact />
-          </Routes>
-        </main>
-        <Footer />
-      </BrowserRouter>
-    </HomeProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route element={ <Greymatter /> } path="/" exact />
+          <Route element={ <ApplicationForm /> } path="/application" />
+          <Route element={ <TeamMembers /> } path="/team-members/:slug" />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

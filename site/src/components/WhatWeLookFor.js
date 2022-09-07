@@ -14,22 +14,24 @@ export default function WhatWeLookFor() {
   const [whatWeLookForCards, setWhatWeLookForCards] = useState();
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "whatWeLookFor" 
+    if (languageId) {
+      sanityClient.fetch(
+        `*[_type == "whatWeLookFor" 
           && language._ref == "${languageId}" 
           && preview.isPreview == false] | order(_createdAt asc)[0] {
         background,
         cards,
         pageTitle,
       }`,
-    ).then((data) => {
-      if (data) {
-        setWhatWeLookForTitle(data.pageTitle);
-        setWhatWeLookForBackground(data.background);
-        setWhatWeLookForCards(data.cards);
-      }
-    })
-      .catch((e) => console.error(e));
+      ).then((data) => {
+        if (data) {
+          setWhatWeLookForTitle(data.pageTitle);
+          setWhatWeLookForBackground(data.background);
+          setWhatWeLookForCards(data.cards);
+        }
+      })
+        .catch((e) => console.error(e));
+    }
   }, [languageId]);
 
   return (

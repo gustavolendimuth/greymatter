@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable sonarjs/no-identical-expressions */
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
@@ -9,10 +9,14 @@ import urlFor from '../services/urlFor';
 export default function TeamMembersCard({
   member: { alt, name, photoLg, position, linkedin, text, slug },
   showArrowDown,
+  index,
 }) {
+  window[`card${index}`] = useRef(null);
+
   return (
     <div
       id={ slug.current }
+      ref={ window[`card${index}`] }
       className="container-sm d-flex flex-column justify-content-center align-items-center align-items-xxl-center team-members-container pb-5 section"
     >
       <div className="row gx-5 justify-content-center w-100">

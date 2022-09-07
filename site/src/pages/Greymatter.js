@@ -12,16 +12,13 @@ import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 
 export default function Greymatter() {
-  const { language, setNavbarConfig, getLanguages, getLanguageId } = useContext(HomeContext);
+  const {
+    setNavbarConfig,
+  } = useContext(HomeContext);
 
   useEffect(() => {
     setNavbarConfig({ background: false, position: 'absolute' });
-    getLanguages();
   }, []);
-
-  useEffect(() => {
-    getLanguageId();
-  }, [language]);
 
   return (
     <>
@@ -32,7 +29,7 @@ export default function Greymatter() {
         style={ { background: `url(${background}) top / cover` } }
       >
         <header
-          className="d-flex flex-column justify-content-between align-items-xxl-center gap-5 section"
+          className="d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 section"
         >
           <div className="spacer spacer-hero" />
           <Hero />

@@ -11,21 +11,23 @@ export default function WhaDoWeOffer() {
   const [whatDoWeOfferCards, setWhatDoWeOfferCards] = useState();
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "whatDoWeOffer" 
+    if (languageId) {
+      sanityClient.fetch(
+        `*[_type == "whatDoWeOffer" 
           && language._ref == "${languageId}" 
           && preview.isPreview == false] | order(_createdAt asc)[0] {
         background,
         cards,
         pageTitle,
       }`,
-    ).then((data) => {
-      if (data) {
-        setWhatDoWeOfferPageTitle(data.pageTitle);
-        setWhatDoWeOfferCards(data.cards);
-      }
-    })
-      .catch((e) => console.error(e));
+      ).then((data) => {
+        if (data) {
+          setWhatDoWeOfferPageTitle(data.pageTitle);
+          setWhatDoWeOfferCards(data.cards);
+        }
+      })
+        .catch((e) => console.error(e));
+    }
   }, [languageId]);
 
   return (

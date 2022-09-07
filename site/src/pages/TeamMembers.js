@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useLayoutEffect } from 'react';
 import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import TeamMembersCard from '../components/TeamMembersCard';
 import HomeContext from '../context/HomeContext';
 import '../css/team-members.css';
@@ -8,44 +9,29 @@ import teamMembersBackground from '../img/greymatter-team-members-background.web
 
 export default function TeamMembers() {
   const {
-    language,
-    setNavbarConfig,
-    languageId,
-    getTeamMembers,
     teamMembers,
-    getLanguages,
-    getLanguageId,
+    setNavbarConfig,
   } = useContext(HomeContext);
 
   const { slug } = useParams();
-  // const { pathname } = useLocation();
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [pathname]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     setNavbarConfig({ background: true, position: 'fixed' });
-    getTeamMembers();
-    getLanguages();
   }, []);
 
-  useEffect(() => {
-    getLanguageId();
-  }, [language]);
-
-  useEffect(() => {
-    getTeamMembers();
-  }, [languageId]);
-
-  useEffect(() => {
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'auto',
-    // });
-    console.log(slug);
-  }, [TeamMembers]);
+  useLayoutEffect(() => {
+    let memberCard;
+    if (teamMembers && slug) {
+      memberCard = `card${teamMembers.findIndex((member) => member.slug.current === slug)}`;
+      const scrollToCard = () => {
+        window.scrollTo({
+          top: window[memberCard].current.offsetTop,
+          behavior: 'smooth',
+        });
+      };
+      scrollToCard();
+    }
+  });
 
   return (
     <section
@@ -60,6 +46,7 @@ export default function TeamMembers() {
                   key={ index }
                   showArrowDown={ teamMembers.length - 1 !== index }
                   member={ member }
+                  index={ index }
                 />
               ))
       }

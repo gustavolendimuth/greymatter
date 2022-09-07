@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
 import navbarBackground from '../img/greymatter-navbar-background.webp';
 
@@ -14,10 +15,6 @@ export default function Navbar() {
   const changeToEnglish = () => {
     setLanguageId(englishId);
   };
-
-  useEffect(() => {
-    console.log(languageId);
-  }, [languageId]);
 
   return (
     <nav
@@ -47,16 +44,16 @@ export default function Navbar() {
           >
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-uppercase text-center link nav-item-link"
-                  href="/#who-we-are"
+                  to="/#who-we-are"
                 >
                   {
                     languageId && (
                       languageId === englishId
                         ? 'who we are' : 'Quem somos')
                   }
-                </a>
+                </Link>
 
               </li>
               <li className="nav-item">

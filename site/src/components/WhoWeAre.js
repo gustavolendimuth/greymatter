@@ -14,22 +14,24 @@ export default function WhoWeAreSection() {
   const { languageId } = useContext(HomeContext);
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "whoWeAre" 
+    if (languageId) {
+      sanityClient.fetch(
+        `*[_type == "whoWeAre" 
           && language._ref == "${languageId}" 
           && preview.isPreview == false] | order(_createdAt asc)[0] {
         image,
         pageTitle,
         text,
       }`,
-    ).then((data) => {
-      if (data) {
-        setWhoWeArePageTitle(data.pageTitle);
-        setWhoWeAreImage(data.image);
-        setWhoWeAreText(toHTML(data.text));
-      }
-    })
-      .catch((e) => console.error(e));
+      ).then((data) => {
+        if (data) {
+          setWhoWeArePageTitle(data.pageTitle);
+          setWhoWeAreImage(data.image);
+          setWhoWeAreText(toHTML(data.text));
+        }
+      })
+        .catch((e) => console.error(e));
+    }
   }, [languageId]);
 
   return (
