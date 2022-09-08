@@ -6,9 +6,9 @@ import './assets/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
 import './assets/css/aos.css';
 import './assets/css/SegoeUI.css';
+import './assets/css/Footer-Dark-Multi-Column-icons.css';
 import './css/application.css';
 import './css/community.css';
-import './assets/css/Footer-Dark-Multi-Column-icons.css';
 import './css/hero.css';
 import './css/styles.css';
 import './css/what-we-offer.css';
@@ -21,7 +21,7 @@ import TeamMembers from './pages/TeamMembers';
 import Footer from './components/Footer';
 import ApplicationForm from './pages/ApplicationForm';
 import HomeContext from './context/HomeContext';
-import ScrollToTop from './components/ScrollToTop';
+// import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const {
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Navbar />
       <main>
         <Routes>

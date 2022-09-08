@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
 import greymatterLogoWhite from '../img/greymatter-logo-white.svg';
 
@@ -10,11 +11,11 @@ export default function Footer() {
           <div
             className="col-12 col-lg-auto text-center text-lg-start d-flex flex-row justify-content-center align-items-baseline flex-wrap justify-content-sm-center flex-xl-column justify-content-xl-start gap-xl-4 gap-4"
           >
-            <p className="fs-5 fw-normal text-light d-none d-md-block semi-bold link">Greymatter</p>
-            <a className="link" href="/#who-we-are">Who we are</a>
-            <a className="link" href="/#team">Team</a>
-            <a className="link" href="/#community">Community</a>
-            <a className="link" href="/#application">Application</a>
+            <p className="fs-5 fw-normal text-light d-none d-md-block semi-bold">Greymatter</p>
+            <Link className="link" to="/who-we-are">Who we are</Link>
+            <Link className="link" to="/team">Team</Link>
+            <Link className="link" to="/community">Community</Link>
+            <Link className="link" to="/application">Application</Link>
           </div>
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
             <div className="row gx-1 justify-content-center">

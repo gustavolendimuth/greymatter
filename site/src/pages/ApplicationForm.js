@@ -39,7 +39,7 @@ export default function ApplicationForm() {
               <div className="row gy-2 row-cols-1 row-cols-md-3">
                 <div className="col">
                   <label className="col-form-label form-label" htmlFor="startupName">
-                    Startup&aposs name
+                    <span>Startup&apos;s name</span>
                     <input
                       className="form-control form-control-lg application-form-fields"
                       type="text"
