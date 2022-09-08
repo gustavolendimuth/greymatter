@@ -41,6 +41,8 @@ function App() {
     } else {
       getLanguages();
     }
+
+    window.webpackHotUpdate = () => {};
   }, []);
 
   useEffect(() => {

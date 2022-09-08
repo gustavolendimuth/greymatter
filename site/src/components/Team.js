@@ -33,7 +33,7 @@ export default function Team({ team }) {
             && teamMembers.map((member, index) => <TeamCard key={ index } member={ member } />)
           }
         </div>
-        <Link className="btn" role="button" to="">
+        <Link className="btn" role="button" to="/team">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="-64 0 512 512"
