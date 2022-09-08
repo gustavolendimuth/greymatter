@@ -19,6 +19,8 @@ export default function Greymatter() {
 
   const { slug } = useParams();
   const whoWeAre = useRef(null);
+  const whatWeLookFor = useRef(null);
+  const whatDoWeOffer = useRef(null);
   const team = useRef(null);
   // const community = useRef(null);
   const application = useRef(null);
@@ -28,25 +30,31 @@ export default function Greymatter() {
   }, []);
 
   useLayoutEffect(() => {
-    let test;
-    switch (slug) {
-    case 'who-we-are':
-      test = whoWeAre;
-      break;
-    case 'team':
-      test = team;
-      break;
-    case 'application':
-      test = application;
-      break;
-    default:
-      break;
-    }
     if (slug) {
+      let section;
+      switch (slug) {
+      case 'who-we-are':
+        section = whoWeAre;
+        break;
+      case 'what-we-look-for':
+        section = whatWeLookFor;
+        break;
+      case 'what-do-we-offer':
+        section = whatDoWeOffer;
+        break;
+      case 'team':
+        section = team;
+        break;
+      case 'application':
+        section = application;
+        break;
+      default:
+        break;
+      }
       // const toCamelCase = (str) => str.trim().replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
       const scrollToCard = () => {
         window.scrollTo({
-          top: test.current.offsetTop,
+          top: section.current.offsetTop,
           behavior: 'smooth',
         });
       };
@@ -70,8 +78,8 @@ export default function Greymatter() {
         </header>
         <WhoWeAre whoWeAre={ whoWeAre } />
       </div>
-      <WhatWeLookFor />
-      <WhaDoWeOffer />
+      <WhatWeLookFor whatWeLookFor={ whatWeLookFor } />
+      <WhaDoWeOffer whatDoWeOffer={ whatDoWeOffer } />
       <Team team={ team } />
       {/* <Community community={ community } /> */}
       <Application application={ application } />

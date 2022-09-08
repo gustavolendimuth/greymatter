@@ -1,5 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
@@ -8,7 +10,7 @@ import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
 import WhatWeLookForCards from './WhatWeLookForCards';
 
-export default function WhatWeLookFor() {
+export default function WhatWeLookFor({ whatWeLookFor }) {
   const { languageId } = useContext(HomeContext);
   const [whatWeLookForTitle, setWhatWeLookForTitle] = useState();
   const [whatWeLookForBackground, setWhatWeLookForBackground] = useState();
@@ -37,6 +39,7 @@ export default function WhatWeLookFor() {
 
   return (
     <section
+      ref={ whatWeLookFor }
       id="what-we-look-for"
       style={ { background: `url(${whatWeLookForBackground && urlFor(whatWeLookForBackground.imageLg?.asset).url()}) center / cover space` } }
     >
@@ -75,3 +78,7 @@ export default function WhatWeLookFor() {
     </section>
   );
 }
+
+WhatWeLookFor.propTypes = {
+  whatWeLookFor: PropTypes.any.isRequired,
+};

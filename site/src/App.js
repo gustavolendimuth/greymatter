@@ -21,7 +21,6 @@ import TeamMembers from './pages/TeamMembers';
 import Footer from './components/Footer';
 import ApplicationForm from './pages/ApplicationForm';
 import HomeContext from './context/HomeContext';
-// import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const {
@@ -55,7 +54,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <ScrollToTop /> */}
       <Navbar />
       <main>
         <Routes>

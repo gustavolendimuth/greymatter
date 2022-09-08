@@ -17,8 +17,9 @@ export default function Application({ application }) {
   const [applicationButtonText, setApplicationButtonText] = useState();
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "application" 
+    if (languageId) {
+      sanityClient.fetch(
+        `*[_type == "application" 
           && language._ref == "${languageId}" 
           && preview.isPreview == false] | order(_createdAt asc)[0] {
         pageTitle,
@@ -26,15 +27,16 @@ export default function Application({ application }) {
         image,
         buttonText,
       }`,
-    ).then((data) => {
-      if (data) {
-        setApplicationPageTitle(data.pageTitle);
-        setApplicationText(toHTML(data.text));
-        setApplicationImage(data.image);
-        setApplicationButtonText(data.buttonText);
-      }
-    })
-      .catch((e) => console.error(e));
+      ).then((data) => {
+        if (data) {
+          setApplicationPageTitle(data.pageTitle);
+          setApplicationText(toHTML(data.text));
+          setApplicationImage(data.image);
+          setApplicationButtonText(data.buttonText);
+        }
+      })
+        .catch((e) => console.error(e));
+    }
   }, [languageId]);
 
   return (

@@ -1,4 +1,6 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
+import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import sanityClient from '../services/sanityClient';
@@ -6,7 +8,7 @@ import sanityClient from '../services/sanityClient';
 import HomeContext from '../context/HomeContext';
 import WhatDoWeOfferCard from './WhatDoWeOfferCard';
 
-export default function WhaDoWeOffer() {
+export default function WhaDoWeOffer({ whatDoWeOffer }) {
   const { languageId } = useContext(HomeContext);
   const [whatDoWeOfferPageTitle, setWhatDoWeOfferPageTitle] = useState();
   const [whatDoWeOfferCards, setWhatDoWeOfferCards] = useState();
@@ -32,7 +34,7 @@ export default function WhaDoWeOffer() {
   }, [languageId]);
 
   return (
-    <section id="what-do-we-offer">
+    <section ref={ whatDoWeOffer } id="what-do-we-offer">
       <div className="container section wha-do-we-offer-section">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title">
@@ -66,3 +68,7 @@ export default function WhaDoWeOffer() {
     </section>
   );
 }
+
+WhaDoWeOffer.propTypes = {
+  whatDoWeOffer: PropTypes.any.isRequired,
+};
