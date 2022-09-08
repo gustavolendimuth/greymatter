@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import urlFor from '../services/urlFor';
@@ -39,17 +39,22 @@ export default function Hero() {
     }
   }, [languageId]);
 
-  useEffect(() => {
+  const fixFontSize = () => {
     $('.hero-text').textfill({
       innerTag: 'p',
     });
-  }, [heroText]);
-
-  useEffect(() => {
     $('.hero-subtitle').textfill({
       innerTag: 'p',
     });
-  }, [heroSubTitle]);
+  };
+
+  useEffect(() => {
+    fixFontSize();
+  }, [heroText, heroSubTitle]);
+
+  useLayoutEffect(() => {
+    fixFontSize();
+  });
 
   return (
     <>

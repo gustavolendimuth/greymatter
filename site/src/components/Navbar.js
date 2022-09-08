@@ -95,13 +95,14 @@ export default function Navbar() {
                 </Link>
 
               </li>
-              <li className="nav-item">
+              <li className="nav-item align-content-center">
                 {
                   languageId && (
                     languageId === englishId
                       ? (
                         <button
                           type="button"
+                          role="link"
                           className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
                           onClick={ changeToPortuguese }
                         >
