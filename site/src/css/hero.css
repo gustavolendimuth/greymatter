@@ -38,18 +38,16 @@
 
 .hero-text {
   color: rgba(var(--bs-light-rgb), var(--bs-text-opacity));
-  font-size: 1rem;
+
+  /* font-size: 1rem; */
 }
 
-.the-world-economy-text {
-  font-size: 1rem;
+.hero-subtitle-text {
   font-weight: 900;
-
-  /* margin-bottom: 0; */
 }
 
-.hero-subtitle {
-  max-height: 100px;
+.hero-subtitle-container {
+  height: 90px;
 }
 
 /* @media (min-height: 1200px) and (max-width: 2300px) {
@@ -67,16 +65,12 @@
 
 @media ( min-width : 992px ) {
 
-  .the-world-economy-container {
-
-    /* max-height: 200px; */
+  .hero-subtitle-row {
     max-width: 800px !important;
   }
 }
 
-.the-world-economy-container {
-
-  /* max-height: 70px; */
+.hero-subtitle-row {
   max-width: 500px;
 }
 

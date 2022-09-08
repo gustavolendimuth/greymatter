@@ -44,7 +44,7 @@ export default function Hero() {
     $('.hero-text').textfill({
       innerTag: 'p',
     });
-    $('.hero-subtitle').textfill({
+    $('.hero-subtitle-container').textfill({
       innerTag: 'p',
     });
   };
@@ -92,10 +92,10 @@ export default function Hero() {
           <span />
         </div>
       </div>
-      <div className="container the-world-economy-container">
+      <div className="container hero-subtitle-row">
         <div className="row">
-          <div className="col-md-12 the-world-economy-container hero-subtitle">
-            <p className="text-center text-light the-world-economy-text">
+          <div className="col-md-12 hero-subtitle-container">
+            <p className="text-center text-light hero-subtitle-text">
               {heroSubTitle && heroSubTitle}
             </p>
           </div>
