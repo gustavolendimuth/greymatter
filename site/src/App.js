@@ -60,7 +60,8 @@ function App() {
       <main>
         <Routes>
           <Route element={ <Greymatter /> } path="/" exact />
-          <Route element={ <ApplicationForm /> } path="/application" />
+          <Route element={ <Greymatter /> } path="/:slug" />
+          <Route element={ <ApplicationForm /> } path="/application-form" />
           <Route element={ <TeamMembers /> } path="/team-members/:slug" />
         </Routes>
       </main>

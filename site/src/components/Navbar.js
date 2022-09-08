@@ -46,7 +46,7 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link
                   className="nav-link text-uppercase text-center link nav-item-link"
-                  to="/#who-we-are"
+                  to="/who-we-are"
                 >
                   {
                     languageId && (
@@ -57,42 +57,42 @@ export default function Navbar() {
 
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
-                  href="/#team"
+                  to="/team"
                 >
                   {
                     languageId && (
                       languageId === englishId
                         ? 'Team' : 'Equipe')
                   }
-                </a>
+                </Link>
 
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
-                  href="/#community"
+                  to="/community"
                 >
                   {
                     languageId && (
                       languageId === englishId
                         ? 'Community' : 'Comunidade')
                   }
-                </a>
+                </Link>
 
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-uppercase text-center link text-white nav-item-link"
-                  href="/#application"
+                  to="/application"
                 >
                   {
                     languageId && (
                       languageId === englishId
                         ? 'Application' : 'Fale conosco')
                   }
-                </a>
+                </Link>
 
               </li>
               <li className="nav-item">

@@ -32,6 +32,7 @@ export default function WhatWeLookForCards({ card: { image, text } }) {
         data-aos={ direction }
         data-aos-duration={ duration }
         data-aos-delay={ delay }
+        data-aos-once="true"
       >
         <div className="d-flex justify-content-center align-items-center who-we-are-div-icon">
           <img

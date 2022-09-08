@@ -42,11 +42,14 @@
 }
 
 .the-world-economy-text {
-
-  /* font-size: 1rem; */
+  font-size: 1rem;
   font-weight: 900;
 
   /* margin-bottom: 0; */
+}
+
+.hero-subtitle {
+  max-height: 100px;
 }
 
 /* @media (min-height: 1200px) and (max-width: 2300px) {

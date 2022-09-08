@@ -45,6 +45,12 @@ export default function Hero() {
     });
   }, [heroText]);
 
+  useEffect(() => {
+    $('.hero-subtitle').textfill({
+      innerTag: 'p',
+    });
+  }, [heroSubTitle]);
+
   return (
     <>
       <div className="container-sm d-flex justify-content-center">
@@ -82,7 +88,7 @@ export default function Hero() {
       </div>
       <div className="container the-world-economy-container">
         <div className="row">
-          <div className="col-md-12 the-world-economy-container">
+          <div className="col-md-12 the-world-economy-container hero-subtitle">
             <p className="text-center text-light the-world-economy-text">
               {heroSubTitle && heroSubTitle}
             </p>

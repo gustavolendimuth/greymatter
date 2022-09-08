@@ -17,10 +17,10 @@ export default function TeamMembersCard({
     <div
       id={ slug.current }
       ref={ window[`card${index}`] }
-      className="container-sm d-flex flex-column justify-content-center align-items-center align-items-xxl-center team-members-container pb-5 section"
+      className="container-sm d-flex flex-column justify-content-center align-items-center align-items-xxl-center team-members-container pb-5 section pt-6"
     >
       <div className="row gx-5 justify-content-center w-100">
-        <div className="col-12 col-lg-4 text-lg-end d-flex flex-column align-items-center align-items-lg-end gap-lg-3 mx-0 px-0 gap-2 py-3">
+        <div className="col-12 col-lg-4 text-lg-end d-flex flex-column align-items-center gap-lg-3 mx-0 px-0 gap-2 py-3">
           <img
             className="rounded-circle team-members-image"
             src={ photoLg && urlFor(photoLg.asset).url() }

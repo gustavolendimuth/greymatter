@@ -1,5 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
+import PropTypes from 'prop-types';
 import React, { useEffect, useState, useContext } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
@@ -7,7 +9,7 @@ import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
 import HomeContext from '../context/HomeContext';
 
-export default function WhoWeAreSection() {
+export default function WhoWeAre({ whoWeAre = 'whoWeAre' }) {
   const [whoWeArePageTitle, setWhoWeArePageTitle] = useState('');
   const [whoWeAreText, setWhoWeAreText] = useState('');
   const [whoWeAreImage, setWhoWeAreImage] = useState();
@@ -35,7 +37,7 @@ export default function WhoWeAreSection() {
   }, [languageId]);
 
   return (
-    <section id="who-we-are">
+    <section ref={ whoWeAre } id="whoWeAre">
       <div className="container section who-we-are-section">
         <div />
         <h1
@@ -79,3 +81,7 @@ export default function WhoWeAreSection() {
     </section>
   );
 }
+
+WhoWeAre.propTypes = {
+  whoWeAre: PropTypes.any.isRequired,
+};

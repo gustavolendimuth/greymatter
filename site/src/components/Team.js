@@ -1,10 +1,12 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable max-len */
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import HomeContext from '../context/HomeContext';
 import TeamCard from './TeamCard';
 
-export default function Team() {
+export default function Team({ team }) {
   const { languageId, teamMembers, teamPageTitle, getTeamMembers } = useContext(HomeContext);
 
   useEffect(() => {
@@ -12,7 +14,7 @@ export default function Team() {
   }, [languageId]);
 
   return (
-    <section id="team" className="team-section">
+    <section ref={ team } id="team" className="team-section">
       <div className="container section" id="team-container">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title">{teamPageTitle}</h1>
@@ -23,6 +25,7 @@ export default function Team() {
           data-aos-duration="1500"
           data-aos-offset="200"
           data-aos-delay="500"
+          data-aos-once="true"
         >
           {
             teamMembers
@@ -47,3 +50,7 @@ export default function Team() {
     </section>
   );
 }
+
+Team.propTypes = {
+  team: PropTypes.any.isRequired,
+};

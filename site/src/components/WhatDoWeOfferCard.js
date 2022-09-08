@@ -23,6 +23,7 @@ export default function WhatDoWeOfferCard({ card: { image, title } }) {
         data-aos="flip-left"
         data-aos-duration={ duration }
         data-aos-delay={ delay }
+        data-aos-once="true"
       >
         <img
           alt={ image.alt }

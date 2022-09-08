@@ -1,12 +1,15 @@
+/* eslint-disable react/forbid-prop-types */
+import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';
 import React, { useContext, useEffect, useState } from 'react';
 import parse from 'html-react-parser';
+import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
 import greymatterButtonAction from '../img/greymatter-button-action.svg';
 import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
 
-export default function Application() {
+export default function Application({ application }) {
   const { languageId } = useContext(HomeContext);
   const [applicationPageTitle, setApplicationPageTitle] = useState();
   const [applicationImage, setApplicationImage] = useState();
@@ -35,7 +38,7 @@ export default function Application() {
   }, [languageId]);
 
   return (
-    <section id="application" className="bg-primary">
+    <section ref={ application } id="application" className="bg-primary">
       <div className="container section application-section">
         <div className="visible spacer" />
         <h1
@@ -48,10 +51,9 @@ export default function Application() {
           src={ applicationImage && urlFor(applicationImage.imageLg.asset).url() }
         />
         <div className="text-center text-info">{ applicationText && parse(applicationText) }</div>
-        <a
+        <Link
           className="btn btn-primary text-uppercase fw-normal bg-primary border rounded border-3 d-flex gap-2 application-btn"
-          role="button"
-          href="application/"
+          to="/application-form"
         >
           { applicationButtonText }
           <img
@@ -61,9 +63,13 @@ export default function Application() {
             width="20px"
             height="20px"
           />
-        </a>
+        </Link>
         <div className="visible spacer" />
       </div>
     </section>
   );
 }
+
+Application.propTypes = {
+  application: PropTypes.any.isRequired,
+};

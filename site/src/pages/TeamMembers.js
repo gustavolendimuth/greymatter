@@ -35,7 +35,7 @@ export default function TeamMembers() {
 
   return (
     <section
-      className="section pt-6"
+      className="section"
       style={ { background: `url(${teamMembersBackground}) top / contain no-repeat fixed` } }
     >
       {
