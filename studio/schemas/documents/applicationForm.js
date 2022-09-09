@@ -1,11 +1,11 @@
-import { FaClipboard } from 'react-icons/fa';
+import { FaClipboardList } from 'react-icons/fa';
 import F from '../fieldsText';
 
 export default {
-  name: 'application',
+  name: 'applicationForm',
   type: 'document',
-  title: 'Application',
-  icon: FaClipboard,
+  title: 'Application Form',
+  icon: FaClipboardList,
   fields: [
     {
       name: 'preview',
@@ -38,25 +38,25 @@ export default {
       description: F.default.title.description,
     },
     {
-      name: 'image',
-      type: 'figure',
-      title: 'Imagem',
-    },
-    {
       name: 'text',
       type: 'richText',
       title: 'Texto',
-    },
-    {
-      name: 'buttonText',
-      type: 'string',
-      title: 'Texto do botão',
     },
     {
       name: 'background',
       type: 'figure',
       title: 'Imagem de fundo da seção',
       description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
+    },
+    {
+      name: 'fields',
+      type: 'array',
+      title: 'Campos do Formulário',
+      of: [
+        {
+          type: 'applicationFormFields', 
+        },
+      ]
     },
   ],
 };
