@@ -47,7 +47,8 @@
 }
 
 .hero-subtitle-container {
-  height: 90px;
+  height: 80px;
+  width: auto;
 }
 
 /* @media (min-height: 1200px) and (max-width: 2300px) {
@@ -66,12 +67,12 @@
 @media ( min-width : 992px ) {
 
   .hero-subtitle-row {
-    max-width: 800px !important;
+    width: 800px !important;
   }
 }
 
 .hero-subtitle-row {
-  max-width: 500px;
+  width: 500px;
 }
 
 .gray-matter-logo {

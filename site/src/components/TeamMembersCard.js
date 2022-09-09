@@ -1,5 +1,5 @@
-/* eslint-disable max-len */
 /* eslint-disable sonarjs/no-identical-expressions */
+/* eslint-disable max-len */
 import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';

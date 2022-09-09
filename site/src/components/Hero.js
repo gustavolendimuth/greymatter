@@ -14,7 +14,7 @@ export default function Hero() {
   const { languageId } = useContext(HomeContext);
   const [heroText, setHeroText] = useState('');
   const [heroImage, setHeroImage] = useState('');
-  const [heroSubTitle, setHeroSubtitle] = useState('');
+  const [heroSubtitle, setHeroSubtitle] = useState('');
 
   useEffect(() => {
     if (languageId) {
@@ -41,17 +41,21 @@ export default function Hero() {
   }, [languageId]);
 
   const fixFontSize = () => {
-    $('.hero-text').textfill({
-      innerTag: 'p',
-    });
-    $('.hero-subtitle-container').textfill({
-      innerTag: 'p',
-    });
+    if (heroText) {
+      $('.hero-text').textfill({
+        innerTag: 'p',
+      });
+    }
+    if (heroSubtitle) {
+      $('.hero-subtitle-container').textfill({
+        innerTag: 'p',
+      });
+    }
   };
 
   useEffect(() => {
     fixFontSize();
-  }, [heroText, heroSubTitle]);
+  }, [heroText, heroSubtitle]);
 
   useLayoutEffect(() => {
     fixFontSize();
@@ -96,7 +100,7 @@ export default function Hero() {
         <div className="row">
           <div className="col-md-12 hero-subtitle-container">
             <p className="text-center text-light hero-subtitle-text">
-              {heroSubTitle && heroSubTitle}
+              {heroSubtitle && heroSubtitle}
             </p>
           </div>
         </div>
