@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   name: 'fields',
   type: 'object',
@@ -11,9 +12,11 @@ export default {
     {
       name: 'type',
       type: 'string',
-      title: 'Título do card',
+      title: 'Tipo do campo',
       options: {
-
+        list: [
+          {title: 'Texto curto', value: ''}
+        ]
       }
     },
     {

@@ -58,7 +58,8 @@ export default function ApplicationForm() {
                       type="text"
                       id="cnpj"
                       spellCheck="true"
-                      required=""
+                      required
+                      
                       placeholder="00.000.000/0000-00"
                       inputMode="numeric"
                     />
@@ -72,7 +73,7 @@ export default function ApplicationForm() {
                       type="text"
                       id="activity"
                       spellCheck="true"
-                      required=""
+                      required
                       minLength="3"
                     />
                   </label>
