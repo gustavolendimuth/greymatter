@@ -31,6 +31,16 @@ export default function ApplicationForm() {
     $('#cnpj').mask('00.000.000/0000-00');
   });
 
+  const columnClass = (size) => {
+    let className = 'col-12';
+    if (size === 3) {
+      className = 'col-12 col-md-4';
+    } else if (size === 2) {
+      className = 'col-12 col-md-6';
+    }
+    return className;
+  };
+
   const [applicationFormPageTitle, setApplicationFormPageTitle] = useState();
   const [applicationFormText, setApplicationFormText] = useState();
   // const [applicationFormBackground, setApplicationFormBackground] = useState();
@@ -102,14 +112,8 @@ export default function ApplicationForm() {
                     );
                   }
                   if (field.type === 'text') {
-                    let columnClass = 'col-12';
-                    if (field.columnSize === 3) {
-                      columnClass = 'col-12 col-md-4';
-                    } else if (field.columnSize === 2) {
-                      columnClass = 'col-12 col-md-6';
-                    }
                     return (
-                      <div key={ field._key } className={ columnClass }>
+                      <div key={ field._key } className={ columnClass(field.columnSize) }>
                         <label
                           className="col-form-label form-label"
                           htmlFor={ field.value === 'cnpj' ? 'cnpj' : transformToId(field.title) }
@@ -148,6 +152,11 @@ export default function ApplicationForm() {
                   return null;
                 })
                 }
+                <h2 className="display-6 text-uppercase fw-bold application-form-subtitle">File upload</h2>
+                <label className="form-label" htmlFor="files">
+                  Upload any files that can help us better understand your business.
+                  <input className="form-control form-control-lg" type="file" id="files" multiple="" />
+                </label>
                 <div className="row d-flex justify-content-center gx-5 gy-4 pt-5">
                   <div className="col-12 col-md-auto">
                     <a className="btn btn-greymatter-primary" role="button" href="https://greymatter.technology">Cancel</a>
