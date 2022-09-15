@@ -17,6 +17,7 @@ import teamMembers from './documents/teamMembers';
 import community from './documents/community';
 import communityMembers from './documents/communityMembers';
 import application from './documents/application';
+import applicationForm from './documents/applicationForm';
 
 // Fields
 import richText from './objects/richText';
@@ -46,6 +47,7 @@ export default createSchema({
     community,
     communityMembers,
     application,
+    applicationForm,
     card,
     richText,
     figure,

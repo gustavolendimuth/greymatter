@@ -55,7 +55,7 @@
   padding-top: 2rem;
 }
 
-.btn-graymatter-primary {
+.btn-greymatter-primary {
   background: var(--bs-primary);
   border-radius: 4px;
   color: var(--bs-light);
@@ -66,7 +66,7 @@
   width: 100%;
 }
 
-.btn-graymatter-primary:hover {
+.btn-greymatter-primary:hover {
   background-color: var(--bs-secondary);
   color: var(--bs-light);
 }
