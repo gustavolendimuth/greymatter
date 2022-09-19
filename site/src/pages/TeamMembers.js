@@ -17,6 +17,7 @@ export default function TeamMembers() {
 
   useEffect(() => {
     setNavbarConfig({ background: true, position: 'fixed' });
+    window.scrollTo(0, 0);
   }, []);
 
   useLayoutEffect(() => {

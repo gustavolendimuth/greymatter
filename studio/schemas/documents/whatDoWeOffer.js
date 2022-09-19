@@ -1,5 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { FaLandmark } from 'react-icons/fa';
 import F from '../fieldsText';
+import type from '../objects/type';
 
 export default {
   name: 'whatDoWeOffer',
@@ -7,6 +9,7 @@ export default {
   title: 'What do we offer',
   icon: FaLandmark,
   fields: [
+    type('section'),
     {
       name: 'preview',
       type: 'preview',

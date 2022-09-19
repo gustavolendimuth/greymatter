@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaClipboardList } from 'react-icons/fa';
 import F from '../fieldsText';
+import type from '../objects/type';
 
 export default {
   name: 'applicationForm',
@@ -8,6 +9,7 @@ export default {
   title: 'Application Form',
   icon: FaClipboardList,
   fields: [
+    type('page'),
     {
       name: 'preview',
       type: 'preview',
@@ -74,7 +76,8 @@ export default {
                 list: [
                   {title: 'Título da seção', value: 'title'},
                   {title: 'Texto curto', value: 'text'},
-                  {title: 'Texto longo', value: 'textarea'}
+                  {title: 'Texto longo', value: 'textarea'},
+                  {title: 'Upload', value: 'upload'}
                 ]
               }
             },

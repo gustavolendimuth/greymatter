@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { FaIdCard } from 'react-icons/fa';
 import F from '../fieldsText';
 

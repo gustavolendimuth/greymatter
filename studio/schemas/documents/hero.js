@@ -1,5 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { BsTv } from 'react-icons/bs';
 import F from '../fieldsText';
+import type from '../objects/type';
 
 export default {
   name: 'hero',
@@ -7,6 +9,7 @@ export default {
   title: 'Banner',
   icon: BsTv,
   fields: [
+    type('section'),
     {
       name: 'preview',
       type: 'preview',

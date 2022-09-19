@@ -1,4 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { BsGlobe2 } from 'react-icons/bs';
+import type from '../objects/type';
 
 export default {
   name: 'language',
@@ -7,8 +9,9 @@ export default {
   icon: BsGlobe2,
   description: 'Adicione idiomas ao site.',
   fields: [
+    type('config'),
     {
-      name: 'language',
+      name: 'title',
       type: 'string',
       title: 'Idioma',
       validation: (Rule) => Rule.required(),

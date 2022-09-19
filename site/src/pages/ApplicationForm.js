@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable react/jsx-max-depth */
 /* eslint-disable quotes */
 /* eslint-disable no-underscore-dangle */
@@ -11,35 +12,18 @@ import stringRemove from 'string-remove';
 import { extract, words, numbers } from 'words-n-numbers';
 import { toHTML } from '@portabletext/to-html';
 import HomeContext from '../context/HomeContext';
-import buttonAction from '../img/greymatter-button-action.svg';
 import sanityClient from '../services/sanityClient';
+import ApplicationFormTextInput from '../components/ApplicationFormTextInput';
+import ApplicationFormTextareaInput from '../components/ApplicationFormTextareaInput';
+import ApplicationFormFileUpload from '../components/ApplicationFormFileUpload';
+import ApplicationFormTitle from '../components/ApplicationFormTitle';
+import ApplicationFormActionButtons from '../components/ApplicationFormActionButtons';
 
 export default function ApplicationForm() {
   const {
     setNavbarConfig,
     languageId,
   } = useContext(HomeContext);
-
-  const transformToId = (string) => {
-    let result = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    result = stringRemove(result, ["'"]);
-    result = extract(result, { regex: [words, numbers], toLowercase: true });
-    return camelCase(result.slice(0, 3));
-  };
-
-  $(document).ready(() => {
-    $('#cnpj').mask('00.000.000/0000-00');
-  });
-
-  const columnClass = (size) => {
-    let className = 'col-12';
-    if (size === 3) {
-      className = 'col-12 col-md-4';
-    } else if (size === 2) {
-      className = 'col-12 col-md-6';
-    }
-    return className;
-  };
 
   const [applicationFormPageTitle, setApplicationFormPageTitle] = useState();
   const [applicationFormText, setApplicationFormText] = useState();
@@ -74,6 +58,17 @@ export default function ApplicationForm() {
     }
   }, [languageId]);
 
+  const transformToId = (string) => {
+    let result = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    result = stringRemove(result, ["'"]);
+    result = extract(result, { regex: [words, numbers], toLowercase: true });
+    return camelCase(result.slice(0, 3));
+  };
+
+  $(document).ready(() => {
+    $('#cnpj').mask('00.000.000/0000-00');
+  });
+
   return (
     <div className="d-flex flex-column gap-5">
       <header className="d-flex flex-column justify-content-between gap-5 application-header">
@@ -101,82 +96,18 @@ export default function ApplicationForm() {
                   applicationFormFields
                 && applicationFormFields.map((field) => {
                   if (field.type === 'title') {
-                    return (
-                      <div key={ field._key } className="col-12">
-                        <h2
-                          className="display-6 text-uppercase fw-bold application-form-subtitle"
-                        >
-                          {field.title && field.title}
-                        </h2>
-                      </div>
-                    );
-                  }
-                  if (field.type === 'text') {
-                    return (
-                      <div key={ field._key } className={ columnClass(field.columnSize) }>
-                        <label
-                          className="col-form-label form-label"
-                          htmlFor={ field.value === 'cnpj' ? 'cnpj' : transformToId(field.title) }
-                        >
-                          {field.title}
-                          <input
-                            className="form-control form-control-lg application-form-fields"
-                            type={ field.value === 'number' ? 'number' : 'text' }
-                            id={ field.value === 'cnpj' ? 'cnpj' : transformToId(field.title) }
-                            required={ field.required }
-                            minLength={ field.required && 3 }
-                            placeholder={ field.value === 'cnpj' ? '00.000.000/0000-00' : null }
-                            spellCheck="true"
-                          />
-                        </label>
-                      </div>
-                    );
-                  }
-                  if (field.type === 'textarea') {
-                    return (
-                      <div key={ field._key } className="col-12">
-                        <label className="form-label" htmlFor={ transformToId(field.title) }>
-                          {field.title}
-                          <textarea
-                            className="form-control form-control-lg application-form-fields"
-                            id={ transformToId(field.title) }
-                            required={ field.required }
-                            minLength={ field.required ? 3 : 0 }
-                            rows="4"
-                            spellCheck="true"
-                          />
-                        </label>
-                      </div>
-                    );
+                    return <ApplicationFormTitle key={ field._key } field={ field } />;
+                  } else if (field.type === 'text') {
+                    return <ApplicationFormTextInput key={ field._key } transformToId={ transformToId } field={ field } />;
+                  } else if (field.type === 'textarea') {
+                    return <ApplicationFormTextareaInput key={ field._key } transformToId={ transformToId } field={ field } />;
+                  } else if (field.type === 'upload') {
+                    return <ApplicationFormFileUpload key={ field._key } transformToId={ transformToId } field={ field } />;
                   }
                   return null;
                 })
                 }
-                <h2 className="display-6 text-uppercase fw-bold application-form-subtitle">File upload</h2>
-                <label className="form-label" htmlFor="files">
-                  Upload any files that can help us better understand your business.
-                  <input className="form-control form-control-lg" type="file" id="files" multiple="" />
-                </label>
-                <div className="row d-flex justify-content-center gx-5 gy-4 pt-5">
-                  <div className="col-12 col-md-auto">
-                    <a className="btn btn-greymatter-primary" role="button" href="https://greymatter.technology">Cancel</a>
-                  </div>
-                  <div className="col-12 col-md-auto">
-                    <button
-                      className="btn d-flex justify-content-center align-items-center justify-content-sm-center align-items-xxl-center btn-greymatter-primary"
-                      type="submit"
-                    >
-                      send
-                      <img
-                        alt="Alt"
-                        className="img-fluid"
-                        src={ buttonAction }
-                        width="20px"
-                        height="20px"
-                      />
-                    </button>
-                  </div>
-                </div>
+                <ApplicationFormActionButtons />
               </div>
             </form>
           </section>

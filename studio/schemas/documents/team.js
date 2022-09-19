@@ -1,5 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { BsFillPeopleFill } from 'react-icons/bs';
 import F from '../fieldsText';
+import type from '../objects/type';
 
 export default {
   name: 'team',
@@ -7,6 +9,7 @@ export default {
   title: 'Team',
   icon: BsFillPeopleFill,
   groups: [
+    type('section'),
     {
       name: 'teamMembers',
       title: 'Team Members',

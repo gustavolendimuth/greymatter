@@ -27,6 +27,7 @@ export default function Greymatter() {
 
   useEffect(() => {
     setNavbarConfig({ background: false, position: 'absolute' });
+    window.scrollTo(0, 0);
   }, []);
 
   useLayoutEffect(() => {
@@ -51,7 +52,7 @@ export default function Greymatter() {
       default:
         break;
       }
-      // const toCamelCase = (str) => str.trim().replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
+
       const scrollToCard = () => {
         window.scrollTo({
           top: section.current.offsetTop,

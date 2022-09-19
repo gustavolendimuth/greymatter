@@ -18,27 +18,11 @@
     <noscript>Vocês precisa habilitar o JavaScript para visualizar esta página.</noscript>
 
     <div id="root"></div>
-    <script>
-      {
-        var WS = window.WebSocket
-        function DevWebSocket(s) {
-          if (s === 'ws://localhost:3000/sockjs-node') {
-            console.info('[DEV NOTICE] Live Reload Has Been Disabled')
-            return {}
-          } else {
-            // Pass through other usage of sockets
-            return new WS(s)
-          }
-        }
-        window.WebSocket = DevWebSocket
-      }
-    </script>
+
     <script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- <script src="%PUBLIC_URL%/assets/js/popper.min.js"></script> -->
     <script src="%PUBLIC_URL%/assets/js/bootstrap.min.js"></script>
     <script src="%PUBLIC_URL%/assets/js/smart-forms.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/bs-init.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/aos.js"></script>
     <script src="%PUBLIC_URL%/assets/js/jquery.mask.min.js"></script>
     <script src="%PUBLIC_URL%/assets/js/jquery.textfill.min.js"></script>
     <script src="%PUBLIC_URL%/assets/js/style.js"></script>
