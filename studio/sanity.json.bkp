@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Greymatter"
+    "name": "Greymatter",
+    "basePath": "/studio"
   },
   "__experimental_spaces": [
     {
