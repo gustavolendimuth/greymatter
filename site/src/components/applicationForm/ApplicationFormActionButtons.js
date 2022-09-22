@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import buttonAction from '../img/greymatter-button-action.svg';
+import buttonAction from '../../img/greymatter-button-action.svg';
 
 export default function ApplicationFormActionButtons() {
   return (

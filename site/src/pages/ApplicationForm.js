@@ -13,11 +13,11 @@ import { extract, words, numbers } from 'words-n-numbers';
 import { toHTML } from '@portabletext/to-html';
 import HomeContext from '../context/HomeContext';
 import sanityClient from '../services/sanityClient';
-import ApplicationFormTextInput from '../components/ApplicationFormTextInput';
-import ApplicationFormTextareaInput from '../components/ApplicationFormTextareaInput';
-import ApplicationFormFileUpload from '../components/ApplicationFormFileUpload';
-import ApplicationFormTitle from '../components/ApplicationFormTitle';
-import ApplicationFormActionButtons from '../components/ApplicationFormActionButtons';
+import ApplicationFormTextInput from '../components/applicationForm/ApplicationFormTextInput';
+import ApplicationFormTextareaInput from '../components/applicationForm/ApplicationFormTextareaInput';
+import ApplicationFormFileUpload from '../components/applicationForm/ApplicationFormFileUpload';
+import ApplicationFormTitle from '../components/applicationForm/ApplicationFormTitle';
+import ApplicationFormActionButtons from '../components/applicationForm/ApplicationFormActionButtons';
 
 export default function ApplicationForm() {
   const {

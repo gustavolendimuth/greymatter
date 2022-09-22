@@ -11,6 +11,11 @@ export default {
   fields: [
     type('section'),
     {
+      name: 'preview',
+      type: 'preview',
+      title: F.default.preview.title,
+    },
+    {
       name: 'language',
       type: 'reference',
       title: 'Idioma',

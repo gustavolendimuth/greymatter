@@ -6,9 +6,9 @@ import background from '../img/greymatter-hero-image.webp';
 import WhatWeLookFor from '../components/WhatWeLookFor';
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
-import WhaDoWeOffer from '../components/WhaDoWeOffer';
+import WhatDoWeOffer from '../components/WhatDoWeOffer';
 import Team from '../components/Team';
-// import Community from '../components/Community';
+import Community from '../components/Community';
 import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 
@@ -22,7 +22,7 @@ export default function Greymatter() {
   const whatWeLookFor = useRef(null);
   const whatDoWeOffer = useRef(null);
   const team = useRef(null);
-  // const community = useRef(null);
+  const community = useRef(null);
   const application = useRef(null);
 
   useEffect(() => {
@@ -46,6 +46,9 @@ export default function Greymatter() {
       case 'team':
         section = team;
         break;
+      case 'community':
+        section = community;
+        break;
       case 'application':
         section = application;
         break;
@@ -65,6 +68,8 @@ export default function Greymatter() {
 
   return (
     <>
+      {/* Adicionada uma div que inclui o Header, o Hero e a seção Who we are
+      para compartilhar o mesmo background  */}
       <div
         className="greymatter-hero-image"
         data-bss-scroll-zoom="true"
@@ -80,9 +85,9 @@ export default function Greymatter() {
         <WhoWeAre whoWeAre={ whoWeAre } />
       </div>
       <WhatWeLookFor whatWeLookFor={ whatWeLookFor } />
-      <WhaDoWeOffer whatDoWeOffer={ whatDoWeOffer } />
+      <WhatDoWeOffer whatDoWeOffer={ whatDoWeOffer } />
       <Team team={ team } />
-      {/* <Community community={ community } /> */}
+      <Community community={ community } />
       <Application application={ application } />
     </>
   );

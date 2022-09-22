@@ -8,7 +8,7 @@ import sanityClient from '../services/sanityClient';
 import HomeContext from '../context/HomeContext';
 import WhatDoWeOfferCard from './WhatDoWeOfferCard';
 
-export default function WhaDoWeOffer({ whatDoWeOffer }) {
+export default function WhatDoWeOffer({ whatDoWeOffer }) {
   const { languageId } = useContext(HomeContext);
   const [whatDoWeOfferPageTitle, setWhatDoWeOfferPageTitle] = useState();
   const [whatDoWeOfferCards, setWhatDoWeOfferCards] = useState();
@@ -35,7 +35,7 @@ export default function WhaDoWeOffer({ whatDoWeOffer }) {
 
   return (
     <section ref={ whatDoWeOffer } id="what-do-we-offer">
-      <div className="container section wha-do-we-offer-section">
+      <div className="container section what-do-we-offer-section">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title">
           {
@@ -69,6 +69,6 @@ export default function WhaDoWeOffer({ whatDoWeOffer }) {
   );
 }
 
-WhaDoWeOffer.propTypes = {
+WhatDoWeOffer.propTypes = {
   whatDoWeOffer: PropTypes.any.isRequired,
 };

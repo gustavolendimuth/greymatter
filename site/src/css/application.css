@@ -27,6 +27,11 @@
   width: 100%;
 }
 
+.application-btn {
+  font-weight: 600 !important;
+  padding: 1rem 3rem !important;
+}
+
 .application-form-fields {
   background: rgba(255, 255, 255, 0.7) !important;
   border-color: var(--bs-primary) !important;

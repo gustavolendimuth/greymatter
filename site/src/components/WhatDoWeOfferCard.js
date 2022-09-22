@@ -27,7 +27,7 @@ export default function WhatDoWeOfferCard({ card: { image, title } }) {
       >
         <img
           alt={ image.alt }
-          className="wha-do-we-offer-card-icon"
+          className="what-do-we-offer-card-icon"
           src={ image && urlFor(image.imageLg.asset).url() }
         />
         <p className="what-do-we-offer-card-text">{ title }</p>

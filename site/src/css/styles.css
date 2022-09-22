@@ -74,13 +74,6 @@ header {
   font-size: 4.5rem;
 }
 
-@media ( min-height : 1200px ) and ( max-width : 2300px ) {
-
-  .hero-arrow-down {
-    color: var(--bs-primary) !important;
-  }
-}
-
 .section-container {
   max-width: 350px !important;
 }
@@ -105,93 +98,6 @@ header {
     visibility: visible;
   }
 } */
-
-@media ( max-width : 760px ) {
-
-  .what-we-look-for-title {
-    font-size: 2rem !important;
-  }
-}
-
-@media ( min-width : 992px ) {
-
-  .what-do-we-offer-card-text {
-    font-size: 1.4rem !important;
-  }
-}
-
-.what-do-we-offer-card-text {
-  color: var(--bs-secondary);
-  font-size: 1rem;
-  font-weight: 900;
-  text-align: center;
-}
-
-@media ( min-width : 992px ) {
-
-  .what-do-we-offer-card {
-    padding: 2rem !important;
-  }
-}
-
-.what-do-we-offer-card {
-  border: 0.2rem solid var(--bs-primary);
-  border-radius: 1rem;
-  height: 100%;
-}
-
-@media ( min-width : 992px ) {
-
-  .wha-do-we-offer-card-icon {
-    max-height: 6rem !important;
-    max-width: 6rem !important;
-  }
-}
-
-.wha-do-we-offer-card-icon {
-  max-height: 4rem;
-  max-width: 4rem;
-}
-
-.team-section {
-  background: url('../img/greymatter-what-we-look-for-background.webp') bottom / cover no-repeat;
-  background-blend-mode: overlay;
-  background-color: var(--bs-dark);
-  transform: rotate(180deg);
-}
-
-@media ( min-width : 992px ) {
-
-  #team-container {
-    max-width: 1000px !important;
-  }
-}
-
-#team-container {
-  max-width: 650px;
-  transform: rotate(180deg);
-}
-
-.team-photo {
-  border-radius: 50%;
-  max-height: 200px;
-  max-width: 200px;
-}
-
-.community-card-name {
-  color: var(--bs-primary);
-  letter-spacing: 0.06rem;
-}
-
-.team-text {
-  color: var(--bs-light);
-  letter-spacing: 0.06rem;
-}
-
-.application-btn {
-  font-weight: 600 !important;
-  padding: 1rem 3rem !important;
-}
 
 footer {
   width: 100%;

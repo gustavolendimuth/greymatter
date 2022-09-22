@@ -54,6 +54,7 @@ TeamCard.propTypes = {
       name: PropTypes.string,
       photoLg: PropTypes.string,
       position: PropTypes.string,
+      slug: PropTypes.string,
     }),
   ),
 }.isRequired;

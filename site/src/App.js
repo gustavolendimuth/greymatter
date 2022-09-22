@@ -14,7 +14,8 @@ import './css/application.css';
 import './css/community.css';
 import './css/hero.css';
 import './css/styles.css';
-import './css/what-we-offer.css';
+import './css/team.css';
+import './css/what-do-we-offer.css';
 import './css/what-we-look-for.css';
 import './css/who-we-are.css';
 
