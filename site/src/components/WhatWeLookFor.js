@@ -6,7 +6,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
 
-import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
 import WhatWeLookForCards from './WhatWeLookForCards';
 
@@ -17,24 +16,15 @@ export default function WhatWeLookFor({ whatWeLookFor }) {
   const [whatWeLookForCards, setWhatWeLookForCards] = useState();
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "whatWeLookFor" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        background,
-        cards,
-        pageTitle,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setWhatWeLookForTitle(data.pageTitle);
-          setWhatWeLookForBackground(data.background);
-          setWhatWeLookForCards(data.cards);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getWhatWeLookForContent = async () => {
+      const data = await fetchContent('whatWeLookFor', languageId);
+      if (data) {
+        setWhatWeLookForTitle(data.pageTitle);
+        setWhatWeLookForBackground(data.background);
+        setWhatWeLookForCards(data.cards);
+      }
+    };
+    getWhatWeLookForContent();
   }, [languageId]);
 
   return (

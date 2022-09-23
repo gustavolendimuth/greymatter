@@ -6,9 +6,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
-import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
 import HomeContext from '../context/HomeContext';
+import fetchContent from '../services/fetchContent';
 
 export default function WhoWeAre({ whoWeAre = 'whoWeAre' }) {
   const [whoWeArePageTitle, setWhoWeArePageTitle] = useState('');
@@ -17,24 +17,15 @@ export default function WhoWeAre({ whoWeAre = 'whoWeAre' }) {
   const { languageId } = useContext(HomeContext);
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "whoWeAre" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        image,
-        pageTitle,
-        text,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setWhoWeArePageTitle(data.pageTitle);
-          setWhoWeAreImage(data.image);
-          setWhoWeAreText(toHTML(data.text));
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getWhoWeAreContent = async () => {
+      const data = await fetchContent('whoWeAre', languageId);
+      if (data) {
+        setWhoWeArePageTitle(data.pageTitle);
+        setWhoWeAreImage(data.image);
+        setWhoWeAreText(toHTML(data.text));
+      }
+    };
+    getWhoWeAreContent();
   }, [languageId]);
 
   return (

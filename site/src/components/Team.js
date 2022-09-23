@@ -8,10 +8,10 @@ import HomeContext from '../context/HomeContext';
 import TeamCard from './TeamCard';
 
 export default function Team({ team }) {
-  const { languageId, teamMembers, teamPageTitle, getTeamMembers } = useContext(HomeContext);
+  const { languageId, teamMembers, teamPageTitle, getTeamMembersContent } = useContext(HomeContext);
 
   useEffect(() => {
-    getTeamMembers();
+    getTeamMembersContent();
   }, [languageId]);
 
   return (
@@ -30,7 +30,7 @@ export default function Team({ team }) {
         >
           {
             teamMembers
-            && teamMembers.map((member, index) => <TeamCard key={ index } member={ member } />)
+              && teamMembers.map((member, index) => <TeamCard key={ index } member={ member } />)
           }
         </div>
         <Link className="btn" role="button" to="/community">

@@ -7,8 +7,8 @@ import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import urlFor from '../services/urlFor';
 
-import sanityClient from '../services/sanityClient';
 import HomeContext from '../context/HomeContext';
+import fetchContent from '../services/fetchContent';
 
 export default function Hero() {
   const { languageId } = useContext(HomeContext);
@@ -17,27 +17,15 @@ export default function Hero() {
   const [heroSubtitle, setHeroSubtitle] = useState('');
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "hero" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        background,
-        image,
-        language,
-        subTitle,
-        text,
-      }`,
-      )
-        .then((data) => {
-          if (data) {
-            setHeroText(toHTML(data.text));
-            setHeroImage(data.image);
-            setHeroSubtitle(data.subTitle);
-          }
-        })
-        .catch((e) => console.error(e));
-    }
+    const getHeroContent = async () => {
+      const data = await fetchContent('hero', languageId);
+      if (data) {
+        setHeroText(toHTML(data.text));
+        setHeroImage(data.image);
+        setHeroSubtitle(data.subTitle);
+      }
+    };
+    getHeroContent();
   }, [languageId]);
 
   const fixFontSize = () => {

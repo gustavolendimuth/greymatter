@@ -3,7 +3,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import sanityClient from '../services/sanityClient';
 // import urlFor from '../services/urlFor';
 import HomeContext from '../context/HomeContext';
 import WhatDoWeOfferCard from './WhatDoWeOfferCard';
@@ -14,23 +13,14 @@ export default function WhatDoWeOffer({ whatDoWeOffer }) {
   const [whatDoWeOfferCards, setWhatDoWeOfferCards] = useState();
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "whatDoWeOffer" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        background,
-        cards,
-        pageTitle,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setWhatDoWeOfferPageTitle(data.pageTitle);
-          setWhatDoWeOfferCards(data.cards);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getWhatDoWeOfferContent = async () => {
+      const data = await fetchContent('whatDoWeOffer', languageId);
+      if (data) {
+        setWhatDoWeOfferPageTitle(data.pageTitle);
+        setWhatDoWeOfferCards(data.cards);
+      }
+    };
+    getWhatDoWeOfferContent();
   }, [languageId]);
 
   return (

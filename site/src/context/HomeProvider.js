@@ -4,7 +4,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import HomeContext from './HomeContext';
-import sanityClient from '../services/sanityClient';
+import fetchContent from '../services/fetchContent';
 
 export default function HomeProvider({ children }) {
   const [languages, setLanguages] = useState();
@@ -13,17 +13,18 @@ export default function HomeProvider({ children }) {
   const [teamMembers, setTeamMembers] = useState();
   const [teamPageTitle, setTeamPageTitle] = useState();
 
-  const getLanguages = () => {
+  const getLanguages = async () => {
     if (!languages) {
-      sanityClient.fetch(
-        `*[_type == "language"] {
-        abbreviation,
-        code,
-        language,
-        _id
-      }`,
-      ).then((data) => setLanguages(data))
-        .catch((e) => console.error(e));
+      const data = await fetchContent('languages');
+      setLanguages(data);
+    }
+  };
+
+  const getTeamMembersContent = async () => {
+    const data = await fetchContent('team', languageId);
+    if (data) {
+      setTeamPageTitle(data.pageTitle);
+      setTeamMembers(data.members);
     }
   };
 
@@ -49,25 +50,6 @@ export default function HomeProvider({ children }) {
 
   const getLocalStorage = (key) => key && JSON.parse(localStorage.getItem(key));
 
-  const getTeamMembers = () => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "team" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        'members':teamMembers.teamMembers[]->{name, alt, photoLg, position, linkedin, text, slug},
-        pageTitle,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setTeamPageTitle(data.pageTitle);
-          setTeamMembers(data.members);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
-  };
-
   const contextValue = {
     languages,
     setLanguages,
@@ -77,7 +59,7 @@ export default function HomeProvider({ children }) {
     setNavbarConfig,
     teamMembers,
     setTeamMembers,
-    getTeamMembers,
+    getTeamMembersContent,
     teamPageTitle,
     setTeamPageTitle,
     getLanguages,
