@@ -6,8 +6,8 @@ import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
 import greymatterButtonAction from '../img/greymatter-button-action.svg';
-import sanityClient from '../services/sanityClient';
 import urlFor from '../services/urlFor';
+import fetchContent from '../services/fetchContent';
 
 export default function Application({ application }) {
   const { languageId } = useContext(HomeContext);
@@ -17,26 +17,16 @@ export default function Application({ application }) {
   const [applicationButtonText, setApplicationButtonText] = useState();
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "application" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        pageTitle,
-        text,
-        image,
-        buttonText,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setApplicationPageTitle(data.pageTitle);
-          setApplicationText(toHTML(data.text));
-          setApplicationImage(data.image);
-          setApplicationButtonText(data.buttonText);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getApplicationContent = async () => {
+      const data = await fetchContent('application', languageId);
+      if (data) {
+        setApplicationPageTitle(data.pageTitle);
+        setApplicationText(toHTML(data.text));
+        setApplicationImage(data.image);
+        setApplicationButtonText(data.buttonText);
+      }
+    };
+    getApplicationContent();
   }, [languageId]);
 
   return (

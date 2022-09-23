@@ -10,7 +10,7 @@ import parse from 'html-react-parser';
 import HomeContext from '../context/HomeContext';
 import urlFor from '../services/urlFor';
 import CommunityCard from './CommunityCard';
-import sanityClient from '../services/sanityClient';
+import fetchContent from '../services/fetchContent';
 
 export default function Community({ community }) {
   const { languageId } = useContext(HomeContext);
@@ -20,26 +20,16 @@ export default function Community({ community }) {
   const [communityMembers, setCommunityMembers] = useState();
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "community" 
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        pageTitle,
-        text,
-        image,
-        'members':communityMembers.communityMembers[]->{name, alt, photoLg, position, linkedin, text, slug}
-      }`,
-      ).then((data) => {
-        if (data) {
-          setCommunityPageTitle(data.pageTitle);
-          setCommunityText(toHTML(data.text));
-          setCommunityImage(data.image);
-          setCommunityMembers(data.members);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getCommunityContent = async () => {
+      const data = await fetchContent('community', languageId);
+      if (data) {
+        setCommunityPageTitle(data.pageTitle);
+        setCommunityText(toHTML(data.text));
+        setCommunityImage(data.image);
+        setCommunityMembers(data.members);
+      }
+    };
+    getCommunityContent();
   }, [languageId]);
 
   return (

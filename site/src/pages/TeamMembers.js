@@ -11,6 +11,8 @@ export default function TeamMembers() {
   const {
     teamMembers,
     setNavbarConfig,
+    getTeamMembersContent,
+    languageId,
   } = useContext(HomeContext);
 
   const { slug } = useParams();
@@ -18,7 +20,14 @@ export default function TeamMembers() {
   useEffect(() => {
     setNavbarConfig({ background: true, position: 'fixed' });
     window.scrollTo(0, 0);
+    if (!teamMembers) {
+      getTeamMembersContent();
+    }
   }, []);
+
+  useEffect(() => {
+    getTeamMembersContent();
+  }, [languageId]);
 
   useLayoutEffect(() => {
     let memberCard;

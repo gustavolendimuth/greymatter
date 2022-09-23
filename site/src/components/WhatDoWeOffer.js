@@ -5,6 +5,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import urlFor from '../services/urlFor';
 import HomeContext from '../context/HomeContext';
+import fetchContent from '../services/fetchContent';
 import WhatDoWeOfferCard from './WhatDoWeOfferCard';
 
 export default function WhatDoWeOffer({ whatDoWeOffer }) {

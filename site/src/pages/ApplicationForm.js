@@ -12,12 +12,12 @@ import stringRemove from 'string-remove';
 import { extract, words, numbers } from 'words-n-numbers';
 import { toHTML } from '@portabletext/to-html';
 import HomeContext from '../context/HomeContext';
-import sanityClient from '../services/sanityClient';
 import ApplicationFormTextInput from '../components/applicationForm/ApplicationFormTextInput';
 import ApplicationFormTextareaInput from '../components/applicationForm/ApplicationFormTextareaInput';
 import ApplicationFormFileUpload from '../components/applicationForm/ApplicationFormFileUpload';
 import ApplicationFormTitle from '../components/applicationForm/ApplicationFormTitle';
 import ApplicationFormActionButtons from '../components/applicationForm/ApplicationFormActionButtons';
+import fetchContent from '../services/fetchContent';
 
 export default function ApplicationForm() {
   const {
@@ -36,26 +36,16 @@ export default function ApplicationForm() {
   }, []);
 
   useEffect(() => {
-    if (languageId) {
-      sanityClient.fetch(
-        `*[_type == "applicationForm"
-          && language._ref == "${languageId}" 
-          && preview.isPreview == false] | order(_createdAt asc)[0] {
-        pageTitle,
-        text,
-        background,
-        formFields,
-      }`,
-      ).then((data) => {
-        if (data) {
-          setApplicationFormPageTitle(data.pageTitle);
-          setApplicationFormText(toHTML(data.text));
-          // setApplicationFormBackground(data.background);
-          setApplicationFormFields(data.formFields);
-        }
-      })
-        .catch((e) => console.error(e));
-    }
+    const getApplicationFormContent = async () => {
+      const data = await fetchContent('applicationForm', languageId);
+      if (data) {
+        setApplicationFormPageTitle(data.pageTitle);
+        setApplicationFormText(toHTML(data.text));
+        // setApplicationFormBackground(data.background);
+        setApplicationFormFields(data.formFields);
+      }
+    };
+    getApplicationFormContent();
   }, [languageId]);
 
   const transformToId = (string) => {

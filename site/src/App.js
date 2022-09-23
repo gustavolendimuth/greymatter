@@ -28,7 +28,6 @@ import HomeContext from './context/HomeContext';
 
 function App() {
   const {
-    getTeamMembers,
     languages,
     getLanguages,
     setDefaultLanguage,
@@ -76,7 +75,6 @@ function App() {
   }, [languages]);
 
   useEffect(() => {
-    getTeamMembers();
     if (languageId) setLocalStorage('languageId', languageId);
   }, [languageId]);
 
