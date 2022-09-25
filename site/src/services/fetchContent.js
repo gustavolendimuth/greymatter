@@ -1,30 +1,32 @@
 import sanityClient from './sanityClient';
 
-const fetchContent = async (page, languageId) => {
+const fetchContent = async (doc, languageId) => {
+  const preview = false;
   let query;
-  if (page === 'language') {
+  if (doc === 'language') {
     query = `*[_type == "language"] {
       abbreviation, code, language, _id }`;
-  } else if (page === 'team') {
+  } else if (doc === 'team') {
     query = `*[_type == "team" 
       && language._ref == "${languageId}" 
-      && preview.isPreview == false] | order(_createdAt asc)[0] {
+      && preview.isPreview == ${preview}] | order(_createdAt asc)[0] {
       pageTitle,
       'members':teamMembers.teamMembers[]->{name, alt, photoLg, position, linkedin, text, slug },
       }`;
-  } else if (page === 'community') {
+  } else if (doc === 'community') {
     query = `*[_type == "community" 
       && language._ref == "${languageId}" 
-      && preview.isPreview == false] | order(_createdAt asc)[0] {
+      && preview.isPreview == ${preview}] | order(_createdAt asc)[0] {
       pageTitle, text, image,
       'members':communityMembers.communityMembers[]->{name, alt, photoLg, position, linkedin, text, slug }
       }`;
   } else {
-    query = `*[_type == "${page}" 
+    query = `*[_type == "${doc}" 
       && language._ref == "${languageId}" 
-      && preview.isPreview == false] | order(_createdAt asc)[0]`;
+      && preview.isPreview == ${preview}] | order(_createdAt asc)[0]`;
   }
-  if (page) {
+
+  if (doc) {
     try {
       const response = await sanityClient.fetch(query);
       return response;
