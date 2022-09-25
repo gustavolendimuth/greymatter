@@ -1,7 +1,7 @@
 import sanityClient from './sanityClient';
 
 const fetchContent = async (doc, languageId) => {
-  const preview = true;
+  const preview = false;
   let query;
   if (doc === 'languages') {
     query = `*[_type == "language"] {
