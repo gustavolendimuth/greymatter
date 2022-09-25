@@ -3,7 +3,7 @@ import sanityClient from './sanityClient';
 const fetchContent = async (doc, languageId) => {
   const preview = true;
   let query;
-  if (doc === 'language') {
+  if (doc === 'languages') {
     query = `*[_type == "language"] {
       abbreviation, code, language, _id }`;
   } else if (doc === 'team') {

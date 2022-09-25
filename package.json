@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cd ./site && react-scripts start",
     "sanity": "cd ./studio && sanity start",
-    "build": "rm -rf ./build && cd ./site && npm install && react-scripts build && mv build ../",
+    "build": "rm -rf ./build && cd ./site && npm run build && mv build ../",
     "test": "cd site && react-scripts test",
     "eject": "cd site && react-scripts eject",
     "lint:styles": "npx stylelint '**/*.css'",
