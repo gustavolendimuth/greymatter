@@ -57,7 +57,7 @@ export default function Community({ community }) {
             </div>
           </div>
         </div>
-        <div className="row gy-4 gy-md-5 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
+        <div className="row gx-5 gy-4 gy-md-5 row-cols-4 justify-content-center">
           {
             communityMembers
               && communityMembers.map((member, index) => <CommunityCard key={ index } member={ member } />)
