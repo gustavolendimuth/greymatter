@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { BsTv } from 'react-icons/bs';
 import F from '../fieldsText';
 import type from '../objects/type';
@@ -58,17 +57,17 @@ export default {
     },
     {
       name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
+      type: 'background',
+      title: 'Background',
+      description: 'Selecione as opções de fundo da seção.',
     },
     {
-      name: 'videoBackground',
+      name: 'backgroundVimeo',
       type: 'video',
       title: 'Vimeo de background',
     },
     {
-      name: 'videoUpload',
+      name: 'backgroundVideo',
       type: 'file',
       title: 'Vídeo de background',
     },

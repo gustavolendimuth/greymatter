@@ -31,7 +31,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "@sanity/cross-dataset-duplicator"
+    "@sanity/cross-dataset-duplicator",
+    "@sanity/color-input"
   ],
   "env": {
     "development": {
