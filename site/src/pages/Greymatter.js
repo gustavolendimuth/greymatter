@@ -1,8 +1,8 @@
+/* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import background from '../img/greymatter-hero-image.webp';
 import WhatWeLookFor from '../components/WhatWeLookFor';
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
@@ -11,11 +11,18 @@ import Team from '../components/Team';
 import Community from '../components/Community';
 import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
+import fetchContent from '../services/fetchContent';
+import urlFor from '../services/urlFor';
 
 export default function Greymatter() {
   const {
     setNavbarConfig,
+    languageId,
   } = useContext(HomeContext);
+
+  const [heroContent, setHeroContent] = useState();
+  const [heroBackground, setHeroBackground] = useState();
+  const [heroBackgroundVideo, setHeroBackgroundVideo] = useState();
 
   const { slug } = useParams();
   const whoWeAre = useRef(null);
@@ -29,6 +36,18 @@ export default function Greymatter() {
     setNavbarConfig({ background: false, position: 'absolute' });
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const getHeroContent = async () => {
+      const data = await fetchContent('hero', languageId);
+      if (data) {
+        setHeroContent(data);
+        setHeroBackground(data.background);
+        setHeroBackgroundVideo(data.backgroundVideo);
+      }
+    };
+    getHeroContent();
+  }, [languageId]);
 
   useLayoutEffect(() => {
     if (slug) {
@@ -70,20 +89,26 @@ export default function Greymatter() {
     <>
       {/* Adicionada uma div que inclui o Header, o Hero e a seção Who we are
       para compartilhar o mesmo background  */}
-      <div
-        className="greymatter-hero-image"
-        data-bss-scroll-zoom="true"
-        data-bss-scroll-zoom-speed="3"
-        style={ { background: `url(${background}) top / cover` } }
-      >
-        <header
-          className="d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 section"
-        >
-          <div className="spacer spacer-hero" />
-          <Hero />
-        </header>
-        <WhoWeAre whoWeAre={ whoWeAre } />
-      </div>
+      <header>
+        <video
+          className="hero-background-video"
+          src={ heroBackgroundVideo && heroBackgroundVideo }
+          autoPlay
+          loop
+          muted
+        />
+        <img
+          src={ (!heroBackgroundVideo && heroBackground?.image) && urlFor(heroBackground.image).url() }
+          className={
+            `hero-background-image 
+          ${heroBackground?.heightLimit && 'hero-background-height-limit'} 
+          ${heroBackground?.alignToTop && 'hero-background-position-top'}`
+          }
+          alt={ heroBackground?.alt }
+        />
+        <Hero heroContent={ heroContent } />
+      </header>
+      <WhoWeAre whoWeAre={ whoWeAre } />
       <WhatWeLookFor whatWeLookFor={ whatWeLookFor } />
       <WhatDoWeOffer whatDoWeOffer={ whatDoWeOffer } />
       <Team team={ team } />

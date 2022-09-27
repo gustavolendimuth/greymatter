@@ -1,13 +1,3 @@
-/* .hero-background {
-  background: url("vr1-hero-image.jpg") top / auto no-repeat;
-}
-
-@media (min-width: 2000px) {
-  .hero-background {
-    background-size: 100vw !important;
-  }
-} */
-
 #root {
   width: 100%;
 }
@@ -36,6 +26,10 @@
   }
 }
 
+.hero-navbar-padding {
+  padding-top: 70px;
+}
+
 .hero-text {
   color: rgba(var(--bs-light-rgb), var(--bs-text-opacity));
 
@@ -50,19 +44,6 @@
   height: 80px;
   width: auto;
 }
-
-/* @media (min-height: 1200px) and (max-width: 2300px) {
-  .the-world-economy-text {
-    color: var(--bs-primary) !importantimportant;
-  }
-} */
-
-/* @media ( min-width : 992px ) {
-
-  .the-world-economy-text {
-    font-size: 1.7rem !important;
-  }
-} */
 
 @media ( min-width : 992px ) {
 
@@ -89,4 +70,28 @@
   .hero-arrow-down {
     color: var(--bs-primary) !important;
   }
+}
+
+.hero-background-image {
+  height: calc(var(--vh, 1vh) * 200);
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.hero-background-video {
+  height: calc(var(--vh, 1vh) * 100);
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.hero-background-height-limit {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+.hero-background-position-top {
+  object-position: top;
 }

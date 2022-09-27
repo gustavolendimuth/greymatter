@@ -26,10 +26,6 @@ main {
   width: 100%;
 }
 
-header {
-  padding-top: 70px;
-}
-
 @media ( max-width : 575px ) {
 
   .navbar {
@@ -88,16 +84,6 @@ header {
 .card-text {
   font-size: 1rem;
 }
-
-/* .spacer {
-  visibility: hidden;
-}
-
-@media (min-width: 992px) {
-  .spacer {
-    visibility: visible;
-  }
-} */
 
 footer {
   width: 100%;

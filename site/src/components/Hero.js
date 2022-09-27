@@ -1,32 +1,28 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState, useContext, useLayoutEffect } from 'react';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import urlFor from '../services/urlFor';
 
-import HomeContext from '../context/HomeContext';
-import fetchContent from '../services/fetchContent';
-
-export default function Hero() {
-  const { languageId } = useContext(HomeContext);
+export default function Hero({ heroContent }) {
   const [heroText, setHeroText] = useState('');
   const [heroImage, setHeroImage] = useState('');
   const [heroSubtitle, setHeroSubtitle] = useState('');
+  const [heroBackgroundColor, setHeroBackgroundColor] = useState('');
 
   useEffect(() => {
-    const getHeroContent = async () => {
-      const data = await fetchContent('hero', languageId);
-      if (data) {
-        setHeroText(toHTML(data.text));
-        setHeroImage(data.image);
-        setHeroSubtitle(data.subTitle);
-      }
-    };
-    getHeroContent();
-  }, [languageId]);
+    if (heroContent) {
+      setHeroText(toHTML(heroContent.text));
+      setHeroImage(heroContent.image);
+      setHeroSubtitle(heroContent.subTitle);
+      setHeroBackgroundColor(heroContent.background.color?.rgb);
+    }
+  }, [heroContent]);
 
   const fixFontSize = () => {
     if (heroText) {
@@ -50,7 +46,13 @@ export default function Hero() {
   });
 
   return (
-    <>
+    <div
+      className="d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 section hero-navbar-padding"
+      style={ {
+        backgroundColor: heroBackgroundColor && `rgba(${heroBackgroundColor.r}, ${heroBackgroundColor.g}, ${heroBackgroundColor.b}, ${heroBackgroundColor.a})`,
+      } }
+    >
+      <div className="spacer spacer-hero" />
       <div className="container-sm d-flex justify-content-center">
         <div className="row gy-4 gx-lg-5 gy-lg-0 mx-auto gray-matter-row align-items-start">
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0">
@@ -72,16 +74,6 @@ export default function Hero() {
               { heroText && parse(heroText) }
             </div>
           </div>
-        </div>
-        <div className="menuFive">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="menuFive">
-          <span />
-          <span />
-          <span />
         </div>
       </div>
       <div className="container hero-subtitle-row">
@@ -113,6 +105,19 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
+
+Hero.propTypes = {
+  heroContent: PropTypes.shape({
+    background: PropTypes.shape({
+      color: PropTypes.shape({
+        rgb: PropTypes.any,
+      }),
+    }),
+    image: PropTypes.any,
+    subTitle: PropTypes.any,
+    text: PropTypes.any,
+  }).isRequired,
+};
