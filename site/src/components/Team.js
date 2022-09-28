@@ -21,12 +21,6 @@ export default function Team({ team }) {
         <h1 className="display-3 text-uppercase text-center section-title">{teamPageTitle}</h1>
         <div
           className="row gx-0 gy-5 row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-center align-items-center pb-5"
-          data-bss-disabled-mobile="true"
-          data-aos="fade"
-          data-aos-duration="1500"
-          data-aos-offset="200"
-          data-aos-delay="500"
-          data-aos-once="true"
         >
           {
             teamMembers

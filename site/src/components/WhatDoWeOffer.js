@@ -37,7 +37,7 @@ export default function WhatDoWeOffer({ whatDoWeOffer }) {
           {
             whatDoWeOfferCards
             && whatDoWeOfferCards
-              .map((card, index) => <WhatDoWeOfferCard key={ index } card={ card } />)
+              .map((card, index) => <WhatDoWeOfferCard key={ index } card={ card } index={ index } />)
           }
         </div>
         <Link className="btn" role="button" to="/team">

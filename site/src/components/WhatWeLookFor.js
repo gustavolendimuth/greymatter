@@ -47,8 +47,10 @@ export default function WhatWeLookFor({ whatWeLookFor }) {
           {
             whatWeLookForCards
             && whatWeLookForCards
-              .map((card, index) => <WhatWeLookForCards key={ index } card={ card } />)
+              .map((card, index) => <WhatWeLookForCards key={ index } card={ card } index={ index } />)
           }
+        </div>
+        <div>
           <Link className="btn" role="button" to="/what-do-we-offer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
