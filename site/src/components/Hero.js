@@ -70,7 +70,7 @@ export default function Hero({ heroContent }) {
             />
 
           </div>
-          <div className="col-12 col-lg-7 p-0">
+          <div className="col-12 col-lg-7 p-0 text-center">
             <div id="hero-text" className="text-center text-lg-start text-light mb-0 hero-text">
               { heroText && parse(heroText) }
             </div>
