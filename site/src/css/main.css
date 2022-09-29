@@ -22,23 +22,12 @@ p {
   margin-bottom: 0;
 }
 
-main {
+#root {
   width: 100%;
 }
 
-@media ( max-width : 575px ) {
-
-  .navbar {
-    background: rgba(255, 255, 255, 0.07);
-  }
-}
-
-.navbar-greymatter {
-  left: 0 !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
+main {
+  width: 100%;
 }
 
 .link {
@@ -47,10 +36,6 @@ main {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;
-
-  /* padding-right: 1.5rem !importantimportant; */
-
-  /* padding-left: 1.5rem !importantimportant; */
 }
 
 .section {
@@ -93,8 +78,6 @@ footer {
   line-height: 1.2rem;
   padding-top: 1rem;
   width: 350px;
-
-  /* margin-bottom: -5px; */
 }
 
 .footer-email-input {
@@ -136,11 +119,6 @@ footer {
   height: 60px;
   position: absolute;
   width: 60px;
-}
-
-.nav-item-link {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
 }
 
 .pt-6 {

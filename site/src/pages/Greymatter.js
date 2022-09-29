@@ -33,7 +33,7 @@ export default function Greymatter() {
   const application = useRef(null);
 
   useEffect(() => {
-    setNavbarConfig({ background: false, position: 'absolute' });
+    setNavbarConfig({ background: false, position: 'relative' });
     window.scrollTo(0, 0);
   }, []);
 

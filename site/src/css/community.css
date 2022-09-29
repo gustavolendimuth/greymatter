@@ -1,7 +1,14 @@
 .community-text {
   color: var(--bs-dark);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   max-width: 500px;
+}
+
+@media ( min-width : 992px ) {
+
+  .community-text {
+    font-size: 1.5rem !important;
+  }
 }
 
 .community-title {

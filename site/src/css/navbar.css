@@ -1,0 +1,27 @@
+.nav-item-link {
+  font-size: 0.8rem;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.nav-container {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+@media ( max-width : 768px ) {
+
+  .navbar {
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+.navbar-greymatter {
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}

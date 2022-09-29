@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HomeContext from '../context/HomeContext';
 import navbarBackground from '../img/greymatter-navbar-background.webp';
 
 export default function Navbar() {
-  const { navbarConfig, setLanguageId, languageId } = useContext(HomeContext);
+  const { navbarConfig, setLanguageId, languageId, languages } = useContext(HomeContext);
+
+  useEffect(() => {
+    console.log(languages);
+  }, [languages]);
 
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
 
@@ -18,16 +22,13 @@ export default function Navbar() {
 
   return (
     <nav
+      className="nav-container"
       style={ {
-        left: '0px',
-        top: '0px',
-        width: '100%',
         position: `${navbarConfig?.position}`,
-        zIndex: '1000',
         background: `url(${navbarConfig?.background && navbarBackground}) bottom / cover no-repeat`,
       } }
     >
-      <nav className="navbar navbar-dark navbar-expand-sm py-3">
+      <nav className="navbar navbar-dark navbar-expand-md py-3">
         <div className="container-fluid">
           <button
             type="button"
@@ -96,29 +97,32 @@ export default function Navbar() {
 
               </li>
               <li className="nav-item align-content-center">
-                {
-                  languageId && (
-                    languageId === englishId
-                      ? (
-                        <button
-                          type="button"
-                          role="link"
-                          className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
-                          onClick={ changeToPortuguese }
-                        >
-                          Portuguese
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          className="nav-link text-uppercase text-center link text-white nav-item-link languageButton"
-                          onClick={ changeToEnglish }
-                        >
-                          English
-                        </button>
-                      )
-                  )
-                }
+                <div className="nav-link text-uppercase text-center link text-white nav-item-link">
+
+                  {
+                    languageId && (
+                      languageId === englishId
+                        ? (
+                          <button
+                            type="button"
+                            role="link"
+                            className="text-uppercase text-center link text-white nav-item-link languageButton"
+                            onClick={ changeToPortuguese }
+                          >
+                            Portuguese
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="text-uppercase text-center link text-white nav-item-link languageButton"
+                            onClick={ changeToEnglish }
+                          >
+                            English
+                          </button>
+                        )
+                    )
+                  }
+                </div>
               </li>
             </ul>
           </div>

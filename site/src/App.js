@@ -8,18 +8,19 @@ import './assets/css/Footer-Dark-Multi-Column-icons.css';
 import './css/application.css';
 import './css/community.css';
 import './css/hero.css';
-import './css/styles.css';
+import './css/main.css';
 import './css/team.css';
 import './css/what-do-we-offer.css';
 import './css/what-we-look-for.css';
 import './css/who-we-are.css';
+import './css/navbar.css';
 
-import Navbar from './components/Navbar';
 import Greymatter from './pages/Greymatter';
 import TeamMembers from './pages/TeamMembers';
 import Footer from './components/Footer';
 import ApplicationForm from './pages/ApplicationForm';
 import HomeContext from './context/HomeContext';
+import Navbar from './components/Navbar';
 
 function App() {
   const {
@@ -34,15 +35,16 @@ function App() {
 
   useEffect(() => {
     const value = getLocalStorage('languageId');
+    getLanguages();
     if (value) {
       setLanguageId(value);
-    } else {
-      getLanguages();
     }
   }, []);
 
   useEffect(() => {
-    setDefaultLanguage();
+    if (!languageId) {
+      setDefaultLanguage();
+    }
   }, [languages]);
 
   useEffect(() => {
