@@ -55,8 +55,8 @@ export default function Hero({ heroContent }) {
       } }
     >
       <div className="spacer spacer-hero" />
-      <div className="container-sm d-flex justify-content-center">
-        <div className="row gy-4 gx-lg-5 gy-lg-0 hero-row align-items-center">
+      <div className="my-5 container-sm d-flex justify-content-center">
+        <div className="row gy-4 gx-lg-5 gy-lg-0 hero-row justify-content-center align-items-center">
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0 hero-logo-container">
             <img
               className="img-fluid d-lg-none gray-matter-logo"
