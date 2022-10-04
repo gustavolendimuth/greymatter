@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
-import urlFor from '../services/urlFor';
+import urlFor from '../../services/urlFor';
 
 export default function TeamCard({ member: { alt, name, photoLg, position, linkedin, slug } }) {
   return (

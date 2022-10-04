@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import urlFor from '../services/urlFor';
+import urlFor from '../../services/urlFor';
 
 export default function WhatDoWeOfferCard({ card: { image, title } }) {
   return (

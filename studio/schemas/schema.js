@@ -18,10 +18,12 @@ import community from './documents/community';
 import communityMembers from './documents/communityMembers';
 import application from './documents/application';
 import applicationForm from './documents/applicationForm';
+import footer from './documents/footer';
 
 // Fields
 import richText from './objects/richText';
 import figure from './objects/figure';
+import figureDesktop from './objects/figureDesktop';
 import youtube from './objects/youtube';
 import card from './objects/card';
 import preview from './objects/preview';
@@ -49,9 +51,11 @@ export default createSchema({
     communityMembers,
     application,
     applicationForm,
+    footer,
     card,
     richText,
     figure,
+    figureDesktop,
     background,
     youtube,
     preview,

@@ -4,10 +4,10 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HomeContext from '../context/HomeContext';
-import fetchContent from '../services/fetchContent';
+import HomeContext from '../../context/HomeContext';
+import fetchContent from '../../services/fetchContent';
 
-import urlFor from '../services/urlFor';
+import urlFor from '../../services/urlFor';
 import WhatWeLookForCards from './WhatWeLookForCards';
 
 export default function WhatWeLookFor({ whatWeLookFor }) {

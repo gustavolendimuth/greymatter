@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
-import urlFor from '../services/urlFor';
-import '../css/community-sass.css';
+import urlFor from '../../services/urlFor';
+import '../../css/community-sass.css';
 
 export default function CommunityCard({ member: { alt, name, photoLg, position, linkedin } }) {
   return (

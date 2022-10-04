@@ -14,6 +14,7 @@ import './css/what-do-we-offer.css';
 import './css/what-we-look-for.css';
 import './css/who-we-are.css';
 import './css/navbar.css';
+import './css/footer.css';
 
 import Greymatter from './pages/Greymatter';
 import TeamMembers from './pages/TeamMembers';

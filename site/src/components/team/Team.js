@@ -4,8 +4,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import HomeContext from '../context/HomeContext';
 import TeamCard from './TeamCard';
+import HomeContext from '../../context/HomeContext';
 
 export default function Team({ team }) {
   const { languageId, teamMembers, teamPageTitle, getTeamMembersContent } = useContext(HomeContext);

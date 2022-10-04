@@ -43,16 +43,13 @@ export default {
       options: {
         source: 'name',
         maxLength: 200,
-        slugify: (input) => input
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .slice(0, 200),
+        isUnique: () => true,
       },
     },
     {
       name: 'photoLg',
       type: 'image',
-      title: 'Foto desktop',
+      title: 'Foto',
       description: `Imagem para desktop é obrigatória. Preencha o campo mobile somente 
         quando necessário mostrar uma imagem diferente em telas menores`,
       liveEdit: false,
@@ -60,12 +57,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'photoSm',
-      type: 'image',
-      title: 'Foto mobile',
-      liveEdit: false,
     },
     {
       name: 'alt',

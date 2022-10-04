@@ -3,12 +3,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import WhatWeLookFor from '../components/WhatWeLookFor';
+import WhatWeLookFor from '../components/whatWeLookFor/WhatWeLookFor';
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
-import WhatDoWeOffer from '../components/WhatDoWeOffer';
-import Team from '../components/Team';
-import Community from '../components/Community';
+import WhatDoWeOffer from '../components/whatDoWeOffer/WhatDoWeOffer';
+import Team from '../components/team/Team';
+import Community from '../components/community/Community';
 import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 import fetchContent from '../services/fetchContent';

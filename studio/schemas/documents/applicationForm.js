@@ -58,7 +58,7 @@ export default {
       of: [
         {
           title: 'Campos',
-          type: 'object', 
+          type: 'object',
           fields: [
             {
               title: 'Nome do campo',
@@ -74,12 +74,12 @@ export default {
               initialValue: 'text',
               options: {
                 list: [
-                  {title: 'Título da seção', value: 'title'},
-                  {title: 'Texto curto', value: 'text'},
-                  {title: 'Texto longo', value: 'textarea'},
-                  {title: 'Upload', value: 'upload'}
-                ]
-              }
+                  { title: 'Título da seção', value: 'title' },
+                  { title: 'Texto curto', value: 'text' },
+                  { title: 'Texto longo', value: 'textarea' },
+                  { title: 'Upload', value: 'upload' },
+                ],
+              },
             },
             {
               title: 'Valor do campo',
@@ -90,13 +90,13 @@ export default {
               description: 'Opções válidas somente quando o tipo acima for Texto curto.',
               options: {
                 list: [
-                  {title: 'Texto', value: 'text'},
-                  {title: 'Números', value: 'number'},
-                  {title: 'Data', value: 'date'},
-                  {title: 'Moeda', value: 'currency'},
-                  {title: 'CNPJ', value: 'cnpj'}
-                ]
-              }
+                  { title: 'Texto', value: 'text' },
+                  { title: 'Números', value: 'number' },
+                  { title: 'Data', value: 'date' },
+                  { title: 'Moeda', value: 'currency' },
+                  { title: 'CNPJ', value: 'cnpj' },
+                ],
+              },
             },
             {
               title: 'Largura',
@@ -106,10 +106,10 @@ export default {
               description: 'Será possível utilizar mais de uma coluna somente quando o campo for do tipo Texto curto.',
               options: {
                 list: [
-                  {title: '1 coluna', value: 1},
-                  {title: '2 colunas', value: 2},
-                  {title: '3 colunas', value: 3}
-                ]
+                  { title: '1 coluna', value: 1 },
+                  { title: '2 colunas', value: 2 },
+                  { title: '3 colunas', value: 3 },
+                ],
               },
             },
             {
@@ -117,11 +117,11 @@ export default {
               name: 'required',
               type: 'boolean',
               initialValue: false,
-              description: 'O preenchimento do campo é obrigatório?'
-            }
-          ]
+              description: 'O preenchimento do campo é obrigatório?',
+            },
+          ],
         },
-      ]
+      ],
     },
   ],
 };

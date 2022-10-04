@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import HomeContext from '../context/HomeContext';
 import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
 import greymatterLogoWhite from '../img/greymatter-logo-white.svg';
+import fetchContent from '../services/fetchContent';
 
 export default function Footer() {
+  const { languageId } = useContext(HomeContext);
+
+  const [background, setBackground] = useState();
+  const [formButton, setFormButton] = useState();
+  const [formText, setFormText] = useState();
+  const [logo, setLogo] = useState();
+
+  useEffect(() => {
+    const getContent = async () => {
+      const data = await fetchContent('footer', languageId);
+      if (data) {
+        setBackground(data.background);
+        setFormButton(data.image);
+        setFormText(toHTML(data.formText));
+        setLogo(data.logo);
+      }
+    };
+    getContent();
+  }, [languageId]);
+
   return (
     <footer className="flex-column bg-dark py-4 gap-3 pb-2">
       <div className="container d-flex flex-column pt-5 pb-4">

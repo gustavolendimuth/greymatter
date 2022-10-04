@@ -3,7 +3,7 @@ import { toHTML } from '@portabletext/to-html';
 import PropTypes from 'prop-types';
 import React from 'react';
 import parse from 'html-react-parser';
-import urlFor from '../services/urlFor';
+import urlFor from '../../services/urlFor';
 
 export default function WhatWeLookForCards({ card: { image, text } }) {
   return (

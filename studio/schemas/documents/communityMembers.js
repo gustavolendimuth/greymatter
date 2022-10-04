@@ -37,7 +37,7 @@ export default {
     {
       name: 'photoLg',
       type: 'image',
-      title: 'Foto desktop',
+      title: 'Foto',
       description: `Imagem para desktop é obrigatória. Preencha o campo mobile somente 
         quando necessário mostrar uma imagem diferente em telas menores`,
       liveEdit: false,
@@ -45,12 +45,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'photoSm',
-      type: 'image',
-      title: 'Foto mobile',
-      liveEdit: false,
     },
     {
       name: 'alt',
