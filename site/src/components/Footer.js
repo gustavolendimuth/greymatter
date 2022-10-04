@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-identical-expressions */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toHTML } from '@portabletext/to-html';
