@@ -11,7 +11,7 @@ export default function Footer() {
   const { languageId } = useContext(HomeContext);
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
 
-  const [background, setBackground] = useState();
+  // const [background, setBackground] = useState();
   const [formButton, setFormButton] = useState();
   const [formText, setFormText] = useState();
   const [logo, setLogo] = useState();
@@ -21,7 +21,7 @@ export default function Footer() {
       const data = await fetchContent('footer', languageId);
       console.log(data, languageId);
       if (data) {
-        setBackground(data.background);
+        // setBackground(data.background);
         setFormButton(data.formButton);
         setFormText(toHTML(data.formText));
         setLogo(data.logo);
