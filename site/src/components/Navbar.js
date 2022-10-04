@@ -109,7 +109,11 @@ export default function Navbar() {
                             className="text-uppercase text-center link text-white nav-item-link languageButton"
                             onClick={ changeToPortuguese }
                           >
-                            Portuguese
+                            <img
+                              alt="language flag"
+                              width="30px"
+                              src="https://www.countryflagsapi.com/png/gb"
+                            />
                           </button>
                         ) : (
                           <button
@@ -117,7 +121,11 @@ export default function Navbar() {
                             className="text-uppercase text-center link text-white nav-item-link languageButton"
                             onClick={ changeToEnglish }
                           >
-                            English
+                            <img
+                              alt="language flag"
+                              width="30px"
+                              src="https://www.countryflagsapi.com/png/br"
+                            />
                           </button>
                         )
                     )

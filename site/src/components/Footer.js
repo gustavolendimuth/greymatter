@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HomeContext from '../context/HomeContext';
-import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
-import greymatterLogoWhite from '../img/greymatter-logo-white.svg';
+import { toHTML } from '@portabletext/to-html';
+import parse from 'html-react-parser';
 import fetchContent from '../services/fetchContent';
+import HomeContext from '../context/HomeContext';
+import urlFor from '../services/urlFor';
+import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
 
 export default function Footer() {
   const { languageId } = useContext(HomeContext);
+  const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
 
   const [background, setBackground] = useState();
   const [formButton, setFormButton] = useState();
@@ -16,9 +19,10 @@ export default function Footer() {
   useEffect(() => {
     const getContent = async () => {
       const data = await fetchContent('footer', languageId);
+      console.log(data, languageId);
       if (data) {
         setBackground(data.background);
-        setFormButton(data.image);
+        setFormButton(data.formButton);
         setFormText(toHTML(data.formText));
         setLogo(data.logo);
       }
@@ -33,31 +37,20 @@ export default function Footer() {
           <div
             className="col-12 col-lg-auto text-center text-lg-start d-flex flex-row justify-content-center align-items-baseline flex-wrap justify-content-sm-center flex-xl-column justify-content-xl-start gap-xl-4 gap-4"
           >
-            <p className="fs-5 fw-normal text-light d-none d-md-block semi-bold">Greymatter</p>
-            <Link className="link" to="/who-we-are">Who we are</Link>
-            <Link className="link" to="/team">Team</Link>
-            <Link className="link" to="/community">Community</Link>
-            <Link className="link" to="/application">Application</Link>
+            <p className="fs-5 fw-normal text-light d-none d-md-block semi-bold">Grey Matter</p>
+            <Link className="link" to="/who-we-are">{languageId === englishId ? 'Who we are' : 'Quem somos'}</Link>
+            <Link className="link" to="/team">{languageId === englishId ? 'Team' : 'Equipe'}</Link>
+            <Link className="link" to="/community">{languageId === englishId ? 'Community' : 'Comunidade'}</Link>
+            <Link className="link" to="/application">{languageId === englishId ? 'Application' : 'Fale conosco'}</Link>
           </div>
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
-            <div className="row gx-1 justify-content-center">
-              <div className="col-auto col-xxl-auto text-center">
-                <img alt="Greymatter logo" src={ greymatterLogoWhite } width="113px" />
-              </div>
-              <div
-                className="col-12 col-sm-auto text-center text-lg-start d-flex d-xxl-flex justify-content-center mt-auto"
-              >
-                <p className="fs-6 text-start text-light footer-vr1-logo-text">
-                  Núcleo de Inovação, Transformação Digital &amp; Venture Capital do Vieira Rezende Advogados
-                </p>
-              </div>
-            </div>
+            <img alt={ logo?.alt } src={ logo && urlFor(logo.image.asset).url() } width="400px" />
           </div>
           <div className="col-12 col-lg-auto d-flex d-xl-flex flex-column p-0">
             <div className="d-flex flex-column align-items-center gap-3">
-              <p className="fs-6 footer-subscription-text" style={ { width: '100%' } }>
-                Learn more about the Greymatter. Fill in your email and we will contact you soon.
-              </p>
+              <div className="fs-6 footer-subscription-text" style={ { width: '100%' } }>
+                {formText && parse(formText)}
+              </div>
               <form
                 className="d-flex gap-3 footer-sebscribe-form footer-subscribe-form"
                 style={ { maxWidth: '700px' } }
@@ -75,7 +68,7 @@ export default function Footer() {
                   </div>
                   <div className="col-auto">
                     <button className="btn btn-primary text-uppercase" type="submit" style={ { background: 'var(--bs-primary)' } }>
-                      Subscribe
+                      {formButton && formButton}
                     </button>
                   </div>
                 </div>
@@ -90,8 +83,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="d-flex justify-content-center align-content-around flex-wrap gap-4 p-3">
-          <a className="link" href="#terms-and-conditions">Terms &amp; Conditions</a>
-          <a className="link" href="#privacy-policy">Privacy Policy</a>
+          <a className="link" href="#terms-and-conditions">{languageId === englishId ? 'Terms & Conditions' : 'Termos & Condições'}</a>
+          <a className="link" href="#privacy-policy">{languageId === englishId ? 'Privacy Policy' : 'Política de Privacidade'}</a>
           <a className="link" href="#cookies">Cookies</a>
         </div>
       </div>
