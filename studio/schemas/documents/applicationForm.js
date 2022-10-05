@@ -8,6 +8,12 @@ export default {
   type: 'document',
   title: 'Application Form',
   icon: FaClipboardList,
+  groups: [
+    {
+      name: 'formFields',
+      title: 'Campos do Formulário',
+    },
+  ],
   fields: [
     type('page'),
     {
@@ -55,6 +61,7 @@ export default {
       name: 'formFields',
       type: 'array',
       title: 'Campos do Formulário',
+      group: 'formFields',
       of: [
         {
           title: 'Campos',

@@ -9,13 +9,13 @@ export default {
   title: 'Team',
   icon: BsFillPeopleFill,
   groups: [
-    type('section'),
     {
       name: 'teamMembers',
       title: 'Team Members',
     },
   ],
   fields: [
+    type('section'),
     {
       name: 'preview',
       type: 'preview',
