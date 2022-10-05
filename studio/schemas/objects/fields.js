@@ -15,9 +15,9 @@ export default {
       title: 'Tipo do campo',
       options: {
         list: [
-          {title: 'Texto curto', value: ''}
-        ]
-      }
+          { title: 'Texto curto', value: '' },
+        ],
+      },
     },
     {
       name: 'image',

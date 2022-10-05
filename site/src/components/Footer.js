@@ -20,7 +20,6 @@ export default function Footer() {
   useEffect(() => {
     const getContent = async () => {
       const data = await fetchContent('footer', languageId);
-      console.log(data, languageId);
       if (data) {
         // setBackground(data.background);
         setFormButton(data.formButton);

@@ -17,7 +17,7 @@ const fetchContent = async (doc, languageId) => {
     query = `*[_type == "community" 
       && language._ref == "${languageId}" 
       && preview.isPreview == ${preview}] | order(_createdAt asc)[0] {
-      pageTitle, text, image,
+      pageTitle, text, image, communityMembers,
       'members':communityMembers.communityMembers[]->{name, alt, photoLg, position, linkedin, text, slug }
       }`;
   } else if (doc === 'hero') {

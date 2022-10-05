@@ -11,6 +11,7 @@ import HomeContext from '../../context/HomeContext';
 import urlFor from '../../services/urlFor';
 import CommunityCard from './CommunityCard';
 import fetchContent from '../../services/fetchContent';
+import sortCompare from '../../services/sortCompare';
 
 export default function Community({ community }) {
   const { languageId } = useContext(HomeContext);
@@ -26,7 +27,14 @@ export default function Community({ community }) {
         setCommunityPageTitle(data.pageTitle);
         setCommunityText(toHTML(data.text));
         setCommunityImage(data.image);
-        setCommunityMembers(data.members);
+        const members = {
+          custom: () => data.members,
+          alphabetic: () => data.members.sort(sortCompare('name')),
+        };
+
+        console.log(members[data.communityMembers.sort]());
+        console.log(data.communityMembers.sort);
+        setCommunityMembers(members[data.communityMembers.sort]());
       }
     };
     getCommunityContent();

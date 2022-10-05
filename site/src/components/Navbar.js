@@ -7,7 +7,6 @@ export default function Navbar() {
   const { navbarConfig, setLanguageId, languageId, languages } = useContext(HomeContext);
 
   useEffect(() => {
-    console.log(languages);
   }, [languages]);
 
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';

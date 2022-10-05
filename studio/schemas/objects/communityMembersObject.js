@@ -16,7 +16,7 @@ export default {
     },
     {
       title: 'Ordem de Exibição',
-      name: 'communityMembersOrder',
+      name: 'sort',
       type: 'string',
       initialValue: 'custom',
       description: `Escolha a ordem que será exibida no site. Esta ordem é válida para 
@@ -25,9 +25,6 @@ export default {
         list: [
           { title: 'Personalizada', value: 'custom' },
           { title: 'Alfabética', value: 'alphabetic' },
-          { title: 'Cargo', value: 'position' },
-          { title: 'Alfabética e cargo', value: 'AlphabeticPosition' },
-          // ...
         ],
         layout: 'radio',
         direction: 'horizontal',
