@@ -112,7 +112,7 @@ export default function Navbar() {
                             <img
                               alt="language flag"
                               width="30px"
-                              src="https://www.countryflagsapi.com/png/gb"
+                              src="https://www.countryflagsapi.com/png/br"
                             />
                           </button>
                         ) : (
@@ -124,7 +124,7 @@ export default function Navbar() {
                             <img
                               alt="language flag"
                               width="30px"
-                              src="https://www.countryflagsapi.com/png/br"
+                              src="https://www.countryflagsapi.com/png/gb"
                             />
                           </button>
                         )
