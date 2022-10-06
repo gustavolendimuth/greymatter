@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
+import { FaLinkedinIn, FaInstagram, FaGripLinesVertical } from 'react-icons/fa';
 import fetchContent from '../services/fetchContent';
 import HomeContext from '../context/HomeContext';
 import urlFor from '../services/urlFor';
@@ -44,7 +45,26 @@ export default function Footer() {
             <Link className="link" to="/application">{languageId === englishId ? 'Application' : 'Fale conosco'}</Link>
           </div>
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
-            <img alt={ logo?.alt } src={ logo && urlFor(logo.image.asset).url() } width="400px" />
+            <div className="row pb-5">
+              <div className="col-12 d-flex justify-content-center align-items-center">
+                <img alt={ logo?.alt } src={ logo && urlFor(logo.image.asset).url() } width="400px" />
+              </div>
+              <div className="col-12 d-flex gap-4 justify-content-center align-items-center">
+                <a
+                  className="d-flex align-items-center"
+                  href="https://www.linkedin.com/company/grey-matter-tech/?viewAsMember=true"
+                >
+                  <FaLinkedinIn className="footer-linkedin-icon" />
+                </a>
+                <FaGripLinesVertical className="footer-linkedin-icon" />
+                <a
+                  className="d-flex align-items-center"
+                  href="https://www.instagram.com/greymatter.tech/?igshid=YmMyMTA2M2Y%3D"
+                >
+                  <FaInstagram className="footer-linkedin-icon" />
+                </a>
+              </div>
+            </div>
           </div>
           <div className="col-12 col-lg-auto d-flex d-xl-flex flex-column p-0">
             <div className="d-flex flex-column align-items-center gap-3">
