@@ -69,10 +69,14 @@
   max-width: 500px;
 }
 
+.hero-arrow-down {
+  fill: var(--bs-light) !important;
+}
+
 @media ( min-height : 1200px ) and ( max-width : 2300px ) {
 
   .hero-arrow-down {
-    color: var(--bs-primary) !important;
+    fill: var(--bs-primary) !important;
   }
 }
 

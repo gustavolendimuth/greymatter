@@ -51,10 +51,6 @@ main {
   font-weight: 900;
 }
 
-.arrow-down {
-  font-size: 4.5rem;
-}
-
 .section-container {
   max-width: 350px !important;
 }
@@ -84,6 +80,11 @@ main {
 
 .link.footer-links {
   padding: 0 !important;
+}
+
+.arrow-down {
+  fill: var(--bs-primary);
+  width: 4.5rem;
 }
 
 .section.application-section {

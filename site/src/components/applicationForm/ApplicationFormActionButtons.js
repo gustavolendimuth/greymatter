@@ -10,7 +10,12 @@ export default function ApplicationFormActionButtons() {
   return (
     <div id="actionButtons" className="row d-flex justify-content-center gx-5 gy-4 pt-5">
       <div className="col-12 col-md-auto">
-        <Link className="btn btn-greymatter-primary" to="/">{languageId === englishId ? 'Cancel' : 'Cancelar'}</Link>
+        <Link
+          className="btn btn-greymatter-primary"
+          to="/"
+        >
+          {languageId === englishId ? 'Cancel' : 'Cancelar'}
+        </Link>
       </div>
       <div className="col-12 col-md-auto">
         <button
