@@ -13,7 +13,7 @@ export default function WhatWeLookForCards({ card: { image, text } }) {
       >
         <div className="d-flex justify-content-center align-items-center who-we-are-div-icon">
           <img
-            className="img-fluid pulse animated who-we-are-icon"
+            className="img-fluid what-we-look-for-icon"
             src={ urlFor(image.imageLg.asset).url() }
             loading="auto"
             alt={ image?.alt }

@@ -12,3 +12,16 @@
   }
 }
 
+.what-we-look-for-icon {
+  max-height: 60px;
+  max-width: 60px;
+}
+
+@media ( min-width : 992px ) {
+
+  .what-we-look-for-icon {
+    max-height: 152px !important;
+    max-width: 152px !important;
+  }
+}
+
