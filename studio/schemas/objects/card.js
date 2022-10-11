@@ -17,6 +17,7 @@ export default {
       name: 'image',
       type: 'figure',
       title: 'Imagem do card',
+      description: 'Formatos permitidos são: webp, jpg, png, gif. Tamanho máximo de 152px de largura ou altura.',
     },
     {
       name: 'text',
