@@ -42,8 +42,45 @@ export default {
     },
     {
       name: 'image',
-      type: 'figure',
+      type: 'image',
       title: 'Imagem',
+      validation: (Rule) => Rule.required(),
+      description: 'Faça upload de uma imagem, ou selecione uma da galeria',
+      liveEdit: false,
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'width',
+          type: 'string',
+          title: 'Largura',
+          description: 'Medida em pixels.',
+          options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          name: 'height',
+          type: 'string',
+          title: 'Altura',
+          description: 'Medida em pixels.',
+          options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Texto alternativo da imagem - SEO',
+          validation: (Rule) => Rule.required(),
+          options: {
+            isHighlighted: true,
+          },
+          description: `Preencha este campo com um texto que descreva a imagem. 
+          Imagens com texto alternativo ajudam no ranking dos sites de busca.`,
+        },
+      ],
     },
     {
       name: 'text',

@@ -16,7 +16,12 @@ export default function CommunityCard({ member: { alt, name, photoLg, position, 
           <img
             alt={ alt }
             className="community-photo"
-            src={ photoLg && urlFor(photoLg.asset).url() }
+            loading="lazy"
+            src={ photoLg && urlFor(photoLg.asset)
+              .size(200)
+              .quality(90)
+              .format('webp')
+              .url() }
           />
           <a href={ linkedin }>
             <svg

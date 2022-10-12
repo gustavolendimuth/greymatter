@@ -40,7 +40,9 @@ export default function Application({ application }) {
         </h1>
         <img
           alt={ applicationImage?.alt }
-          src={ applicationImage && urlFor(applicationImage.imageLg.asset).url() }
+          src={ applicationImage && urlFor(applicationImage).url() }
+          width={ applicationImage?.width }
+          height={ applicationImage?.height }
         />
         <div className="text-center text-info">{ applicationText && parse(applicationText) }</div>
         <Link
