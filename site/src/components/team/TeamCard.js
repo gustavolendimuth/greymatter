@@ -21,7 +21,12 @@ export default function TeamCard({ member: { alt, name, photoLg, position, linke
               data-tip="Profile"
               data-class="team-tooltip"
               alt={ alt }
-              src={ photoLg && urlFor(photoLg.asset).url() }
+              loading="lazy"
+              src={ photoLg && urlFor(photoLg.asset)
+                .size(250)
+                .quality(90)
+                .format('webp')
+                .url() }
               className="team-photo"
             />
             <p data-tip="Profile" data-class="team-tooltip" className="fs-5 fw-bold text-center pt-2 team-text">{name}</p>
