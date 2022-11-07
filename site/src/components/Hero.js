@@ -60,12 +60,20 @@ export default function Hero({ heroContent }) {
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0 hero-logo-container">
             <img
               className="img-fluid d-lg-none gray-matter-logo"
-              src={ heroImage && urlFor(heroImage.imageSm.asset || heroImage.imageLg.asset).url() }
+              src={
+                heroImage
+                && urlFor(heroImage.imageSm.asset || heroImage.imageLg.asset)
+                  .url()
+              }
               alt={ heroImage?.alt }
             />
             <img
               className="d-none d-lg-inline gray-matter-logo-lg gray-matter-logo"
-              src={ heroImage && urlFor(heroImage.imageLg.asset || heroImage.imageSm.asset).url() }
+              src={
+                heroImage
+                && urlFor(heroImage.imageLg.asset || heroImage.imageSm.asset)
+                  .url()
+              }
               alt={ heroImage?.alt }
             />
 
