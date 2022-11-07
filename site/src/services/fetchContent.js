@@ -28,7 +28,7 @@ const fetchContent = async (doc, languageId) => {
       "backgroundVideo": backgroundVideo.asset->url
       }`;
 
-  const otherQuery = `*[_type == "${doc}" 
+  const genericQuery = `*[_type == "${doc}" 
       && language._ref == "${languageId}" 
       && preview.isPreview == ${preview}] | order(_createdAt asc)[0]`;
 
@@ -41,7 +41,9 @@ const fetchContent = async (doc, languageId) => {
 
   if (doc) {
     try {
-      const response = await sanityClient.fetch(query.hasOwnProperty(doc) ? query[doc] : otherQuery);
+      const response = await sanityClient.fetch(
+        Object.prototype.hasOwnProperty.call(query, doc) ? query[doc] : genericQuery,
+      );
       return response;
     } catch (e) {
       return console.error(e);
