@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaUsers } from 'react-icons/fa';
 import F from '../fieldsText';
-import type from '../objects/type';
+import Type from '../objects/type';
 
 export default {
   name: 'community',
@@ -15,7 +15,7 @@ export default {
     },
   ],
   fields: [
-    type('section'),
+    Type('section'),
     {
       name: 'preview',
       type: 'preview',
@@ -45,11 +45,6 @@ export default {
       title: F.default.title.title,
       validation: (Rule) => Rule.required(),
       description: F.default.title.description,
-    },
-    {
-      name: 'image',
-      type: 'figure',
-      title: 'Imagem',
     },
     {
       name: 'text',

@@ -7,7 +7,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import HomeContext from '../../context/HomeContext';
-import urlFor from '../../services/urlFor';
 import CommunityCard from './CommunityCard';
 import fetchContent from '../../services/fetchContent';
 import sortCompare from '../../services/sortCompare';
@@ -17,7 +16,6 @@ export default function Community({ community }) {
   const { languageId } = useContext(HomeContext);
   const [communityPageTitle, setCommunityPageTitle] = useState();
   const [communityText, setCommunityText] = useState();
-  const [communityImage, setCommunityImage] = useState();
   const [communityMembers, setCommunityMembers] = useState();
 
   useEffect(() => {
@@ -26,14 +24,10 @@ export default function Community({ community }) {
       if (data) {
         setCommunityPageTitle(data.pageTitle);
         setCommunityText(toHTML(data.text));
-        setCommunityImage(data.image);
         const members = {
           custom: () => data.members,
           alphabetic: () => data.members.sort(sortCompare('name')),
         };
-
-        console.log(members[data.communityMembers.sort]());
-        console.log(data.communityMembers.sort);
         setCommunityMembers(members[data.communityMembers.sort]());
       }
     };
@@ -47,20 +41,7 @@ export default function Community({ community }) {
         <h1 className="display-3 text-uppercase text-center section-title community-title">{communityPageTitle}</h1>
         <div className="row gx-4 gy-3 justify-content-center my-1 my-md-4">
           <div className="col-auto align-self-center">
-            <div className="community-image-container">
-              <img
-                alt={ communityImage?.alt }
-                src={
-                  communityImage
-                && urlFor(communityImage.imageLg.asset)
-                }
-                className="community-image"
-                height="80px"
-              />
-            </div>
-          </div>
-          <div className="col-auto align-self-center">
-            <div className="text-center text-lg-start community-text">
+            <div className="text-center community-text">
               { communityText && parse(communityText) }
             </div>
           </div>
