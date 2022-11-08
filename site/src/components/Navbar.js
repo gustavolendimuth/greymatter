@@ -109,9 +109,10 @@ export default function Navbar() {
                             onClick={ changeToPortuguese }
                           >
                             <img
-                              alt="language flag"
-                              width="30px"
-                              src="https://www.countryflagsapi.com/png/br"
+                              src="https://flagcdn.com/w20/br.png"
+                              srcSet="https://flagcdn.com/w40/br.png 2x"
+                              width="20px"
+                              alt="Brazil"
                             />
                           </button>
                         ) : (
@@ -121,9 +122,10 @@ export default function Navbar() {
                             onClick={ changeToEnglish }
                           >
                             <img
-                              alt="language flag"
-                              width="30px"
-                              src="https://www.countryflagsapi.com/png/gb"
+                              src="https://flagcdn.com/w20/gb.png"
+                              srcSet="https://flagcdn.com/w40/gb.png 2x"
+                              width="20px"
+                              alt="United Kingdom"
                             />
                           </button>
                         )
