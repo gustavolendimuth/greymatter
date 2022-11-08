@@ -2,7 +2,7 @@ import sanityClient from './sanityClient';
 
 // eslint-disable-next-line react-func/max-lines-per-function
 const fetchContent = async (doc, languageId) => {
-  const preview = true;
+  const preview = false;
 
   const languageQuery = `*[_type == "language"] {
       abbreviation, code, language, _id }`;
