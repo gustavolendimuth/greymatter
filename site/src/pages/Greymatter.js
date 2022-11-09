@@ -13,6 +13,7 @@ import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 import fetchContent from '../services/fetchContent';
 import urlFor from '../services/urlFor';
+import HomeModal from '../components/HomeModal';
 
 export default function Greymatter() {
   const {
@@ -47,37 +48,25 @@ export default function Greymatter() {
       }
     };
     getHeroContent();
+
+    const openModal = () => $('#exampleModal').modal('show');
+    openModal();
   }, [languageId]);
 
   useLayoutEffect(() => {
     if (slug) {
-      let section;
-      switch (slug) {
-      case 'who-we-are':
-        section = whoWeAre;
-        break;
-      case 'what-we-look-for':
-        section = whatWeLookFor;
-        break;
-      case 'what-do-we-offer':
-        section = whatDoWeOffer;
-        break;
-      case 'team':
-        section = team;
-        break;
-      case 'community':
-        section = community;
-        break;
-      case 'application':
-        section = application;
-        break;
-      default:
-        break;
-      }
+      const section = {
+        'who-we-are': whoWeAre,
+        'what-we-look-for': whatWeLookFor,
+        'what-do-we-offer': whatDoWeOffer,
+        team,
+        community,
+        application,
+      };
 
       const scrollToCard = () => {
         window.scrollTo({
-          top: section.current.offsetTop,
+          top: section[slug].current.offsetTop,
           behavior: 'smooth',
         });
       };
@@ -89,6 +78,7 @@ export default function Greymatter() {
     <>
       {/* Adicionada uma div que inclui o Header, o Hero e a seção Who we are
       para compartilhar o mesmo background  */}
+      <HomeModal />
       <header>
         <video
           className="hero-background-video"
