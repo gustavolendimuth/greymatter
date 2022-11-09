@@ -36,22 +36,18 @@ export default function HomeModal() {
             </p>
           </div>
           <div className="modal-footer d-flex justify-content-center gap-4">
-            <div className="row text-center">
-              <div className="col">
-                <button type="button" className="btn btn-secondary btn-secondary-modal" data-bs-dismiss="modal">Close</button>
-              </div>
-              <div className="col">
-                <a
-                  role="button"
-                  target="_blank"
-                  className="btn btn-primary btn-primary-modal"
-                  href="https://pt.surveymonkey.com/r/CPYTZ8N"
-                  rel="noreferrer"
-                >
-                  { languageId === englishId ? 'Questionnaire' : 'Questionário' }
-                </a>
-              </div>
-            </div>
+            <button type="button" className="btn btn-secondary btn-secondary-modal" data-bs-dismiss="modal">
+              { languageId === englishId ? 'Close' : 'Fechar' }
+            </button>
+            <a
+              role="button"
+              target="_blank"
+              className="btn btn-primary btn-primary-modal"
+              href="https://pt.surveymonkey.com/r/CPYTZ8N"
+              rel="noreferrer"
+            >
+              { languageId === englishId ? 'Questionnaire' : 'Questionário' }
+            </a>
           </div>
         </div>
       </div>
