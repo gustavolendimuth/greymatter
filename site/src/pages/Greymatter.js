@@ -13,7 +13,6 @@ import HomeContext from '../context/HomeContext';
 import Application from '../components/Application';
 import fetchContent from '../services/fetchContent';
 import urlFor from '../services/urlFor';
-import HomeModal from '../components/HomeModal';
 
 export default function Greymatter() {
   const {
@@ -48,9 +47,6 @@ export default function Greymatter() {
       }
     };
     getHeroContent();
-
-    const openModal = () => $('#exampleModal').modal('show');
-    openModal();
   }, [languageId]);
 
   useLayoutEffect(() => {
@@ -78,7 +74,6 @@ export default function Greymatter() {
     <>
       {/* Adicionada uma div que inclui o Header, o Hero e a seção Who we are
       para compartilhar o mesmo background  */}
-      <HomeModal />
       <header>
         <video
           className="hero-background-video"

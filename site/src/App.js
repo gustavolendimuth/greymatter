@@ -22,6 +22,7 @@ import Footer from './components/Footer';
 import ApplicationForm from './pages/ApplicationForm';
 import HomeContext from './context/HomeContext';
 import Navbar from './components/Navbar';
+import HomeModal from './components/HomeModal';
 
 function App() {
   const {
@@ -49,7 +50,12 @@ function App() {
   }, [languages]);
 
   useEffect(() => {
-    if (languageId) setLocalStorage('languageId', languageId);
+    if (languageId) {
+      setLocalStorage('languageId', languageId);
+
+      const openModal = () => $('#exampleModal').modal('show');
+      openModal();
+    }
   }, [languageId]);
 
   return (
@@ -64,6 +70,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <HomeModal />
     </BrowserRouter>
   );
 }
