@@ -17,6 +17,15 @@ body {
   --deep-blue: #0249af;
 }
 
+.btn-primary-modal {
+  background-color: var(--deep-blue) !important;
+}
+
+.btn-secondary-modal {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary);
+}
+
 p {
   letter-spacing: 0.03em;
   margin-bottom: 0;

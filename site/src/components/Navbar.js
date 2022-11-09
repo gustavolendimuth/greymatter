@@ -10,9 +10,10 @@ export default function Navbar() {
   }, [languages]);
 
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
+  const portugueseId = 'f5fe0465-f3c4-4821-b535-411d37ca783b';
 
   const changeToPortuguese = () => {
-    setLanguageId('f5fe0465-f3c4-4821-b535-411d37ca783b');
+    setLanguageId(portugueseId);
   };
 
   const changeToEnglish = () => {

@@ -45,8 +45,8 @@ const fetchContent = async (doc, languageId) => {
         Object.prototype.hasOwnProperty.call(query, doc) ? query[doc] : genericQuery,
       );
       return response;
-    } catch (e) {
-      return console.error(e);
+    } catch (err) {
+      return console.error(err);
     }
   }
 };
