@@ -18,7 +18,7 @@ export default function Team({ team }) {
     getTeamMembersContent();
   }, [languageId]);
 
-  if (!team || !teamMembers || teamPageTitle) return null;
+  if (!team || !teamMembers || !teamPageTitle) return null;
 
   return (
     <section ref={ team } id="team" className="team-section">
