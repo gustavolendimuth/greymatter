@@ -15,8 +15,8 @@ export default function CommunityCard({ member: { alt, name, photoLg, position, 
       <div
         data-tooltip-id={ `community-card-${index}` }
         data-tooltip-content={ position }
-        data-tooltip-place="bottom"
-        data-tooltip-offset="-230"
+        data-tooltip-place="top"
+        // data-tooltip-offset="-230"
         className="col-auto d-flex flex-column justify-content-center align-items-center"
       >
         <div
