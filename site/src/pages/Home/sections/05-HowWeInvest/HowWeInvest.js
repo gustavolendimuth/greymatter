@@ -25,9 +25,7 @@ export default function HowWeInvest({ howWeInvest }) {
     getHowWeInvestContent();
   }, [languageId]);
 
-  if (!howWeInvestCards || !howWeInvestPageTitle) {
-    return null;
-  }
+  if (!howWeInvest || !howWeInvestPageTitle || !howWeInvestCards) return null;
 
   return (
     <section ref={ howWeInvest } className="how-we-invest-section" id="howWeInvest">

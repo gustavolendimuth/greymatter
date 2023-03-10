@@ -1,14 +1,14 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-// Utils
 import parse from 'html-react-parser';
+import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';
-import urlFor from '../../../../utils/urlFor';
-import fetchContent from '../../../../utils/fetchContent';
 // Context
 import Context from '../../../../context/Context';
+// Utils
+import urlFor from '../../../../utils/urlFor';
+import fetchContent from '../../../../utils/fetchContent';
 // Images
 import greymatterButtonAction from '../../../../img/greymatter-button-action.svg';
 
@@ -31,6 +31,8 @@ export default function Application({ application }) {
     };
     getApplicationContent();
   }, [languageId]);
+
+  if (!application || !applicationPageTitle || !applicationText) return null;
 
   return (
     <section ref={ application } id="application" className="bg-primary">

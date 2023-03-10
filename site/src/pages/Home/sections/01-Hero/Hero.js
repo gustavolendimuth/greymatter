@@ -51,6 +51,8 @@ export default function Hero({ heroContent }) {
     fixFontSize();
   });
 
+  if (!heroContent) return null;
+
   return (
     <div
       className="container d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 hero-section"

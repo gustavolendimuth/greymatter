@@ -39,7 +39,7 @@ export default function Community({ community }) {
     getCommunityContent();
   }, [languageId]);
 
-  if (!communityMembers) return null;
+  if (!community || !communityMembers || !communityPageTitle) return null;
 
   return (
     <section ref={ community } id="community">
@@ -48,7 +48,7 @@ export default function Community({ community }) {
         <h1 className="display-3 text-uppercase text-center section-title community-title">{communityPageTitle}</h1>
         <div className="row gx-4 gy-3 justify-content-center my-1 my-md-4">
           <div className="col-auto align-self-center">
-            <div className="text-center community-text">
+            <div className="text-center text-lg-start community-text">
               { communityText && parse(communityText) }
             </div>
           </div>

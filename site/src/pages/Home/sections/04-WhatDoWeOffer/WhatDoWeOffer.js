@@ -27,6 +27,8 @@ export default function WhatDoWeOffer({ whatDoWeOffer }) {
     getWhatDoWeOfferContent();
   }, [languageId]);
 
+  if (!whatDoWeOffer || !whatDoWeOfferPageTitle || !whatDoWeOfferCards) return null;
+
   return (
     <section ref={ whatDoWeOffer } id="what-do-we-offer">
       <div className="container section what-do-we-offer-section">

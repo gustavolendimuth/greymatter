@@ -32,6 +32,8 @@ export default function WhatWeLookFor({ whatWeLookFor }) {
     getWhatWeLookForContent();
   }, [languageId]);
 
+  if (!whatWeLookFor || !whatWeLookForTitle || !whatWeLookForCards) return null;
+
   return (
     <section
       ref={ whatWeLookFor }

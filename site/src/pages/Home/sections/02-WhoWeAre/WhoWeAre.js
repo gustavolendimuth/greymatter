@@ -11,7 +11,7 @@ import fetchContent from '../../../../utils/fetchContent';
 import ArrowDown from '../../../../components/ArrowDown';
 import './WhoWeAre.css';
 
-export default function WhoWeAre({ whoWeAre = 'whoWeAre' }) {
+export default function WhoWeAre({ whoWeAre }) {
   const [whoWeArePageTitle, setWhoWeArePageTitle] = useState('');
   const [whoWeAreText, setWhoWeAreText] = useState('');
   const [whoWeAreImage, setWhoWeAreImage] = useState();
@@ -28,6 +28,8 @@ export default function WhoWeAre({ whoWeAre = 'whoWeAre' }) {
     };
     getWhoWeAreContent();
   }, [languageId]);
+
+  if (!whoWeAre || !whoWeArePageTitle || !whoWeAreText) return null;
 
   return (
     <section ref={ whoWeAre } id="whoWeAre">
