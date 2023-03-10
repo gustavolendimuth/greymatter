@@ -1,8 +1,8 @@
+/* eslint-disable react-func/max-lines-per-function */
 import sanityClient from './sanityClient';
 
-// eslint-disable-next-line react-func/max-lines-per-function
 const fetchContent = async (doc, languageId) => {
-  const preview = false;
+  const preview = process.env.REACT_APP_PREVIEW === 'true';
 
   const languageQuery = `*[_type == "language"] {
       abbreviation, code, language, _id }`;
