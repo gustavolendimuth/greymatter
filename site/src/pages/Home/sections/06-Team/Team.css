@@ -1,0 +1,37 @@
+/* stylelint-disable selector-max-specificity */
+.team-section {
+  background: url('../../../../img/greymatter-what-we-look-for-background.webp') bottom / cover no-repeat;
+  background-blend-mode: overlay;
+  background-color: var(--bs-dark);
+  transform: rotate(180deg);
+}
+
+@media ( min-width : 992px ) {
+
+  #team-container {
+    max-width: 1000px !important;
+  }
+}
+
+#team-container {
+  max-width: 650px;
+  transform: rotate(180deg);
+}
+
+.team-photo {
+  border-radius: 50%;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.team-text {
+  color: var(--bs-light);
+  letter-spacing: 0.06rem;
+}
+
+.team-tooltip {
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  max-width: 210px;
+  text-align: center;
+}

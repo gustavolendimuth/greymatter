@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Greymatter website",
   "scripts": {
+    "greymatter": "npm install && cd ./site && npm install && cd ../studio && npm install",
     "start": "cd ./site && react-scripts start",
     "sanity": "cd ./studio && sanity start",
     "build": "rm -rf ./build && cd ./site && npm install && react-scripts build && mv build ../",

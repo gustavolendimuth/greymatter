@@ -31,6 +31,7 @@ import video from './objects/video';
 import teamMembersObject from './objects/teamMembersObject';
 import communityMembersObject from './objects/communityMembersObject';
 import background from './objects/background';
+import howWeInvest from './documents/howWeInvest';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -45,6 +46,7 @@ export default createSchema({
     whoWeAre,
     whatWeLookFor,
     whatDoWeOffer,
+    howWeInvest,
     team,
     teamMembers,
     community,

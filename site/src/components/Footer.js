@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 import { FaLinkedinIn, FaInstagram, FaGripLinesVertical } from 'react-icons/fa';
-import fetchContent from '../services/fetchContent';
-import HomeContext from '../context/HomeContext';
-import urlFor from '../services/urlFor';
+import fetchContent from '../utils/fetchContent';
+import HomeContext from '../context/Context';
+import urlFor from '../utils/urlFor';
 import greymatterLogoVieiraRezende from '../img/greymatter-logo-vieira-rezende.webp';
 
 export default function Footer() {

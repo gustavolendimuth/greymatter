@@ -1,0 +1,15 @@
+.community-card-position {
+  color: var(--bs-light);
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  letter-spacing: 0.06rem;
+  text-align: center;
+  height: 2.66rem; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}/*# sourceMappingURL=CommunityCard.css.map */

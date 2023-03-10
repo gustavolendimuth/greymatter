@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import HomeContext from '../context/HomeContext';
+import HomeContext from '../context/Context';
 import navbarBackground from '../img/greymatter-navbar-background.webp';
 
 export default function Navbar() {

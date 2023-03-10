@@ -1,0 +1,85 @@
+.application-container {
+  max-width: 854px;
+}
+
+.application-header {
+  background: url('../../img/greymatter-hero-image.webp') center / cover no-repeat;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.application-form-container {
+  max-width: 854px;
+}
+
+@media ( max-width : 767px ) {
+
+  .form-label {
+    font-size: 1.2rem;
+  }
+}
+
+.form-label {
+  color: var(--bs-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.application-btn {
+  font-weight: 600 !important;
+  padding: 1rem 3rem !important;
+}
+
+.application-form-fields {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: var(--bs-primary) !important;
+  border-radius: 0.5rem !important;
+  border-width: 2px !important;
+  color: var(--bs-secondary) !important;
+  line-height: 2rem !important;
+}
+
+.application-text {
+  padding-bottom: 2rem;
+}
+
+.application-main {
+  margin-top: -35vh;
+}
+
+@media ( max-width : 767px ) {
+
+  .application-form-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.application-form-subtitle {
+  padding-top: 2rem;
+}
+
+.btn-greymatter-primary {
+  background: var(--bs-primary);
+  border-radius: 4px;
+  color: var(--bs-light);
+  font-weight: 600;
+  gap: 6px;
+  padding: 1rem 3rem !important;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.btn-greymatter-primary:hover {
+  background-color: var(--bs-secondary);
+  color: var(--bs-light);
+}
+
+@media ( max-width : 767px ) {
+
+  .application-text {
+    font-size: 1.2rem;
+  }
+}
+

@@ -2,4 +2,5 @@
 /site/src/tests/*
 # site/src/index.js
 site/export/*
-site/assets/js/bootstrap.min.js
+site/src/assets/js/bootstrap.min.js
+**/node_modules/*

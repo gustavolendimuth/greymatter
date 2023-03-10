@@ -1,0 +1,61 @@
+.community-text {
+  color: var(--bs-dark);
+  font-size: 1.2rem;
+  max-width: 500px;
+}
+
+@media ( min-width : 992px ) {
+
+  .community-text {
+    font-size: 1.5rem !important;
+  }
+}
+
+.community-title {
+  color: var(--deep-blue);
+}
+
+.community-card {
+  background: url('../../../../img/greymatter-what-we-look-for-background.webp') center / cover no-repeat;
+  border: 4px solid var(--deep-blue);
+  border-radius: 12px;
+  gap: 8px;
+  height: 100%;
+  padding: 18px 24px;
+  width: 250px;
+}
+
+.community-photo {
+  border-radius: 50%;
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.community-card-icon {
+  margin-top: 12px;
+}
+
+.community-card-name {
+  margin-top: 8px;
+}
+
+.community-card-text {
+  color: var(--bs-light) !important;
+  font-weight: 600;
+  letter-spacing: 0.06rem;
+  padding-top: 0 !important;
+  text-align: center;
+}
+
+.community-image-container {
+  background: var(--light-grey);
+  border-radius: 12px;
+  padding: 32px 24px;
+}
+
+.community-tooltip {
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  max-width: 250px;
+  text-align: center;
+}

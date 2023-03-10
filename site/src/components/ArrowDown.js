@@ -19,6 +19,6 @@ export default function ArrowDown({ styles, to }) {
 }
 
 ArrowDown.propTypes = {
-  styles: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-};
+  styles: PropTypes.string,
+  to: PropTypes.string,
+}.isRequired;
