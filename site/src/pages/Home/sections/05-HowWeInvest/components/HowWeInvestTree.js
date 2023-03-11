@@ -6,7 +6,7 @@ import { toHTML } from '@portabletext/to-html';
 import urlFor from '../../../../../utils/urlFor';
 import cardImage from '../../../../../img/card-image.png';
 
-export default function StyledTree({ cards }) {
+export default function HowWeInvestTree({ cards }) {
   const topCircle = 'circle bg-primary text-white rounded-circle d-flex justify-content-center align-items-center';
   const circle = 'circle bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center';
   if (!cards) return null;
@@ -36,7 +36,12 @@ export default function StyledTree({ cards }) {
                     <img
                       alt={ card?.image?.alt }
                       className="p-2 how-we-invest-card-icon"
-                      src={ card?.image && urlFor(card.image.imageLg.asset).url() }
+                      src={
+                        card?.image && urlFor(card.image.imageLg.asset)
+                          .size(200)
+                          .quality(90)
+                          .url()
+                      }
                     />
                   </div>
                   <div className="pt-2 how-we-invest-text">
@@ -52,8 +57,40 @@ export default function StyledTree({ cards }) {
   );
 }
 
-StyledTree.propTypes = {
-  cards: PropTypes.shape({
-    map: PropTypes.func,
-  }).isRequired,
+HowWeInvestTree.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.shape({
+        alt: PropTypes.string,
+        imageLg: PropTypes.shape({
+          asset: PropTypes.shape({
+            _ref: PropTypes.string,
+          }),
+        }),
+      }),
+      text: PropTypes.arrayOf(
+        PropTypes.shape({
+          _key: PropTypes.string,
+          _type: PropTypes.string,
+          children: PropTypes.arrayOf(
+            PropTypes.shape({
+              _key: PropTypes.string,
+              _type: PropTypes.string,
+              marks: PropTypes.arrayOf(
+                PropTypes.string,
+              ),
+              text: PropTypes.string,
+            }),
+          ),
+          markDefs: PropTypes.arrayOf(
+            PropTypes.shape({
+              _key: PropTypes.string,
+              _type: PropTypes.string,
+            }),
+          ),
+          style: PropTypes.string,
+        }),
+      ),
+    }),
+  ).isRequired,
 };

@@ -3,9 +3,10 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-max-depth */
 import React, { useEffect, useContext, useState } from 'react';
-import PropTypes from 'prop-types';
+// Libraries
 import parse from 'html-react-parser';
 import { toHTML } from '@portabletext/to-html';
+import { Tooltip } from 'react-tooltip';
 // Context
 import Context from '../../../../context/Context';
 // Components
@@ -17,8 +18,8 @@ import sortCompare from '../../../../utils/sortCompare';
 // Styles
 import './Community.css';
 
-export default function Community({ community }) {
-  const { languageId } = useContext(Context);
+export default function Community() {
+  const { languageId, section } = useContext(Context);
   const [communityPageTitle, setCommunityPageTitle] = useState();
   const [communityText, setCommunityText] = useState();
   const [communityMembers, setCommunityMembers] = useState();
@@ -39,10 +40,10 @@ export default function Community({ community }) {
     getCommunityContent();
   }, [languageId]);
 
-  if (!community || !communityMembers || !communityPageTitle) return null;
+  if (!communityMembers || !communityPageTitle) return null;
 
   return (
-    <section ref={ community } id="community">
+    <section ref={ section.community } id="community">
       <div className="container section community-container">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title community-title">{communityPageTitle}</h1>
@@ -53,6 +54,7 @@ export default function Community({ community }) {
             </div>
           </div>
         </div>
+        <Tooltip anchorSelect=".community-card-tooltip" className="community-tooltip" />
         <div className="row gx-5 gy-4 gy-md-5 row-cols-4 justify-content-center">
           {
             communityMembers.map((member, index) => <CommunityCard key={ index } member={ member } index={ index } />)
@@ -63,7 +65,3 @@ export default function Community({ community }) {
     </section>
   );
 }
-
-Community.propTypes = {
-  community: PropTypes.any.isRequired,
-};

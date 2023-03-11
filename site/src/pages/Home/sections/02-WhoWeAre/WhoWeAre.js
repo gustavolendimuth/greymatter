@@ -1,7 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
-import PropTypes from 'prop-types';
 import React, { useEffect, useState, useContext } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
@@ -11,11 +10,11 @@ import fetchContent from '../../../../utils/fetchContent';
 import ArrowDown from '../../../../components/ArrowDown';
 import './WhoWeAre.css';
 
-export default function WhoWeAre({ whoWeAre }) {
+export default function WhoWeAre() {
   const [whoWeArePageTitle, setWhoWeArePageTitle] = useState('');
   const [whoWeAreText, setWhoWeAreText] = useState('');
   const [whoWeAreImage, setWhoWeAreImage] = useState();
-  const { languageId } = useContext(Context);
+  const { languageId, section } = useContext(Context);
 
   useEffect(() => {
     const getWhoWeAreContent = async () => {
@@ -29,10 +28,10 @@ export default function WhoWeAre({ whoWeAre }) {
     getWhoWeAreContent();
   }, [languageId]);
 
-  if (!whoWeAre || !whoWeArePageTitle || !whoWeAreText) return null;
+  if (!whoWeArePageTitle || !whoWeAreText) return null;
 
   return (
-    <section ref={ whoWeAre } id="whoWeAre">
+    <section ref={ section.whoWeAre } id="whoWeAre">
       <div className="container section who-we-are-section">
         <div />
         <h1
@@ -51,7 +50,12 @@ export default function WhoWeAre({ whoWeAre }) {
               src={
                 whoWeAreImage
                 && urlFor(whoWeAreImage.imageLg.asset)
+                  .size(350)
+                  .quality(90)
+                  .format('webp')
+                  .url()
               }
+              loading="lazy"
               className="who-we-are-image"
               alt={ whoWeAreImage?.alt }
             />
@@ -62,7 +66,3 @@ export default function WhoWeAre({ whoWeAre }) {
     </section>
   );
 }
-
-WhoWeAre.propTypes = {
-  whoWeAre: PropTypes.any.isRequired,
-};

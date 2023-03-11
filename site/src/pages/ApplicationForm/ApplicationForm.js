@@ -1,34 +1,80 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable quotes */
 import React, { useContext, useEffect, useState } from 'react';
+// Dependencies
 import camelCase from 'camelcase';
 import parse from 'html-react-parser';
-import stringRemove from 'string-remove';
 import { extract, words, numbers } from 'words-n-numbers';
+import stringRemove from 'string-remove';
 import { toHTML } from '@portabletext/to-html';
-import HomeContext from '../../context/Context';
+// Context
+import Context from '../../context/Context';
+// Components
 import ApplicationFormTextInput from './components/ApplicationFormTextInput';
 import ApplicationFormTextareaInput from './components/ApplicationFormTextareaInput';
 import ApplicationFormFileUpload from './components/ApplicationFormFileUpload';
 import ApplicationFormTitle from './components/ApplicationFormTitle';
 import ApplicationFormActionButtons from './components/ApplicationFormActionButtons';
+// Utils
 import fetchContent from '../../utils/fetchContent';
+// Styles
 import './ApplicationForm.css';
 
 export default function ApplicationForm() {
   const {
     setNavbarConfig,
     languageId,
-  } = useContext(HomeContext);
+  } = useContext(Context);
 
   const [applicationFormPageTitle, setApplicationFormPageTitle] = useState();
   const [applicationFormText, setApplicationFormText] = useState();
   // const [applicationFormBackground, setApplicationFormBackground] = useState();
   const [applicationFormFields, setApplicationFormFields] = useState();
 
+  $(document).ready(() => {
+    $('#cnpj').mask('00.000.000/0000-00');
+  });
+
+  const fieldTitleToId = (string) => {
+    let result = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    result = stringRemove(result, ["'"]);
+    result = extract(result, { regex: [words, numbers], toLowercase: true });
+    return camelCase(result.slice(0, 3));
+  };
+
+  const fields = {
+    title: (field) => (
+      <ApplicationFormTitle
+        key={ field._key }
+        field={ field }
+      />
+    ),
+    text: (field) => (
+      <ApplicationFormTextInput
+        key={ field._key }
+        field={ field }
+        id={ fieldTitleToId(field.title) }
+      />
+    ),
+    upload: (field) => (
+      <ApplicationFormFileUpload
+        key={ field._key }
+        field={ field }
+        id={ fieldTitleToId(field.title) }
+      />
+    ),
+    textarea: (field) => (
+      <ApplicationFormTextareaInput
+        key={ field._key }
+        field={ field }
+        id={ fieldTitleToId(field.title) }
+      />
+    ),
+  };
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     setNavbarConfig({ background: false, position: 'absolute' });
   }, []);
 
@@ -45,18 +91,7 @@ export default function ApplicationForm() {
     getApplicationFormContent();
   }, [languageId]);
 
-  const transformToId = (string) => {
-    let result = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    result = stringRemove(result, ["'"]);
-    result = extract(result, { regex: [words, numbers], toLowercase: true });
-    return camelCase(result.slice(0, 3));
-  };
-
-  $(document).ready(() => {
-    $('#cnpj').mask('00.000.000/0000-00');
-  });
-
-  if (!applicationFormPageTitle) return null;
+  if (!applicationFormPageTitle || !applicationFormFields) return null;
 
   return (
     <div className="d-flex flex-column gap-5">
@@ -82,19 +117,7 @@ export default function ApplicationForm() {
             >
               <div className="row gy-2">
                 {
-                  applicationFormFields
-                && applicationFormFields.map((field) => {
-                  if (field.type === 'title') {
-                    return <ApplicationFormTitle key={ field._key } field={ field } />;
-                  } if (field.type === 'text') {
-                    return <ApplicationFormTextInput key={ field._key } transformToId={ transformToId } field={ field } />;
-                  } if (field.type === 'textarea') {
-                    return <ApplicationFormTextareaInput key={ field._key } transformToId={ transformToId } field={ field } />;
-                  } if (field.type === 'upload') {
-                    return <ApplicationFormFileUpload key={ field._key } transformToId={ transformToId } field={ field } />;
-                  }
-                  return null;
-                })
+                  applicationFormFields.map((field) => fields[field.type](field))
                 }
                 <ApplicationFormActionButtons />
               </div>

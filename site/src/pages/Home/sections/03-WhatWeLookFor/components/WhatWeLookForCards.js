@@ -14,8 +14,13 @@ export default function WhatWeLookForCards({ card: { image, text } }) {
         <div className="d-flex justify-content-center align-items-center who-we-are-div-icon">
           <img
             className="img-fluid what-we-look-for-icon"
-            src={ urlFor(image.imageLg.asset).url() }
-            loading="auto"
+            src={
+              urlFor(image.imageLg.asset)
+                .size(200)
+                .quality(90)
+                .url()
+            }
+            loading="lazy"
             alt={ image?.alt }
           />
         </div>

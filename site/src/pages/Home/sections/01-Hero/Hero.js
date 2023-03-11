@@ -18,6 +18,7 @@ export default function Hero({ heroContent }) {
   const [heroImage, setHeroImage] = useState('');
   const [heroSubtitle, setHeroSubtitle] = useState('');
   const [heroBackgroundColor, setHeroBackgroundColor] = useState('');
+  let windowWidth;
 
   useEffect(() => {
     if (heroContent) {
@@ -41,7 +42,12 @@ export default function Hero({ heroContent }) {
     }
   };
 
-  window.onresize = fixFontSize;
+  const onResize = () => {
+    fixFontSize();
+    windowWidth = window.innerWidth;
+  };
+
+  window.onresize = onResize;
 
   useEffect(() => {
     fixFontSize();
@@ -51,7 +57,7 @@ export default function Hero({ heroContent }) {
     fixFontSize();
   });
 
-  if (!heroContent) return null;
+  // if (!heroContent) return null;
 
   return (
     <div
@@ -65,21 +71,18 @@ export default function Hero({ heroContent }) {
         <div className="row gy-4 gx-lg-5 gy-lg-0 hero-row justify-content-center align-items-center">
           <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start p-0 hero-logo-container">
             <img
-              className="img-fluid d-lg-none gray-matter-logo"
+              className="img-fluid gray-matter-logo"
               src={
                 heroImage
-                && urlFor(heroImage.imageSm.asset || heroImage.imageLg.asset)
+                && urlFor(
+                  windowWidth <= 992 ? (heroImage.imageSm.asset || heroImage.imageLg.asset) : heroImage.imageLg.asset,
+                )
+                  .size(550)
+                  .quality(100)
+                  .format('webp')
                   .url()
               }
-              alt={ heroImage?.alt }
-            />
-            <img
-              className="d-none d-lg-inline gray-matter-logo-lg gray-matter-logo"
-              src={
-                heroImage
-                && urlFor(heroImage.imageLg.asset || heroImage.imageSm.asset)
-                  .url()
-              }
+              loading="lazy"
               alt={ heroImage?.alt }
             />
           </div>

@@ -2,12 +2,13 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import './assets/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/SegoeUI.css';
 import './assets/css/Footer-Dark-Multi-Column-icons.css';
 import './css/App.css';
 import './css/Navbar.css';
 import './css/Footer.css';
+import 'react-tooltip/dist/react-tooltip.css';
 
 import Home from './pages/Home/Home';
 import TeamMembers from './pages/TeamMembers/TeamMembers';

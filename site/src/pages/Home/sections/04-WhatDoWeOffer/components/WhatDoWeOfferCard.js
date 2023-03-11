@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import urlFor from '../../../../../utils/urlFor';
 
 export default function WhatDoWeOfferCard({ card: { image, title } }) {
+  if (!image || !title) return null;
   return (
     <div className="col">
       <div
@@ -12,7 +13,12 @@ export default function WhatDoWeOfferCard({ card: { image, title } }) {
         <img
           alt={ image?.alt }
           className="what-do-we-offer-card-icon"
-          src={ image && urlFor(image.imageLg.asset).url() }
+          src={
+            image && urlFor(image.imageLg.asset)
+              .size(200)
+              .quality(100)
+              .url()
+          }
         />
         <p className="what-do-we-offer-card-text">{ title }</p>
       </div>

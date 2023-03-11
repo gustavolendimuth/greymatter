@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Context from './Context';
 import fetchContent from '../utils/fetchContent';
 
@@ -12,6 +12,16 @@ export default function HomeProvider({ children }) {
   const [navbarConfig, setNavbarConfig] = useState();
   const [teamMembers, setTeamMembers] = useState();
   const [teamPageTitle, setTeamPageTitle] = useState();
+
+  const section = {
+    whoWeAre: useRef(),
+    whatWeLookFor: useRef(),
+    whatDoWeOffer: useRef(),
+    howWeInvest: useRef(),
+    team: useRef(),
+    community: useRef(),
+    application: useRef(),
+  };
 
   const getLanguages = async () => {
     if (!languages) {
@@ -66,6 +76,7 @@ export default function HomeProvider({ children }) {
     setDefaultLanguage,
     setLocalStorage,
     getLocalStorage,
+    section,
   };
 
   return (

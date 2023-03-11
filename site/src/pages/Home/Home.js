@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import camelcase from 'camelcase';
 // Sections
@@ -14,7 +14,7 @@ import Team from './sections/06-Team/Team';
 import Community from './sections/07-Community/Community';
 import Application from './sections/08-Application/Application';
 // Utils
-import HomeContext from '../../context/Context';
+import Context from '../../context/Context';
 import fetchContent from '../../utils/fetchContent';
 import urlFor from '../../utils/urlFor';
 
@@ -22,22 +22,14 @@ export default function Greymatter() {
   const {
     setNavbarConfig,
     languageId,
-  } = useContext(HomeContext);
+    section,
+  } = useContext(Context);
 
   const [heroContent, setHeroContent] = useState();
   const [heroBackground, setHeroBackground] = useState();
   const [heroBackgroundVideo, setHeroBackgroundVideo] = useState();
 
   const { slug } = useParams();
-  const section = {
-    whoWeAre: useRef(null),
-    whatWeLookFor: useRef(null),
-    whatDoWeOffer: useRef(null),
-    howWeInvest: useRef(null),
-    team: useRef(null),
-    community: useRef(null),
-    application: useRef(null),
-  };
 
   const scrollToCard = () => {
     window.scrollTo({
@@ -96,13 +88,13 @@ export default function Greymatter() {
           heroContent && <Hero heroContent={ heroContent } />
         }
       </header>
-      <WhoWeAre whoWeAre={ section.whoWeAre } />
-      <WhatWeLookFor whatWeLookFor={ section.whatWeLookFor } />
-      <WhatDoWeOffer whatDoWeOffer={ section.whatDoWeOffer } />
-      <HowWeInvest howWeInvest={ section.howWeInvest } />
-      <Team team={ section.team } />
-      <Community community={ section.community } />
-      <Application application={ section.application } />
+      <WhoWeAre />
+      <WhatWeLookFor />
+      <WhatDoWeOffer />
+      <HowWeInvest />
+      <Team />
+      <Community />
+      <Application />
     </>
   );
 }

@@ -1,18 +1,19 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 // Components
 import ArrowDown from '../../../../components/ArrowDown';
 import HowWeInvestTree from './components/HowWeInvestTree';
+// Context
+import Context from '../../../../context/Context';
+// Utils
+import fetchContent from '../../../../utils/fetchContent';
 // Styles
 import './HowWeInvest.css';
-import Context from '../../../../context/Context';
-import fetchContent from '../../../../utils/fetchContent';
 
-export default function HowWeInvest({ howWeInvest }) {
+export default function HowWeInvest() {
   const [howWeInvestPageTitle, setHowWeInvestPageTitle] = useState('');
   const [howWeInvestCards, setHowWeInvestCards] = useState('');
-  const { languageId } = useContext(Context);
+  const { languageId, section } = useContext(Context);
 
   useEffect(() => {
     const getHowWeInvestContent = async () => {
@@ -25,10 +26,10 @@ export default function HowWeInvest({ howWeInvest }) {
     getHowWeInvestContent();
   }, [languageId]);
 
-  if (!howWeInvest || !howWeInvestPageTitle || !howWeInvestCards) return null;
+  if (!howWeInvestPageTitle || !howWeInvestCards) return null;
 
   return (
-    <section ref={ howWeInvest } className="how-we-invest-section" id="howWeInvest">
+    <section ref={ section.howWeInvest } className="how-we-invest-section" id="howWeInvest">
       <div className="container section how-we-invest">
         <div />
         <h1
@@ -42,10 +43,3 @@ export default function HowWeInvest({ howWeInvest }) {
     </section>
   );
 }
-
-HowWeInvest.propTypes = {
-  howWeInvest: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any }),
-  ]).isRequired,
-};

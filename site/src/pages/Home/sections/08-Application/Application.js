@@ -1,8 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// Libraries
 import parse from 'html-react-parser';
-import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';
 // Context
 import Context from '../../../../context/Context';
@@ -12,8 +12,8 @@ import fetchContent from '../../../../utils/fetchContent';
 // Images
 import greymatterButtonAction from '../../../../img/greymatter-button-action.svg';
 
-export default function Application({ application }) {
-  const { languageId } = useContext(Context);
+export default function Application() {
+  const { languageId, section } = useContext(Context);
   const [applicationPageTitle, setApplicationPageTitle] = useState();
   const [applicationImage, setApplicationImage] = useState();
   const [applicationText, setApplicationText] = useState();
@@ -32,10 +32,10 @@ export default function Application({ application }) {
     getApplicationContent();
   }, [languageId]);
 
-  if (!application || !applicationPageTitle || !applicationText) return null;
+  if (!applicationPageTitle || !applicationText) return null;
 
   return (
-    <section ref={ application } id="application" className="bg-primary">
+    <section ref={ section.application } id="application" className="bg-primary">
       <div className="container section application-section">
         <div className="visible spacer" />
         <h1
@@ -45,7 +45,12 @@ export default function Application({ application }) {
         </h1>
         <img
           alt={ applicationImage?.alt }
-          src={ applicationImage && urlFor(applicationImage).url() }
+          src={
+            applicationImage && urlFor(applicationImage)
+              .size(250)
+              .quality(90)
+              .url()
+          }
           width={ applicationImage?.width }
           height={ applicationImage?.height }
         />
@@ -68,7 +73,3 @@ export default function Application({ application }) {
     </section>
   );
 }
-
-Application.propTypes = {
-  application: PropTypes.any.isRequired,
-};

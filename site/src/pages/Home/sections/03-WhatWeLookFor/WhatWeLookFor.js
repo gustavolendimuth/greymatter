@@ -2,7 +2,6 @@
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 // Components
 import WhatWeLookForCards from './components/WhatWeLookForCards';
 import ArrowDown from '../../../../components/ArrowDown';
@@ -14,8 +13,8 @@ import urlFor from '../../../../utils/urlFor';
 // Styles
 import './WhatWeLookFor.css';
 
-export default function WhatWeLookFor({ whatWeLookFor }) {
-  const { languageId } = useContext(Context);
+export default function WhatWeLookFor() {
+  const { languageId, section } = useContext(Context);
   const [whatWeLookForTitle, setWhatWeLookForTitle] = useState();
   const [whatWeLookForBackground, setWhatWeLookForBackground] = useState();
   const [whatWeLookForCards, setWhatWeLookForCards] = useState();
@@ -32,11 +31,11 @@ export default function WhatWeLookFor({ whatWeLookFor }) {
     getWhatWeLookForContent();
   }, [languageId]);
 
-  if (!whatWeLookFor || !whatWeLookForTitle || !whatWeLookForCards) return null;
+  if (!whatWeLookForTitle || !whatWeLookForCards) return null;
 
   return (
     <section
-      ref={ whatWeLookFor }
+      ref={ section.whatWeLookFor }
       id="what-we-look-for"
       style={ { background: `url(${whatWeLookForBackground && urlFor(whatWeLookForBackground.imageLg?.asset).url()}) center / cover space` } }
     >
@@ -63,7 +62,3 @@ export default function WhatWeLookFor({ whatWeLookFor }) {
     </section>
   );
 }
-
-WhatWeLookFor.propTypes = {
-  whatWeLookFor: PropTypes.any.isRequired,
-};

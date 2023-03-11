@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function ApplicationFormTextInput({ field, transformToId }) {
+export default function ApplicationFormTextInput({ field, id }) {
   const columnClass = (size) => {
     let className = 'col-12';
     if (size === 3) {
@@ -17,13 +17,13 @@ export default function ApplicationFormTextInput({ field, transformToId }) {
     <div className={ columnClass(field.columnSize) }>
       <label
         className="col-form-label form-label"
-        htmlFor={ field.value === 'cnpj' ? 'cnpj' : transformToId(field.title) }
+        htmlFor={ field.value === 'cnpj' ? 'cnpj' : id }
       >
         {field.title}
         <input
           className="form-control form-control-lg application-form-fields"
           type={ field.value === 'number' ? 'number' : 'text' }
-          id={ field.value === 'cnpj' ? 'cnpj' : transformToId(field.title) }
+          id={ field.value === 'cnpj' ? 'cnpj' : id }
           required={ field.required }
           minLength={ field.required && 3 }
           placeholder={ field.value === 'cnpj' ? '00.000.000/0000-00' : null }
@@ -42,5 +42,5 @@ ApplicationFormTextInput.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
   }).isRequired,
-  transformToId: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
