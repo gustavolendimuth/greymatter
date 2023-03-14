@@ -35,7 +35,7 @@ const fetchContent = async (doc, languageId) => {
   const howWeInvestQuery = `*[_type == "howWeInvest"
       && language._ref == "${languageId}"
       && preview.isPreview == ${preview}] | order(_createdAt asc)[0] {
-      pageTitle, text, cards,
+      pageTitle, text, cards, cardsBackground, firstCard,
       }`;
 
   const query = {

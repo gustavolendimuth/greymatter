@@ -19,13 +19,6 @@ export default {
       },
     },
     {
-      name: 'alt',
-      type: 'string',
-      title: 'Texto alternativo da imagem - SEO',
-      description: `Preencha este campo com um texto que descreva a imagem. 
-      Imagens com texto alternativo ajudam no ranking dos sites de busca.`,
-    },
-    {
       name: 'heightLimit',
       type: 'boolean',
       initialValue: false,

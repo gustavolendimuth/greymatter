@@ -32,6 +32,8 @@ import teamMembersObject from './objects/teamMembersObject';
 import communityMembersObject from './objects/communityMembersObject';
 import background from './objects/background';
 import howWeInvest from './documents/howWeInvest';
+import simpleCard from './objects/simpleCard';
+import backgroundSimple from './objects/backgroundSimple';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -55,10 +57,12 @@ export default createSchema({
     applicationForm,
     footer,
     card,
+    simpleCard,
     richText,
     figure,
     figureDesktop,
     background,
+    backgroundSimple,
     youtube,
     preview,
     video,

@@ -4,12 +4,12 @@ import { Tree, TreeNode } from 'react-organizational-chart';
 import parse from 'html-react-parser';
 import { toHTML } from '@portabletext/to-html';
 import urlFor from '../../../../../utils/urlFor';
-import cardImage from '../../../../../img/card-image.png';
 
-export default function HowWeInvestTree({ cards }) {
-  const topCircle = 'circle bg-primary text-white rounded-circle d-flex justify-content-center align-items-center';
-  const circle = 'circle bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center';
-  if (!cards) return null;
+export default function HowWeInvestTree({ cards, cardsData: { background, firstCard } }) {
+  const circle = 'p-3 p-md-4 circle text-white rounded-circle d-flex justify-content-center align-items-center';
+
+  if (!cards || !firstCard) return null;
+
   return (
     <div style={ { width: '100%' } }>
       <Tree
@@ -20,8 +20,25 @@ export default function HowWeInvestTree({ cards }) {
         lineStyle=""
         nodePadding=""
         label={
-          <div className={ topCircle }>
-            <img src={ cardImage } className="p-2 how-we-invest-card-icon" alt="Deal" />
+          <div
+            className={ `${circle} bg-primary` }
+            style={ { background: `url('${
+              background?.image && urlFor(background.image.asset)
+                .size(200)
+                .quality(90)
+                .url()
+            }') center / cover no-repeat` } }
+          >
+            <img
+              src={
+                firstCard?.cardImage && urlFor(firstCard.cardImage.image.asset)
+                  .size(200)
+                  .quality(90)
+                  .url()
+              }
+              className="how-we-invest-card-icon img-fluid"
+              alt="Deal"
+            />
           </div>
         }
       >
@@ -32,12 +49,20 @@ export default function HowWeInvestTree({ cards }) {
               label={
                 <>
                   <div className="arrow-box" />
-                  <div className={ circle }>
+                  <div
+                    className={ `${circle} bg-secondary` }
+                    style={ { background: `url('${
+                      background?.image && urlFor(background.image.asset)
+                        .size(200)
+                        .quality(90)
+                        .url()
+                    }') center / cover no-repeat` } }
+                  >
                     <img
-                      alt={ card?.image?.alt }
-                      className="p-2 how-we-invest-card-icon"
+                      alt={ card?.cardImage?.alt }
+                      className="how-we-invest-card-icon img-fluid"
                       src={
-                        card?.image && urlFor(card.image.imageLg.asset)
+                        card?.cardImage && urlFor(card.cardImage.image.asset)
                           .size(200)
                           .quality(90)
                           .url()
@@ -92,5 +117,12 @@ HowWeInvestTree.propTypes = {
         }),
       ),
     }),
-  ).isRequired,
-};
+  ),
+  cardsBackground: PropTypes.shape({
+    image: PropTypes.shape({
+      asset: PropTypes.shape({
+        _ref: PropTypes.string,
+      }),
+    }),
+  }),
+}.isRequired;
