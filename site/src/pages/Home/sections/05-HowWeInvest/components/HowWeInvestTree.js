@@ -6,7 +6,7 @@ import { toHTML } from '@portabletext/to-html';
 import urlFor from '../../../../../utils/urlFor';
 
 export default function HowWeInvestTree({ cards, cardsData: { background, firstCard } }) {
-  const circle = 'p-3 p-md-4 circle text-white rounded-circle d-flex justify-content-center align-items-center';
+  const circle = 'circle text-white rounded-circle d-flex justify-content-center align-items-center';
 
   if (!cards || !firstCard) return null;
 

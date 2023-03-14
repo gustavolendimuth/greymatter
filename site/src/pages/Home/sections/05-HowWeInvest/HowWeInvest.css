@@ -7,6 +7,7 @@
   margin: auto;
   min-height: 5.5rem;
   min-width: 5.5rem;
+  padding: 0.5em;
   width: 20vw;
 }
 
@@ -82,7 +83,16 @@
     height: 11rem;
     min-height: 6rem;
     min-width: 6rem;
+    padding: 1em;
     width: 11rem;
+  }
+
+}
+
+@media ( min-width : 768px ) {
+
+  .how-we-invest-section .circle {
+    padding: 1em;
   }
 
 }
