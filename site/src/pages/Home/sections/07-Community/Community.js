@@ -10,7 +10,7 @@ import { Tooltip } from 'react-tooltip';
 // Context
 import Context from '../../../../context/Context';
 // Components
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 import CommunityCard from './components/CommunityCard';
 // Utils
 import fetchContent from '../../../../utils/fetchContent';

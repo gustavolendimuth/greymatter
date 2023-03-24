@@ -1,21 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+// Styles
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './assets/css/SegoeUI.css';
-import './assets/css/Footer-Dark-Multi-Column-icons.css';
-import './css/App.css';
-import './css/Navbar.css';
-import './css/Footer.css';
+import './pages/assets/styles/SegoeUI.css';
+import './pages/assets/styles/Footer-Dark-Multi-Column-icons.css';
+import './pages/assets/styles/App.css';
+import './pages/assets/styles/Navbar.css';
+import './pages/assets/styles/Footer.css';
 import 'react-tooltip/dist/react-tooltip.css';
 
 import Home from './pages/Home/Home';
 import TeamMembers from './pages/TeamMembers/TeamMembers';
-import Footer from './components/Footer';
+import Footer from './pages/components/Footer';
 import ApplicationForm from './pages/ApplicationForm/ApplicationForm';
 import HomeContext from './context/Context';
-import Navbar from './components/Navbar';
+import Navbar from './pages/components/Navbar';
 import HomeModal from './pages/Home/components/HomeModal';
 
 function App() {

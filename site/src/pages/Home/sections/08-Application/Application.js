@@ -10,7 +10,7 @@ import Context from '../../../../context/Context';
 import urlFor from '../../../../utils/urlFor';
 import fetchContent from '../../../../utils/fetchContent';
 // Images
-import greymatterButtonAction from '../../../../img/greymatter-button-action.svg';
+import greymatterButtonAction from '../../../assets/img/greymatter-button-action.svg';
 
 export default function Application() {
   const { languageId, section } = useContext(Context);

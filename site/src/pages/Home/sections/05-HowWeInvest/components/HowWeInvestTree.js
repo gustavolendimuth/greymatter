@@ -5,29 +5,21 @@ import parse from 'html-react-parser';
 import { toHTML } from '@portabletext/to-html';
 import urlFor from '../../../../../utils/urlFor';
 
-export default function HowWeInvestTree({ cards, cardsData: { background, firstCard } }) {
-  const circle = 'circle text-white rounded-circle d-flex justify-content-center align-items-center';
-
+export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
   if (!cards || !firstCard) return null;
 
   return (
     <div style={ { width: '100%' } }>
       <Tree
-        lineWidth="0.4rem"
-        lineColor="#0249af"
-        lineBorderRadius="20px"
+        lineWidth="0.17em"
+        lineColor="#4a94c4"
+        lineBorderRadius="1em"
         lineHeight="4rem"
         lineStyle=""
         nodePadding=""
         label={
           <div
-            className={ `${circle} bg-primary` }
-            style={ { background: `url('${
-              background?.image && urlFor(background.image.asset)
-                .size(200)
-                .quality(90)
-                .url()
-            }') center / cover no-repeat` } }
+            className="how-we-invest-first-card rounded-5 d-flex justify-content-center"
           >
             <img
               src={
@@ -50,13 +42,7 @@ export default function HowWeInvestTree({ cards, cardsData: { background, firstC
                 <>
                   <div className="arrow-box" />
                   <div
-                    className={ `${circle} bg-secondary` }
-                    style={ { background: `url('${
-                      background?.image && urlFor(background.image.asset)
-                        .size(200)
-                        .quality(90)
-                        .url()
-                    }') center / cover no-repeat` } }
+                    className="how-we-invest-card rounded-5 d-flex justify-content-center"
                   >
                     <img
                       alt={ card?.cardImage?.alt }

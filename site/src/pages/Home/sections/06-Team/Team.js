@@ -6,7 +6,7 @@ import React, { useContext, useEffect } from 'react';
 import { Tooltip } from 'react-tooltip';
 // Components
 import TeamCard from './components/TeamCard';
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 // Context
 import Context from '../../../../context/Context';
 // Styles

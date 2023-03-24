@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import HomeContext from '../../../context/Context';
+import Context from '../../../context/Context';
 
 export default function HomeModal() {
-  const { languageId } = useContext(HomeContext);
+  const { languageId } = useContext(Context);
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
 
   const subtitleEn = 'REGULATORY ROADBLOCKS FOR INNOVATION & ENTREPRENEURSHIP IN BRAZIL';

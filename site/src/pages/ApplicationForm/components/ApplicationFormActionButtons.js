@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import HomeContext from '../../../context/Context';
-import buttonAction from '../../../img/greymatter-button-action.svg';
+import buttonAction from '../../assets/img/greymatter-button-action.svg';
 
 export default function ApplicationFormActionButtons() {
   const { languageId } = useContext(HomeContext);

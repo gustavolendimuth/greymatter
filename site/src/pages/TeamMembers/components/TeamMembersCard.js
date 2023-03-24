@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 import { FaLinkedin } from 'react-icons/fa';
 import urlFor from '../../../utils/urlFor';
 import Context from '../../../context/Context';
-import ArrowDown from '../../../components/ArrowDown';
+import ArrowDown from '../../components/ArrowDown';
 
 export default function TeamMembersCard({
   member: { alt, name, photoLg, position, linkedin, text, slug },

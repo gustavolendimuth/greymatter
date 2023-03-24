@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
 // Components
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 // Utils
 import urlFor from '../../../../utils/urlFor';
 // Styles

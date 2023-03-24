@@ -1,6 +1,6 @@
 /* stylelint-disable selector-max-specificity */
 .team-section {
-  background: url('../../../../img/greymatter-what-we-look-for-background.webp') bottom / cover no-repeat;
+  background: url('../../../assets/img/greymatter-what-we-look-for-background.webp') bottom / cover no-repeat;
   background-blend-mode: overlay;
   background-color: var(--bs-dark);
   transform: rotate(180deg);

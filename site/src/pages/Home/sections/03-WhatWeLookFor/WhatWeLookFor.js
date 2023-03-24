@@ -4,7 +4,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 // Components
 import WhatWeLookForCards from './components/WhatWeLookForCards';
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 // Context
 import Context from '../../../../context/Context';
 // Utils

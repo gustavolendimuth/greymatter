@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import TeamMembersCard from './components/TeamMembersCard';
 import Context from '../../context/Context';
 import './TeamMembers.css';
-import teamMembersBackground from '../../img/greymatter-team-members-background.webp';
+import teamMembersBackground from '../assets/img/greymatter-team-members-background.webp';
 
 export default function TeamMembers() {
   const {

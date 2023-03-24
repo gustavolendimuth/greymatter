@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useContext, useEffect, useState } from 'react';
 // Components
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 import HowWeInvestTree from './components/HowWeInvestTree';
 // Context
 import Context from '../../../../context/Context';

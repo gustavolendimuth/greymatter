@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 import urlFor from '../../../../utils/urlFor';
 import Context from '../../../../context/Context';
 import fetchContent from '../../../../utils/fetchContent';
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 import './WhoWeAre.css';
 
 export default function WhoWeAre() {

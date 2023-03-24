@@ -2,7 +2,7 @@
 /* eslint-disable sonarjs/no-identical-expressions */
 import React, { useEffect, useContext, useState } from 'react';
 // Components
-import ArrowDown from '../../../../components/ArrowDown';
+import ArrowDown from '../../../components/ArrowDown';
 import WhatDoWeOfferCard from './components/WhatDoWeOfferCard';
 // Context
 import Context from '../../../../context/Context';

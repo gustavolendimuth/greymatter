@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import HomeContext from '../context/Context';
-import navbarBackground from '../img/greymatter-navbar-background.webp';
+import HomeContext from '../../context/Context';
+import navbarBackground from '../assets/img/greymatter-navbar-background.webp';
 
 export default function Navbar() {
   const { navbarConfig, setLanguageId, languageId, languages } = useContext(HomeContext);
