@@ -39,10 +39,10 @@ export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
             <TreeNode
               key={ index }
               label={
-                <>
+                <div className="how-we-invest-card">
                   <div className="arrow-box" />
                   <div
-                    className="how-we-invest-card rounded-5 d-flex justify-content-center"
+                    className="how-we-invest-card-icon-container rounded-5 d-flex justify-content-center"
                   >
                     <img
                       alt={ card?.cardImage?.alt }
@@ -58,7 +58,7 @@ export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
                   <div className="pt-2 how-we-invest-text">
                     { card?.text && parse(toHTML(card?.text)) }
                   </div>
-                </>
+                </div>
               }
             />
           ))
