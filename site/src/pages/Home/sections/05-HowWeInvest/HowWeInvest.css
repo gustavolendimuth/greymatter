@@ -6,8 +6,7 @@
   /* border: 2px solid var(#7fa0ad); */
   height: 20vw;
   margin: auto;
-
-  /* margin-top: 0.8em; */
+  margin-top: 0.8em;
   min-height: 5.5rem;
   min-width: 5.5rem;
   padding: 0 !important;
@@ -35,9 +34,9 @@
   background-color: var(--light-grey);
 }
 
-.how-we-invest-title {
+/* .how-we-invest-title {
   color: var(--light-blue);
-}
+} */
 
 .how-we-invest-text {
   font-size: 0.5rem;
@@ -76,31 +75,31 @@
   z-index: 10;
 } */
 
-/* .css-1vs3jbz:not( :last-of-type ) > .arrow-box::after {
-  border: solid #4a94c4;
+.css-1vs3jbz:not( :last-of-type ) > .arrow-box::after {
+  border: solid #7fa0ad;
   border-radius: 50%;
   border-width: 0.17em;
   content: '';
   display: inline-block;
   padding: 0.17em;
   position: absolute;
-  top: 2.7em;
-  transform: translateX(-37%) rotate(45deg);
+  top: 4em;
+  transform: translateX(-38%) rotate(45deg);
   z-index: 10;
-} */
+}
 
-/* .css-1vs3jbz:last-of-type > .arrow-box::before {
-  border: solid #4a94c4;
+.css-1vs3jbz:last-of-type > .arrow-box::before {
+  border: solid #7fa0ad;
   border-radius: 50%;
-  border-width: 0.3rem;
+  border-width: 0.17em;
   content: '';
   display: inline-block;
-  padding: 0.2em;
+  padding: 0.17em;
   position: absolute;
-  top: 2.7em;
+  top: 4em;
   transform: translateX(-58%) rotate(45deg);
   z-index: 10;
-} */
+}
 
 @media ( min-width : 768px ) {
 

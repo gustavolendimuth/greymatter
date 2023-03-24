@@ -12,9 +12,9 @@ export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
     <div style={ { width: '100%' } }>
       <Tree
         lineWidth="0.17em"
-        lineColor="#4a94c4"
+        lineColor="#7fa0ad"
         lineBorderRadius="1em"
-        lineHeight="4rem"
+        lineHeight="4em"
         lineStyle=""
         nodePadding=""
         label={
