@@ -1,5 +1,5 @@
 /* stylelint-disable selector-pseudo-element-colon-notation */
-.how-we-invest-section .how-we-invest-card {
+.how-we-invest-section .how-we-invest-card-icon-container {
 
   /* background: url('../../../../img/greymatter-what-we-look-for-background.webp') center / cover no-repeat; */
 
@@ -11,6 +11,11 @@
   min-width: 5.5rem;
   padding: 0 !important;
   width: 20vw;
+}
+
+.how-we-invest-card {
+  margin: 0 20px;
+  max-width: 340px;
 }
 
 .how-we-invest-section .how-we-invest-first-card {
@@ -27,7 +32,7 @@
 }
 
 .how-we-invest {
-  max-width: 1000px !important;
+  max-width: 1200px !important;
 }
 
 .how-we-invest-section {
@@ -41,7 +46,8 @@
 .how-we-invest-text {
   font-size: 0.5rem;
   margin: auto;
-  max-width: 290px;
+
+  /* max-width: 290px; */
 
   /* font-weight: 700; */
   padding: 0 !important;
@@ -103,7 +109,7 @@
 
 @media ( min-width : 768px ) {
 
-  /* .how-we-invest-card-icon {
+  /* .how-we-invest-card-icon-container-icon {
     max-height: 7rem !important;
     max-width: 7rem !important;
   } */
@@ -116,10 +122,10 @@
 @media ( min-width : 992px ) {
 
   .how-we-invest-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
-  .how-we-invest-section .how-we-invest-card {
+  .how-we-invest-section .how-we-invest-card-icon-container {
     height: 5em;
     min-height: 4em;
     min-width: 4em;
@@ -128,24 +134,24 @@
   }
 
   .how-we-invest-section .how-we-invest-first-card {
-    height: 7em;
+    height: 7.5em;
     min-height: 6em;
     min-width: 6em;
     padding: 0.2em;
-    width: 7em;
+    width: 7.5em;
   }
 
 }
 
 /* @media ( min-width : 768px ) {
 
-  .how-we-invest-section .how-we-invest-card {
+  .how-we-invest-section .how-we-invest-card-icon-container {
     padding: 1em;
   }
 
 } */
 
-/* .how-we-invest-card-icon {
+/* .how-we-invest-card-icon-container-icon {
   max-height: 5.5rem;
   max-width: 5.5rem;
 } */

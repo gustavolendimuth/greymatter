@@ -41,22 +41,24 @@ export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
               label={
                 <>
                   <div className="arrow-box" />
-                  <div
-                    className="how-we-invest-card rounded-5 d-flex justify-content-center"
-                  >
-                    <img
-                      alt={ card?.cardImage?.alt }
-                      className="how-we-invest-card-icon img-fluid"
-                      src={
-                        card?.cardImage && urlFor(card.cardImage.image.asset)
-                          .size(200)
-                          .quality(90)
-                          .url()
-                      }
-                    />
-                  </div>
-                  <div className="pt-2 how-we-invest-text">
-                    { card?.text && parse(toHTML(card?.text)) }
+                  <div className="how-we-invest-card">
+                    <div
+                      className="how-we-invest-card-icon-container rounded-5 d-flex justify-content-center"
+                    >
+                      <img
+                        alt={ card?.cardImage?.alt }
+                        className="how-we-invest-card-icon img-fluid"
+                        src={
+                          card?.cardImage && urlFor(card.cardImage.image.asset)
+                            .size(200)
+                            .quality(90)
+                            .url()
+                        }
+                      />
+                    </div>
+                    <div className="pt-2 how-we-invest-text">
+                      { card?.text && parse(toHTML(card?.text)) }
+                    </div>
                   </div>
                 </>
               }
