@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaSearch } from 'react-icons/fa';
 import F from '../fieldsText';
-import type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'whatWeLookFor',
@@ -9,12 +9,7 @@ export default {
   title: 'What we look for',
   icon: FaSearch,
   fields: [
-    type('section'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('section'),
     {
       name: 'language',
       type: 'reference',

@@ -1,6 +1,6 @@
 import { BsTv } from 'react-icons/bs';
 import F from '../fieldsText';
-import type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'hero',
@@ -8,12 +8,7 @@ export default {
   title: 'Banner',
   icon: BsTv,
   fields: [
-    type('section'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('section'),
     {
       name: 'language',
       type: 'reference',

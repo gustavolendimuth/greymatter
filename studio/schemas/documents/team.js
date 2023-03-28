@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { BsFillPeopleFill } from 'react-icons/bs';
 import F from '../fieldsText';
-import Type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'team',
@@ -15,12 +15,7 @@ export default {
     },
   ],
   fields: [
-    Type('section'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('section'),
     {
       name: 'language',
       type: 'reference',

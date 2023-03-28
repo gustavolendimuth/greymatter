@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaClipboard } from 'react-icons/fa';
+import documentType from '../objects/documentType';
 import F from '../fieldsText';
-import type from '../objects/type';
 
 export default {
   name: 'application',
@@ -9,12 +9,7 @@ export default {
   title: 'Application',
   icon: FaClipboard,
   fields: [
-    type('section'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('section'),
     {
       name: 'language',
       type: 'reference',

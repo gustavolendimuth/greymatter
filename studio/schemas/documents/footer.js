@@ -9,11 +9,6 @@ export default {
   icon: FaDigitalTachograph,
   fields: [
     {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
-    {
       name: 'language',
       type: 'reference',
       title: 'Idioma',

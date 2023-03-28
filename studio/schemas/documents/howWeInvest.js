@@ -1,6 +1,6 @@
 import { FaChartPie } from 'react-icons/fa';
 import F from '../fieldsText';
-import type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'howWeInvest',
@@ -8,12 +8,7 @@ export default {
   title: 'How We Invest',
   icon: FaChartPie,
   fields: [
-    type('section'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('section'),
     {
       name: 'language',
       type: 'reference',

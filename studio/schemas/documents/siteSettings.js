@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { BsGear } from 'react-icons/bs';
 import F from '../fieldsText';
-import type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'siteSettings',
@@ -9,12 +9,8 @@ export default {
   title: 'Site settings',
   icon: BsGear,
   fields: [
-    type('config'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('config'),
+
     {
       name: 'language',
       type: 'reference',

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaClipboardList } from 'react-icons/fa';
 import F from '../fieldsText';
-import type from '../objects/type';
+import documentType from '../objects/documentType';
 
 export default {
   name: 'applicationForm',
@@ -15,12 +15,7 @@ export default {
     },
   ],
   fields: [
-    type('page'),
-    {
-      name: 'preview',
-      type: 'preview',
-      title: F.default.preview.title,
-    },
+    documentType('page'),
     {
       name: 'language',
       type: 'reference',
