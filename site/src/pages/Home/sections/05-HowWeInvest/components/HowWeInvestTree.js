@@ -7,7 +7,6 @@ import urlFor from '../../../../../utils/urlFor';
 
 export default function HowWeInvestTree({ cards, firstCard }) {
   const [screenSize, setScreenSize] = useState();
-  console.log('cards', cards);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
