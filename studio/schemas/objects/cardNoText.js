@@ -1,5 +1,5 @@
 export default {
-  name: 'simpleCard',
+  name: 'cardNoText',
   type: 'object',
   title: 'Card da seção',
   fields: [
@@ -13,11 +13,6 @@ export default {
       type: 'figureDesktop',
       title: 'Imagem do card',
       description: 'Formatos permitidos são: webp, jpg, png, gif. Tamanho máximo de 152px de largura ou altura.',
-    },
-    {
-      name: 'text',
-      type: 'richText',
-      title: 'Texto do card',
     },
   ],
 };

@@ -13,16 +13,17 @@ import './HowWeInvest.css';
 export default function HowWeInvest() {
   const [howWeInvestPageTitle, setHowWeInvestPageTitle] = useState();
   const [howWeInvestCards, setHowWeInvestCards] = useState();
-  const [howWeInvestCardsData, setHowWeInvestCardsData] = useState();
+  const [howWeInvestFirstCard, setHowWeInvestFirstCard] = useState();
   const { languageId, section } = useContext(Context);
 
   useEffect(() => {
     const getHowWeInvestContent = async () => {
+      if (!languageId) return;
       const data = await fetchContent('howWeInvest', languageId);
       if (data) {
         setHowWeInvestPageTitle(data.pageTitle);
         setHowWeInvestCards(data.cards);
-        setHowWeInvestCardsData({ background: data.cardsBackground, firstCard: data.firstCard });
+        setHowWeInvestFirstCard(data.firstCard);
       }
     };
     getHowWeInvestContent();
@@ -39,7 +40,7 @@ export default function HowWeInvest() {
         >
           { howWeInvestPageTitle }
         </h1>
-        <HowWeInvestTree cards={ howWeInvestCards } cardsData={ howWeInvestCardsData } />
+        <HowWeInvestTree cards={ howWeInvestCards } firstCard={ howWeInvestFirstCard } />
         <ArrowDown to="/team" />
       </div>
     </section>

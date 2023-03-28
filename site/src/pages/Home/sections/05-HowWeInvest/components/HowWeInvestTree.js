@@ -1,20 +1,41 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tree, TreeNode } from 'react-organizational-chart';
 import parse from 'html-react-parser';
 import { toHTML } from '@portabletext/to-html';
 import urlFor from '../../../../../utils/urlFor';
 
-export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
+export default function HowWeInvestTree({ cards, firstCard }) {
+  const [screenSize, setScreenSize] = useState();
+  console.log('cards', cards);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setScreenSize('mobile');
+      } else if (window.innerWidth >= 768 && window.innerWidth < 992) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   if (!cards || !firstCard) return null;
 
   return (
     <div style={ { width: '100%' } }>
       <Tree
-        lineWidth="0.17em"
+        lineWidth="0.2rem"
         lineColor="#7fa0ad"
-        lineBorderRadius="1em"
-        lineHeight="4em"
+        lineBorderRadius="1.5rem"
+        lineHeight={ screenSize === 'desktop' ? '5.5rem' : '3.5rem' }
         lineStyle=""
         nodePadding=""
         label={
@@ -57,7 +78,7 @@ export default function HowWeInvestTree({ cards, cardsData: { firstCard } }) {
                       />
                     </div>
                     <div className="pt-2 how-we-invest-text">
-                      { card?.text && parse(toHTML(card?.text)) }
+                      { card?.text && parse(toHTML(card.text)) }
                     </div>
                   </div>
                 </>

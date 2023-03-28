@@ -40,11 +40,6 @@ export default function Greymatter() {
 
   useEffect(() => {
     setNavbarConfig({ background: false, position: 'relative' });
-    if (slug) {
-      scrollToCard();
-    } else {
-      window.scrollTo(0, 0);
-    }
   }, []);
 
   useEffect(() => {
@@ -62,6 +57,8 @@ export default function Greymatter() {
   useLayoutEffect(() => {
     if (slug) {
       scrollToCard();
+    } else {
+      window.scrollTo(0, 0);
     }
   });
 

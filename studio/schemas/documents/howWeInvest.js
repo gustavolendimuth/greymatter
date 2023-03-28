@@ -39,14 +39,8 @@ export default {
       description: F.default.title.description,
     },
     {
-      name: 'cardsBackground',
-      type: 'backgroundSimple',
-      title: 'Cards Background',
-      description: 'Selecione as opções de fundo do card.',
-    },
-    {
       name: 'firstCard',
-      type: 'simpleCard',
+      type: 'cardNoText',
       title: 'Primeiro Card',
       validation: (Rule) => Rule.required(),
       description: 'Primeiro card da seção.',
@@ -56,7 +50,7 @@ export default {
       type: 'array',
       title: 'Cards da seção',
       validation: (Rule) => Rule.required(),
-      of: [{ type: 'simpleCard' }],
+      of: [{ type: 'card' }],
     },
     {
       name: 'background',
