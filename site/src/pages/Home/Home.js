@@ -73,7 +73,7 @@ export default function Greymatter() {
           muted
         />
         <img
-          src={ (!heroBackgroundVideo && heroBackground?.image) && urlFor(heroBackground.image).url() }
+          src={ (!heroBackgroundVideo && heroBackground?.image) ? urlFor(heroBackground.image).url() : undefined }
           className={
             `hero-background-image 
           ${heroBackground?.heightLimit && 'hero-background-height-limit'} 

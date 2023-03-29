@@ -35,6 +35,7 @@ function App() {
     if (value) {
       setLanguageId(value);
     }
+    console.log(process.env.REACT_APP_PROJECT_DATASET);
   }, []);
 
   useEffect(() => {

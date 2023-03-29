@@ -21,7 +21,6 @@ export default function HowWeInvest() {
       if (!languageId) return;
       const data = await fetchContent('howWeInvest', languageId);
       if (data) {
-        console.log('data', data);
         setHowWeInvestPageTitle(data.title);
         setHowWeInvestCards(data.cards);
         setHowWeInvestFirstCard(data.firstCard);
