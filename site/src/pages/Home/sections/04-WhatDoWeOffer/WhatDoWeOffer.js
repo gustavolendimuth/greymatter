@@ -19,7 +19,7 @@ export default function WhatDoWeOffer() {
     const getWhatDoWeOfferContent = async () => {
       const data = await fetchContent('whatDoWeOffer', languageId);
       if (data) {
-        setWhatDoWeOfferPageTitle(data.pageTitle);
+        setWhatDoWeOfferPageTitle(data.title);
         setWhatDoWeOfferCards(data.cards);
       }
     };

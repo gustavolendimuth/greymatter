@@ -23,7 +23,7 @@ export default function Application() {
     const getApplicationContent = async () => {
       const data = await fetchContent('application', languageId);
       if (data) {
-        setApplicationPageTitle(data.pageTitle);
+        setApplicationPageTitle(data.title);
         setApplicationText(toHTML(data.text));
         setApplicationImage(data.image);
         setApplicationButtonText(data.buttonText);

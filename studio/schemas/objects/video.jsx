@@ -2,12 +2,13 @@ import React from 'react';
 import getVideoId from 'get-video-id';
 import PropTypes from 'prop-types';
 
-function VideoPreview({ value }) {
+function VideoPreview({ actions: { props: { value } } }) {
   let site;
   let url = '';
+  console.log('value', value);
 
-  if (value.url) {
-    const { id, service } = getVideoId(value.url);
+  if (value?.url) {
+    const { id, service } = getVideoId(value?.url);
     site = service;
     if (service === 'vimeo') {
       url = `https://player.vimeo.com/video/${id}?h=343212dc82&autoplay=1&loop=1&title=0&byline=0&portrait=0`;
@@ -66,16 +67,20 @@ export default {
       title: 'Endereço',
     },
   ],
-  preview: {
+  components: {
     select: {
       url: 'url',
     },
-    component: VideoPreview,
+    preview: VideoPreview,
   },
 };
 
 VideoPreview.propTypes = {
-  value: PropTypes.shape({
-    url: PropTypes.string,
+  actions: PropTypes.shape({
+    props: PropTypes.shape({
+      value: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    }),
   }).isRequired,
 };

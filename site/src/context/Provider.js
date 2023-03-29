@@ -33,7 +33,8 @@ export default function HomeProvider({ children }) {
   const getTeamMembersContent = async () => {
     const data = await fetchContent('team', languageId);
     if (data) {
-      setTeamPageTitle(data.pageTitle);
+      console.log('data', data);
+      setTeamPageTitle(data.title);
       setTeamMembers(data.members);
     }
   };

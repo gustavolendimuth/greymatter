@@ -2,7 +2,7 @@ import React from 'react';
 import getYoutubeID from 'get-youtube-id';
 import PropTypes from 'prop-types';
 
-const YouTubePreview = ({ value }) => {
+function YouTubePreview({ value }) {
   const id = getYoutubeID(value.url);
   const url = `https://www.youtube.com/embed/${id}?controls=0&modestbranding=1`;
 
@@ -23,7 +23,7 @@ const YouTubePreview = ({ value }) => {
       allowFullScreen
     />
   );
-};
+}
 
 export default {
   name: 'youtube',
@@ -36,11 +36,11 @@ export default {
       title: 'Endereço',
     },
   ],
-  preview: {
+  components: {
     select: {
       url: 'url',
     },
-    component: YouTubePreview,
+    preview: YouTubePreview,
   },
 };
 

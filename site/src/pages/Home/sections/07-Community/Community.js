@@ -28,7 +28,7 @@ export default function Community() {
     const getCommunityContent = async () => {
       const data = await fetchContent('community', languageId);
       if (data) {
-        setCommunityPageTitle(data.pageTitle);
+        setCommunityPageTitle(data.title);
         setCommunityText(toHTML(data.text));
         const members = {
           custom: () => data.members,

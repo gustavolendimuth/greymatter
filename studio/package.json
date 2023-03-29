@@ -2,42 +2,44 @@
   "name": "greymatter",
   "private": true,
   "version": "1.0.0",
-  "description": "",
   "main": "package.json",
-  "author": "Gustavo Lendimuth <gustavolendimuth@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "dev": "sanity dev",
     "start": "sanity start",
-    "build": "sanity build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.35.0",
-    "@sanity/color-input": "^2.35.0",
-    "@sanity/core": "^2.35.0",
-    "@sanity/cross-dataset-duplicator": "^0.3.6",
-    "@sanity/default-layout": "^2.35.0",
-    "@sanity/default-login": "^2.35.0",
-    "@sanity/desk-tool": "^2.35.1",
-    "@sanity/vision": "^2.35.0",
+    "@sanity/color-input": "^3.0.2",
+    "@sanity/cross-dataset-duplicator": "^1.0.0",
+    "@sanity/vision": "^3.0.0",
+    "color-input": "^0.0.1-alpha.7",
     "get-video-id": "^3.6.5",
     "get-youtube-id": "^1.0.1",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
-    "react-icons": "^4.4.0",
-    "sanity": "^2.29.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-is": "^18.2.0",
+    "sanity": "^3.0.0",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "@sanity/cli": "^3.7.1"
+    "@sanity/eslint-config-studio": "^2.0.1",
+    "@types/react": "^18.0.25",
+    "@types/styled-components": "^5.1.26",
+    "eslint": "^8.6.0",
+    "prettier": "^2.8.7",
+    "typescript": "^4.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
   }
 }

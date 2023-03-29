@@ -5,7 +5,7 @@
   "scripts": {
     "greymatter": "npm install && cd ./site && npm install && cd ../studio && npm install",
     "start": "cd ./site && react-scripts start",
-    "sanity": "cd ./studio && sanity start",
+    "sanity": "cd ./studio && sanity dev",
     "build": "rm -rf ./build && cd ./site && npm install && react-scripts build && mv build ../",
     "test": "cd site && react-scripts test",
     "eject": "cd site && react-scripts eject",

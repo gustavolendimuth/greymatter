@@ -1,6 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaLandmark } from 'react-icons/fa';
-import F from '../fieldsText';
 import documentType from '../objects/documentType';
 
 export default {
@@ -22,17 +21,10 @@ export default {
       ],
     },
     {
-      name: 'pageTitle',
+      name: 'title',
       type: 'string',
       title: 'Título da Seção',
       validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'title',
-      type: 'string',
-      title: F.default.title.title,
-      validation: (Rule) => Rule.required(),
-      description: F.default.title.description,
     },
     {
       name: 'cards',

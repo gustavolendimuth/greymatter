@@ -1,10 +1,4 @@
-/* eslint-disable import/no-unresolved */
-// First, we must import the schema creator
-import createSchema from 'part:@sanity/base/schema-creator';
-
-// Then import schema types from any plugins that might expose them
-import schemaTypes from 'all:part:@sanity/base/schema-type';
-
+/* eslint-disable import/prefer-default-export */
 // Pages
 import language from './documents/language';
 import hero from './documents/hero';
@@ -35,38 +29,31 @@ import howWeInvest from './documents/howWeInvest';
 import cardNoText from './objects/cardNoText';
 import backgroundSimple from './objects/backgroundSimple';
 
-// Then we give our schema to the builder and provide the result to Sanity
-export default createSchema({
-  // We name our schema
-  name: 'default',
-  // Then proceed to concatenate our document type
-  // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    language,
-    siteSettings,
-    hero,
-    whoWeAre,
-    whatWeLookFor,
-    whatDoWeOffer,
-    howWeInvest,
-    team,
-    teamMembers,
-    community,
-    communityMembers,
-    application,
-    applicationForm,
-    footer,
-    card,
-    cardNoText,
-    richText,
-    figure,
-    figureDesktop,
-    background,
-    backgroundSimple,
-    youtube,
-    preview,
-    video,
-    teamMembersObject,
-    communityMembersObject,
-  ]),
-});
+export const schemaTypes = [
+  language,
+  siteSettings,
+  hero,
+  whoWeAre,
+  whatWeLookFor,
+  whatDoWeOffer,
+  howWeInvest,
+  team,
+  teamMembers,
+  community,
+  communityMembers,
+  application,
+  applicationForm,
+  footer,
+  card,
+  cardNoText,
+  richText,
+  figure,
+  figureDesktop,
+  background,
+  backgroundSimple,
+  youtube,
+  preview,
+  video,
+  teamMembersObject,
+  communityMembersObject,
+];

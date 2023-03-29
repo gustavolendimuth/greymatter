@@ -23,7 +23,7 @@ export default function WhatWeLookFor() {
     const getWhatWeLookForContent = async () => {
       const data = await fetchContent('whatWeLookFor', languageId);
       if (data) {
-        setWhatWeLookForTitle(data.pageTitle);
+        setWhatWeLookForTitle(data.title);
         setWhatWeLookForBackground(data.background);
         setWhatWeLookForCards(data.cards);
       }

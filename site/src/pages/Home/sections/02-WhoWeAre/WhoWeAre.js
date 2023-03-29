@@ -20,7 +20,7 @@ export default function WhoWeAre() {
     const getWhoWeAreContent = async () => {
       const data = await fetchContent('whoWeAre', languageId);
       if (data) {
-        setWhoWeArePageTitle(data.pageTitle);
+        setWhoWeArePageTitle(data.title);
         setWhoWeAreImage(data.image);
         setWhoWeAreText(toHTML(data.text));
       }
