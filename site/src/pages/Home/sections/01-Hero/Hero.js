@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable complexity */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -22,6 +24,7 @@ export default function Hero() {
   const [heroBackground, setHeroBackground] = useState();
   const [heroBackgroundVideo, setHeroBackgroundVideo] = useState();
   const { languageId } = useContext(Context);
+  const [isPortrait, setIsPortrait] = useState(window.matchMedia('(orientation: portrait)').matches);
   let windowWidth;
 
   useEffect(() => {
@@ -67,12 +70,27 @@ export default function Hero() {
     fixFontSize();
   });
 
-  if (heroBackgroundVideo) {
+  useEffect(() => {
+    const handleOrientationChange = (e) => {
+      setIsPortrait(e.matches);
+    };
+
+    const mql = window.matchMedia('(orientation: portrait)');
+    mql.addEventListener('change', handleOrientationChange);
+
+    return () => {
+      mql.removeEventListener('change', handleOrientationChange);
+    };
+  }, []);
+
+  if ((heroBackgroundVideo?.landscapeVideo && !isPortrait) || (heroBackgroundVideo?.portraitVideo && isPortrait)) {
     return (
       <header className="d-flex justify-content-center align-items-end full-height">
         <video
           className="hero-background-video"
-          src={ heroBackgroundVideo && heroBackgroundVideo }
+          src={ (
+            isPortrait ? console.log(heroBackgroundVideo.portraitVideo) || heroBackgroundVideo.portraitVideo : console.log(heroBackgroundVideo.portraitVideo) || heroBackgroundVideo.landscapeVideo
+          ) }
           autoPlay
           loop
           muted
@@ -85,7 +103,7 @@ export default function Hero() {
   return (
     <header style={ { minHeight: 'calc(var(--vh, 1vh) * 100 - 70px)' } }>
       <img
-        src={ (!heroBackgroundVideo && heroBackground?.image) ? urlFor(heroBackground.image).url() : undefined }
+        src={ heroBackground?.image ? urlFor(heroBackground.image).url() : undefined }
         className={
           `hero-background-image 
                 ${heroBackground?.heightLimit && 'hero-background-height-limit'} 

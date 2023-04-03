@@ -3,24 +3,28 @@ import sanityClient from './sanityClient';
 
 const fetchContent = async (doc, languageId) => {
   const languageQuery = `*[_type == "language"] {
-      abbreviation, code, language, _id }`;
+        abbreviation, code, language, _id 
+      }`;
 
   const teamQuery = `*[_type == "team" 
       && language._ref == "${languageId}"] | order(_createdAt asc)[0] {
-      title,
-      'members':teamMembers.teamMembers[]->{name, alt, photoLg, position, linkedin, text, slug },
+        title,
+        'members':teamMembers.teamMembers[]->{name, alt, photoLg, position, linkedin, text, slug },
       }`;
 
   const communityQuery = `*[_type == "community" 
       && language._ref == "${languageId}"] | order(_createdAt asc)[0] {
-      title, text, image, communityMembers,
-      'members':communityMembers.communityMembers[]->{name, alt, photoLg, position, linkedin, text, slug }
+        title, text, image, communityMembers,
+        'members':communityMembers.communityMembers[]->{name, alt, photoLg, position, linkedin, text, slug }
       }`;
 
   const heroQuery = `*[_type == "hero" 
       && language._ref == "${languageId}"] | order(_createdAt asc)[0] {
-      background, image, subTitle, text, title,
-      "backgroundVideo": backgroundVideo.asset->url
+        background, image, subTitle, text, title,
+        "backgroundVideo": { 
+          "landscapeVideo": backgroundVideo.landscapeVideo.asset->url,
+          "portraitVideo": backgroundVideo.portraitVideo.asset->url
+        }
       }`;
 
   const genericQuery = `*[_type == "${doc}" 

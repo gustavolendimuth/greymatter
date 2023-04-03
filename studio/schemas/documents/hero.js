@@ -48,15 +48,35 @@ export default {
       title: 'Background',
       description: 'Selecione as opções de fundo da seção.',
     },
-    {
-      name: 'backgroundVimeo',
-      type: 'video',
-      title: 'Vimeo de background',
-    },
+    // {
+    //   name: 'backgroundVimeo',
+    //   type: 'video',
+    //   title: 'Vimeo de background',
+    // },
     {
       name: 'backgroundVideo',
-      type: 'file',
       title: 'Vídeo de background',
+      type: 'object',
+      fields: [
+        {
+          name: 'landscapeVideo',
+          type: 'file',
+          title: 'Vídeo na horizontal',
+          description: 'Selecione o vídeo que será exibido na horizontal',
+          options: {
+            accept: 'video/mp4',
+          },
+        },
+        {
+          name: 'portraitVideo',
+          type: 'file',
+          title: 'Vídeo na vertical',
+          description: 'Selecione o vídeo que será exibido na vertical',
+          options: {
+            accept: 'video/mp4',
+          },
+        }
+      ]
     },
   ],
 };
