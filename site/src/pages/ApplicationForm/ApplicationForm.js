@@ -81,8 +81,9 @@ export default function ApplicationForm() {
   useEffect(() => {
     const getApplicationFormContent = async () => {
       const data = await fetchContent('applicationForm', languageId);
+      console.log(data);
       if (data) {
-        setApplicationFormPageTitle(data.pageTitle);
+        setApplicationFormPageTitle(data.title);
         setApplicationFormText(toHTML(data.text));
         // setApplicationFormBackground(data.background);
         setApplicationFormFields(data.formFields);
