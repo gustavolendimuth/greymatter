@@ -22,7 +22,7 @@ async function saveEmailToSheet({ email, name }) {
   await sheet.addRow({ email, name });
 }
 
-app.get('/', () => 'Grey Matter API');
+app.get('/', (_req, res) => res.send('Grey Matter API'));
 
 app.post('/collect-email', async (req, res) => {
   try {
