@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../../../context/Context';
+import report from '../../assets/pdf/Report-Pesquisa-Grey-Matter-02-mai-2023(5440426.1).pdf';
 
 export default function HomeModal() {
   const { languageId } = useContext(Context);
@@ -7,8 +8,8 @@ export default function HomeModal() {
 
   const subtitleEn = 'REGULATORY ROADBLOCKS FOR INNOVATION & ENTREPRENEURSHIP IN BRAZIL';
   const subtitlePt = 'OBSTÁCULOS REGULATÓRIOS À INOVAÇÃO E AO EMPREENDEDORISMO NO BRASIL';
-  const textEn = 'Suppose you are part of a project that faces regulatory roadblocks in Brazil. In that case, we ask you to respond to a brief questionnaire that aims to map the main barriers that restrict innovation development in the country. The filling should take 5 to 7 minutes.';
-  const textPt = 'Se você participa de algum projeto que enfrente obstáculos regulatórios no Brasil, pedimos que responda a um breve questionário cujo objetivo é mapear as principais barreiras que restringem o desenvolvimento de inovação no País. O preenchimento deve levar de 5 a 7 minutos.';
+  const textEn = 'Here is the report of the research we conducted with projects facing regulatory obstacles in Brazil. Our purpose is to build an advocacy agenda to enable innovative projects with potential to transform Brazil.';
+  const textPt = 'Confira o report da pesquisa que realizamos com projetos que enfrentam obstáculos regulatórios no Brasil. Nosso objetivo é construir uma pauta de advocacy para viabilizar projetos inovadores com potencial transformador para o País.';
 
   return (
     <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,10 +44,10 @@ export default function HomeModal() {
               role="button"
               target="_blank"
               className="btn btn-primary btn-primary-modal"
-              href="https://pt.surveymonkey.com/r/CPYTZ8N"
+              href={ report }
               rel="noreferrer"
             >
-              { languageId === englishId ? 'Questionnaire' : 'Questionário' }
+              Download
             </a>
           </div>
         </div>
