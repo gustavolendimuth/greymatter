@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useLayoutEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import camelcase from 'camelcase';
 // Sections
-import Hero from './sections/01-Hero/Hero';
+import Hero from './sections/00-Hero/Hero';
 import WhoWeAre from './sections/02-WhoWeAre/WhoWeAre';
 import WhatWeLookFor from './sections/03-WhatWeLookFor/WhatWeLookFor';
 import WhatDoWeOffer from './sections/04-WhatDoWeOffer/WhatDoWeOffer';
@@ -15,6 +15,7 @@ import Community from './sections/07-Community/Community';
 import Application from './sections/08-Application/Application';
 // Utils
 import Context from '../../context/Context';
+import Intro from './sections/01-Intro/Intro';
 
 export default function Greymatter() {
   const {
@@ -46,6 +47,7 @@ export default function Greymatter() {
   return (
     <>
       <Hero />
+      <Intro />
       <WhoWeAre />
       <WhatWeLookFor />
       <WhatDoWeOffer />

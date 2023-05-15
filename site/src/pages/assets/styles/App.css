@@ -23,7 +23,7 @@ body {
 }
 
 .full-height {
-  min-height: calc(var(--vh, 1vh) * 100 - 70px);
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .btn-secondary-modal {

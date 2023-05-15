@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './pages/assets/styles/SegoeUI.css';
 import './pages/assets/styles/Footer-Dark-Multi-Column-icons.css';
 import './pages/assets/styles/App.css';
-import './pages/assets/styles/Navbar.css';
 import './pages/assets/styles/Footer.css';
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -48,9 +47,6 @@ function App() {
   useEffect(() => {
     if (languageId) {
       setLocalStorage('languageId', languageId);
-
-      // const openModal = () => $('#exampleModal').modal('show');
-      // openModal();
     }
   }, [languageId]);
 

@@ -1,9 +1,5 @@
-/* eslint-disable sonarjs/cognitive-complexity */
-/* eslint-disable complexity */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable sonarjs/no-identical-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable sonarjs/no-identical-expressions */
 import React, { useEffect, useState, useLayoutEffect, useContext } from 'react';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
@@ -12,19 +8,17 @@ import ArrowDown from '../../../components/ArrowDown';
 // Utils
 import urlFor from '../../../../utils/urlFor';
 // Styles
-import './Hero.css';
+import './Intro.css';
 import Context from '../../../../context/Context';
 import fetchContent from '../../../../utils/fetchContent';
 
-export default function Hero() {
+export default function Intro() {
   const [heroText, setHeroText] = useState('');
   const [heroImage, setHeroImage] = useState('');
   const [heroSubtitle, setHeroSubtitle] = useState('');
   const [heroBackgroundColor, setHeroBackgroundColor] = useState('');
   const [heroBackground, setHeroBackground] = useState();
-  const [heroBackgroundVideo, setHeroBackgroundVideo] = useState();
   const { languageId } = useContext(Context);
-  const [isPortrait, setIsPortrait] = useState(window.matchMedia('(orientation: portrait)').matches);
   let windowWidth;
 
   useEffect(() => {
@@ -32,7 +26,6 @@ export default function Hero() {
       const data = await fetchContent('hero', languageId);
       if (data) {
         setHeroBackground(data.background);
-        setHeroBackgroundVideo(data.backgroundVideo);
         setHeroText(toHTML(data.text));
         setHeroImage(data.image);
         setHeroSubtitle(data.subTitle);
@@ -70,49 +63,19 @@ export default function Hero() {
     fixFontSize();
   });
 
-  useEffect(() => {
-    const handleOrientationChange = (e) => {
-      setIsPortrait(e.matches);
-    };
-
-    const mql = window.matchMedia('(orientation: portrait)');
-    mql.addEventListener('change', handleOrientationChange);
-
-    return () => {
-      mql.removeEventListener('change', handleOrientationChange);
-    };
-  }, []);
-
-  if ((heroBackgroundVideo?.landscapeVideo && !isPortrait) || (heroBackgroundVideo?.portraitVideo && isPortrait)) {
-    return (
-      <header className="d-flex justify-content-center align-items-end full-height">
-        <video
-          className="hero-background-video"
-          src={ (
-            isPortrait ? console.log(heroBackgroundVideo.portraitVideo) || heroBackgroundVideo.portraitVideo : console.log(heroBackgroundVideo.portraitVideo) || heroBackgroundVideo.landscapeVideo
-          ) }
-          autoPlay
-          loop
-          muted
-        />
-        <ArrowDown styles="hero-arrow-down" to="/who-we-are" />
-      </header>
-    );
-  }
-
   return (
-    <header style={ { minHeight: 'calc(var(--vh, 1vh) * 100 - 70px)' } }>
+    <div style={ { minHeight: 'calc(var(--vh, 1vh) * 100)' } }>
       <img
         src={ heroBackground?.image ? urlFor(heroBackground.image).url() : undefined }
         className={
-          `hero-background-image 
-                ${heroBackground?.heightLimit && 'hero-background-height-limit'} 
+          `hero-background-image
+                ${heroBackground?.heightLimit && 'full-height'}
                 ${heroBackground?.alignToTop && 'hero-background-position-top'}`
         }
         alt={ heroBackground?.alt }
       />
       <div
-        className="container d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 hero-section"
+        className="container d-flex flex-column justify-content-between align-items-xxl-center gap-2 gap-lg-5 intro-section"
         style={ {
           backgroundColor: heroBackgroundColor && `rgba(${heroBackgroundColor.r}, ${heroBackgroundColor.g}, ${heroBackgroundColor.b}, ${heroBackgroundColor.a})`,
         } }
@@ -153,6 +116,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }

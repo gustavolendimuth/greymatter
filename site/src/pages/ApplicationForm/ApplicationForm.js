@@ -75,7 +75,7 @@ export default function ApplicationForm() {
   };
 
   useEffect(() => {
-    setNavbarConfig({ background: false, position: 'absolute' });
+    setNavbarConfig({ background: false });
   }, []);
 
   useEffect(() => {
