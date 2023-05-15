@@ -21,6 +21,7 @@ export default function HomeProvider({ children }) {
     team: useRef(),
     community: useRef(),
     application: useRef(),
+    intro: useRef(),
   };
 
   const getLanguages = async () => {

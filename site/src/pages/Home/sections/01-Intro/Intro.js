@@ -18,7 +18,7 @@ export default function Intro() {
   const [heroSubtitle, setHeroSubtitle] = useState('');
   const [heroBackgroundColor, setHeroBackgroundColor] = useState('');
   const [heroBackground, setHeroBackground] = useState();
-  const { languageId } = useContext(Context);
+  const { languageId, section } = useContext(Context);
   let windowWidth;
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Intro() {
   });
 
   return (
-    <div style={ { minHeight: 'calc(var(--vh, 1vh) * 100)' } }>
+    <div className="full-height" ref={ section.intro } id="intro">
       <img
         src={ heroBackground?.image ? urlFor(heroBackground.image).url() : undefined }
         className={
