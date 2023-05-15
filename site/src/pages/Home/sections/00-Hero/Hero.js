@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { toHTML } from '@portabletext/to-html';
 // Components
 import ArrowDown from '../../../components/ArrowDown';
 // Styles
@@ -17,9 +16,6 @@ export default function Hero() {
       const data = await fetchContent('hero', languageId);
       if (data) {
         setHeroBackgroundVideo(data.backgroundVideo);
-        setHeroText(toHTML(data.text));
-        setHeroImage(data.image);
-        setHeroSubtitle(data.subTitle);
       }
     };
     getHeroContent();

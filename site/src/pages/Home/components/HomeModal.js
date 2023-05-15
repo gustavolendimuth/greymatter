@@ -14,8 +14,6 @@ export default function HomeModal() {
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
   const { REACT_APP_BACKEND_URL } = process.env;
 
-  console.log(REACT_APP_BACKEND_URL);
-
   const subtitleEn = 'REGULATORY ROADBLOCKS FOR INNOVATION & ENTREPRENEURSHIP IN BRAZIL';
   const subtitlePt = 'OBSTÁCULOS REGULATÓRIOS À INOVAÇÃO E AO EMPREENDEDORISMO NO BRASIL';
   const textEn = 'Here is the report of the research we conducted with projects facing regulatory obstacles in Brazil. Our purpose is to build an advocacy agenda to enable innovative projects with potential to transform Brazil.';
