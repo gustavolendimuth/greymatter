@@ -1,7 +1,6 @@
 .hero-background-video {
-  object-fit: cover;
+  object-fit: fill;
   position: absolute;
-  top: 0;
   width: 100%;
   z-index: -1;
 }
@@ -33,4 +32,3 @@
     fill: var(--bs-primary) !important;
   }
 }
-
