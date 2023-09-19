@@ -1,0 +1,42 @@
+.section-portfolio {
+  background-color: var(--bs-dark);
+}
+
+.portfolio-card {
+  aspect-ratio: 23.9/16.4;
+  border: 1.5px solid var(--bs-light);
+  border-radius: 12px;
+}
+
+@media ( max-width : 760px ) {
+
+  .portfolio-title {
+    font-size: 2rem !important;
+  }
+}
+
+.parent-div {
+  padding-bottom: 100%; /* This makes the aspect ratio 1:1 (square) */
+  position: relative;
+  width: 100%;
+}
+
+.card-content {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.portfolio-icon {
+  height: auto;
+  width: auto;
+}
+
+/* @media ( min-width : 992px ) {
+
+  .portfolio-icon {
+    max-height: 200px !important;
+    max-width: 200px !important;
+  }
+} */
+

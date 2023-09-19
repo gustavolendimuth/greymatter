@@ -1,0 +1,62 @@
+{
+  "title": "Portfolio",
+  "background": "https://cdn.sanity.io/images/yhcu3nao/preview/52b3a0a82cb282e633f03953041c4db62835972c-2000x1334.webp",
+  "companies": [
+    {
+      "logo": {
+        "asset": "./img/privacy83-logo.png",
+        "alt": "Privacy83 logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Privacy83",
+      "description": "Data Privacy management tool developed along with 1500, a software development company",
+      "text": "A Privacy83 é uma ferramenta desenvolvida pela 1500th em parceria com o Vieira Rezende Advogados. Ideal para gestão de dados, oferecendo uma visão global de todos os processos e informações da empresa, além de possuir meios de efetuar mapeamento de dados e análise de risco.",
+      "categories": ["Data Privacy", "Compliance"]
+    },
+    {
+      "logo": {
+        "asset": "./img/moonwalk-logo.svg",
+        "alt": "Moonwalk logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Moonwalk",
+      "description": "Digital transformation for small restaurants",
+      "text": "A startup Moonwalk visa ajudar pequenos restaurantes, facilitando o processo de criação de cardápios online, o que auxilia no recebimento de pedidos pela internet. A companhia oferece benefícios ao cliente por meio de programa de fidelidade e  de cashback, disponíveis no aplicativo da Moonwalk.",
+      "categories": ["Retailtech"]
+    },
+    {
+      "logo": {
+        "asset": "./img/confiance_invest-logo.png",
+        "alt": "Confiance Invest logo",
+        "whiteBackground": false,
+        "tone": "light"
+      },
+      "companyName": "Confiance Invest",
+      "description": "Equity Crowdfunding platform",
+      "text": "A Confiance Invest, destinado a empreendedores e investidores, é um meio de investir na área imobiliária e florestal. A startup pré-seleciona possibilidades de investimento seguras para seus clientes, atentando-se, também, a sustentabilidade e viabilidade econômico-financeira.",
+      "categories": ["Finance"]
+    },
+    {
+      "logo": {
+        "asset": "./img/bvm12-logo-large.png",
+        "alt": "BVM12 logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "BMV12",
+      "description": "",
+      "text": "BVM12 é uma plataforma de financiamento baseada em blockchain que conecta investidores conscientes com indústrias sustentáveis na Amazônia.",
+      "categories": ["Finance"]
+    },
+    {
+      "logo": {
+        "asset": "./img/real_valor-logo.png",
+        "alt": "Real Valor logo",
+        "whiteBackground": true,
+        "tone": "dark"
+      }
+    }
+  ]
+}
