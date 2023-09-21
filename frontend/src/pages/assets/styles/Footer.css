@@ -2,10 +2,25 @@ footer {
   width: 100%;
 }
 
-.footer-vr1-logo-text {
-  line-height: 1.2rem;
-  padding-top: 1rem;
-  width: 350px;
+.footer-greymatter-logo-container {
+  width: 100%;
+}
+
+.footer-greymatter-logo {
+  max-width: 400px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.footer-vieira-rezende-logo-container {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-vieira-rezende-logo {
+  max-width: 350px;
+  object-fit: contain;
+  width: 100%;
 }
 
 .footer-email-input {
@@ -19,6 +34,7 @@ footer {
 
 .footer-subscription-text {
   max-width: 360px;
+  width: 100%;
 }
 
 .footer-linkedin-icon {
