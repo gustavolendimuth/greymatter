@@ -74,6 +74,7 @@ main {
   min-height: calc(var(--vh, 1vh) * 100);
 }
 
+
 .section-title {
   font-weight: 900;
 }
@@ -128,4 +129,18 @@ main {
 
 .pt-6 {
   padding-top: 5rem !important;
+}
+
+.py-6 {
+  padding-bottom: 5rem !important;
+  padding-top: 5rem !important;
+}
+
+.px-6 {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+}
+
+.p-6 {
+  padding: 5rem !important;
 }

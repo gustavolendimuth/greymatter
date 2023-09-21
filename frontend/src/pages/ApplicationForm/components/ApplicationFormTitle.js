@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function ApplicationFormTitle({ field }) {
   return (
-    <div key={ field._key } className="col-12">
+    <div key={field._key} className="col-12">
       <h2
         className="display-6 text-uppercase fw-bold application-form-subtitle"
       >

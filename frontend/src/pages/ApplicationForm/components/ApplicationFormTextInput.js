@@ -14,19 +14,19 @@ export default function ApplicationFormTextInput({ field, id }) {
   };
 
   return (
-    <div className={ columnClass(field.columnSize) }>
+    <div className={columnClass(field.columnSize)}>
       <label
         className="col-form-label form-label"
-        htmlFor={ field.value === 'cnpj' ? 'cnpj' : id }
+        htmlFor={field.value === 'cnpj' ? 'cnpj' : id}
       >
         {field.title}
         <input
           className="form-control form-control-lg application-form-fields"
-          type={ field.value === 'number' ? 'number' : 'text' }
-          id={ field.value === 'cnpj' ? 'cnpj' : id }
-          required={ field.required }
-          minLength={ field.required && 3 }
-          placeholder={ field.value === 'cnpj' ? '00.000.000/0000-00' : null }
+          type={field.value === 'number' ? 'number' : 'text'}
+          id={field.value === 'cnpj' ? 'cnpj' : id}
+          required={field.required}
+          minLength={field.required && 3}
+          placeholder={field.value === 'cnpj' ? '00.000.000/0000-00' : null}
           spellCheck="true"
         />
       </label>

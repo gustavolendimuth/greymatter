@@ -26,7 +26,7 @@ export default function ApplicationFormActionButtons() {
           <img
             alt="Alt"
             className="img-fluid"
-            src={ buttonAction }
+            src={buttonAction}
             width="20px"
             height="20px"
           />

@@ -46,17 +46,17 @@ export default function TeamMembers() {
   return (
     <section
       className="section"
-      style={ { background: `url(${teamMembersBackground}) top / contain no-repeat fixed` } }
+      style={{ background: `url(${teamMembersBackground}) top / contain no-repeat fixed` }}
     >
       {
         teamMembers
             && teamMembers
               .map((member, index) => (
                 <TeamMembersCard
-                  key={ index }
-                  showArrowDown={ teamMembers.length - 1 !== index }
-                  member={ member }
-                  index={ index }
+                  key={index}
+                  showArrowDown={teamMembers.length - 1 !== index}
+                  member={member}
+                  index={index}
                 />
               ))
       }

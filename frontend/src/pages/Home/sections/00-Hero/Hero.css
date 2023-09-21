@@ -11,7 +11,7 @@
 }
 
 .hero-section {
-  align-items: end;
+  align-items: flex-end;
   display: flex;
   justify-content: center;
 }

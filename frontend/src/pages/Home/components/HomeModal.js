@@ -49,8 +49,8 @@ export default function HomeModal() {
 
   return (
     <Container>
-      <Modal show={ showModal } onHide={ handleClose }>
-        <Form onSubmit={ handleSubmit }>
+      <Modal show={showModal} onHide={handleClose}>
+        <Form onSubmit={handleSubmit}>
           <Modal.Header className="border-bottom-0">
             <Modal.Title className="modal-title-centered">
               <h2 className="text-secondary">
@@ -82,8 +82,8 @@ export default function HomeModal() {
                 <Form.Control
                   type="text"
                   placeholder="Name"
-                  value={ name }
-                  onChange={ (event) => setName(event.target.value) }
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   required
                 />
               </Form.Group>
@@ -91,14 +91,14 @@ export default function HomeModal() {
                 <Form.Control
                   type="email"
                   placeholder="Email"
-                  value={ email }
-                  onChange={ (event) => setEmail(event.target.value) }
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   required
                 />
               </Form.Group>
             </div>
             <div className="modal-footer d-flex justify-content-center gap-4">
-              <Button variant="secondary" type="button" onClick={ handleClose }>
+              <Button variant="secondary" type="button" onClick={handleClose}>
                 { languageId === englishId ? 'Close' : 'Fechar' }
               </Button>
               <Button variant="primary" type="submit">

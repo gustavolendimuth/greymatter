@@ -31,7 +31,7 @@ export default function WhoWeAre() {
   if (!whoWeArePageTitle || !whoWeAreText) return null;
 
   return (
-    <section ref={ section.whoWeAre } id="whoWeAre">
+    <section ref={section.whoWeAre} id="whoWeAre">
       <div className="container section who-we-are-section">
         <div />
         <h1
@@ -57,7 +57,7 @@ export default function WhoWeAre() {
               }
               // loading="lazy"
               className="who-we-are-image"
-              alt={ whoWeAreImage?.alt }
+              alt={whoWeAreImage?.alt}
             />
           </div>
         </div>

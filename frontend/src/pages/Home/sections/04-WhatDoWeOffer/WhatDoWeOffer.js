@@ -29,7 +29,7 @@ export default function WhatDoWeOffer() {
   if (!whatDoWeOfferPageTitle || !whatDoWeOfferCards) return null;
 
   return (
-    <section ref={ section.whatDoWeOffer } id="what-do-we-offer">
+    <section ref={section.whatDoWeOffer} id="what-do-we-offer">
       <div className="container section what-do-we-offer-section">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title">
@@ -41,7 +41,7 @@ export default function WhatDoWeOffer() {
           {
             whatDoWeOfferCards
             && whatDoWeOfferCards
-              .map((card, index) => <WhatDoWeOfferCard key={ index } card={ card } index={ index } />)
+              .map((card, index) => <WhatDoWeOfferCard key={index} card={card} index={index} />)
           }
         </div>
         <ArrowDown to="/how-we-invest" />

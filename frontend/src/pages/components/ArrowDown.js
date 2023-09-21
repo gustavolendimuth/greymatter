@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ArrowDown({ styles, to }) {
+export default function ArrowDown({ styles, to, className }) {
   return (
-    <Link to={to}>
+    <Link className={className} to={to}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-64 0 512 512"

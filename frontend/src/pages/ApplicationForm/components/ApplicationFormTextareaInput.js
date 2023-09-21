@@ -5,13 +5,13 @@ import React from 'react';
 export default function ApplicationFormTextareaInput({ field, id }) {
   return (
     <div className="col-12">
-      <label className="form-label" htmlFor={ id }>
+      <label className="form-label" htmlFor={id}>
         {field.title}
         <textarea
           className="form-control form-control-lg application-form-fields"
-          id={ id }
-          required={ field.required }
-          minLength={ field.required ? 3 : 0 }
+          id={id}
+          required={field.required}
+          minLength={field.required ? 3 : 0}
           rows="4"
           spellCheck="true"
         />

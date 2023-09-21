@@ -32,7 +32,7 @@ export default function HowWeInvest() {
   if (!howWeInvestPageTitle || !howWeInvestCards) return null;
 
   return (
-    <section ref={ section.howWeInvest } className="how-we-invest-section" id="howWeInvest">
+    <section ref={section.howWeInvest} className="how-we-invest-section" id="howWeInvest">
       <div className="container section how-we-invest">
         <div />
         <h1
@@ -40,7 +40,7 @@ export default function HowWeInvest() {
         >
           { howWeInvestPageTitle }
         </h1>
-        <HowWeInvestTree cards={ howWeInvestCards } firstCard={ howWeInvestFirstCard } />
+        <HowWeInvestTree cards={howWeInvestCards} firstCard={howWeInvestFirstCard} />
         <ArrowDown to="/team" />
       </div>
     </section>

@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
             <div className="row pb-5">
               <div className="col-12 d-flex justify-content-center align-items-center">
-                <img alt={ logo?.alt } src={ logo && urlFor(logo.image.asset).url() } width="400px" />
+                <img alt={logo?.alt} src={logo && urlFor(logo.image.asset).url()} width="400px" />
               </div>
               <div className="col-12 d-flex gap-4 justify-content-center align-items-center">
                 <a
@@ -68,15 +68,15 @@ export default function Footer() {
           </div>
           <div className="col-12 col-lg-auto d-flex d-xl-flex flex-column p-0">
             <div className="d-flex flex-column align-items-center gap-3">
-              <div className="fs-6 footer-subscription-text" style={ { width: '100%' } }>
+              <div className="fs-6 footer-subscription-text" style={{ width: '100%' }}>
                 {formText && parse(formText)}
               </div>
               <form
                 className="d-flex gap-3 footer-sebscribe-form footer-subscribe-form"
-                style={ { maxWidth: '700px' } }
+                style={{ maxWidth: '700px' }}
                 data-bss-recipient="da84bfb6ef47d75ff81142daef2547c2"
               >
-                <div className="row gx-2 gy-3 justify-content-center" style={ { width: '100%' } }>
+                <div className="row gx-2 gy-3 justify-content-center" style={{ width: '100%' }}>
                   <div className="col-auto d-xxl-flex">
                     <input
                       className="form-control footer-email-input"
@@ -87,7 +87,7 @@ export default function Footer() {
                     />
                   </div>
                   <div className="col-auto">
-                    <button className="btn btn-primary text-uppercase" type="submit" style={ { background: 'var(--bs-primary)' } }>
+                    <button className="btn btn-primary text-uppercase" type="submit" style={{ background: 'var(--bs-primary)' }}>
                       {formButton && formButton}
                     </button>
                   </div>
@@ -96,7 +96,7 @@ export default function Footer() {
               <img
                 alt="Vieira Rezende logo"
                 className="p-5"
-                src={ greymatterLogoVieiraRezende }
+                src={greymatterLogoVieiraRezende}
                 width="320px"
               />
             </div>

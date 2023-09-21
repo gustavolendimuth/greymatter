@@ -11,7 +11,7 @@ export default function WhatDoWeOfferCard({ card: { image, title } }) {
         className="d-flex flex-column justify-content-around align-items-center py-3 px-2 gap-2 what-do-we-offer-card"
       >
         <img
-          alt={ image?.alt }
+          alt={image?.alt}
           className="what-do-we-offer-card-icon"
           src={
             image && urlFor(image.imageLg.asset)

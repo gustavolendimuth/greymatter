@@ -55,10 +55,10 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route element={ <Home /> } path="/" exact />
-          <Route element={ <Home /> } path="/:slug" />
-          <Route element={ <ApplicationForm /> } path="/application-form" />
-          <Route element={ <TeamMembers /> } path="/team-members/:slug" />
+          <Route element={<Home />} path="/" exact />
+          <Route element={<Home />} path="/:slug" />
+          <Route element={<ApplicationForm />} path="/application-form" />
+          <Route element={<TeamMembers />} path="/team-members/:slug" />
         </Routes>
       </main>
       <Footer />

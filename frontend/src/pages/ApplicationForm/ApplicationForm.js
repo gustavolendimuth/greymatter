@@ -47,29 +47,29 @@ export default function ApplicationForm() {
   const fields = {
     title: (field) => (
       <ApplicationFormTitle
-        key={ field._key }
-        field={ field }
+        key={field._key}
+        field={field}
       />
     ),
     text: (field) => (
       <ApplicationFormTextInput
-        key={ field._key }
-        field={ field }
-        id={ fieldTitleToId(field.title) }
+        key={field._key}
+        field={field}
+        id={fieldTitleToId(field.title)}
       />
     ),
     upload: (field) => (
       <ApplicationFormFileUpload
-        key={ field._key }
-        field={ field }
-        id={ fieldTitleToId(field.title) }
+        key={field._key}
+        field={field}
+        id={fieldTitleToId(field.title)}
       />
     ),
     textarea: (field) => (
       <ApplicationFormTextareaInput
-        key={ field._key }
-        field={ field }
-        id={ fieldTitleToId(field.title) }
+        key={field._key}
+        field={field}
+        id={fieldTitleToId(field.title)}
       />
     ),
   };

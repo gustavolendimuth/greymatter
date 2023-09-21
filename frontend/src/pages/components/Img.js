@@ -3,7 +3,7 @@ import React from 'react';
 // Utils
 import urlFor from '../../utils/urlFor';
 
-export default function Img({ alt, image, width, height, quality = 90, format = 'webp', className }) {
+export default function Img({ alt, image, width, height, quality, format, className }) {
   if (!image) {
     return null;
   }
@@ -12,20 +12,28 @@ export default function Img({ alt, image, width, height, quality = 90, format = 
     <img
       alt={alt}
       className={className}
-      src={image && urlFor(image.asset).size(width > height ? width : height).quality(quality).format(format)
+      src={urlFor(image?.asset).size(width > height ? width : height).quality(quality).format(format)
         .url()}
     />
   );
 }
 
-Img.propTypes = {
-  alt: PropTypes.string.isRequired,
-  format: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    asset: PropTypes.string,
-  }).isRequired,
-  quality: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  className: PropTypes.string.isRequired,
+Img.defaultProps = {
+  format: 'webp',
+  quality: 90,
 };
+
+Img.propTypes = {
+  alt: PropTypes.string,
+  format: PropTypes.string,
+  image: PropTypes.shape({
+    asset: PropTypes.shape({
+      _ref: PropTypes.string,
+      _type: PropTypes.string,
+    }),
+  }),
+  quality: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  className: PropTypes.string,
+}.isRequired;

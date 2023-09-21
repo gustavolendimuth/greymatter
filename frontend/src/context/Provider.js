@@ -22,6 +22,7 @@ export default function HomeProvider({ children }) {
     community: useRef(),
     application: useRef(),
     intro: useRef(),
+    portfolio: useRef(),
   };
 
   const getLanguages = async () => {
@@ -81,7 +82,7 @@ export default function HomeProvider({ children }) {
   };
 
   return (
-    <Context.Provider value={ contextValue }>
+    <Context.Provider value={contextValue}>
       { children }
     </Context.Provider>
   );

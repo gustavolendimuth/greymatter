@@ -29,12 +29,12 @@ export default function HowWeInvestTree({ cards, firstCard }) {
   if (!cards || !firstCard) return null;
 
   return (
-    <div style={ { width: '100%' } }>
+    <div style={{ width: '100%' }}>
       <Tree
         lineWidth="0.2rem"
         lineColor="#7fa0ad"
         lineBorderRadius="1.5rem"
-        lineHeight={ screenSize === 'desktop' ? '5.5rem' : '3.5rem' }
+        lineHeight={screenSize === 'desktop' ? '5.5rem' : '3.5rem'}
         lineStyle=""
         nodePadding=""
         label={
@@ -57,7 +57,7 @@ export default function HowWeInvestTree({ cards, firstCard }) {
         {
           cards.map((card, index) => (
             <TreeNode
-              key={ index }
+              key={index}
               label={
                 <>
                   <div className="arrow-box" />
@@ -66,7 +66,7 @@ export default function HowWeInvestTree({ cards, firstCard }) {
                       className="how-we-invest-card-icon-container rounded-5 d-flex justify-content-center"
                     >
                       <img
-                        alt={ card?.cardImage?.alt }
+                        alt={card?.cardImage?.alt}
                         className="how-we-invest-card-icon img-fluid"
                         src={
                           card?.cardImage && urlFor(card.cardImage.image.asset)

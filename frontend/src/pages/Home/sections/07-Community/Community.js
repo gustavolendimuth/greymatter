@@ -60,7 +60,7 @@ export default function Community() {
             communityMembers.map((member, index) => <CommunityCard key={index} member={member} index={index} />)
           }
         </div>
-        <ArrowDown to="/application" />
+        <ArrowDown to="/portfolio" />
       </div>
     </section>
   );
