@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   gap: calc(4px + 0.5vw);
   justify-content: center;
+  padding-bottom: calc(4vh + 1.5vw);
 }
 
 
@@ -77,11 +78,9 @@
   background-color: rgba(255, 255, 255, 0);
 }
 
-@media ( max-width : 760px ) {
-
-  .portfolio-title {
-    font-size: 2rem !important;
-  }
+.portfolio-title {
+  padding-bottom: calc(5vh + 2vw);
+  padding-top: calc(5vh + 2vw);
 }
 
 .portfolio-icon {

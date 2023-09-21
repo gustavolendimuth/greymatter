@@ -89,9 +89,9 @@ export default function Portfolio() {
       id="portfolio"
       className="section-portfolio full-height"
     >
-      <Container className="section">
+      <Container>
         <div className="visible spacer" />
-        <h1 id="title" className="display-3 text-nowrap text-uppercase text-center text-light section-title">
+        <h1 id="title" className="display-3 text-nowrap text-uppercase text-center text-light section-title portfolio-title">
           {portfolioTitle}
         </h1>
 
