@@ -36,9 +36,9 @@ export default function HowWeInvest() {
       <div className="container section how-we-invest">
         <div />
         <h1
-          className="display-3 text-uppercase text-center section-title how-we-invest-title"
+          className="display-3 text-uppercase text-center section-title"
         >
-          { howWeInvestPageTitle }
+          {howWeInvestPageTitle}
         </h1>
         <HowWeInvestTree cards={howWeInvestCards} firstCard={howWeInvestFirstCard} />
         <ArrowDown to="/team" />
