@@ -89,14 +89,14 @@ export default function Portfolio() {
       id="portfolio"
       className="section-portfolio full-height"
     >
-      <Container className="gap-2">
+      <Container className="section">
         <div className="visible spacer" />
-        <h1 id="title" className="display-3 pt-6 pb-3 text-nowrap text-uppercase text-center text-light section-title portfolio-title">
+        <h1 id="title" className="display-3 text-nowrap text-uppercase text-center text-light section-title">
           {portfolioTitle}
         </h1>
 
         {/* Category Filter Bar */}
-        <div className="category-filter-bar py-5">
+        <div className="category-filter-bar">
           <button type="button" onClick={() => handleCategoryChange(null)}>All</button>
           {categories && categories.map((category, index) => (
             <button className={selectedCategory === category ? 'active' : ''} type="button" key={index} onClick={() => handleCategoryChange(category)}>

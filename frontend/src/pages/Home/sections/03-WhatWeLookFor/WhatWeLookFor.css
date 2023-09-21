@@ -5,13 +5,6 @@
   mix-blend-mode: screen;
 }
 
-@media ( max-width : 760px ) {
-
-  .what-we-look-for-title {
-    font-size: 2rem !important;
-  }
-}
-
 .what-we-look-for-icon {
   max-height: 60px;
   max-width: 60px;

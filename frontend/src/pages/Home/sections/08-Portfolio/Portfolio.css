@@ -3,7 +3,7 @@
 /* stylelint-disable max-line-length */
 .section-portfolio {
   background-color: var(--bs-dark);
-  padding-bottom: calc(3rem + 72px);
+  padding-bottom: calc(5vh + 2vw);
   position: relative;
 }
 
@@ -35,7 +35,7 @@
 .portfolio-grid {
   display: grid;
   grid-gap: calc(0.5rem + 1vw);
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 @media ( min-width : 576px ) {

@@ -11,6 +11,8 @@ import fetchContent from '../../../../utils/fetchContent';
 import urlFor from '../../../../utils/urlFor';
 // Images
 import greymatterButtonAction from '../../../assets/img/greymatter-button-action.svg';
+// Styles
+import './Application.css';
 
 export default function Application() {
   const { languageId, section } = useContext(Context);
@@ -54,7 +56,7 @@ export default function Application() {
           width={applicationImage?.width}
           height={applicationImage?.height}
         />
-        <div className="text-center text-info">{applicationText && parse(applicationText)}</div>
+        <div className="text-center text-info container application-text-container">{applicationText && parse(applicationText)}</div>
         <Link
           className="btn btn-primary text-uppercase fw-normal bg-primary border rounded border-3 d-flex gap-2 application-btn"
           to="/application-form"

@@ -37,14 +37,14 @@ export default function WhatWeLookFor() {
       id="what-we-look-for"
       style={{ background: `url(${whatWeLookForBackground && urlFor(whatWeLookForBackground.imageLg?.asset).url()}) center / cover space` }}
     >
-      <Container className="section gap-2">
+      <Container className="section">
         <div className="visible spacer" />
-        <h1 id="title" className="display-3 text-nowrap text-uppercase text-center text-light section-title what-we-look-for-title">
+        <h1 id="title" className="display-3 text-uppercase text-center text-light section-title">
           {whatWeLookForTitle}
         </h1>
-        <Row className="gx-3 gy-3 gx-lg-5 gy-lg-4 justify-content-center align-items-stretch">
+        <Row className="d-flex gx-3 gy-3 gx-lg-5 gy-lg-4 justify-content-center">
           {whatWeLookForCards && whatWeLookForCards.map((card, index) => (
-            <Col key={index} xs={12} md={6} lg={4}>
+            <Col key={index} xs={12} md={6} lg={4} className="d-flex justify-content-center">
               <WhatWeLookForCards card={card} index={index} />
             </Col>
           ))}

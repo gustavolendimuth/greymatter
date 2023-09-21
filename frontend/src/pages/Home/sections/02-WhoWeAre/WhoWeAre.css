@@ -13,20 +13,8 @@
   color: var(--bs-primary);
 }
 
-/* @media (min-height: 500px) {
-  .who-we-are-title {
-    color: var(--bs-primary) !importantimportant;
-  }
-} */
-
-/* @media (max-width: 2200px) and (min-height: 900px) {
-  .who-we-are-title {
-    color: var(--bs-primary) !importantimportant;
-  }
-} */
-
 .who-we-are-text {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 @media ( min-width : 768px ) {
