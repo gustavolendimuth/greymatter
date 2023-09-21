@@ -14,14 +14,6 @@
   justify-content: center;
 }
 
-@media ( max-width : 991px ) {
-
-  .category-filter-bar {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-
-  }
-}
 
 .category-filter-bar button {
   background-color: var(--bs-light);
