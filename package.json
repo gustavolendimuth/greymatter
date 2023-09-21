@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Greymatter website",
   "scripts": {
-    "greymatter": "npm install && cd ./site && npm install && cd ../studio && npm install",
-    "start": "cd ./site && react-scripts start",
+    "postinstall": "npm install && cd ./frontend && npm install && cd ../studio && npm install",
+    "start": "cd ./frontend && yarn start",
     "sanity": "cd ./studio && sanity dev",
     "build": "rm -rf ./build && cd ./site && npm install && react-scripts build && mv build ../",
     "test": "cd site && react-scripts test",
@@ -14,21 +14,6 @@
   },
   "author": "Gustavo Lendimuth",
   "license": "ISC",
-  "devDependencies": {
-    "@sanity/cli": "^3.7.1",
-    "eslint": "^8.23.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.1",
-    "eslint-plugin-react-func": "^0.1.18",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-redux": "^4.0.0",
-    "eslint-plugin-sonarjs": "^0.15.0",
-    "prettier": "^2.7.1",
-    "react-scripts": "^5.0.1",
-    "stylelint": "^14.11.0",
-    "stylelint-config-standard": "^28.0.0",
-    "stylelint-order": "^5.0.0"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }

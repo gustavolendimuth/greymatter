@@ -1,0 +1,131 @@
+/* stylelint-disable selector-no-qualifying-type */
+
+/* stylelint-disable max-line-length */
+.section-portfolio {
+  background-color: var(--bs-dark);
+  padding-bottom: calc(3rem + 72px);
+  position: relative;
+}
+
+.category-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4px + 0.5vw);
+  justify-content: center;
+}
+
+@media ( max-width : 991px ) {
+
+  .category-filter-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+  }
+}
+
+.category-filter-bar button {
+  background-color: var(--bs-light);
+  border: 1px solid var(--bs-light);
+  border-radius: 2rem;
+  color: var(--bs-dark);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.3vh 2vw;
+  transition: background-color 0.2s ease-in-out , color 0.2s ease-in-out;
+}
+
+.category-filter-bar button:hover, .category-filter-bar button:active, .category-filter-bar button.active {
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-gap: calc(0.5rem + 1vw);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media ( min-width : 576px ) {
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media ( min-width : 992px ) {
+
+  .portfolio-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+.unstyled-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-card {
+
+  /* aspect-ratio: 2/1; */
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid var(--bs-light);
+  border-radius: 12px;
+  height: 100%;
+  transition: background-color 0.5s ease-in-out;
+  width: 100%;
+}
+
+.portfolio-card:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+@media ( max-width : 760px ) {
+
+  .portfolio-title {
+    font-size: 2rem !important;
+  }
+}
+
+.portfolio-icon {
+  height: 140px;
+  object-fit: contain;
+  padding: 2vh calc(2vw + 1rem);
+  width: 100%;
+}
+
+
+.item-enter {
+  opacity: 0;
+}
+
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+
+.portfolio-arrow-down {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+}
+
