@@ -3,8 +3,6 @@
 /* stylelint-disable max-line-length */
 .section-portfolio {
   background-color: var(--bs-dark);
-  padding-bottom: calc(5vh + 2vw);
-  position: relative;
 }
 
 .category-filter-bar {
@@ -36,7 +34,7 @@
 .portfolio-grid {
   display: grid;
   grid-gap: calc(0.5rem + 1vw);
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 }
 
 @media ( min-width : 576px ) {
@@ -87,7 +85,7 @@
   height: 140px;
   object-fit: contain;
   padding: 2vh calc(2vw + 1rem);
-  width: 100%;
+  width: 250px;
 }
 
 
@@ -111,12 +109,9 @@
 
 
 .portfolio-arrow-down {
-  bottom: 0;
   display: flex;
   justify-content: center;
-  left: 0;
   margin: auto;
-  position: absolute;
-  right: 0;
+  padding-top: calc(5vh + 2vw);
 }
 
