@@ -1,11 +1,11 @@
 /* eslint-disable sonarjs/no-identical-expressions */
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { toHTML } from '@portabletext/to-html';
 import parse from 'html-react-parser';
-import { FaLinkedinIn, FaInstagram, FaGripLinesVertical } from 'react-icons/fa';
-import fetchContent from '../../utils/fetchContent';
+import React, { useContext, useEffect, useState } from 'react';
+import { FaGripLinesVertical, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import HomeContext from '../../context/Context';
+import fetchContent from '../../utils/fetchContent';
 import urlFor from '../../utils/urlFor';
 import greymatterLogoVieiraRezende from '../assets/img/greymatter-logo-vieira-rezende.webp';
 
@@ -46,8 +46,8 @@ export default function Footer() {
           </div>
           <div className="col-12 col-xl-6 d-flex justify-content-center align-items-center">
             <div className="row pb-5">
-              <div className="col-12 d-flex justify-content-center align-items-center">
-                <img alt={logo?.alt} src={logo && urlFor(logo.image.asset).url()} width="400px" />
+              <div className="col-12 d-flex justify-content-center align-items-center footer-greymatter-logo-container">
+                <img alt={logo?.alt} src={logo && urlFor(logo.image.asset).url()} className="footer-greymatter-logo" />
               </div>
               <div className="col-12 d-flex gap-4 justify-content-center align-items-center">
                 <a
@@ -66,13 +66,13 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-auto d-flex d-xl-flex flex-column p-0">
+          <div className="col-12 col-lg-auto d-flex d-xl-flex flex-column">
             <div className="d-flex flex-column align-items-center gap-3">
-              <div className="fs-6 footer-subscription-text" style={{ width: '100%' }}>
+              <div className="fs-6 footer-subscription-text">
                 {formText && parse(formText)}
               </div>
               <form
-                className="d-flex gap-3 footer-sebscribe-form footer-subscribe-form"
+                className="d-flex gap-3 footer-subscribe-form"
                 style={{ maxWidth: '700px' }}
                 data-bss-recipient="da84bfb6ef47d75ff81142daef2547c2"
               >
@@ -88,17 +88,18 @@ export default function Footer() {
                   </div>
                   <div className="col-auto">
                     <button className="btn btn-primary text-uppercase" type="submit" style={{ background: 'var(--bs-primary)' }}>
-                      {formButton && formButton}
+                      {formButton}
                     </button>
                   </div>
                 </div>
               </form>
-              <img
-                alt="Vieira Rezende logo"
-                className="p-5"
-                src={greymatterLogoVieiraRezende}
-                width="320px"
-              />
+              <div className="footer-vieira-rezende-logo-container p-4">
+                <img
+                  alt="Vieira Rezende logo"
+                  src={greymatterLogoVieiraRezende}
+                  className="footer-vieira-rezende-logo"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -47,15 +47,15 @@ export default function Community() {
       <div className="container section community-container">
         <div className="visible spacer" />
         <h1 className="display-3 text-uppercase text-center section-title community-title">{communityPageTitle}</h1>
-        <div className="row gx-4 gy-3 justify-content-center my-1 my-md-4">
-          <div className="col-auto align-self-center">
+        <div className="d-flex gx-4 gy-3 justify-content-center my-1 my-md-4">
+          <div className="align-self-center">
             <div className="text-center text-lg-start community-text">
               {communityText && parse(communityText)}
             </div>
           </div>
         </div>
         <Tooltip anchorSelect=".community-card-tooltip" className="community-tooltip" />
-        <div className="row gx-5 gy-4 gy-md-5 row-cols-4 justify-content-center">
+        <div className="gy-4 row row-cols-auto justify-content-center">
           {
             communityMembers.map((member, index) => <CommunityCard key={index} member={member} index={index} />)
           }
