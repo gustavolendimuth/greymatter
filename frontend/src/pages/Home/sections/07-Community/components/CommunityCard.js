@@ -11,7 +11,7 @@ export default function CommunityCard({ member: { alt, name, photoLg, position, 
       data-tooltip-content={position}
       data-tooltip-place="top"
       data-tooltip-float="true"
-      className="col-auto d-flex flex-column justify-content-center align-items-center community-card-tooltip"
+      className="col d-flex flex-column justify-content-center align-items-center community-card-tooltip"
     >
       <div
         className="d-flex justify-content-center flex-column align-items-center community-card"
