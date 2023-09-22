@@ -9,7 +9,6 @@ export default function HomeModal() {
   const [showModal, setShowModal] = useState(true);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [submitStatus, setSubmitStatus] = useState(null);
   const { languageId } = useContext(Context);
   const englishId = 'd3761ab6-c643-40b1-9233-00802f961ce6';
   const { REACT_APP_BACKEND_URL } = process.env;
