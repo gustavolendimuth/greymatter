@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { Container, Button, Modal, Form } from 'react-bootstrap';
 import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { Button, Container, Form, Modal } from 'react-bootstrap';
 import Context from '../../../context/Context';
-import './HomeModal.css';
 import report from '../../assets/pdf/Report-Pesquisa-Grey-Matter-02-mai-2023(5440426.1).pdf';
+import './HomeModal.css';
 
 export default function HomeModal() {
   const [showModal, setShowModal] = useState(true);
@@ -54,7 +54,7 @@ export default function HomeModal() {
           <Modal.Header className="border-bottom-0">
             <Modal.Title className="modal-title-centered">
               <h2 className="text-secondary">
-                { languageId === englishId ? 'RESEARCH' : 'PESQUISA'}
+                {languageId === englishId ? 'RESEARCH' : 'PESQUISA'}
               </h2>
             </Modal.Title>
           </Modal.Header>
@@ -81,7 +81,7 @@ export default function HomeModal() {
               <Form.Group controlId="name">
                 <Form.Control
                   type="text"
-                  placeholder="Name"
+                  placeholder={languageId === englishId ? 'Full name' : 'Nome completo'}
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   required
@@ -97,23 +97,17 @@ export default function HomeModal() {
                 />
               </Form.Group>
             </div>
-            <div className="modal-footer d-flex justify-content-center gap-4">
+            <Modal.Footer className="border-top-0 pt-4 d-flex justify-content-center gap-4">
               <Button variant="secondary" type="button" onClick={handleClose}>
-                { languageId === englishId ? 'Close' : 'Fechar' }
+                {languageId === englishId ? 'Close' : 'Fechar'}
               </Button>
               <Button variant="primary" type="submit">
                 Download
               </Button>
-            </div>
+            </Modal.Footer>
           </Modal.Body>
         </Form>
       </Modal>
-
-      {submitStatus && (
-        <div className="mt-3">
-          <strong>{submitStatus}</strong>
-        </div>
-      )}
     </Container>
   );
 }
