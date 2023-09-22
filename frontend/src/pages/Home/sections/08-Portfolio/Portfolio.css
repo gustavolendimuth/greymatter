@@ -62,14 +62,11 @@
 }
 
 .portfolio-card {
-
-  /* aspect-ratio: 2/1; */
+  aspect-ratio: 2/1;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1.5px solid var(--bs-light);
   border-radius: 12px;
-  height: 100%;
   transition: background-color 0.5s ease-in-out;
-  width: 100%;
 }
 
 .portfolio-card:hover {
@@ -82,10 +79,10 @@
 }
 
 .portfolio-icon {
-  height: 140px;
+  height: 130px;
   object-fit: contain;
-  padding: 2vh calc(2vw + 1rem);
-  width: 250px;
+  padding: 3vh calc(2vw + 1vh);
+  width: 270px;
 }
 
 
