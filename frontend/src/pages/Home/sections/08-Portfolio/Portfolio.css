@@ -1,8 +1,7 @@
-/* stylelint-disable selector-no-qualifying-type */
-
-/* stylelint-disable max-line-length */
 .section-portfolio {
   background-color: var(--bs-dark);
+  padding-bottom: calc(5vh + 2vw + 72px);
+  position: relative;
 }
 
 .category-filter-bar {
@@ -12,7 +11,6 @@
   justify-content: center;
   padding-bottom: calc(4vh + 1.5vw);
 }
-
 
 .category-filter-bar button {
   background-color: var(--bs-light);
@@ -26,7 +24,9 @@
   transition: background-color 0.2s ease-in-out , color 0.2s ease-in-out;
 }
 
-.category-filter-bar button:hover, .category-filter-bar button:active, .category-filter-bar button.active {
+.category-filter-bar button:hover,
+.category-filter-bar button:active,
+.category-filter-bar .active {
   background-color: var(--bs-dark);
   color: var(--bs-light);
 }
@@ -109,9 +109,9 @@
 
 
 .portfolio-arrow-down {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding-top: calc(5vh + 2vw);
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
 }
 
