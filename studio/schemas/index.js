@@ -6,6 +6,7 @@ import community from './documents/community';
 import communityMembers from './documents/communityMembers';
 import footer from './documents/footer';
 import hero from './documents/hero';
+import intro from './documents/intro';
 import language from './documents/language';
 import siteSettings from './documents/siteSettings';
 import team from './documents/team';
@@ -39,6 +40,7 @@ export const schemaTypes = [
   language,
   siteSettings,
   hero,
+  intro,
   whoWeAre,
   whatWeLookFor,
   whatDoWeOffer,
@@ -65,5 +67,5 @@ export const schemaTypes = [
   author,
   blockContent,
   category,
-  post
+  post,
 ];

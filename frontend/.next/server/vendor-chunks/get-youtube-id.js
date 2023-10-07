@@ -1,0 +1,24 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/get-youtube-id";
+exports.ids = ["vendor-chunks/get-youtube-id"];
+exports.modules = {
+
+/***/ "(ssr)/./node_modules/get-youtube-id/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/get-youtube-id/index.js ***!
+  \**********************************************/
+/***/ (function(module) {
+
+eval("\n(function (root, factory) {\n  if (true) {\n    module.exports = factory();\n  } else {}\n}(this, function (exports) {\n\n  return function (url, opts) {\n    if (opts == undefined) {\n      opts = {fuzzy: true};\n    }\n\n    if (/youtu\\.?be/.test(url)) {\n\n      // Look first for known patterns\n      var i;\n      var patterns = [\n        /youtu\\.be\\/([^#\\&\\?]{11})/,  // youtu.be/<id>\n        /\\?v=([^#\\&\\?]{11})/,         // ?v=<id>\n        /\\&v=([^#\\&\\?]{11})/,         // &v=<id>\n        /embed\\/([^#\\&\\?]{11})/,      // embed/<id>\n        /\\/v\\/([^#\\&\\?]{11})/         // /v/<id>\n      ];\n\n      // If any pattern matches, return the ID\n      for (i = 0; i < patterns.length; ++i) {\n        if (patterns[i].test(url)) {\n          return patterns[i].exec(url)[1];\n        }\n      }\n\n      if (opts.fuzzy) {\n        // If that fails, break it apart by certain characters and look \n        // for the 11 character key\n        var tokens = url.split(/[\\/\\&\\?=#\\.\\s]/g);\n        for (i = 0; i < tokens.length; ++i) {\n          if (/^[^#\\&\\?]{11}$/.test(tokens[i])) {\n            return tokens[i];\n          }\n        }\n      }\n    }\n\n    return null;\n  };\n\n}));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvZ2V0LXlvdXR1YmUtaWQvaW5kZXguanMiLCJtYXBwaW5ncyI6IjtBQUNBO0FBQ0EsTUFBTSxJQUEyQjtBQUNqQztBQUNBLElBQUksS0FBSyxFQUlOO0FBQ0gsQ0FBQzs7QUFFRDtBQUNBO0FBQ0EsY0FBYztBQUNkOztBQUVBOztBQUVBO0FBQ0E7QUFDQTtBQUNBLDhCQUE4QixHQUFHO0FBQ2pDLHVCQUF1QixHQUFHO0FBQzFCLHVCQUF1QixHQUFHO0FBQzFCLDBCQUEwQixHQUFHO0FBQzdCLHdCQUF3QixHQUFHO0FBQzNCOztBQUVBO0FBQ0Esa0JBQWtCLHFCQUFxQjtBQUN2QztBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLG9CQUFvQixtQkFBbUI7QUFDdkMseUJBQXlCLEdBQUc7QUFDNUI7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBLENBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9ncmV5bWF0dGVyLXYyLy4vbm9kZV9tb2R1bGVzL2dldC15b3V0dWJlLWlkL2luZGV4LmpzP2I0NzYiXSwic291cmNlc0NvbnRlbnQiOlsiXG4oZnVuY3Rpb24gKHJvb3QsIGZhY3RvcnkpIHtcbiAgaWYgKHR5cGVvZiBleHBvcnRzID09PSAnb2JqZWN0Jykge1xuICAgIG1vZHVsZS5leHBvcnRzID0gZmFjdG9yeSgpO1xuICB9IGVsc2UgaWYgKHR5cGVvZiBkZWZpbmUgPT09ICdmdW5jdGlvbicgJiYgZGVmaW5lLmFtZCkge1xuICAgIGRlZmluZShmYWN0b3J5KTtcbiAgfSBlbHNlIHtcbiAgICByb290LmdldFlvdVR1YmVJRCA9IGZhY3RvcnkoKTtcbiAgfVxufSh0aGlzLCBmdW5jdGlvbiAoZXhwb3J0cykge1xuXG4gIHJldHVybiBmdW5jdGlvbiAodXJsLCBvcHRzKSB7XG4gICAgaWYgKG9wdHMgPT0gdW5kZWZpbmVkKSB7XG4gICAgICBvcHRzID0ge2Z1enp5OiB0cnVlfTtcbiAgICB9XG5cbiAgICBpZiAoL3lvdXR1XFwuP2JlLy50ZXN0KHVybCkpIHtcblxuICAgICAgLy8gTG9vayBmaXJzdCBmb3Iga25vd24gcGF0dGVybnNcbiAgICAgIHZhciBpO1xuICAgICAgdmFyIHBhdHRlcm5zID0gW1xuICAgICAgICAveW91dHVcXC5iZVxcLyhbXiNcXCZcXD9dezExfSkvLCAgLy8geW91dHUuYmUvPGlkPlxuICAgICAgICAvXFw/dj0oW14jXFwmXFw/XXsxMX0pLywgICAgICAgICAvLyA/dj08aWQ+XG4gICAgICAgIC9cXCZ2PShbXiNcXCZcXD9dezExfSkvLCAgICAgICAgIC8vICZ2PTxpZD5cbiAgICAgICAgL2VtYmVkXFwvKFteI1xcJlxcP117MTF9KS8sICAgICAgLy8gZW1iZWQvPGlkPlxuICAgICAgICAvXFwvdlxcLyhbXiNcXCZcXD9dezExfSkvICAgICAgICAgLy8gL3YvPGlkPlxuICAgICAgXTtcblxuICAgICAgLy8gSWYgYW55IHBhdHRlcm4gbWF0Y2hlcywgcmV0dXJuIHRoZSBJRFxuICAgICAgZm9yIChpID0gMDsgaSA8IHBhdHRlcm5zLmxlbmd0aDsgKytpKSB7XG4gICAgICAgIGlmIChwYXR0ZXJuc1tpXS50ZXN0KHVybCkpIHtcbiAgICAgICAgICByZXR1cm4gcGF0dGVybnNbaV0uZXhlYyh1cmwpWzFdO1xuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIGlmIChvcHRzLmZ1enp5KSB7XG4gICAgICAgIC8vIElmIHRoYXQgZmFpbHMsIGJyZWFrIGl0IGFwYXJ0IGJ5IGNlcnRhaW4gY2hhcmFjdGVycyBhbmQgbG9vayBcbiAgICAgICAgLy8gZm9yIHRoZSAxMSBjaGFyYWN0ZXIga2V5XG4gICAgICAgIHZhciB0b2tlbnMgPSB1cmwuc3BsaXQoL1tcXC9cXCZcXD89I1xcLlxcc10vZyk7XG4gICAgICAgIGZvciAoaSA9IDA7IGkgPCB0b2tlbnMubGVuZ3RoOyArK2kpIHtcbiAgICAgICAgICBpZiAoL15bXiNcXCZcXD9dezExfSQvLnRlc3QodG9rZW5zW2ldKSkge1xuICAgICAgICAgICAgcmV0dXJuIHRva2Vuc1tpXTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG5cbiAgICByZXR1cm4gbnVsbDtcbiAgfTtcblxufSkpO1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/get-youtube-id/index.js\n");
+
+/***/ })
+
+};
+;

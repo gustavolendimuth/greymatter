@@ -1,0 +1,42 @@
+.css-1vs3jbz:not( :last-of-type ) > .arrow-box:after {
+  border: solid #7fa0ad;
+  border-radius: 50%;
+  border-width: 0.2rem;
+  content: '';
+  display: inline-block;
+  padding: 0.25rem;
+  position: absolute;
+  top: 3.5rem;
+  transform: translateX(7%) rotate(45deg);
+  z-index: 10;
+}
+
+.css-1vs3jbz:last-of-type > .arrow-box:before {
+  border: solid #7fa0ad;
+  border-radius: 50%;
+  border-width: 0.2rem;
+  content: '';
+  display: inline-block;
+  padding: 0.25rem;
+  position: absolute;
+  top: 3.5rem;
+  transform: translateX(-7%) rotate(45deg);
+  z-index: 10;
+}
+
+.css-1vs3jbz {
+  flex: 1 !important;
+}
+
+/* Media query para tamanho desktop */
+
+@media ( min-width : 992px ) {
+
+  .css-1vs3jbz:last-of-type > .arrow-box:before {
+    top: 5.5rem;
+  }
+
+  .css-1vs3jbz:not( :last-of-type ) > .arrow-box:after {
+    top: 5.5rem;
+  }
+}

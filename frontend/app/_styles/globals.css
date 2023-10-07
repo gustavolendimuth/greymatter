@@ -1,0 +1,24 @@
+/* stylelint-disable at-rule-no-unknown */
+
+/* stylelint-disable at-rule-empty-line-before */
+
+/* stylelint-disable at-rule-semicolon-space-before */
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+* {
+
+  /* border: 1px solid orangered; */
+  box-sizing: border-box;
+  letter-spacing: 0.03em;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.full-height {
+  min-height: calc(var(--vh, 1vh) * 100);
+}

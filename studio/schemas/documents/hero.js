@@ -27,33 +27,6 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'text',
-      type: 'richText',
-      title: 'Texto da seção',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'subTitle',
-      type: 'text',
-      title: 'Subtítulo da seção',
-    },
-    {
-      name: 'image',
-      type: 'figure',
-      title: 'Imagem',
-    },
-    {
-      name: 'background',
-      type: 'background',
-      title: 'Background',
-      description: 'Selecione as opções de fundo da seção.',
-    },
-    // {
-    //   name: 'backgroundVimeo',
-    //   type: 'video',
-    //   title: 'Vimeo de background',
-    // },
-    {
       name: 'backgroundVideo',
       title: 'Vídeo de background',
       type: 'object',

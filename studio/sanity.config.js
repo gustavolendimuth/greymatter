@@ -6,6 +6,7 @@ import { internationalizedArray } from 'sanity-plugin-internationalized-array';
 import { deskTool } from 'sanity/desk';
 import { schemaTypes } from './schemas';
 
+
 const deskToolParams = {
   structure: (S) =>
     S.list()
