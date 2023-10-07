@@ -12,8 +12,7 @@ import WhatDoWeOffer from './sections/04-WhatDoWeOffer/WhatDoWeOffer';
 import HowWeInvest from './sections/05-HowWeInvest/HowWeInvest';
 import Team from './sections/06-Team/Team';
 import Community from './sections/07-Community/Community';
-import Portfolio from './sections/08-Portfolio/Portfolio';
-import Application from './sections/09-Application/Application';
+import Application from './sections/08-Application/Application';
 // Utils
 import Context from '../../context/Context';
 import Intro from './sections/01-Intro/Intro';
@@ -55,7 +54,6 @@ export default function Greymatter() {
       <HowWeInvest />
       <Team />
       <Community />
-      <Portfolio />
       <Application />
     </>
   );
