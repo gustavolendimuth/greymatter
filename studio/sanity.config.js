@@ -1,19 +1,40 @@
-import { defineConfig } from 'sanity';
-import { deskTool } from 'sanity/desk';
-import { visionTool } from '@sanity/vision';
 import { colorInput } from '@sanity/color-input';
-import { schemaTypes } from './schemas';
 import { crossDatasetDuplicator } from '@sanity/cross-dataset-duplicator';
+import { visionTool } from '@sanity/vision';
+import { defineConfig } from 'sanity';
+import { internationalizedArray } from 'sanity-plugin-internationalized-array';
+import { deskTool } from 'sanity/desk';
+import { schemaTypes } from './schemas';
+
+const deskToolParams = {
+  structure: (S) =>
+    S.list()
+      .title('Content')
+      .items([
+        ...S.documentTypeListItems().filter(
+          listItem => !['author', 'category'].includes(listItem.getId())
+        ),
+      ])
+}
+
+const internationalizedArrayParams = {
+  languages: [
+    { id: 'pt-br', title: 'Português' },
+    { id: 'en', title: 'English' }
+  ],
+  defaultLanguages: ['pt-br'],
+  fieldTypes: ['string', 'text'],
+}
 
 export default defineConfig([
   {
     name: 'default',
-    title: 'Grey Matter Principal',
+    title: 'Grey Matter',
 
     projectId: 'yhcu3nao',
     dataset: 'production',
 
-    plugins: [deskTool(), visionTool(), colorInput(), crossDatasetDuplicator()],
+    plugins: [deskTool(), colorInput()],
     schema: {
       types: schemaTypes,
     },
@@ -24,7 +45,7 @@ export default defineConfig([
     title: 'Grey Matter Preview',
     projectId: 'yhcu3nao',
     dataset: 'preview',
-    plugins: [deskTool(), visionTool(), colorInput(), crossDatasetDuplicator()],
+    plugins: [deskTool(deskToolParams), visionTool(), colorInput(), crossDatasetDuplicator(), internationalizedArray(internationalizedArrayParams)],
     schema: {
       types: schemaTypes,
     },

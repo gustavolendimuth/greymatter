@@ -1,33 +1,39 @@
 /* eslint-disable import/prefer-default-export */
 // Pages
-import language from './documents/language';
-import hero from './documents/hero';
-import siteSettings from './documents/siteSettings';
-import whoWeAre from './documents/whoWeAre';
-import whatWeLookFor from './documents/whatWeLookFor';
-import whatDoWeOffer from './documents/whatDoWeOffer';
-import team from './documents/team';
-import teamMembers from './documents/teamMembers';
-import community from './documents/community';
-import communityMembers from './documents/communityMembers';
 import application from './documents/application';
 import applicationForm from './documents/applicationForm';
+import community from './documents/community';
+import communityMembers from './documents/communityMembers';
 import footer from './documents/footer';
+import hero from './documents/hero';
+import language from './documents/language';
+import siteSettings from './documents/siteSettings';
+import team from './documents/team';
+import teamMembers from './documents/teamMembers';
+import whatDoWeOffer from './documents/whatDoWeOffer';
+import whatWeLookFor from './documents/whatWeLookFor';
+import whoWeAre from './documents/whoWeAre';
 
 // Fields
-import richText from './objects/richText';
+import howWeInvest from './documents/howWeInvest';
+import background from './objects/background';
+import backgroundSimple from './objects/backgroundSimple';
+import card from './objects/card';
+import cardNoText from './objects/cardNoText';
+import communityMembersObject from './objects/communityMembersObject';
 import figure from './objects/figure';
 import figureDesktop from './objects/figureDesktop';
-import youtube from './objects/youtube';
-import card from './objects/card';
 import preview from './objects/preview';
-import video from './objects/video';
+import richText from './objects/richText';
 import teamMembersObject from './objects/teamMembersObject';
-import communityMembersObject from './objects/communityMembersObject';
-import background from './objects/background';
-import howWeInvest from './documents/howWeInvest';
-import cardNoText from './objects/cardNoText';
-import backgroundSimple from './objects/backgroundSimple';
+import video from './objects/video';
+import youtube from './objects/youtube';
+
+// Blog
+import author from './blog/author';
+import blockContent from './blog/blockContent';
+import category from './blog/category';
+import post from './blog/post';
 
 export const schemaTypes = [
   language,
@@ -56,4 +62,8 @@ export const schemaTypes = [
   video,
   teamMembersObject,
   communityMembersObject,
+  author,
+  blockContent,
+  category,
+  post
 ];
