@@ -1,11 +1,15 @@
 {
   "cSpell.words": [
+    "datetime",
     "fieldsets",
     "headlessui",
     "Organisation",
     "Polyfilling",
     "portabletext",
     "textfill",
-    "textfilljs"
+    "textfilljs",
+    "Textfit",
+    "Unlocalized",
+    "unsplash"
   ]
 }

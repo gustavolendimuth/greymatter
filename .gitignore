@@ -9,11 +9,11 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+**/.next
+**/out/
 
 # production
-/build
+**/build
 
 # misc
 .DS_Store
@@ -25,7 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-**.env
+**/.env
 .env*.local
 
 # vercel
@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cache
+.cache/
+**/cache/
+**/*.gz
