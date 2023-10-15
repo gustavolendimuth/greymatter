@@ -1,6 +1,6 @@
 {
   "name": "greymatter-v2",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -24,7 +24,6 @@
     "@vercel/og": "0.5.14",
     "camelcase": "^7.0.0",
     "classnames": "2.3.2",
-    "cookie": "^0.5.0",
     "date-fns": "2.30.0",
     "get-video-id": "^3.6.5",
     "get-youtube-id": "^1.0.1",
@@ -48,6 +47,7 @@
     "string-remove": "^1.0.3",
     "styled-components": "5.3.11",
     "swr": "2.2.2",
+    "twind": "^0.16.19",
     "words-n-numbers": "^7.1.2"
   },
   "devDependencies": {

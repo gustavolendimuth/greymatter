@@ -31,7 +31,6 @@ export default function PostPage(props: PostPageProps) {
     notFound();
   }
 
-  console.log(post);
   return (
 
     <>

@@ -1,4 +1,4 @@
-import { getAllPosts, getClient } from 'lib/sanity.client';
+import { getAllPosts, getClient } from 'lib/sanityClient';
 
 type SitemapLocation = {
   url: string

@@ -1,62 +1,37 @@
-'use client';
-
 import { PortableText } from '@portabletext/react';
+import BackgroundImage from 'app/_components/BackgroundImage';
 import Container from 'app/_components/Container';
 import Img from 'app/_components/Img';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import useScrollTo from 'app/_Hooks/useScrollTo';
-import { useHomeContext } from 'context/Provider';
-import { useEffect, useState } from 'react';
-import { WhoWeArePage } from 'types/componentsTypes';
-import {
-  ImageWithSizes,
-  TypedObject,
-} from 'types/propertiesTypes';
+import { getClient } from 'lib/sanityClient';
+import { getWhoWeAre } from 'lib/sanityFetch';
 
-import fetchContent from '../../../utils/fetchContent';
 import DownArrow from '../../_components/DownArrow';
 
-function WhoWeAre() {
-  const [whoWeArePageTitle, setWhoWeArePageTitle] = useState<string | null>(null);
-  const [whoWeAreText, setWhoWeAreText] = useState<TypedObject | null>(null);
-  const [whoWeAreImage, setWhoWeAreImage] = useState<ImageWithSizes>();
+async function WhoWeAre({ locale }: { locale: string }) {
+  const client = getClient();
+  const { title, text, image, background } = await getWhoWeAre(client, locale);
 
-  useScrollTo();
-  const { languageId } = useHomeContext();
-
-  useEffect(() => {
-    async function getWhoWeAreContent() {
-      const data = (await fetchContent('whoWeAre', languageId)) as WhoWeArePage;
-      if (data) {
-        setWhoWeArePageTitle(data.title);
-        setWhoWeAreImage(data.image);
-        setWhoWeAreText(data.text);
-      }
-    }
-    getWhoWeAreContent();
-  }, [languageId]);
-
-  if (!whoWeArePageTitle || !whoWeAreText) return null;
+  if (!title || !text) return null;
 
   return (
-    <Section id="who-we-are">
+    <Section className="relative" id="who-we-are">
+      <BackgroundImage image={background} />
       <Container justify gap fullHeight>
         <div />
-        <Title>{whoWeArePageTitle}</Title>
+        <Title>{title}</Title>
         <div className="flex flex-col lg:flex-row gap-8 max-w-[760px]">
-          <div className="w-ful lg:w-7/12">
-            <div className="text-xl md:text-2xl text-primary text-center leading-7 lg:leading-10 lg:text-left flex justify-center content-center">
-              <PortableText value={whoWeAreText} />
-            </div>
+          <div className="w-full lg:w-[410px] text-xl md:text-2xl text-primary text-center leading-7 lg:leading-9 lg:text-left flex justify-center content-center">
+            <PortableText value={text} />
           </div>
           <div className="w-full lg:w-[284px] lg:h-[180px] flex justify-center order-first lg:order-last">
             <Img
               className="rounded-lg"
-              image={whoWeAreImage?.imageLg}
-              alt={whoWeAreImage?.alt || 'Who we are'}
-              width={284}
-              size={[284, 180]}
+              image={image}
+              alt={image.alt || 'Who we are'}
+              width={300}
+              height={300}
             />
           </div>
         </div>

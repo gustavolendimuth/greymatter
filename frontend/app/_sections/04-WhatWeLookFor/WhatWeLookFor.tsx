@@ -1,60 +1,26 @@
-'use client';
-
+import BackgroundImage from 'app/_components/BackgroundImage';
 import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import useScrollTo from 'app/_Hooks/useScrollTo';
-import { useHomeContext } from 'context/Provider';
-import { useEffect, useState } from 'react';
-import {
-  WhatWeLookForCardsComponent,
-  WhatWeLookForPage,
-} from 'types/componentsTypes';
-import fetchContent from 'utils/fetchContent';
-import urlFor from 'utils/urlFor';
+import { getClient } from 'lib/sanityClient';
+import { getWhatWeLookFor } from 'lib/sanityFetch';
 
 import WhatWeLookForCards from './components/WhatWeLookForCards';
 
-export default function WhatWeLookFor() {
-  const [whatWeLookForTitle, setWhatWeLookForTitle] = useState<string | undefined>();
-  const [whatWeLookForBackground, setWhatWeLookForBackground] = useState<any | undefined>();
-  const [whatWeLookForCardsData, setWhatWeLookForCardsData] = useState<WhatWeLookForCardsComponent | undefined>();
+export default async function WhatWeLookFor({ locale }: { locale: string }) {
+  const client = getClient();
+  const { title, cards, background } = await getWhatWeLookFor(client, locale);
 
-  useScrollTo();
-  const { languageId } = useHomeContext();
-
-  useEffect(() => {
-    const getWhatWeLookForContent = async () => {
-      const data = (await fetchContent(
-        'whatWeLookFor',
-        languageId,
-      )) as WhatWeLookForPage;
-      if (data) {
-        setWhatWeLookForTitle(data.title);
-        setWhatWeLookForBackground(data.background);
-        setWhatWeLookForCardsData(data.cards);
-      }
-    };
-    getWhatWeLookForContent();
-  }, [languageId]);
-
-  if (!whatWeLookForTitle || !whatWeLookForCardsData) return null;
-
-  const sectionBackground = whatWeLookForBackground && urlFor(whatWeLookForBackground?.imageLg).url();
+  if (!title || !cards) return null;
 
   return (
-    <Section
-      id="what-we-look-for"
-      style={{
-        background: `url(${sectionBackground}) center / cover space`,
-      }}
-      className="relative"
-    >
+    <Section id="what-we-look-for" className="relative">
+      <BackgroundImage image={background} />
       <Container gap fullHeight justify>
         <div />
-        <Title className=" text-white">{whatWeLookForTitle}</Title>
-        <WhatWeLookForCards cards={whatWeLookForCardsData} />
+        <Title className=" text-white">{title}</Title>
+        <WhatWeLookForCards cards={cards} />
         <div>
           <DownArrow to="#what-do-we-offer" />
         </div>

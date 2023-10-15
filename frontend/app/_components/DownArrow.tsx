@@ -2,6 +2,7 @@
 
 'use client';
 
+import useScrollTo from 'app/_Hooks/useScrollTo';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -18,13 +19,13 @@ export default function DownArrow({
   to,
   ...downArrowProps
 }: DownArrowProps) {
+  useScrollTo();
+
   function handleClick(event: any) {
     event.preventDefault();
     const targetId = event.currentTarget.getAttribute('href').substring(1);
-    console.log('targetId', targetId);
 
     const targetElement = document.getElementById(targetId);
-    console.log('targetElement', targetElement);
 
     targetElement?.scrollIntoView({ behavior: 'smooth' });
   }

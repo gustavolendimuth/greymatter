@@ -1,68 +1,63 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { FaAddressCard } from 'react-icons/fa';
 
-export default {
+import { FaAddressCard } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import { languages } from 'sanity.config';
+import { fullValidation } from 'schemas/utils/internationalizedArrayUtils';
+
+import image from '../objects/image';
+
+export default defineType({
   name: 'teamMembers',
   type: 'document',
   title: 'Team Members',
-  preview: { select: { title: 'name' } },
   icon: FaAddressCard,
+  preview: {
+    select: { title: 'name', media: 'image', subtitle: 'position' },
+    prepare({ title, media, subtitle }) {
+      return {
+        title,
+        media,
+        subtitle,
+      };
+    },
+  },
   fields: [
-    {
+    defineField({
       name: 'name',
       type: 'string',
       title: 'Nome',
       description: 'Nome do membro da equipe',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      title: 'Slug',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
-      description: 'Clique no botão generate para gerar um link único para cada membro da equipe.',
-      validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
-        maxLength: 200,
-        isUnique: () => true,
+        maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
-    },
-    {
-      name: 'photoLg',
-      type: 'image',
-      title: 'Foto',
-      description: `Imagem para desktop é obrigatória. Preencha o campo mobile somente 
-        quando necessário mostrar uma imagem diferente em telas menores`,
-      liveEdit: false,
-      validation: (Rule) => Rule.required(),
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'alt',
-      type: 'string',
-      title: 'Texto alternativo da Foto - SEO',
-      validation: (Rule) => Rule.required(),
-      description: `Preencha este campo com um texto que descreva a imagem.
-      Imagens com texto alternativo ajudam no ranking dos sites de busca.`,
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    image({ title: 'Foto' }),
+    defineField({
       name: 'position',
       type: 'string',
       title: 'Posição',
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'linkedin',
-      type: 'string',
+      type: 'url',
       title: 'Linkedin',
-    },
-    {
-      name: 'text',
-      type: 'richText',
+    }),
+    defineField({
+      name: 'bio',
+      type: 'internationalizedArrayRichText',
       title: 'Bio',
-      validation: (Rule) => Rule.required(),
-    },
+      validation: (rule) => fullValidation({ rule, title: 'Bio', languages }),
+    }),
   ],
-};
+});

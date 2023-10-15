@@ -4,8 +4,9 @@
 
 'use client';
 
+import { Company } from 'app/_sections/09-Portfolio/components/PortfolioGrid';
 import React, { createContext,
-  useCallback,
+  Dispatch, useCallback,
   useContext,
   useMemo,
   useState,
@@ -17,12 +18,12 @@ type NavbarConfig = {
 };
 
 type ContextValue = {
-  languageId: string;
   navbarConfig: NavbarConfig | undefined;
-  setNavbarConfig: React.Dispatch<React.SetStateAction<NavbarConfig | undefined>>;
+  setNavbarConfig: Dispatch<React.SetStateAction<NavbarConfig | undefined>>;
   setLocalStorage: (key: string, value: any) => void;
   getLocalStorage: (key: string) => any;
-  changeLanguage: () => void;
+  companies: Company[] | undefined;
+  setCompanies: Dispatch<React.SetStateAction<Company[] | undefined>>;
 };
 
 const Context = createContext<ContextValue | undefined>(undefined);
@@ -32,8 +33,8 @@ type HomeProviderProps = {
 };
 
 export function HomeProvider({ children }: HomeProviderProps) {
-  const [languageId, setLanguageId] = useState<string>('');
   const [navbarConfig, setNavbarConfig] = useState<NavbarConfig | undefined>();
+  const [companies, setCompanies] = useState<Company[]>();
 
   const setLocalStorage = useCallback((key: string, value: any) => {
     if (key && value) localStorage.setItem(key, JSON.stringify(value));
@@ -41,30 +42,20 @@ export function HomeProvider({ children }: HomeProviderProps) {
 
   const getLocalStorage = useCallback((key: string) => key && JSON.parse(localStorage.getItem(key) || 'null'), []);
 
-  function changeLanguage() {
-    if (languageId === 'en') {
-      setLanguageId('pt-br');
-      setLocalStorage('languageId', 'pt-br');
-      return;
-    }
-    setLanguageId('en');
-    setLocalStorage('languageId', 'en');
-  }
-
   const contextValue = useMemo(() => ({
-    languageId,
     navbarConfig,
     setNavbarConfig,
     setLocalStorage,
     getLocalStorage,
-    changeLanguage,
+    companies,
+    setCompanies,
   }), [
-    languageId,
     navbarConfig,
     setNavbarConfig,
     setLocalStorage,
     getLocalStorage,
-    changeLanguage,
+    companies,
+    setCompanies,
   ]);
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

@@ -7,10 +7,10 @@ import {
   getClient,
   getPostAndMoreStories,
   getSettings,
-} from 'lib/sanity.client';
+} from 'lib/sanityClient';
 import { Post, Settings } from 'lib/sanity.queries';
 import type { SharedPageProps } from 'pages/_app';
-import getValuesByLanguage from 'utils/getValuesByLanguage';
+import getValuesByLanguage from 'utils/getByLocale';
 
 interface PageProps extends SharedPageProps {
   post: Post

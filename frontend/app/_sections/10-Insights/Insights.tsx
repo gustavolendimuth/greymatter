@@ -1,14 +1,14 @@
 import IndexPage from 'components/IndexPage';
 import { readToken } from 'lib/sanity.api';
-import { getAllPosts, getClient, getSettings } from 'lib/sanity.client';
-import getValuesByLanguage from 'utils/getValuesByLanguage';
+import { getClient } from 'lib/sanityClient';
+import { getAllPosts, getBlogSettings } from 'lib/sanityFetch';
 
 export default async function Insights({ locale }) {
   const draftMode = false;
   const client = getClient(draftMode ? { token: readToken } : undefined);
 
   const [settings, posts = []] = await Promise.all([
-    getSettings(client),
+    getBlogSettings(client),
     getAllPosts(client),
   ]);
 
@@ -24,8 +24,9 @@ export default async function Insights({ locale }) {
 
   return (
     <IndexPage
-      posts={posts.map((post) => getValuesByLanguage(post, locale))}
-      settings={getValuesByLanguage(settings, locale)}
+      posts={posts}
+      settings={settings}
+      locale={locale}
     />
   );
 }

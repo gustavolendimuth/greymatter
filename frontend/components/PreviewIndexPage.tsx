@@ -16,7 +16,7 @@ export default function PreviewIndexPage(props: IndexPageProps) {
     settingsQuery,
   );
 
-  console.log('preview');
+  // console.log('preview');
 
   return (
     <IndexPage

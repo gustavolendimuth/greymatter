@@ -12,7 +12,7 @@ import {
   Iframe,
   type IframeOptions,
 } from 'sanity-plugin-iframe-pane';
-import postType from 'schemas/documents/post';
+import postType from 'schemas/documents/posts';
 import authorType from 'schemas/documents/author';
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane';

@@ -15,7 +15,7 @@ async function init(): Promise<SatoriOptions['fonts']> {
     globalThis.Intl = globalThis.Intl || {};
     // @ts-expect-error
     globalThis.Intl.Segmenter = await createIntlSegmenterPolyfill(
-      fetch(new URL('public/break_iterator.wasm', import.meta.url)),
+      fetch(new URL('public/files/break_iterator.wasm', import.meta.url)),
     );
   }
 

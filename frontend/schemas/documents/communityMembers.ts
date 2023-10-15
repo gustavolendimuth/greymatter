@@ -1,50 +1,46 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaIdCard } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import { languages } from 'sanity.config';
+import image from 'schemas/objects/image';
+import { fullValidation } from 'schemas/utils/internationalizedArrayUtils';
 
-export default {
+import { preview } from '../utils/internationalizedArrayUtils';
+
+export default defineType({
   name: 'communityMembers',
   type: 'document',
   title: 'Community Members',
   icon: FaIdCard,
-  preview: { select: { title: 'name' } },
+  preview: {
+    select: { title: 'name', media: 'image', subtitle: 'position' },
+    prepare({ title, media, subtitle }) {
+      return {
+        title,
+        media,
+        subtitle: preview(subtitle),
+      };
+    },
+  },
   fields: [
-    {
+    defineField({
       name: 'name',
       type: 'string',
       title: 'Nome',
       description: 'Nome do membro da comunidade',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'photoLg',
-      type: 'image',
-      title: 'Foto',
-      description: `Imagem para desktop é obrigatória. Preencha o campo mobile somente 
-        quando necessário mostrar uma imagem diferente em telas menores`,
-      liveEdit: false,
-      validation: (Rule) => Rule.required(),
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'alt',
-      type: 'string',
-      title: 'Texto alternativo da Foto - SEO',
-      validation: (Rule) => Rule.required(),
-      description: `Preencha este campo com um texto que descreva a imagem.
-      Imagens com texto alternativo ajudam no ranking dos sites de busca.`,
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    image({ title: 'Foto' }),
+    defineField({
       name: 'position',
-      type: 'string',
+      type: 'internationalizedArrayString',
       title: 'Posição',
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => fullValidation({ rule, title: 'Posição', languages }),
+    }),
+    defineField({
       name: 'linkedin',
-      type: 'string',
+      type: 'url',
       title: 'Linkedin',
-    },
+    }),
   ],
-};
+});

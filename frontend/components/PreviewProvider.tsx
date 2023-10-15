@@ -1,4 +1,4 @@
-import { getClient } from 'lib/sanity.client'
+import { getClient } from 'lib/sanityClient'
 import { LiveQueryProvider } from 'next-sanity/preview'
 import { useMemo } from 'react'
 

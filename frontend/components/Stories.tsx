@@ -1,13 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-
-'use client';
-
-import { Post } from 'lib/sanity.queries';
 import React from 'react';
+import { Post } from 'types/sectionsTypes';
 
 import PostPreview from './PostPreview';
 
-export default function Stories({ posts = [] }: { posts: Post[] }) {
+export default function Stories({ posts = [], locale }: { posts: Post[], locale: string }) {
   return (
     <div className="max-w-[1320px] grid grid-cols-1 gap-y-7 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-7">
       {posts?.map((post) => (
@@ -19,6 +16,7 @@ export default function Stories({ posts = [] }: { posts: Post[] }) {
           author={post.author}
           slug={post.slug}
           excerpt={post.excerpt}
+          locale={locale}
         />
       ))}
     </div>

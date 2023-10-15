@@ -1,34 +1,28 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaLandmark } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import backgroundImage from 'schemas/objects/backgroundImage';
+import sectionTitle from 'schemas/objects/sectionTitle';
 
 import documentType from '../objects/documentType';
 
-export default {
+export default defineType({
   name: 'whatDoWeOffer',
   type: 'document',
   title: 'What do we offer',
   preview: { select: { title: 'title' } },
   icon: FaLandmark,
+  fieldsets: [{ name: 'background', title: 'Background' }],
   fields: [
     documentType('section'),
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Título da Seção',
-      validation: (Rule) => Rule.required(),
-    },
-    {
+    sectionTitle,
+    defineField({
       name: 'cards',
       type: 'array',
       title: 'Cards da seção',
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
       of: [{ type: 'card' }],
-    },
-    {
-      name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
+    }),
+    backgroundImage(),
   ],
-};
+});

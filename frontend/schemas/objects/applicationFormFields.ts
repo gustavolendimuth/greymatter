@@ -1,24 +1,53 @@
+import { FaClipboardList } from 'react-icons/fa';
 import { defineField, defineType } from 'sanity';
 import { languages } from 'sanity.config';
-import { validation } from 'schemas/utils/internationalizedArrayUtils';
+import { fullValidation, preview } from 'schemas/utils/internationalizedArrayUtils';
+
+const typeList = {
+  text: 'Texto curto',
+  textarea: 'Texto longo',
+  upload: 'Upload',
+  title: 'Título da seção',
+};
+
+const columnSizeList = {
+  1: 'todo espaço',
+  2: '2/3 do espaço',
+  3: '1/3 do espaço',
+};
 
 export default defineType({
   title: 'Campos',
   type: 'object',
   name: 'applicationFormFields',
+  icon: FaClipboardList,
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'type',
+      columnSize: 'columnSize',
+    },
+    prepare({ title, subtitle, columnSize }) {
+      return {
+        title: preview(title),
+        subtitle: `${typeList[subtitle]} ${subtitle === 'text' ? `e ocupa ${columnSizeList[columnSize]}` : ''}`,
+      };
+    },
+  },
+
   fields: [
     defineField({
-      title: 'Nome do campo',
       name: 'title',
+      title: 'Nome do campo',
       type: 'internationalizedArrayString',
-      validation: (Rule) => validation({ Rule, name: 'Nome do Campo', languages }),
+      validation: (rule) => fullValidation({ rule, title: 'Nome do Campo', languages }),
     }),
     defineField({
       title: 'Tipo',
-      name: 'fieldType',
+      name: 'type',
       type: 'string',
-      validation: (Rule) => Rule.required(),
       initialValue: 'text',
+      validation: (Rule) => Rule.required(),
       options: {
         list: [
           { title: 'Título da seção', value: 'title' },
@@ -38,12 +67,11 @@ export default defineType({
     // },
     defineField({
       title: 'Valor do campo',
-      name: 'fieldValue',
+      name: 'value',
       type: 'string',
       initialValue: 'text',
-      validation: (Rule) => Rule.required(),
-      description: 'Opções válidas somente quando o tipo acima for Texto curto.',
-      hidden: ({ parent }) => parent && parent.fieldType !== 'text', // Hide this field if the "type" is not "text"
+      description: 'Especifique o tipo de valor.',
+      hidden: ({ parent }) => parent && parent.type !== 'text',
       options: {
         list: [
           { title: 'Texto', value: 'text' },
@@ -55,16 +83,16 @@ export default defineType({
       },
     }),
     defineField({
-      title: 'Largura',
+      title: 'Tamanho do campo',
       name: 'columnSize',
       type: 'number',
       initialValue: 1,
-      description: 'Será possível utilizar mais de uma coluna somente quando o campo for do tipo Texto curto.',
+      hidden: ({ parent }) => parent && parent.type !== 'text',
       options: {
         list: [
-          { title: '1 coluna', value: 1 },
-          { title: '2 colunas', value: 2 },
-          { title: '3 colunas', value: 3 },
+          { title: 'todo espaço', value: 1 },
+          { title: '2/3 do espaço', value: 2 },
+          { title: '1/3 do espaço', value: 3 },
         ],
       },
     }),

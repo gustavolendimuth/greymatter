@@ -21,13 +21,13 @@ type RootLayoutProps = {
   }
 };
 
-export default function RootLayout({ children, params }: RootLayoutProps) {
+export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body>
         <HomeProvider>
           {children}
-          <Footer />
+          <Footer locale={locale} />
         </HomeProvider>
       </body>
     </html>

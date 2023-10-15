@@ -1,48 +1,34 @@
-import { NextRouter } from 'next/router';
-
 export interface TypedObject {
   _type: string;
   _key?: string;
+  asset?: Asset
 }
 
+export type SortOptions = '["custom"]' | '["name"]' | '["position"]' | '["name", "position"]';
+export type SortParams = Array<'custom' | 'name' | 'position'>;
+
 export type BackgroundType = {
-  image?: ImageType;
-  heightLimit?: boolean;
-  alignToTop?: boolean;
-  alt?: string;
-  color?: {
-    hex?: string;
-    rgb?: RGBType;
-  };
+  larger?: boolean;
+  align?: string;
+  asset: Asset;
 };
 
-export type ImageWithSizes = {
-  imageSm?: ImageType;
-  imageLg?: ImageType;
-  alt: string;
-};
-
-export type ImageAsset = {
+export type Asset = {
   _ref: string;
   _type: string;
 };
 
 export type ImageType = {
-  asset: ImageAsset;
+  asset: Asset;
   alt: string;
   width?: number;
   height?: number;
+  caption?: LocalizedObject<string>;
 };
 
-export type RGBType = {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-};
+export type LocalizedValue<T> = { _key: string; value: T };
+export type LocalizedObject<T> = { [key: string]: LocalizedValue<T>[] };
 
-export interface SectionsProps {
-  languageId: string;
-  section?: any;
-  router?: NextRouter;
-}
+export type LocalizedArray<T extends any[]> = {
+  [K in keyof T]: T[K] extends LocalizedObject<infer U> ? U : never;
+};

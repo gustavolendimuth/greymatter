@@ -1,32 +1,26 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaDigitalTachograph } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import image from 'schemas/objects/image';
 
-export default {
+export default defineType({
   name: 'footer',
   type: 'document',
   title: 'Footer',
-  preview: { select: { title: 'name' } },
   icon: FaDigitalTachograph,
+  preview: {
+    prepare() {
+      return {
+        title: 'Footer',
+      };
+    },
+  },
   fields: [
-    {
-      name: 'logo',
-      type: 'figure',
-      title: 'Logo',
-    },
-    {
+    image({ title: 'Logo', name: 'logo' }),
+    defineField({
       name: 'formText',
-      type: 'richText',
+      type: 'internationalizedArrayRichText',
       title: 'Texto do formulário',
-    },
-    {
-      name: 'formButton',
-      type: 'string',
-      title: 'Texto do botão do formulário',
-    },
-    {
-      name: 'background',
-      type: 'background',
-      title: 'Background da seção',
-    },
+    }),
   ],
-};
+});

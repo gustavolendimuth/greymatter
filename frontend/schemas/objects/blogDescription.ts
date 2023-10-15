@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 import { defineArrayMember, defineField } from 'sanity';
 
-export const blogDescription = defineField({
+export default defineField({
   name: 'blogDescription',
-  description: 'Used both for the <meta> description tag for SEO, and the blog subheader.',
-  title: 'Blog Description',
+  description: 'Usado para SEO e para o subtítulo do blog.',
+  title: 'Descrição do Blog',
   type: 'array',
   of: [
     defineArrayMember({

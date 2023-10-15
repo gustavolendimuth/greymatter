@@ -1,36 +1,29 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaQuestion } from 'react-icons/fa';
+import { defineType } from 'sanity';
+import backgroundImage from 'schemas/objects/backgroundImage';
+import image from 'schemas/objects/image';
+import sectionText from 'schemas/objects/sectionText';
+import sectionTitle from 'schemas/objects/sectionTitle';
 
 import documentType from '../objects/documentType';
 
-export default {
+export default defineType({
   name: 'whoWeAre',
   type: 'document',
   title: 'Who we are',
-  preview: { select: { title: 'title' } },
   icon: FaQuestion,
+  preview: {
+    prepare() {
+      return { title: 'Who We Are Section' };
+    },
+  },
+  fieldsets: [{ name: 'background', title: 'Background' }],
   fields: [
     documentType('section'),
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Título da Seção',
-    },
-    {
-      name: 'text',
-      type: 'richText',
-      title: 'Texto da seção',
-    },
-    {
-      name: 'image',
-      type: 'figure',
-      title: 'Imagem da seção',
-    },
-    {
-      name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
+    sectionTitle,
+    sectionText,
+    image(),
+    backgroundImage(),
   ],
-};
+});

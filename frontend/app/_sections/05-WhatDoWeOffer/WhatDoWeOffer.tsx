@@ -1,47 +1,26 @@
-'use client';
-
+import BackgroundImage from 'app/_components/BackgroundImage';
 import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import useScrollTo from 'app/_Hooks/useScrollTo';
-import { useHomeContext } from 'context/Provider';
-import { useEffect, useState } from 'react';
-import { WhatDoWeOfferCardComponent, WhatDoWeOfferPage } from 'types/componentsTypes';
-import fetchContent from 'utils/fetchContent';
+import { getClient } from 'lib/sanityClient';
+import { getWhatDoWeOffer } from 'lib/sanityFetch';
 
-import WhatDoWeOfferCard from './components/WhatDoWeOfferCard';
+import WhatDoWeOfferCards from './components/WhatDoWeOfferCard';
 
-export function WhatDoWeOffer() {
-  const [whatDoWeOfferPageTitle, setWhatDoWeOfferPageTitle] = useState<string | undefined>();
-  const [whatDoWeOfferCards, setWhatDoWeOfferCards] = useState<WhatDoWeOfferCardComponent[] | undefined>();
+export async function WhatDoWeOffer({ locale }: { locale: string }) {
+  const client = getClient();
+  const { title, background, cards } = await getWhatDoWeOffer(client, locale);
 
-  useScrollTo();
-  const { languageId } = useHomeContext();
-
-  useEffect(() => {
-    const getWhatDoWeOfferContent = async () => {
-      const data = await fetchContent('whatDoWeOffer') as WhatDoWeOfferPage;
-      if (data) {
-        setWhatDoWeOfferPageTitle(data.title);
-        setWhatDoWeOfferCards(data.cards);
-      }
-    };
-    getWhatDoWeOfferContent();
-  }, [languageId]);
-
-  if (!whatDoWeOfferPageTitle || !whatDoWeOfferCards) return null;
+  if (!title || !cards) return null;
 
   return (
-    <Section id="what-do-we-offer">
+    <Section className="relative" id="what-do-we-offer">
+      <BackgroundImage image={background} />
       <Container fullHeight gap justify>
-        <div />
-        <Title className="text-primary">{whatDoWeOfferPageTitle}</Title>
-        <div className="lg:gap-10 justify-center px-10 flex flex-wrap gap-3 md:gap-5">
-          {whatDoWeOfferCards.map((card, index) => (
-            <WhatDoWeOfferCard key={index} card={card} />
-          ))}
-        </div>
+        <div className="spacer" />
+        <Title className="text-primary">{title}</Title>
+        <WhatDoWeOfferCards cards={cards} />
         <DownArrow className="fill-primary" to="#how-we-invest" />
       </Container>
     </Section>

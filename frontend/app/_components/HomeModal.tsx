@@ -1,15 +1,15 @@
-import axios from "axios";
-import { useContext, useState } from "react";
-import Context from "../../context/Context";
-import report from "../_assets/pdf/Report-Pesquisa-Grey-Matter-02-mai-2023.pdf";
-import "./HomeModal.css";
+'use client';
 
-function HomeModal() {
+import './HomeModal.css';
+
+import { useState } from 'react';
+
+import report from '../_assets/pdf/Report-Pesquisa-Grey-Matter-02-mai-2023.pdf';
+
+function HomeModal({ locale }: string) {
   const [showModal, setShowModal] = useState(true);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const { languageId } = useContext(Context);
-  const englishId = "d3761ab6-c643-40b1-9233-00802f961ce6";
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const { NEXT_PUBLIC_BACKEND_URL } = process.env;
 
   function handleClose() {
@@ -17,9 +17,9 @@ function HomeModal() {
   }
 
   function downloadPdf() {
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = report;
-    link.target = "_blank";
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -30,14 +30,18 @@ function HomeModal() {
 
     try {
       downloadPdf();
-      if (!NEXT_PUBLIC_BACKEND_URL) throw new Error("Backend URL not found");
-      await axios.post(NEXT_PUBLIC_BACKEND_URL, { email, name });
+      if (!NEXT_PUBLIC_BACKEND_URL) throw new Error('Backend URL not found');
+      await fetch(NEXT_PUBLIC_BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name }),
+      });
     } catch (error) {
       console.error(error);
     }
 
-    setEmail("");
-    setName("");
+    setEmail('');
+    setName('');
     handleClose();
   }
 
@@ -48,22 +52,22 @@ function HomeModal() {
           <form onSubmit={handleSubmit}>
             <div className="modal-header border-b-0">
               <h2 className="text-secondary">
-                {languageId === englishId ? "RESEARCH" : "PESQUISA"}
+                {locale === 'en' ? 'RESEARCH' : 'PESQUISA'}
               </h2>
             </div>
             <div className="modal-body px-5 py-4">
               <div className="pb-3">
                 <p className="py-2 text-base">
                   <strong>
-                    {languageId === englishId
-                      ? "Subtitle in English"
-                      : "Subtitle in Portuguese"}
+                    {locale === 'en'
+                      ? 'Subtitle in English'
+                      : 'Subtitle in Portuguese'}
                   </strong>
                 </p>
                 <p className="py-2 text-base">
-                  {languageId === englishId
-                    ? "Text in English"
-                    : "Text in Portuguese"}
+                  {locale === 'en'
+                    ? 'Text in English'
+                    : 'Text in Portuguese'}
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -71,7 +75,7 @@ function HomeModal() {
                   <input
                     type="text"
                     placeholder={
-                      languageId === englishId ? "Full name" : "Nome completo"
+                      locale === 'en' ? 'Full name' : 'Nome completo'
                     }
                     value={name}
                     onChange={(event) => setName(event.target.value)}
@@ -94,7 +98,7 @@ function HomeModal() {
                   onClick={handleClose}
                   className="btn-secondary"
                 >
-                  {languageId === englishId ? "Close" : "Fechar"}
+                  {locale === 'en' ? 'Close' : 'Fechar'}
                 </button>
                 <button type="submit" className="btn-primary">
                   Download

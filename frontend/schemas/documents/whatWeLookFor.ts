@@ -1,32 +1,32 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FaSearch } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import backgroundImage from 'schemas/objects/backgroundImage';
+import sectionTitle from 'schemas/objects/sectionTitle';
 
 import documentType from '../objects/documentType';
 
-export default {
+export default defineType({
   name: 'whatWeLookFor',
   type: 'document',
   title: 'What we look for',
-  preview: { select: { title: 'title' } },
   icon: FaSearch,
+  preview: {
+    prepare() {
+      return { title: 'What We Look For Section' };
+    },
+  },
+  fieldsets: [{ name: 'background', title: 'Background' }],
   fields: [
     documentType('section'),
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Título da Seção',
-    },
-    {
+    sectionTitle,
+    defineField({
       name: 'cards',
       type: 'array',
       title: 'Cards da seção',
       of: [{ type: 'card' }],
-    },
-    {
-      name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
+      validation: (rule) => rule.required(),
+    }),
+    backgroundImage(),
   ],
-};
+});

@@ -7,8 +7,6 @@ type LayoutProps = {
 };
 
 export default function Layout({ children, locale }: LayoutProps) {
-  console.log('Layout', locale);
-
   return (
     <>
       <Navbar position="absolute" locale={locale} />

@@ -1,6 +1,6 @@
 import Meta from 'app/[locale]/Meta';
 import * as demo from 'lib/demo.data';
-import { urlForImage } from 'lib/sanity.image';
+import { urlForImage } from 'lib/sanityImage';
 import { Post, Settings } from 'lib/sanity.queries';
 import Head from 'next/head';
 

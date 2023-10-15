@@ -3,8 +3,13 @@
 export const width = 1200;
 export const height = 630;
 
-export function OpenGraphImage(props: { title: string }) {
+export async function OpenGraphImage(props: { title: string }) {
   const { title } = props;
+
+  // const client = getClient();
+  // const logo = await client.fetch(groq`*[_type == "siteSettings][0].logo`);
+  // console.log(logo);
+
   return (
     <div
       style={{
@@ -35,7 +40,15 @@ export function OpenGraphImage(props: { title: string }) {
           justifyContent: 'center',
         }}
       >
-        Teste
+        {/* <Image
+          alt={logo?.alt}
+          src={logo?.asset && urlForImage(logo).url()}
+          style={{
+            width: 400,
+            height: 400,
+            objectFit: 'contain',
+          }}
+        /> */}
       </div>
       <div
         style={{

@@ -12,14 +12,22 @@ const config: Config = {
         sans: ['Segoe UI', 'sans'],
       },
       padding: {
-        'calc-lg': 'calc(5vh + 3vw)',
-        'calc-plus-arrow': 'calc(5vh + 3vw + 64px)',
+        'calc-lg': 'calc(4vh + 3vw)',
+        'calc-plus-arrow': 'calc(4vh + 3vw + 64px)',
         'calc-md': 'calc(4vh + 2vw)',
       },
       gap: {
-        'calc-lg': 'calc(5vh + 3vw)',
+        'calc-lg': 'calc(4vh + 3vw)',
         'calc-md': 'calc(4vh + 2vw)',
         'calc-sm': 'calc(3vh + 1vw)',
+      },
+      height: {
+        'calc-full': 'calc(var(--vh, 1vh) * 100)',
+        'calc-2xfull': 'calc(var(--vh, 1vh) * 200)',
+      },
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2200px',
       },
       colors: {
         primary: '#7fa0ad',

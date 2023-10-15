@@ -6,16 +6,22 @@ export default defineType({
   title: 'Author',
   icon: UserIcon,
   type: 'document',
+  preview: {
+    select: {
+      title: 'name',
+      media: 'picture',
+    },
+  },
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Nome',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'picture',
-      title: 'Picture',
+      title: 'Foto',
       type: 'image',
       fields: [
         {
@@ -23,6 +29,7 @@ export default defineType({
           type: 'string',
           title: 'Alternative text',
           description: 'Important for SEO and accessibility.',
+          validation: (rule) => rule.required(),
         },
       ],
       options: { hotspot: true },

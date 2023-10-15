@@ -1,25 +1,33 @@
 /* eslint-disable import/prefer-default-export */
-type ValidationProps = {
-  Rule: any;
-  name: string;
+type FullValidationProps = SimpleValidadeProps & {
+  title: string;
   languages: { id: string, title: string }[];
 };
 
-export function validation({ Rule, name, languages }: ValidationProps): any {
-  return Rule.custom((fieldArray: any) => {
-    if ((fieldArray?.filter((field: { value: string }) => field.value))?.length === languages?.length) {
-      return true;
-    }
-    return `O ${name} é obrigatório`;
-  });
-}
-
-type PreviewProps = {
-  selection: { fieldArray: any[] },
+type SimpleValidadeProps = {
+  rule: any;
   title: string;
 };
 
-export function preview({ selection: { fieldArray }, title }: PreviewProps) {
+export function fullValidation({ rule, title, languages }: FullValidationProps): any {
+  return rule?.custom((fieldArray: any) => {
+    if ((fieldArray?.filter((field: { value: string }) => field.value))?.length === languages?.length) {
+      return true;
+    }
+    return `O campo ${title} é obrigatório`;
+  });
+}
+
+export function simpleValidation({ rule, title }: SimpleValidadeProps): any {
+  return rule?.custom((fieldArray: any) => {
+    if (fieldArray?.filter((field: { value: string }) => field.value)?.length > 0) {
+      return true;
+    }
+    return `O campo ${title} é obrigatório`;
+  });
+}
+
+export function preview(fieldArray: any[]) {
   let fieldValue: string | undefined;
 
   if (fieldArray) {
@@ -29,7 +37,5 @@ export function preview({ selection: { fieldArray }, title }: PreviewProps) {
     }
   }
 
-  return {
-    title: fieldValue || title,
-  };
+  return fieldValue;
 }

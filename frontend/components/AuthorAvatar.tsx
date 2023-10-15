@@ -1,4 +1,4 @@
-import { urlForImage } from 'lib/sanity.image';
+import { urlForImage } from 'lib/sanityImage';
 import type { Author } from 'lib/sanity.queries';
 import Image from 'next/image';
 import { AiOutlineUser } from 'react-icons/ai';

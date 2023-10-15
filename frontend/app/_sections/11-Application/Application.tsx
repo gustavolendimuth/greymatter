@@ -3,22 +3,18 @@ import Container from 'app/_components/Container';
 import Img from 'app/_components/Img';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
+import { getClient } from 'lib/sanityClient';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ApplicationPage } from 'types/componentsTypes';
+import getByLocale from 'utils/getByLocale';
+import { getApplication } from 'lib/sanityFetch';
 
-import fetchContent from '../../../utils/fetchContent';
+export async function Application({ locale }: { locale: string }) {
+  const client = getClient();
+  const { title, text, image, buttonText } = await getApplication(client);
 
-async function Application() {
-  let data: ApplicationPage | null = null;
-  try {
-    data = await fetchContent('application') as ApplicationPage;
-  } catch (error) {
-    console.error(error);
-  }
-  if (!data) return null;
+  const [titleByLocale, textByLocale, buttonTextByLocale] = getByLocale([title, text, buttonText], locale);
 
-  const { title, text, image, buttonText } = data;
   if (!title || !text) return null;
 
   return (
@@ -26,7 +22,7 @@ async function Application() {
       <Container gap>
         <div />
         <Title className="text-white">
-          {title}
+          {titleByLocale}
         </Title>
         <Img
           alt={image?.alt || 'Application image'}
@@ -37,13 +33,13 @@ async function Application() {
           || 200]}
         />
         <div className="text-center text-info text-2xl mx-auto max-w-[767px]">
-          {text && <PortableText value={text} />}
+          {text && <PortableText value={textByLocale} />}
         </div>
         <Link
           href="/application-form"
           className="uppercase font-600 bg-primary text-white rounded-lg border-2 flex items-center gap-2 px-12 py-4"
         >
-          {buttonText}
+          {buttonTextByLocale}
           <Image
             alt="Action button"
             src="/assets/img/greymatter-button-action.svg"

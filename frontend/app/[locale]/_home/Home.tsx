@@ -7,8 +7,6 @@ import HowWeInvest from 'app/_sections/06-HowWeInvest/HowWeInvest';
 import Team from 'app/_sections/07-Team/Team';
 import Community from 'app/_sections/08-Community/Community';
 import Portfolio from 'app/_sections/09-Portfolio/Portfolio';
-import Insights from 'app/_sections/10-Insights/Insights';
-import Application from 'app/_sections/11-Application/Application';
 import React from 'react';
 
 import Layout from './Layout';
@@ -29,8 +27,8 @@ export default function Home({ locale }: HomeProps) {
       <Team locale={locale} />
       <Community locale={locale} />
       <Portfolio locale={locale} />
-      <Insights locale={locale} locale={locale} />
-      <Application locale={locale} />
+      {/* <Insights locale={locale} /> */}
+      {/* <Application locale={locale} /> */}
     </Layout>
   );
 }

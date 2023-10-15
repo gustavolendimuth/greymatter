@@ -1,12 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 
 import authorType from 'schemas/documents/author';
-import settingsType from 'schemas/documents/blogSettings';
-import postType from 'schemas/documents/post';
+import postType from 'schemas/documents/posts';
 
 import video from './components/VideoPreview';
 import application from './documents/application';
 import applicationForm from './documents/applicationForm';
+import blogSettings from './documents/blogSettings';
 import community from './documents/community';
 import communityMembers from './documents/communityMembers';
 import footer from './documents/footer';
@@ -20,33 +20,22 @@ import whatDoWeOffer from './documents/whatDoWeOffer';
 import whatWeLookFor from './documents/whatWeLookFor';
 import whoWeAre from './documents/whoWeAre';
 import applicationFormFields from './objects/applicationFormFields';
-import background from './objects/background';
-import { blogDescription } from './objects/blogDescription';
+import blogDescription from './objects/blogDescription';
 import card from './objects/card';
-import cardNoText from './objects/cardNoText';
-import communityMembersFields from './objects/communityMembersFields';
-import figure from './objects/figure';
-import figureWithSizes from './objects/figureWithSizes';
-import { postContent } from './objects/postContent';
-import preview from './objects/preview';
+import heroVideo from './objects/heroVideo';
+import postContent from './objects/postContent';
 import richText from './objects/richText';
-import teamMembersFields from './objects/teamMembersFields';
 
 export const schemaTypes = [
+  heroVideo,
   applicationFormFields,
   blogDescription,
   postContent,
   card,
-  cardNoText,
   richText,
-  figureWithSizes,
-  figure,
-  background,
-  preview,
   video,
-  teamMembersFields,
-  communityMembersFields,
   siteSettings,
+  blogSettings,
   hero,
   intro,
   whoWeAre,
@@ -59,7 +48,6 @@ export const schemaTypes = [
   communityMembers,
   authorType,
   postType,
-  settingsType,
   application,
   applicationForm,
   footer,

@@ -1,40 +1,33 @@
 import { FaChartPie } from 'react-icons/fa';
+import { defineField, defineType } from 'sanity';
+import image from 'schemas/objects/image';
+import sectionTitle from 'schemas/objects/sectionTitle';
 
+import backgroundImage from '../objects/backgroundImage';
 import documentType from '../objects/documentType';
 
-export default {
+export default defineType({
   name: 'howWeInvest',
   type: 'document',
   title: 'How We Invest',
-  preview: { select: { title: 'title' } },
   icon: FaChartPie,
+  preview: {
+    prepare() {
+      return { title: 'How We Invest Section' };
+    },
+  },
+  fieldsets: [{ name: 'background', title: 'Background' }],
   fields: [
     documentType('section'),
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Título da Seção',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'firstCard',
-      type: 'cardNoText',
-      title: 'Primeiro Card',
-      validation: (Rule) => Rule.required(),
-      description: 'Primeiro card da seção.',
-    },
-    {
+    sectionTitle,
+    image({ name: 'firstCard', title: 'Primeiro Card', description: 'Primeiro card da seção.' }),
+    defineField({
       name: 'cards',
       type: 'array',
       title: 'Cards da seção',
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
       of: [{ type: 'card' }],
-    },
-    {
-      name: 'background',
-      type: 'background',
-      title: 'Background da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
+    }),
+    backgroundImage(),
   ],
-};
+});

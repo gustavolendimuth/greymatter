@@ -1,39 +1,68 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { BsFillPeopleFill } from 'react-icons/bs';
+import { defineField, defineType } from 'sanity';
+import backgroundImage from 'schemas/objects/backgroundImage';
+import sectionTitle from 'schemas/objects/sectionTitle';
 
 import documentType from '../objects/documentType';
 
-export default {
+export default defineType({
   name: 'team',
   type: 'document',
   title: 'Team',
-  preview: { select: { title: 'title' } },
   icon: BsFillPeopleFill,
+  preview: {
+    prepare() {
+      return { title: 'Team Section' };
+    },
+  },
   groups: [
     {
       name: 'teamMembers',
-      title: 'Team Members',
+      title: 'Membros da equipe',
     },
   ],
   fields: [
     documentType('section'),
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Título da Seção',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'teamMembers',
+    sectionTitle,
+    defineField({
+      type: 'object',
+      name: 'team',
       title: 'Equipe',
-      type: 'teamMembersFields',
       group: 'teamMembers',
-    },
-    {
-      name: 'background',
-      type: 'figure',
-      title: 'Imagem de fundo da seção',
-      description: 'Tamanho ideal de 2000px de largura e resolução de 72dpi.',
-    },
+      fields: [
+        defineField({
+          type: 'array',
+          name: 'members',
+          title: 'Membros',
+          validation: (rule) => rule.required(),
+          of: [
+            {
+              type: 'reference',
+              to: [{ type: 'teamMembers' }],
+            },
+          ],
+        }),
+        defineField({
+          title: 'Ordem de Exibição',
+          name: 'sort',
+          type: 'string',
+          initialValue: '["custom"]',
+          description: `Escolha a ordem que será exibida no site. Esta ordem é válida para 
+        a página inicial e para a página de biografia dos membros da equipe`,
+          options: {
+            list: [
+              { title: 'Personalizada', value: '["custom"]' },
+              { title: 'Nome', value: '["name"]' },
+              { title: 'Cargo', value: '["position"]' },
+              { title: 'Nome e Cargo', value: '["name", "position"]' },
+            ],
+            layout: 'radio',
+            direction: 'horizontal',
+          },
+        }),
+      ],
+    }),
+    backgroundImage({ options: ['larger', 'align'] }),
   ],
-};
+});

@@ -1,20 +1,37 @@
+import { ImageFormat } from '@sanity/image-url/lib/types/types';
+import { urlForImage } from 'lib/sanityImage';
 import Image, { ImageProps } from 'next/image';
 import React from 'react';
-
-import { ImageType } from '@/types/propertiesTypes';
-
-import urlFor from '../../utils/urlFor';
+import { ImageType } from 'types/propertiesTypes';
 
 type ImgProps = Omit<ImageProps, 'src'> & {
-  alt?: string;
   image?: ImageType;
-  width?: number | string;
-  height?: number | string;
-  size?: [width: number, height: number];
+  width: number;
+  height: number;
   quality?: number;
-  format?: 'jpg' | 'pjpg' | 'png' | 'webp';
+  format?: ImageFormat;
   className?: string;
   src?: string;
+};
+
+type BuildUrlProps = {
+  image: ImageType;
+  width: number;
+  height: number;
+  quality: number;
+  format?: ImageFormat;
+};
+
+const buildUrl = ({ image, width, quality, format }: BuildUrlProps) => {
+  const urlBuilder = urlForImage(image?.asset).quality(quality).width(width);
+
+  if (format) {
+    urlBuilder.format(format);
+  } else {
+    urlBuilder.auto('format');
+  }
+
+  return urlBuilder.fit('fill').url();
 };
 
 function Img({
@@ -24,45 +41,20 @@ function Img({
   quality = 90,
   format,
   className,
-  src,
-  size,
   ...props
-}: ImgProps): React.JSX.Element | null {
-  if (!image) {
-    return null;
-  }
+}: ImgProps) {
+  if (!image) return null;
 
-  let url = null;
-
-  if (size) {
-    url = format
-      ? urlFor(image?.asset)
-        .size(...size)
-        .quality(quality)
-        .format(format)
-        .url()
-      : urlFor(image?.asset)
-        .size(...size)
-        .quality(quality)
-        .url();
-  } else {
-    url = format
-      ? urlFor(image?.asset)
-        .quality(quality)
-        .format(format)
-        .url()
-      : urlFor(image?.asset)
-        .quality(quality)
-        .url();
-  }
+  const url = buildUrl({ image, width, height, quality, format });
 
   return (
     <Image
       {...props}
+      alt={image?.alt}
       className={className}
-      width={width || 0}
-      height={height || 0}
-      src={url || src || ''}
+      width={width}
+      height={height}
+      src={url}
     />
   );
 }

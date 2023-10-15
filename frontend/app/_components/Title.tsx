@@ -9,7 +9,7 @@ export default function Title({
   return (
     <h2
       className={twMerge(
-        'md:text-6xl text-5xl text-primary font-900 uppercase text-center',
+        'md:text-7xl text-5xl text-primary font-900 uppercase text-center',
         className,
       )}
       {...componentProps}

@@ -1,39 +1,17 @@
+'use client';
+
 import { PortableText } from '@portabletext/react';
 import Img from 'app/_components/Img';
-import { useEffect, useState } from 'react';
 import { Tree, TreeNode } from 'react-organizational-chart';
-import { HowWeInvestCard } from 'types/componentsTypes';
+import { HowWeInvestCardComponent } from 'types/componentsTypes';
+import { ImageType } from 'types/propertiesTypes';
 
 interface HowWeInvestTreeProps {
-  cards: HowWeInvestCard[];
-  firstCard: HowWeInvestCard;
+  cards: HowWeInvestCardComponent[];
+  firstCard: ImageType;
 }
 
-export default function HowWeInvestTree({
-  cards,
-  firstCard,
-}: HowWeInvestTreeProps) {
-  const [screenSize, setScreenSize] = useState<string | undefined>();
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setScreenSize('mobile');
-      } else if (window.innerWidth >= 768 && window.innerWidth < 992) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+export default function HowWeInvestTree({ cards, firstCard }: HowWeInvestTreeProps) {
   if (!cards || !firstCard) return null;
 
   return (
@@ -42,14 +20,15 @@ export default function HowWeInvestTree({
         lineWidth="0.2rem"
         lineColor="#7fa0ad"
         lineBorderRadius="1.5rem"
-        lineHeight={screenSize === 'desktop' ? '5.5rem' : '3.5rem'}
+        lineHeight="5.5rem"
         lineStyle=""
         nodePadding=""
         label={
           <div className="rounded-lg flex justify-center">
             <Img
-              image={firstCard?.cardImage?.image}
+              image={firstCard}
               width={160}
+              height={160}
               className="object-cover"
               alt="Deal"
             />
@@ -63,13 +42,16 @@ export default function HowWeInvestTree({
               <div className="arrow-box flex justify-center items-center">
                 <div className="max-w-[200px] flex justify-center flex-col items-center">
                   <Img
-                    alt={card?.cardImage?.alt || ''}
+                    alt={card?.image?.alt || ''}
                     className="object-cover"
-                    image={card?.cardImage?.image}
+                    image={card?.image}
                     width={112}
+                    height={112}
                   />
                   <div className="pt-2 text-lg md:text-xl text-primary">
-                    {card?.text && <PortableText value={card.text} />}
+                    {
+                      card?.text && <PortableText value={card.text} />
+                    }
                   </div>
                 </div>
               </div>
