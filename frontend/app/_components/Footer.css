@@ -1,0 +1,43 @@
+footer {
+  width: 100%;
+}
+
+.footer-greymatter-logo-container {
+  width: 100%;
+}
+
+.footer-greymatter-logo {
+  max-width: 400px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.footer-vieira-rezende-logo-container {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-vieira-rezende-logo {
+  max-width: 350px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.footer-email-input {
+  height: 100%;
+  max-width: 400px;
+}
+
+.footer-subscribe-form {
+  width: 100%;
+}
+
+.footer-subscription-text {
+  max-width: 360px;
+  width: 100%;
+}
+
+.footer-linkedin-icon {
+  color: white;
+  width: 32px;
+}

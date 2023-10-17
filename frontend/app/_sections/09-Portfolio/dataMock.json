@@ -1,0 +1,215 @@
+{
+  "title": "Portfolio",
+  "background": "https://cdn.sanity.io/images/yhcu3nao/preview/52b3a0a82cb282e633f03953041c4db62835972c-2000x1334.webp",
+  "companies": [
+    {
+      "id": "sdfg",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/privacy83-logo.png"
+        },
+        "alt": "Privacy83 logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Privacy83",
+      "description": "Ferramenta de gerenciamento de privacidade de dados",
+      "text": "A Privacy83 é uma ferramenta desenvolvida pela 1500th em parceria com o Vieira Rezende Advogados. Ideal para gestão de dados, oferecendo uma visão global de todos os processos e informações da empresa, além de possuir meios de efetuar mapeamento de dados e análise de risco.",
+      "categories": ["Data Privacy", "Compliance"]
+    },
+    {
+      "id": "sdfgsd",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/moonwalk-logo.svg"
+        },
+        "alt": "Moonwalk logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Moonwalk",
+      "description": "Transformação digital para pequenos restaurantes",
+      "text": "A startup Moonwalk visa ajudar pequenos restaurantes, facilitando o processo de criação de cardápios online, o que auxilia no recebimento de pedidos pela internet. A companhia oferece benefícios ao cliente por meio de programa de fidelidade e  de cashback, disponíveis no aplicativo da Moonwalk.",
+      "categories": ["AdTech"]
+    },
+    {
+      "id": "sdfghg",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/confiance_invest-logo.png"
+        },
+        "alt": "Confiance Invest logo",
+        "whiteBackground": false,
+        "tone": "light"
+      },
+      "companyName": "Confiance Invest",
+      "description": "Plataforma de financiamento coletivo de ações",
+      "text": "A Confiance Invest, destinado a empreendedores e investidores, é um meio de investir na área imobiliária e florestal. A startup pré-seleciona possibilidades de investimento seguras para seus clientes, atentando-se, também, a sustentabilidade e viabilidade econômico-financeira.",
+      "categories": ["Fintech"]
+    },
+    {
+      "id": "sdfgkj",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/bvm12-logo-large.png"
+        },
+        "alt": "BVM12 logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "BMV12",
+      "description": "Plataforma de financiamento baseada em blockchain",
+      "text": "BVM12 é uma plataforma de financiamento baseada em blockchain que conecta investidores conscientes com indústrias sustentáveis na Amazônia.",
+      "categories": ["Fintech"]
+    },
+    {
+      "id": "sdfgyt",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/real_valor-logo-v2.png"
+        },
+        "alt": "Real Valor logo",
+        "whiteBackground": true,
+        "tone": "dark"
+      },
+      "companyName": "Real Valor",
+      "description": "Software para consolidação de portfólio de investimentos",
+      "text": "Real Valor é uma plataforma gratuita para que investidores possam controlar e descobrir investimentos, facilitando o gerenciamento e acesso à informação. Oferece serviço de ajuda para aqueles usuários que eventualmente têm dificuldade de cumprir suas metas, contando com um software para solucionar problemas.",
+      "categories": ["Fintech"]
+    },
+    {
+      "id": "sdfgdfgs",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/asa_acai-logo-v2.png"
+        },
+        "alt": "Asa Açaí logo",
+        "whiteBackground": true,
+        "tone": "dark"
+      },
+      "companyName": "Asa Açaí",
+      "text": "ASA é uma empresa brasileira comprometida com o fornecimento de açaí natural, sustentável e autêntico da Amazônia.",
+      "description": "Produção e distribuição de açaí",
+      "categories": ["Food"]
+    },
+    {
+      "id": "sdfgdfgsdd",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/instanteaser-logo.png"
+        },
+        "alt": "Instanteaser logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Instanteaser",
+      "description": "Produção de vídeos e anúncios para marketing online",
+      "text": "Instanteaser é uma startup que otimiza o processo de criação de campanhas de marketing online, gerando vídeos e anúncios com duração de até 30 segundos, por meio de inteligência artificial,  para promover empresas. A companhia visa ajudar seus clientes a destacarem-se apesar de um mercado cada vez mais competitivo.",
+      "categories": ["AdTech"]
+    },
+    {
+      "id": "sdfgdfgopid",
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/white_tents-logo-v2.png"
+        },
+        "alt": "White Tents logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "White Tents",
+      "text": "A White Tents possibilita que empresas e escolas fiscalizem a vacinação de seus funcionários. O aplicativo da companhia funciona como uma carteira digital de saúde, permitindo o compartilhamento voluntário de dados de maneira segura.",
+      "description": "Carteira digital de saúde",
+      "categories": ["HealthTech"]
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/brla-logo.jpg"
+        },
+        "alt": "BRLA logo",
+        "whiteBackground": false,
+        "tone": "light"
+      },
+      "companyName": "BRLA - Ada Capital",
+      "text": "O BRLA é uma stablecoin emitida e estruturada pela BRLA Digital Ltda. com o objetivo de mitigar a volatidade dos preços das criptomoedas frente ao câmbio, mantendo uma paridade de 1x1 com o Real.",
+      "description": "Stablecoin",
+      "categories": ["Fintech"],
+      "id": "sdfghjfgopid"
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/maxmilhas-logo.svg"
+        },
+        "alt": "MaxMilhas logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Maxmilhas",
+      "text": "A Maxmilhas é um marketplace de passagens aéreas, que oferta também bilhetes emitidos usando milhas aéreas de terceiros.",
+      "description": "Marketplace de passagens aéreas",
+      "categories": ["TravelTech"],
+      "id": "sdfgdfgosdfd"
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/jurishand-logo-landscape.svg"
+        },
+        "alt": "Jurishand logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Jurishand",
+      "text": "A Jurishand é um vade mecum digital, por meio do aplicativo, o usuário pode organizar leis, súmulas, jurisprudência e conceitos jurídicos de uma forma que fique simples e individual.",
+      "description": "Vade mecum digital",
+      "categories": ["LawTech"],
+      "id": "sdfgghfdfpid"
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/mission-logo-landscape.png"
+        },
+        "alt": "Mission logo",
+        "whiteBackground": false,
+        "tone": "light"
+      },
+      "companyName": "Mission Brasil",
+      "text": "A Mission Brasil é uma plataforma de digital outsourcing. Empresas postam tarefas que desejam contratar, o usuário então pode se oferecer para executar eventuais serviços nas áreas que lhe interessem, dentre as quais estão vendas, pesquisas, saúde, telecom, jurídico. Após a finalização do serviço, o usuário é remunerado.",
+      "description": "Plataforma de digital outsourcing",
+      "categories": ["Services", "Marketplace"],
+      "id": "sdfgdtyuid"
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/cannect-logo.svg"
+        },
+        "alt": "Cannect logo",
+        "whiteBackground": false,
+        "tone": "dark"
+      },
+      "companyName": "Cannect",
+      "text": "Cannect é um marketplace de cannabis medicinal, que digitalizou todo o processo de acesso aos medicamentos.",
+      "description": "Marketplace de cannabis medicinal",
+      "categories": ["HealthTech"],
+      "id": "sdfgdqweqid"
+    },
+    {
+      "logo": {
+        "image": {
+          "asset": "/portfolio-images/datanomik-logo.svg"
+        },
+        "alt": "Datanomik logo",
+        "whiteBackground": false,
+        "tone": "light"
+      },
+      "companyName": "Datanomik",
+      "text": "A Datanomik desenvolve software para integração financeira entre bancos de dados, entre outros.",
+      "description": "Software for financial integration",
+      "categories": ["Fintech"]
+    }
+  ]
+}

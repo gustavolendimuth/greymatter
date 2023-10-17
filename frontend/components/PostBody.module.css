@@ -1,0 +1,30 @@
+/* stylelint-disable linebreaks */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable selector-list-comma-space-after */
+.portableText {
+  @apply text-xl leading-loose text-secondary ;
+}
+
+.portableText p,
+.portableText ul,
+.portableText ol,
+.portableText blockquote {
+  @apply my-6 ;
+}
+
+.portableText h2 {
+  @apply mb-4 mt-12 text-3xl leading-snug ;
+}
+
+.portableText h3 {
+  @apply mb-4 mt-8 text-2xl leading-snug ;
+}
+
+.portableText a {
+  @apply text-blue-500 underline ;
+}
+
+.portableText a:hover {
+  @apply text-blue-800 ;
+}

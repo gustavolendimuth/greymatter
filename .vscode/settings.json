@@ -1,8 +1,15 @@
 {
   "cSpell.words": [
-    "camelcase",
-    "fullname",
+    "datetime",
+    "fieldsets",
+    "headlessui",
+    "Organisation",
+    "Polyfilling",
     "portabletext",
-    "textfill"
+    "textfill",
+    "textfilljs",
+    "Textfit",
+    "Unlocalized",
+    "unsplash"
   ]
 }
