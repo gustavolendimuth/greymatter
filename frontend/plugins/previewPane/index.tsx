@@ -5,15 +5,15 @@
 // It's part of the Studio's “Structure Builder API” and is documented here:
 // https://www.sanity.io/docs/structure-builder-reference
 
-import { DRAFT_MODE_ROUTE, previewSecretId } from 'lib/sanity.api';
+import { DRAFT_MODE_ROUTE, previewSecretId } from 'lib/sanityApi';
 import { DefaultDocumentNodeResolver } from 'sanity/desk';
 import {
   defineUrlResolver,
   Iframe,
   type IframeOptions,
 } from 'sanity-plugin-iframe-pane';
-import postType from 'schemas/documents/posts';
 import authorType from 'schemas/documents/author';
+import postType from 'schemas/documents/posts';
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane';
 

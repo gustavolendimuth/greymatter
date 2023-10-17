@@ -7,7 +7,7 @@ import {
   previewSecretId,
   projectId,
   useCdn,
-} from 'lib/sanity.api';
+} from 'lib/sanityApi';
 import { getClient } from 'lib/sanityClient';
 import { getPostBySlug } from 'lib/sanityFetch';
 import type { NextApiRequest, NextApiResponse } from 'next';

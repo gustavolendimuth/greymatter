@@ -4,7 +4,7 @@ import {
   apiVersion,
   dataset,
   projectId,
-} from 'lib/sanity.api';
+} from 'lib/sanityApi';
 import { customStructure, hiddenOptions } from 'plugins/customStructure';
 import { hideOptionsPlugin } from 'plugins/hideOptionsPlugin';
 import { previewDocumentNode } from 'plugins/previewPane';

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ImageResponse } from '@vercel/og';
 import { height, OpenGraphImage, width } from 'components/OpenGraphImage';
-import { apiVersion, dataset, projectId } from 'lib/sanity.api';
+import { apiVersion, dataset, projectId } from 'lib/sanityApi';
 import { siteSettingsQuery } from 'lib/sanityQueries';
 import type { NextRequest, NextResponse } from 'next/server';
 import type { PageConfig } from 'next/types';

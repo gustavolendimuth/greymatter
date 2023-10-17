@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api';
+import { apiVersion, dataset, projectId, useCdn } from 'lib/sanityApi';
 import { createClient, type SanityClient } from 'next-sanity';
 
 export function getClient(preview?: { token: string }): SanityClient {

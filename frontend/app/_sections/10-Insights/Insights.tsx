@@ -1,5 +1,5 @@
 import IndexPage from 'components/IndexPage';
-import { readToken } from 'lib/sanity.api';
+import { readToken } from 'lib/sanityApi';
 import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getBlogSettings } from 'lib/sanityFetch';
 

@@ -23,7 +23,7 @@
  * 16. Redeploy with `npx vercel --prod` to apply the new environment variable
  */
 
-import { apiVersion, dataset, projectId } from 'lib/sanity.api';
+import { apiVersion, dataset, projectId } from 'lib/sanityApi';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   createClient,

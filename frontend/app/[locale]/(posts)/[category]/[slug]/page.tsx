@@ -2,7 +2,7 @@ import Container from 'app/_components/Container';
 import Navbar from 'app/_components/Navbar';
 import Section from 'app/_components/Section';
 import PostPage from 'components/PostPage';
-import { readToken } from 'lib/sanity.api';
+import { readToken } from 'lib/sanityApi';
 import { getClient } from 'lib/sanityClient';
 import { getBlogSettings, getPostAndMoreStories } from 'lib/sanityFetch';
 import type { SharedPageProps } from 'pages/_app';
