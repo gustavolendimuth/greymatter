@@ -10,7 +10,7 @@ function NavbarLink({ children, href, ...navbarLinkProps }: NavbarLinkProps) {
     <Link href={href} scroll>
       <div
         {...navbarLinkProps}
-        className="uppercase tracking-widest text-center text-white"
+        className="uppercase w-full mx-auto tracking-widest text-center text-white"
       >
         {children}
       </div>

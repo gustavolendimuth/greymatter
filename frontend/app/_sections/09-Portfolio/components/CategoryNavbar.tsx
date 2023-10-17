@@ -12,8 +12,7 @@ import { Company } from './PortfolioGrid';
 export default function CategoryNavbar({ companies: allCompanies }: { companies: Company[] }) {
   const [categories, setCategories] = useState<string[]>();
   const [selectedCategory, setSelectedCategory] = useState<string>();
-
-  const { setCompanies } = useHomeContext();
+  const { setCompanies, setAnimationClass } = useHomeContext();
 
   const router = useRouter();
 
@@ -23,7 +22,7 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
   }, []);
 
   const handleCategoryChange = (category: string | undefined) => {
-    setCompanies(undefined);
+    setAnimationClass('fade-out');
     setSelectedCategory(category);
     router.push('#portfolio', { scroll: true });
 
@@ -36,6 +35,7 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
       } else {
         setCompanies(allCompanies);
       }
+      setAnimationClass('fade-in');
     }, 500);
   };
 

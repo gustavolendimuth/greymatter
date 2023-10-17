@@ -14,11 +14,11 @@ export default function BackgroundImage({ image, className, backgroundColor }: B
   if (!image) return null;
 
   const backgroundHeight = `
-    ${image?.larger ? 'h-calc-2xfull' : 'h-full inset-0'}
+    ${image?.larger ? 'h-calc-2xfull' : 'h-full'}
   `;
 
   return (
-    <div className={twMerge('bg-white absolute z-[-1]', backgroundColor)}>
+    <div className={twMerge('bg-white absolute z-[-1] inset-0', backgroundColor)}>
       <Img
         image={{ ...image, alt: 'Section Background' }}
         className={twMerge('w-full object-top object-cover', backgroundHeight, className, image?.align)}

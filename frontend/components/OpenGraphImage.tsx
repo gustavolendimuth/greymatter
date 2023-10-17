@@ -3,13 +3,8 @@
 export const width = 1200;
 export const height = 630;
 
-export async function OpenGraphImage(props: { title: string }) {
+export function OpenGraphImage(props: { title: string }) {
   const { title } = props;
-
-  // const client = getClient();
-  // const logo = await client.fetch(groq`*[_type == "siteSettings][0].logo`);
-  // console.log(logo);
-
   return (
     <div
       style={{
@@ -19,13 +14,9 @@ export async function OpenGraphImage(props: { title: string }) {
         textAlign: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         flexWrap: 'nowrap',
-        backgroundColor: 'deep-blue',
-        // backgroundImage:
-        //   'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
-        backgroundSize: '100px 100px',
-        backgroundPosition: '0 -8px, 0 -8px',
+        backgroundColor: '#516f8b',
       }}
     >
       <div
@@ -40,22 +31,21 @@ export async function OpenGraphImage(props: { title: string }) {
           justifyContent: 'center',
         }}
       >
-        {/* <Image
-          alt={logo?.alt}
-          src={logo?.asset && urlForImage(logo).url()}
+        <img
+          src="/assets/img/greymatter-logo.png"
+          alt="Satori Logo"
           style={{
-            width: 400,
-            height: 400,
+            padding: 20,
             objectFit: 'contain',
           }}
-        /> */}
+        />
       </div>
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: 80,
+          fontSize: 72,
           fontStyle: 'normal',
           color: 'white',
           marginTop: 0,

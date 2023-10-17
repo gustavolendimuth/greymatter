@@ -1,7 +1,9 @@
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import { getSanityImageConfig } from 'lib/sanityClient'
-import Image from 'next/image'
-import { useNextSanityImage } from 'next-sanity-image'
+/* eslint-disable import/prefer-default-export */
+
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { getClient } from 'lib/sanityClient';
+import Image from 'next/image';
+import { useNextSanityImage } from 'next-sanity-image';
 
 interface Props {
   asset: SanityImageSource
@@ -9,11 +11,12 @@ interface Props {
   caption?: string
 }
 
-export const SanityImage = (props: Props) => {
-  const { asset, alt, caption } = props
-  const imageProps = useNextSanityImage(getSanityImageConfig(), asset)
+export function SanityImage(props: Props) {
+  const { asset, alt, caption } = props;
+  const client = getClient();
+  const { loader, ...imageProps } = useNextSanityImage(client, asset);
 
-  if (!imageProps) return null
+  if (!imageProps) return null;
 
   return (
     <figure>
@@ -23,10 +26,10 @@ export const SanityImage = (props: Props) => {
         sizes="(max-width: 800px) 100vw, 800px"
       />
       {caption && (
-        <figcaption className="mt-2 text-center italic text-sm text-gray-500 dark:text-gray-400">
+        <figcaption className="mt-2 text-left italic text-sm text-gray-500 dark:text-gray-400">
           {caption}
         </figcaption>
       )}
     </figure>
-  )
+  );
 }

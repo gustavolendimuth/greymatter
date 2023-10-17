@@ -3,13 +3,13 @@ import { readToken } from 'lib/sanity.api';
 import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getBlogSettings } from 'lib/sanityFetch';
 
-export default async function Insights({ locale }) {
+export default async function News({ locale }) {
   const draftMode = false;
   const client = getClient(draftMode ? { token: readToken } : undefined);
 
   const [settings, posts = []] = await Promise.all([
-    getBlogSettings(client, locale, 'insights'),
-    getAllPosts(client, locale, 'insights'),
+    getBlogSettings(client, locale, 'news'),
+    getAllPosts(client, locale, 'news'),
   ]);
 
   // if (draftMode) {
@@ -27,7 +27,7 @@ export default async function Insights({ locale }) {
       posts={posts}
       settings={settings}
       locale={locale}
-      category="insights"
+      category="news"
     />
   );
 }

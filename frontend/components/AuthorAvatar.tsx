@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import { urlForImage } from 'lib/sanityImage';
-import type { Author } from 'lib/sanity.queries';
 import Image from 'next/image';
 import { AiOutlineUser } from 'react-icons/ai';
+import { Author } from 'types/sectionsTypes';
 
 export default function AuthorAvatar(props: Author) {
   const { name, picture } = props;
@@ -25,7 +26,7 @@ export default function AuthorAvatar(props: Author) {
           )}
         </div>
       </div>
-      <div className="text-lg font-600">{name}</div>
+      <div className="text-lg text-secondary font-600">{name}</div>
     </div>
   );
 }

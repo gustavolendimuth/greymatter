@@ -24,6 +24,8 @@ export type HowWeInvestCardComponent = {
   title: string;
 };
 
+export type BlogCategory = 'insights' | 'news';
+
 export type TeamMemberComponent = {
   name: string;
   image: ImageType;

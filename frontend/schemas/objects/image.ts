@@ -25,6 +25,7 @@ export default ({
     description: description || 'Faça upload de uma imagem, ou selecione uma da galeria',
     options: {
       hotspot: true,
+      crop: true,
     },
     fieldset,
     group,
@@ -44,7 +45,7 @@ export default ({
       // @ts-expect-error
       {
         name: 'caption',
-        type: 'internationalizedArrayString',
+        type: 'string',
         title: 'Legenda',
       },
     );

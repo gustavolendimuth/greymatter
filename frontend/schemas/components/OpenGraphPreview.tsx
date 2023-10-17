@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable @typescript-eslint/naming-convention */
 import { Card } from '@sanity/ui';
 import { height, OpenGraphImage, width } from 'components/OpenGraphImage';
 import { createIntlSegmenterPolyfill } from 'intl-segmenter-polyfill';
-import type { Settings } from 'lib/sanity.queries';
 import satori, { type SatoriOptions } from 'satori';
 import styled from 'styled-components';
 import useSWR from 'swr/immutable';
+import type { SiteSettings } from 'types/sectionsTypes';
 
 async function init(): Promise<SatoriOptions['fonts']> {
   if (!globalThis?.Intl?.Segmenter) {
@@ -20,7 +20,7 @@ async function init(): Promise<SatoriOptions['fonts']> {
   }
 
   const fontData = await fetch(
-    new URL('public/Inter-Bold.woff', import.meta.url),
+    new URL('public/assets/fonts/Inter-Bold.woff', import.meta.url),
   ).then((res) => res.arrayBuffer());
 
   return [{ name: 'Inter', data: fontData, style: 'normal', weight: 700 }];
@@ -48,7 +48,7 @@ const OpenGraphSvg = styled(Card).attrs({
   }
 `;
 
-export default function OpenGraphPreview(props: Settings['ogImage']) {
+export default function OpenGraphPreview(props: SiteSettings['ogImage']) {
   // we wrap the segmenter setup and font loading in SWR to enable caching
   const { data: fonts } = useSWR('OpenGraphPreview.init', () => fontsPromise, {
     suspense: true,

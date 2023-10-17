@@ -16,7 +16,7 @@ type PortfolioCardsProps = {
   company: CompanyProps;
 };
 
-export default function PortfolioCards({ company }: PortfolioCardsProps) {
+export default function PortfolioCard({ company }: PortfolioCardsProps) {
   const getFilterStyle = () => {
     if (company.logo.whiteBackground) return '';
     return company.logo.tone === 'dark'

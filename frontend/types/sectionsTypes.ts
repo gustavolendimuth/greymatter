@@ -5,7 +5,7 @@ import {
   WhatDoWeOfferCardComponent,
   WhatWeLookForCardComponent,
 } from './componentsTypes';
-import { BackgroundType, ImageType, LocalizedObject, SortOptions, TypedObject } from './propertiesTypes';
+import { BackgroundType, ImageType, SortOptions, TypedObject } from './propertiesTypes';
 
 export type HeroVideo = {
   landscape: string;
@@ -70,10 +70,10 @@ export type CommunitySection = {
 };
 
 export type ApplicationSection = {
-  title: LocalizedObject<string>;
-  text: LocalizedObject<TypedObject>;
+  title: string;
+  text: TypedObject;
   image: ImageType;
-  buttonText: LocalizedObject<string>;
+  buttonText: string;
   background: BackgroundType | null;
 };
 
@@ -83,33 +83,41 @@ export type Author = {
 };
 
 export type Post = {
-  _id: string
-  title?: LocalizedObject<string>
-  coverImage?: any
-  date?: string
-  _updatedAt?: string
-  excerpt?: LocalizedObject<string>
-  author?: Author
-  slug?: string
-  content?: LocalizedObject<TypedObject>
+  _id: string;
+  title?: string;
+  coverImage?: any;
+  date?: string;
+  _updatedAt?: string;
+  excerpt?: TypedObject;
+  author?: Author;
+  slug?: string;
+  content?: TypedObject;
 };
 
 export type BlogSettings = {
-  title?: LocalizedObject<string>
-  description?: LocalizedObject<TypedObject>
-  ogImage?: {
-    title?: string
-  }
+  title: string;
+  description: TypedObject;
 };
 
 export type SiteSettings = {
-  title?: LocalizedObject<string>;
-  description?: LocalizedObject<TypedObject>;
+  title?: string;
+  description?: TypedObject;
   logo?: ImageType;
   keywords?: string[];
+  ogImage?: {
+    title?: string;
+  }
 };
 
 export type Footer = {
   logo?: ImageType;
   formText?: TypedObject;
 };
+
+export interface Settings {
+  title?: string
+  description?: any[]
+  ogImage?: {
+    title?: string
+  }
+}

@@ -6,8 +6,9 @@ import PostHeader from 'components/PostHeader';
 import PostPageHead from 'components/PostPageHead';
 import PostTitle from 'components/PostTitle';
 import SectionSeparator from 'components/SectionSeparator';
-import type { Post, Settings } from 'lib/sanity.queries';
 import { notFound } from 'next/navigation';
+import { BlogCategory } from 'types/componentsTypes';
+import { BlogSettings, Post } from 'types/sectionsTypes';
 
 import BlogHeader from './BlogHeader';
 
@@ -16,29 +17,30 @@ export interface PostPageProps {
   loading?: boolean
   post: Post
   morePosts: Post[]
-  settings: Settings
+  settings: BlogSettings
+  locale: string
+  category: BlogCategory
 }
 
 const NO_POSTS: Post[] = [];
 
 export default function PostPage(props: PostPageProps) {
-  const { preview = false, loading, morePosts = NO_POSTS, post, settings } = props;
-  const { title } = settings || {};
+  const { preview = false, loading, morePosts = NO_POSTS, post, settings, locale, category } = props;
+  const { title, description } = settings || {};
 
   const slug = post?.slug;
 
-  if (!slug && !preview) {
+  if ((!slug && !preview) || !post || !post.content) {
     notFound();
   }
 
   return (
-
     <>
       <PostPageHead settings={settings} post={post} />
 
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader title={title} level={2} />
+          <BlogHeader description={description} title={title} level={2} />
           {preview && !post ? (
             <PostTitle>Loading…</PostTitle>
           ) : (
@@ -49,11 +51,12 @@ export default function PostPage(props: PostPageProps) {
                   coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}
+                  slug={post.slug}
                 />
                 <PostBody content={post.content} />
               </article>
               <SectionSeparator />
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
+              {morePosts?.length > 0 && <MoreStories category={category} locale={locale} posts={morePosts} />}
             </>
           )}
         </Container>

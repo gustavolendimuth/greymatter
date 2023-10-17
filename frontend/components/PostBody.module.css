@@ -3,7 +3,7 @@
 /* stylelint-disable at-rule-empty-line-before */
 /* stylelint-disable selector-list-comma-space-after */
 .portableText {
-  @apply text-lg leading-relaxed ;
+  @apply text-xl leading-loose text-secondary ;
 }
 
 .portableText p,

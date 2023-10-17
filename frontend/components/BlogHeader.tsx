@@ -1,11 +1,11 @@
 import { PortableText } from '@portabletext/react';
 import Title from 'app/_components/Title';
-import { Settings } from 'lib/sanity.queries';
 import Link from 'next/link';
+import { BlogSettings } from 'types/sectionsTypes';
 
 import styles from './BlogHeader.module.css';
 
-type Props = Settings & {
+type Props = BlogSettings & {
   level: 1 | 2;
 };
 
@@ -32,8 +32,8 @@ export default function BlogHeader({
     case 2:
       return (
         <header>
-          <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-            <Link href="/" className="hover:underline">
+          <h2 className="mb-8 mt-8 text-2xl mx-auto max-w-4xl font-bold  text-primary leading-tight tracking-tight md:text-4xl md:tracking-tighter">
+            <Link href="/#insights" className="hover:underline">
               {title}
             </Link>
           </h2>

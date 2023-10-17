@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { groq } from 'next-sanity';
+import { BlogCategory } from 'types/componentsTypes';
 
 export const heroQuery = groq`
   *[_type == "hero"][0] {
@@ -111,47 +112,59 @@ export const communityQuery = groq`
 
 export const applicationQuery = groq`
   *[_type == "application"][0] {
-    title,
-    text,
+    "title": title[_key == $locale][0].value,
+    "text": text[_key == $locale][0].value,
     image,
-
+    "buttonText": buttonText[_key == $locale][0].value
   }
 `;
 
+export const BlogSettingsQuery = (category: BlogCategory) => (
+  groq`*[_type == "blogSettings"][0].${category} {
+    "title": title[_key == $locale][0].value,
+    "description": description[_key == $locale][0].value
+  }`
+);
+
+export const newsSettingsQuery = groq`
+  *[_type == "blogSettings"][0] {
+    "title": news.title[_key == $locale][0].value,
+    "description": news.description[_key == $locale][0].value
+  }
+`;
+
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
+
 const postFields = groq`
   _id,
-  title,
+  "title": title[_key == $locale][0].value,
   date,
   _updatedAt,
-  excerpt,
+  "excerpt": excerpt[_key == $locale][0].value,
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
 `;
 
-export const blogSettingsQuery = groq`*[_type == "blogSettings"][0]`;
-
-export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
-
-export const indexQuery = groq`
-*[_type == "posts"] | order(date desc, _updatedAt desc) {
+export const allPostsQuery = groq`
+*[_type == "posts" && category == $category] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
 
 export const postAndMoreStoriesQuery = groq`
 {
   "post": *[_type == "posts" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
+    "content": content[_key == $locale][0].value,
     ${postFields}
   },
-  "morePosts": *[_type == "posts" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
+  "morePosts": *[_type == "posts" && slug.current != $slug && category == $category] | order(date desc, _updatedAt desc) [0...4] {
+    "content": content[_key == $locale][0].value, 
     ${postFields}
   }
 }`;
 
 export const postSlugsQuery = groq`
-*[_type == "posts" && defined(slug.current)][].slug.current
+*[_type == "posts" && defined(slug.current) && category == $category][].slug.current
 `;
 
 export const postBySlugQuery = groq`

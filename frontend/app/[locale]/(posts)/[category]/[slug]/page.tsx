@@ -3,39 +3,37 @@ import Navbar from 'app/_components/Navbar';
 import Section from 'app/_components/Section';
 import PostPage from 'components/PostPage';
 import { readToken } from 'lib/sanity.api';
-import {
-  getClient,
-  getPostAndMoreStories,
-  getSettings,
-} from 'lib/sanityClient';
-import { Post, Settings } from 'lib/sanity.queries';
+import { getClient } from 'lib/sanityClient';
+import { getBlogSettings, getPostAndMoreStories } from 'lib/sanityFetch';
 import type { SharedPageProps } from 'pages/_app';
-import getValuesByLanguage from 'utils/getByLocale';
+import { BlogSettings, Post } from 'types/sectionsTypes';
 
 interface PageProps extends SharedPageProps {
   post: Post
   morePosts: Post[]
-  settings?: Settings,
-  params?: {
+  settings?: BlogSettings,
+  params: {
     slug: string,
     locale: string,
+    category: 'news' | 'insights',
   }
 }
 
-export default async function ProjectSlugRoute(props: PageProps) {
-  const { draftMode = false, params } = props;
-  const client = getClient(draftMode ? { token: readToken } : undefined);
-  const locale = params?.locale || 'en';
+export const revalidate = 60;
 
-  if (!params?.slug) {
+export default async function ProjectSlugRoute(props: PageProps) {
+  const { draftMode = false, params: { slug, category, locale } } = props;
+  const client = getClient(draftMode ? { token: readToken } : undefined);
+
+  if (!slug || !category || !locale) {
     return {
       notFound: true,
     };
   }
 
   const [settings, { post, morePosts }] = await Promise.all([
-    getSettings(client),
-    getPostAndMoreStories(client, params?.slug),
+    getBlogSettings(client, locale, category),
+    getPostAndMoreStories(client, slug, locale, category),
   ]);
 
   if (!post) {
@@ -54,11 +52,13 @@ export default async function ProjectSlugRoute(props: PageProps) {
     <>
       <Navbar position="static" background locale={locale} />
       <Section>
-        <Container className="pt-10 pb-32">
+        <Container className="pt-10 pb-14">
           <PostPage
-            post={getValuesByLanguage(post, locale)}
-            morePosts={morePosts.map((morePost) => getValuesByLanguage(morePost, locale))}
-            settings={getValuesByLanguage(settings, locale)}
+            post={post}
+            morePosts={morePosts}
+            settings={settings}
+            locale={locale}
+            category={category}
           />
         </Container>
       </Section>

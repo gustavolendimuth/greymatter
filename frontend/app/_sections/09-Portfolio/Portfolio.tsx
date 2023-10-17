@@ -28,7 +28,7 @@ export default async function Portfolio({ locale }: { locale: string }) {
           {portfolio.title}
         </Title>
         <div className="flex-grow flex flex-col gap-calc-sm" id="portfolio-content">
-          <CategoryNavbar companies={portfolio.companies} locale={locale} />
+          <CategoryNavbar companies={portfolio.companies} />
           <PortfolioGrid />
         </div>
 

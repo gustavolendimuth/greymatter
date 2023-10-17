@@ -24,6 +24,8 @@ type ContextValue = {
   getLocalStorage: (key: string) => any;
   companies: Company[] | undefined;
   setCompanies: Dispatch<React.SetStateAction<Company[] | undefined>>;
+  animationClass: string;
+  setAnimationClass: Dispatch<React.SetStateAction<string>>;
 };
 
 const Context = createContext<ContextValue | undefined>(undefined);
@@ -35,6 +37,7 @@ type HomeProviderProps = {
 export function HomeProvider({ children }: HomeProviderProps) {
   const [navbarConfig, setNavbarConfig] = useState<NavbarConfig | undefined>();
   const [companies, setCompanies] = useState<Company[]>();
+  const [animationClass, setAnimationClass] = useState('fade-in');
 
   const setLocalStorage = useCallback((key: string, value: any) => {
     if (key && value) localStorage.setItem(key, JSON.stringify(value));
@@ -49,6 +52,8 @@ export function HomeProvider({ children }: HomeProviderProps) {
     getLocalStorage,
     companies,
     setCompanies,
+    animationClass,
+    setAnimationClass,
   }), [
     navbarConfig,
     setNavbarConfig,
@@ -56,6 +61,8 @@ export function HomeProvider({ children }: HomeProviderProps) {
     getLocalStorage,
     companies,
     setCompanies,
+    animationClass,
+    setAnimationClass,
   ]);
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

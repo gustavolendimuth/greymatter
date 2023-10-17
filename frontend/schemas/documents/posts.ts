@@ -42,7 +42,6 @@ export default defineType({
       options: {
         source: (doc) => ((Array.isArray(doc.title)) && (doc.title.find((t) => t.value))?.value),
         maxLength: 96,
-        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),

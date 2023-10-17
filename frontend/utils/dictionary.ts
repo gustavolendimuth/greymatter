@@ -17,7 +17,7 @@ export default {
   },
   application: {
     en: 'Application',
-    'pt-br': 'Aplicação',
+    'pt-br': 'Fale Conosco',
   },
   terms: {
     en: 'Terms & Conditions',
@@ -26,5 +26,9 @@ export default {
   privacy: {
     en: 'Privacy Policy',
     'pt-br': 'Política de Privacidade',
+  },
+  moreStories: {
+    en: 'More Stories',
+    'pt-br': 'Mais Histórias',
   },
 };
