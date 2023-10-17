@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ImageResponse } from '@vercel/og';
-import * as demo from 'lib/demo.data';
+import { height, OpenGraphImage, width } from 'components/OpenGraphImage';
 import { apiVersion, dataset, projectId } from 'lib/sanity.api';
-import { Settings, settingsQuery } from 'lib/sanity.queries';
+import { siteSettingsQuery } from 'lib/sanityQueries';
 import type { NextRequest, NextResponse } from 'next/server';
 import type { PageConfig } from 'next/types';
 import { createClient } from 'next-sanity';
-import { height, OpenGraphImage, width } from 'schemas/components/OpenGraphImage';
+import { SiteSettings } from 'types/sectionsTypes';
 
 export const config: PageConfig = { runtime: 'edge' };
 
-export default async function og(req: NextRequest, res: NextResponse) {
-  const font = fetch(new URL('public/Inter-Bold.woff', import.meta.url)).then(
+export default async function og(req: NextRequest, _res: NextResponse) {
+  const font = fetch(new URL('public/assets/fonts/Inter-Bold.woff', import.meta.url)).then(
     (res) => res.arrayBuffer(),
   );
   const { searchParams } = new URL(req.url);
@@ -23,12 +24,12 @@ export default async function og(req: NextRequest, res: NextResponse) {
       apiVersion,
       useCdn: false,
     });
-    const settings = (await client.fetch<Settings>(settingsQuery)) || {};
-    title = settings?.ogImage?.title;
+    const settings = (await client.fetch<SiteSettings>(siteSettingsQuery)) || {};
+    title = settings?.ogImage?.title || '';
   }
 
   return new ImageResponse(
-    <OpenGraphImage title={title || demo.ogImageTitle} />,
+    <OpenGraphImage title={title} />,
     {
       width,
       height,

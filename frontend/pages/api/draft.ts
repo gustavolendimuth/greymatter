@@ -1,3 +1,6 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
   apiVersion,
   dataset,
@@ -5,14 +8,16 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api';
-import { postBySlugQuery } from 'lib/sanity.queries';
+import { getClient } from 'lib/sanityClient';
+import { getPostBySlug } from 'lib/sanityFetch';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from 'next-sanity';
 import { isValidSecret } from 'sanity-plugin-iframe-pane/is-valid-secret';
+import { BlogCategory } from 'types/componentsTypes';
 
 function redirectToPreview(
   res: NextApiResponse<string | void>,
-  Location: '/' | `/posts/${string}`,
+  Location: '/' | `/${BlogCategory}/${string}`,
 ): void {
   // Enable Draft Mode by setting the cookies
   res.setDraftMode({ enable: true });
@@ -54,10 +59,13 @@ export default async function preview(
     return redirectToPreview(res, '/');
   }
 
+  const sanityClient = getClient();
+  let { slug } = req.query;
+  if (Array.isArray(slug)) {
+    slug = slug[0];
+  }
   // Check if the post with the given `slug` exists
-  const post = await client.fetch(postBySlugQuery, {
-    slug: req.query.slug,
-  });
+  const post = await getPostBySlug(sanityClient, slug, 'pt-br');
 
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!post) {
@@ -66,5 +74,5 @@ export default async function preview(
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
-  redirectToPreview(res, `/posts/${post.slug}`);
+  redirectToPreview(res, `/${post.category}/${post.slug}`);
 }

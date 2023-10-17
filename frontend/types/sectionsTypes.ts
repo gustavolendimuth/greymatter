@@ -1,4 +1,5 @@
 import {
+  BlogCategory,
   CommunityMemberComponent,
   HowWeInvestCardComponent,
   TeamMemberComponent,
@@ -90,8 +91,9 @@ export type Post = {
   _updatedAt?: string;
   excerpt?: TypedObject;
   author?: Author;
-  slug?: string;
+  slug: string;
   content?: TypedObject;
+  category: BlogCategory;
 };
 
 export type BlogSettings = {
