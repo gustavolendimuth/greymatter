@@ -3,6 +3,7 @@
 /* eslint-disable prefer-destructuring */
 import Navbar from 'app/_components/Navbar';
 import Hero from 'app/_sections/01-Hero/Hero';
+import Intro from 'app/_sections/02-Intro/Intro';
 import {WhoWeAre} from 'app/_sections/03-WhoWeAre/WhoWeAre';
 import WhatWeLookFor from 'app/_sections/04-WhatWeLookFor/WhatWeLookFor';
 import WhatDoWeOffer from 'app/_sections/05-WhatDoWeOffer/WhatDoWeOffer';
@@ -15,8 +16,6 @@ import News from 'app/_sections/11-News/News';
 import Application from 'app/_sections/12-Application/Application';
 import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getApplication, getBlogSettings, getCommunity, getHowWeInvest, getIntro, getTeam, getWhatDoWeOffer, getWhatWeLookFor, getWhoWeAre } from 'lib/sanityFetch';
-
-import Intro from '../_sections/02-Intro/intro';
 
 
 export const revalidate = 60;
