@@ -2,7 +2,6 @@
   "name": "greymatter-v2",
   "version": "2.0.0",
   "private": true,
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -54,6 +53,7 @@
     "words-n-numbers": "^7.1.2"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.29.5-appdir.0",
     "@types/negotiator": "^0.6.1",
     "@types/node": "latest",
     "@types/react": "latest",
