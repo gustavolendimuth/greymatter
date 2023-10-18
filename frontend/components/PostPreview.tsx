@@ -28,6 +28,7 @@ export default function PostPreview({
           priority={false}
           category={category}
           thumbnail
+          locale={locale}
         />
       </div>
       <div className="px-7 pb-7 text-primary">
@@ -40,7 +41,7 @@ export default function PostPreview({
         </h3>
         {excerpt && <p className="text-lg text-primary">{excerpt}</p>}
         <div className="pb-7 pt-5">
-          <Link href={`/${category}/${slug}`} className="bg-primary text-white px-6 py-2 rounded-md">
+          <Link href={`/${locale}/${category}/${slug}`} className="bg-primary text-white px-6 py-2 rounded-md">
             {dictionary.readMore[locale]}
           </Link>
         </div>

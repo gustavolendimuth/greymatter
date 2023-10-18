@@ -39,7 +39,7 @@ export default function PostPage(props: PostPageProps) {
 
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader description={description} title={title} level={2} />
+          <BlogHeader category={category} locale={locale} description={description} title={title} level={2} />
           {preview && !post ? (
             <PostTitle>Loading…</PostTitle>
           ) : (
@@ -52,6 +52,7 @@ export default function PostPage(props: PostPageProps) {
                   author={post.author}
                   slug={post.slug}
                   category={category}
+                  locale={locale}
                 />
                 <PostBody content={post.content} />
               </article>

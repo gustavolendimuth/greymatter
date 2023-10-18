@@ -12,10 +12,11 @@ interface CoverImageProps {
   priority?: boolean,
   thumbnail?: boolean,
   category: string
+  locale: string
 }
 
 export default function CoverImage(props: CoverImageProps) {
-  const { title, slug, image: source, priority, thumbnail, category } = props;
+  const { title, slug, image: source, priority, thumbnail, category, locale } = props;
   const thumbnailClasses = 'h-[147px] w-full rounded-t-xl';
   const image = source?.asset?._ref ? (
     <div
@@ -42,7 +43,7 @@ export default function CoverImage(props: CoverImageProps) {
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link href={`/${category}/${slug}`} aria-label={title}>
+        <Link href={`/${locale}/${category}/${slug}`} aria-label={title}>
           {image}
         </Link>
       ) : (

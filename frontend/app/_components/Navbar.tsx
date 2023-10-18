@@ -28,10 +28,10 @@ function Navbar({ locale, position, background }: NavbarProps) {
   const portugueseId = 'pt-br';
 
   const navigation = [
-    { name: dictionary.whoWeAre[locale], href: '/#who-we-are', current: false },
-    { name: dictionary.team[locale], href: '/#team', current: false },
-    { name: dictionary.community[locale], href: '/#community', current: false },
-    { name: dictionary.application[locale], href: '/#application', current: false },
+    { name: dictionary.whoWeAre[locale], href: `/${locale}/#who-we-are`, current: false },
+    { name: dictionary.team[locale], href: `/${locale}/#team`, current: false },
+    { name: dictionary.community[locale], href: `/${locale}/#community`, current: false },
+    { name: dictionary.application[locale], href: `/${locale}/#application`, current: false },
   ];
 
   const pathname = usePathname();
@@ -89,7 +89,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
                         href={item.href}
                         className={classNames(
                           item.current ? '' : 'text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium uppercase tracking-widest',
+                          'rounded-md px-3 py-2 text-sm font-600 uppercase tracking-widest',
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
@@ -126,7 +126,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
                   href={item.href}
                   className={classNames(
                     item.current ? '' : 'text-white',
-                    'block px-3 py-2 text-base font-medium uppercase tracking-widest text-center',
+                    'block px-3 py-2 text-base font-600 uppercase tracking-widest text-center',
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >

@@ -34,12 +34,6 @@ export default async function ProjectSlugRoute(props: PageProps) {
     };
   }
 
-  // if (draftMode) {
-  //   return (
-  //     <PreviewPostPage post={post} morePosts={morePosts} settings={settings} />
-  //   );
-  // }
-
   return (
     <>
       <Navbar position="static" background locale={locale} />
