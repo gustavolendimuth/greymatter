@@ -12,8 +12,8 @@ const client = getCliClient();
 const fetchDocuments = () => client.fetch('*[_type == \'author\' && defined(name)][0...100] {_id, _rev, name}');
 
 // Build a patch for each document, represented as a tuple of `[documentId, patch]`
-const buildPatches = (docs) => docs.map(
-  (doc) => ({
+const buildPatches = (docs: any) => docs.map(
+  (doc: any) => ({
     id: doc._id,
     patch: {
       set: { fullname: doc.name },
@@ -25,14 +25,14 @@ const buildPatches = (docs) => docs.map(
   }),
 );
 
-const createTransaction = (patches) => patches.reduce(
-  (tx, patch) => tx.patch(patch.id, patch.patch),
+const createTransaction = (patches: any) => patches.reduce(
+  (tx: any, patch: any) => tx.patch(patch.id, patch.patch),
   client.transaction(),
 );
 
-const commitTransaction = (tx) => tx.commit();
+const commitTransaction = (tx: any) => tx.commit();
 
-const migrateNextBatch = async () => {
+const migrateNextBatch: any = async () => {
   const documents = await fetchDocuments();
   const patches = buildPatches(documents);
   if (patches.length === 0) {
@@ -41,14 +41,14 @@ const migrateNextBatch = async () => {
   }
   console.log(
     'Migrating batch:\n %s',
-    patches.map((patch) => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
+    patches.map((patch: any) => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
   );
   const transaction = createTransaction(patches);
   await commitTransaction(transaction);
   return migrateNextBatch();
 };
 
-migrateNextBatch().catch((err) => {
+migrateNextBatch().catch((err: any) => {
   console.error(err);
   process.exit(1);
 });
