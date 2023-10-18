@@ -16,6 +16,8 @@ import Application from 'app/_sections/12-Application/Application';
 import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getApplication, getBlogSettings, getCommunity, getHowWeInvest, getIntro, getTeam, getWhatDoWeOffer, getWhatWeLookFor, getWhoWeAre } from 'lib/sanityFetch';
 
+import Intro from '../_sections/02-Intro/intro';
+
 
 export const revalidate = 60;
 
@@ -58,7 +60,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
     <>
       <Navbar position="absolute" locale={locale} />
       <Hero locale={locale} />
-      {/* <Intro data={intro} /> */}
+      <Intro data={intro} />
       <WhoWeAre data={whoWeAre} />
       <WhatWeLookFor data={whatWeLookFor} />
       <WhatDoWeOffer data={whatDoWeOffer} />
