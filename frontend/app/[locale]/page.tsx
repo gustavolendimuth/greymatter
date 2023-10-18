@@ -18,7 +18,7 @@ import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getApplication, getBlogSettings, getCommunity, getHowWeInvest, getIntro, getTeam, getWhatDoWeOffer, getWhatWeLookFor, getWhoWeAre } from 'lib/sanityFetch';
 
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 type HomeProps = {
   params: {
@@ -26,7 +26,7 @@ type HomeProps = {
   }
 }
 
-export default async function Home({ params: { locale } }: HomeProps) {
+export default async function Index({ params: { locale } }: HomeProps) {
   const client = getClient();
     const [
       intro,
