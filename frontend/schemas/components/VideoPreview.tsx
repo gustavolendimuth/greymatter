@@ -3,7 +3,17 @@ import getVideoId from 'get-video-id';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function VideoPreview({ actions: { props: { value } } }) {
+interface VideoPreviewProps {
+  actions: {
+    props: {
+      value: {
+        url: string;
+      };
+    };
+  };
+}
+
+export function VideoPreview({ actions: { props: { value } } }: VideoPreviewProps) {
   let site: string | null = null;
   let url: string | null = null;
 
@@ -56,31 +66,3 @@ function VideoPreview({ actions: { props: { value } } }) {
   );
 }
 
-export default {
-  name: 'video',
-  type: 'object',
-  title: 'Vídeo',
-  fields: [
-    {
-      name: 'url',
-      type: 'url',
-      title: 'Endereço',
-    },
-  ],
-  components: {
-    select: {
-      url: 'url',
-    },
-    preview: VideoPreview,
-  },
-};
-
-VideoPreview.propTypes = {
-  actions: PropTypes.shape({
-    props: PropTypes.shape({
-      value: PropTypes.shape({
-        url: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
-};

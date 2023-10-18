@@ -1,4 +1,10 @@
-export default {
+type Dictionary = {
+  [key: string]: {
+    [key: string]: string;
+  }
+}
+
+const dictionary: Dictionary = {
   readMore: {
     en: 'Read More',
     'pt-br': 'Leia Mais',
@@ -32,3 +38,5 @@ export default {
     'pt-br': 'Mais Histórias',
   },
 };
+
+export default dictionary;

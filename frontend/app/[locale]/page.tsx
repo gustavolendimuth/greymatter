@@ -3,7 +3,6 @@
 /* eslint-disable prefer-destructuring */
 import Navbar from 'app/_components/Navbar';
 import Hero from 'app/_sections/01-Hero/Hero';
-import Intro from 'app/_sections/02-Intro/intro';
 import {WhoWeAre} from 'app/_sections/03-WhoWeAre/WhoWeAre';
 import WhatWeLookFor from 'app/_sections/04-WhatWeLookFor/WhatWeLookFor';
 import WhatDoWeOffer from 'app/_sections/05-WhatDoWeOffer/WhatDoWeOffer';

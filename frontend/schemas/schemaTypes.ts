@@ -3,7 +3,6 @@
 import authorType from 'schemas/documents/author';
 import postType from 'schemas/documents/posts';
 
-import video from './components/VideoPreview';
 import application from './documents/application';
 import applicationForm from './documents/applicationForm';
 import blogSettings from './documents/blogSettings';
@@ -25,6 +24,7 @@ import card from './objects/card';
 import heroVideo from './objects/heroVideo';
 import postContent from './objects/postContent';
 import richText from './objects/richText';
+import video from './objects/video';
 
 export const schemaTypes = [
   heroVideo,

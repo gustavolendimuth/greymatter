@@ -1,8 +1,6 @@
 import './Footer.css';
 
 import { PortableText } from '@portabletext/react';
-import { getClient } from 'lib/sanityClient';
-import { getFooter, getSiteSettings } from 'lib/sanityFetch';
 import Link from 'next/link';
 import { FaGripLinesVertical, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { ImageType, TypedObject } from 'types/propertiesTypes';
