@@ -16,7 +16,6 @@ import News from 'app/_sections/11-News/News';
 import Application from 'app/_sections/12-Application/Application';
 import { getClient } from 'lib/sanityClient';
 import { getAllPosts, getApplication, getBlogSettings, getCommunity, getHowWeInvest, getIntro, getTeam, getWhatDoWeOffer, getWhatWeLookFor, getWhoWeAre } from 'lib/sanityFetch';
-import { Suspense } from 'react';
 
 
 export const revalidate = 60;
@@ -58,7 +57,6 @@ export default async function Home({ params: { locale } }: HomeProps) {
   ]);
   return (
     <>
-    <Suspense fallback={<div>Loading...</div>}>
       <Navbar position="absolute" locale={locale} />
       <Hero locale={locale} />
       <Intro data={intro} />
@@ -72,7 +70,6 @@ export default async function Home({ params: { locale } }: HomeProps) {
       <Insights locale={locale} posts={insights} settings={insightsSettings}/>
       <News locale={locale} posts={news} settings={newsSettings} />
       <Application data={application} />
-    </Suspense>
     </>
   );
 }
