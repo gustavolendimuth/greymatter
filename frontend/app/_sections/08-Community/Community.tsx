@@ -8,14 +8,14 @@ import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
 import { getClient } from 'lib/sanityClient';
 import { getCommunity } from 'lib/sanityFetch';
+import { CommunitySection } from 'types/sectionsTypes';
 // import { Tooltip } from 'react-tooltip';
 import sortMembers from 'utils/sort';
 
 import CommunityCards from './components/CommunityCards';
 
-export default async function Community({ locale }: { locale: string }) {
-  const client = getClient();
-  const { title, text, community, background } = await getCommunity(client, locale);
+export default function Community({ data }: { data: CommunitySection }) {
+  const { title, text, community, background } = data;
 
   const sortedMembers = sortMembers(community.members, JSON.parse(community.sort));
 

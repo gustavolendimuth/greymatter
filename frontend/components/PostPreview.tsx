@@ -1,4 +1,3 @@
-import { PortableText } from '@portabletext/react';
 import CoverImage from 'components/CoverImage';
 import Date from 'components/PostDate';
 import Link from 'next/link';
@@ -36,10 +35,10 @@ export default function PostPreview({
           <Date dateString={date} />
         </div>
 
-        <h3 className="pb-2 text-2xl font-600">
+        <h3 className="pb-2 text-xl font-600">
           {title}
         </h3>
-        {excerpt && <p className="text-lg text-primary"><PortableText value={excerpt} /></p>}
+        {excerpt && <p className="text-lg text-primary">{excerpt}</p>}
         <div className="pb-7 pt-5">
           <Link href={`/${category}/${slug}`} className="bg-primary text-white px-6 py-2 rounded-md">
             {dictionary.readMore[locale]}

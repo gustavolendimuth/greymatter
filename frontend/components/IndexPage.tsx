@@ -2,6 +2,7 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import BlogHeader from 'components/BlogHeader';
+import { BlogCategory } from 'types/componentsTypes';
 import type { BlogSettings, Post } from 'types/sectionsTypes';
 
 import AlertBanner from './AlertBanner';
@@ -13,7 +14,7 @@ export interface IndexPageProps {
   posts: Post[];
   settings: BlogSettings;
   locale: string;
-  category: string;
+  category: BlogCategory;
 }
 
 export default function IndexPage(props: IndexPageProps) {

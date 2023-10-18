@@ -1,20 +1,20 @@
 import AuthorAvatar from 'components/AuthorAvatar';
 import CoverImage from 'components/CoverImage';
 import Date from 'components/PostDate';
-import type { Post } from 'lib/sanity.queries';
 import Link from 'next/link';
+import { Post } from 'types/sectionsTypes';
 
 export default function HeroPost(
   props: Pick<
   Post,
-  'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug'
+  'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug' | 'category'
   >,
 ) {
-  const { title, coverImage, date, excerpt, author, slug } = props;
+  const { title, coverImage, date, excerpt, author, slug, category } = props;
   return (
     <section>
       <div className="mb-8 md:mb-16">
-        <CoverImage slug={slug} title={title} image={coverImage} priority />
+        <CoverImage category={category} slug={slug} title={title} image={coverImage} priority />
       </div>
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>

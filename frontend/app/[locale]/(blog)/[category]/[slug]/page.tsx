@@ -2,33 +2,25 @@ import Container from 'app/_components/Container';
 import Navbar from 'app/_components/Navbar';
 import Section from 'app/_components/Section';
 import PostPage from 'components/PostPage';
-import { readToken } from 'lib/sanityApi';
 import { getClient } from 'lib/sanityClient';
 import { getBlogSettings, getPostAndMoreStories } from 'lib/sanityFetch';
-import type { SharedPageProps } from 'pages/_app';
-import { BlogSettings, Post } from 'types/sectionsTypes';
 
-interface PageProps extends SharedPageProps {
-  post: Post
-  morePosts: Post[]
-  settings?: BlogSettings,
+type PageProps = {
   params: {
-    slug: string,
-    locale: string,
-    category: 'news' | 'insights',
+    slug?: string,
+    locale?: string,
+    category?: 'news' | 'insights',
   }
 }
 
 export const revalidate = 60;
 
 export default async function ProjectSlugRoute(props: PageProps) {
-  const { draftMode = false, params: { slug, category, locale } } = props;
-  const client = getClient(draftMode ? { token: readToken } : undefined);
+  const { params: { slug, category, locale } } = props;
+  const client = getClient();
 
   if (!slug || !category || !locale) {
-    return {
-      notFound: true,
-    };
+    return null;
   }
 
   const [settings, { post, morePosts }] = await Promise.all([

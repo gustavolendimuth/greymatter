@@ -1,27 +1,13 @@
 import IndexPage from 'components/IndexPage';
-import { readToken } from 'lib/sanityApi';
-import { getClient } from 'lib/sanityClient';
-import { getAllPosts, getBlogSettings } from 'lib/sanityFetch';
+import { BlogSettings, Post } from 'types/sectionsTypes';
 
-export default async function News({ locale }) {
-  const draftMode = false;
-  const client = getClient(draftMode ? { token: readToken } : undefined);
+type PageProps = {
+    locale: string,
+    settings: BlogSettings,
+    posts: Post[],
+}
 
-  const [settings, posts = []] = await Promise.all([
-    getBlogSettings(client, locale, 'news'),
-    getAllPosts(client, locale, 'news'),
-  ]);
-
-  // if (draftMode) {
-  //   return <PreviewIndexPage posts={posts} settings={settings} />;
-  // }
-
-  // if (!posts) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
-
+export default function News({ locale, posts, settings }: PageProps) {
   return (
     <IndexPage
       posts={posts}

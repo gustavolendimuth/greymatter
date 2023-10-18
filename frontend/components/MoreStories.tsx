@@ -1,11 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 
+import { BlogCategory } from 'types/componentsTypes';
 import { Post } from 'types/sectionsTypes';
 import dictionary from 'utils/dictionary';
 
 import Stories from './Stories';
 
-export default function MoreStories({ posts, locale, category }: { posts: Post[], locale: string, category: string }) {
+export default function MoreStories({ posts, locale, category }: { posts: Post[], locale: string, category: BlogCategory }) {
   return (
     <section>
       <h2 className="mb-9 text-secondary text-5xl font-bold leading-tight tracking-tighter md:text-6xl">

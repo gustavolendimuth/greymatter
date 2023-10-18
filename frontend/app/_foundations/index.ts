@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable import/prefer-default-export */
 export enum MEDIA_QUERIES {
   sm = '640px',

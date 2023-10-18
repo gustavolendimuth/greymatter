@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
-import Img from 'app/_components/Img';
-import { WhatWeLookForCardComponent } from 'types/componentsTypes';
+
+import { WhatWeLookForCardComponent } from '../../../../types/componentsTypes';
+import Img from '../../../_components/Img';
 
 function WhatWeLookForCards({ cards }: { cards: WhatWeLookForCardComponent[] }) {
   return (

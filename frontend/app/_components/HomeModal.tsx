@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import report from '../_assets/pdf/Report-Pesquisa-Grey-Matter-02-mai-2023.pdf';
 
-function HomeModal({ locale }: string) {
+function HomeModal({ locale }: { locale: string }) {
   const [showModal, setShowModal] = useState(true);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');

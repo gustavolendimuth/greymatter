@@ -1,18 +1,16 @@
 import { colorInput } from '@sanity/color-input';
 import { visionTool } from '@sanity/vision';
-import {
-  apiVersion,
-  dataset,
-  projectId,
-} from 'lib/sanityApi';
-import { customStructure, hiddenOptions } from 'plugins/customStructure';
-import { hideOptionsPlugin } from 'plugins/hideOptionsPlugin';
-import { previewDocumentNode } from 'plugins/previewPane';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 import { internationalizedArray } from 'sanity-plugin-internationalized-array';
-import { schemaTypes } from 'schemas/schemaTypes';
+
+import { apiVersion, dataset, projectId } from './lib/sanityApi';
+import { customStructure } from './plugins/customStructure';
+import { hiddenOptions } from './plugins/customStructure';
+import { hideOptionsPlugin } from './plugins/hideOptionsPlugin';
+import { previewDocumentNode } from './plugins/previewPane';
+import { schemaTypes } from './schemas/schemaTypes';
 
 export const languages = [
   { id: 'pt-br', title: 'Português' },

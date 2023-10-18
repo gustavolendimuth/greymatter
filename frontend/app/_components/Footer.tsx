@@ -1,4 +1,3 @@
-// import './Footer-Dark-Multi-Column-icons.css';
 import './Footer.css';
 
 import { PortableText } from '@portabletext/react';
@@ -6,17 +5,17 @@ import { getClient } from 'lib/sanityClient';
 import { getFooter, getSiteSettings } from 'lib/sanityFetch';
 import Link from 'next/link';
 import { FaGripLinesVertical, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { ImageType, TypedObject } from 'types/propertiesTypes';
+import { Footer } from 'types/sectionsTypes';
 import dictionary from 'utils/dictionary';
 
 import FooterForm from './FooterForm';
 import Img from './Img';
 
-export default async function Footer({ locale }: { locale: string }) {
-  const client = getClient();
-  const { formText, logo } = await getFooter(client, locale);
-  const { logo: greyMatterLogo } = await getSiteSettings(client);
+export default function Footer({ locale, greymatterLogo, data }: { locale: string, greymatterLogo: ImageType, data: Footer }) {
+  const { formText, logo } = data
 
-  if (!formText || !logo || !greyMatterLogo) return null;
+  if (!formText || !logo || !greymatterLogo) return null;
 
   return (
     <footer className="flex flex-col bg-ternary gap-3 pt-12 lg:pt-24 pb-3 lg:pb-7 text-white w-full">
@@ -41,8 +40,8 @@ export default async function Footer({ locale }: { locale: string }) {
         <div className="flex justify-center items-center flex-col pb-5 w-full">
           <div className="flex justify-center items-center">
             <Img
-              alt={greyMatterLogo?.alt || ''}
-              image={greyMatterLogo}
+              alt={greymatterLogo?.alt || ''}
+              image={greymatterLogo}
               width={400}
               height={100}
               className="object-fit"

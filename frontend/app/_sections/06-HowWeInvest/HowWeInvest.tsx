@@ -7,14 +7,12 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getHowWeInvest } from 'lib/sanityFetch';
+import { HowWeInvestSection } from 'types/sectionsTypes';
 
 import HowWeInvestTree from './components/HowWeInvestTree';
 
-export default async function HowWeInvest({ locale }: { locale: string }) {
-  const client = getClient();
-  const { title, cards, firstCard, background } = await getHowWeInvest(client, locale);
+export default function HowWeInvest({ data }: { data: HowWeInvestSection }) {
+  const { title, cards, firstCard, background } = data;
 
   if (!title || !cards) return null;
 

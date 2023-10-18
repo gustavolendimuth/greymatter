@@ -3,14 +3,12 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getWhatDoWeOffer } from 'lib/sanityFetch';
+import { WhatDoWeOfferSection } from 'types/sectionsTypes';
 
 import WhatDoWeOfferCards from './components/WhatDoWeOfferCard';
 
-export async function WhatDoWeOffer({ locale }: { locale: string }) {
-  const client = getClient();
-  const { title, background, cards } = await getWhatDoWeOffer(client, locale);
+export function WhatDoWeOffer({ data }: { data: WhatDoWeOfferSection }) {
+  const { title, background, cards } = data;
 
   if (!title || !cards) return null;
 

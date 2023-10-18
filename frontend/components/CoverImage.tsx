@@ -11,7 +11,7 @@ interface CoverImageProps {
   image: any
   priority?: boolean,
   thumbnail?: boolean,
-  category?: string
+  category: string
 }
 
 export default function CoverImage(props: CoverImageProps) {

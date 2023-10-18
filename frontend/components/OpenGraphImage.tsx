@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // Renders the Open Graph image used on the home page
 
 export const width = 1200;
