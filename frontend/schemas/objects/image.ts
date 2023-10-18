@@ -1,4 +1,6 @@
-/* eslint-disable react-func/max-lines-per-function */
+/* eslint-disable import/no-anonymous-default-export */
+
+import { defineField } from 'sanity';
 
 type CreateImageFieldProps = {
   type?: 'withCaption' | 'withPortrait' | 'withDimensions' | '';
@@ -17,15 +19,14 @@ export default ({
   fieldset = '',
   group = '',
 }: CreateImageFieldProps = {}) => {
-  const baseField = {
+  const baseField = defineField({
     name,
     type: 'image',
     title,
-    validation: (rule: any) => rule.required(),
+    validation: (rule: any) => rule.custom((image: any) => image?.asset?._ref === undefined ? 'A imagem é obrigatória' : true),
     description: description || 'Faça upload de uma imagem, ou selecione uma da galeria',
     options: {
       hotspot: true,
-      crop: true,
     },
     fieldset,
     group,
@@ -38,11 +39,11 @@ export default ({
         description: 'Importante para SEO e acessibilidade.',
       },
     ],
-  };
+  });
 
   if (type === 'withCaption') {
+    // @ts-expect-error
     baseField.fields.push(
-      // @ts-expect-error
       {
         name: 'caption',
         type: 'string',
@@ -50,21 +51,21 @@ export default ({
       },
     );
   } else if (type === 'withPortrait') {
+    // @ts-expect-error
     baseField.fields.push(
       {
         name: 'imagePortrait',
         type: 'image',
         title: 'Imagem Mobile',
         description: 'Selecione somente quando necessário mostrar uma imagem diferente em telas menores.',
-        // @ts-expect-error
         options: {
           hotspot: true,
         },
       },
     );
   } else if (type === 'withDimensions') {
+    // @ts-expect-error
     baseField.fields.push(
-      // @ts-expect-error
       {
         name: 'width',
         type: 'number',

@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable prefer-destructuring */
 import Navbar from 'app/_components/Navbar';
 import Hero from 'app/_sections/01-Hero/Hero';
 import Intro from 'app/_sections/02-Intro/Intro';
@@ -20,13 +17,13 @@ import { getAllPosts, getApplication, getBlogSettings, getCommunity, getHowWeInv
 
 export const revalidate = 0;
 
-type HomeProps = {
+type IndexProps = {
   params: {
     locale: string,
   }
 }
 
-export default async function Index({ params: { locale } }: HomeProps) {
+export default async function Index({ params: { locale } }: IndexProps) {
   const client = getClient();
     const [
       intro,

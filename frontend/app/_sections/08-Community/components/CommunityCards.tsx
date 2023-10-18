@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { RxLinkedinLogo } from 'react-icons/rx';
 import { CommunityMemberComponent } from 'types/componentsTypes';
 
+import { height } from '@/components/OpenGraphImage';
+
 type CommunityCardProps = {
   members: CommunityMemberComponent[];
 };
@@ -13,9 +15,6 @@ export default function CommunityCards({ members }: CommunityCardProps) {
       {
         members.map((member) => (
           <div
-            // data-tooltip-content={positionByLocale}
-            // data-tooltip-place="top"
-            // data-tooltip-float={positionByLocale ? 'true' : undefined}
             key={member.name}
             className="flex flex-col justify-center items-center w-[250px] h-[366px] bg-white rounded-xl shadow-xl p-5 border-[4px] border-deep-blue"
             style={{
@@ -28,7 +27,7 @@ export default function CommunityCards({ members }: CommunityCardProps) {
                 height={150}
                 alt={member.image.alt}
                 image={member.image}
-                className="object-cover rounded-full"
+                className={`max-h-[150px] object-cover rounded-full`}
               />
               <Link href={member?.linkedin || ''} target="_blank">
                 <RxLinkedinLogo className="text-white text-2xl" />
