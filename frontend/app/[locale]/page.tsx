@@ -59,7 +59,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
     <>
       <Navbar position="absolute" locale={locale} />
       <Hero locale={locale} />
-      <Intro data={intro} />
+      {/* <Intro data={intro} /> */}
       <WhoWeAre data={whoWeAre} />
       <WhatWeLookFor data={whatWeLookFor} />
       <WhatDoWeOffer data={whatDoWeOffer} />
