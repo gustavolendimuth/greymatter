@@ -55,7 +55,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
-      className="bg-opacity-50 bg-ternary md:bg-transparent w-full"
+      className="bg-opacity-70 bg-ternary md:bg-transparent w-full"
     >
       {({ open }) => (
         <>
@@ -74,13 +74,6 @@ function Navbar({ locale, position, background }: NavbarProps) {
                 </Disclosure.Button>
               </div>
               <div className="flex items-center justify-center md:items-stretch md:justify-start">
-                {/* <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                </div> */}
                 <div className="hidden md:ml-6 md:block">
                   <div className="flex space-x-8 items-center">
                     {navigation.map((item) => (
@@ -118,7 +111,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="md:hidden">
             <div className="space-y-2 px-2 pb-8 pt-2 mx-auto">
               {navigation.map((item) => (
                 <Link
