@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import Meta from 'app/[locale]/Meta';
 import { urlForImage } from 'lib/sanityImage';
 import Head from 'next/head';
 import { BlogSettings, Post } from 'types/sectionsTypes';
@@ -14,7 +13,6 @@ export default function PostPageHead({ settings, post }: PostPageHeadProps) {
   return (
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
-      <Meta />
       {post.coverImage?.asset?._ref && (
         <meta
           property="og:image"

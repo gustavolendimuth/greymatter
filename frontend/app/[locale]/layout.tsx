@@ -3,11 +3,12 @@ import '../_styles/globals.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import '../_styles/SegoeUI.css';
 
+import Footer from 'app/_components/Footer';
 import HomeProvider from 'context/Provider';
+import { getClient } from 'lib/sanityClient';
+import { getFooter, getSiteSettings } from 'lib/sanityFetch';
 import type { Metadata } from 'next';
 import React from 'react';
-
-import Footer from '../_components/Footer';
 
 export const metadata: Metadata = {
   title: 'Grey Matter',
@@ -21,14 +22,18 @@ type RootLayoutProps = {
   }
 };
 
-export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+   const client = getClient();
+  const footer = await getFooter(client, locale);
+  const { logo } = await getSiteSettings(client);
+
   return (
     <html lang={locale}>
       <body>
         <HomeProvider>
           {children}
-          <Footer locale={locale} />
         </HomeProvider>
+        <Footer locale={locale} data={footer} greymatterLogo={logo} />
       </body>
     </html>
   );

@@ -30,7 +30,7 @@ export default defineType({
     prepare({ title, subtitle, columnSize }) {
       return {
         title: preview(title),
-        subtitle: `${typeList[subtitle]} ${subtitle === 'text' ? `e ocupa ${columnSizeList[columnSize]}` : ''}`,
+        subtitle: `${typeList[subtitle as keyof typeof typeList]} ${subtitle === 'text' ? `e ocupa ${columnSizeList[columnSize as keyof typeof columnSizeList]}` : ''}`,
       };
     },
   },

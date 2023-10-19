@@ -3,14 +3,12 @@ import Container from 'app/_components/Container';
 import Img from 'app/_components/Img';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getApplication } from 'lib/sanityFetch';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ApplicationSection } from 'types/sectionsTypes';
 
-export async function Application({ locale }: { locale: string }) {
-  const client = getClient();
-  const { title, text, image, buttonText } = await getApplication(client, locale);
+export function Application({ data }: { data: ApplicationSection }) {
+  const { title, text, image, buttonText } = data;
 
   if (!title || !text) return null;
 

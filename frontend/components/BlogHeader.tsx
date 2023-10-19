@@ -3,16 +3,22 @@ import Title from 'app/_components/Title';
 import Link from 'next/link';
 import { BlogSettings } from 'types/sectionsTypes';
 
+import { BlogCategory } from '@/types/componentsTypes';
+
 import styles from './BlogHeader.module.css';
 
 type Props = BlogSettings & {
   level: 1 | 2;
+  locale: string;
+  category: BlogCategory;
 };
 
 export default function BlogHeader({
   title,
   description,
   level,
+  locale,
+  category
 }: Props) {
   switch (level) {
     case 1:
@@ -33,7 +39,7 @@ export default function BlogHeader({
       return (
         <header>
           <h2 className="mb-8 mt-8 text-2xl mx-auto max-w-4xl font-bold  text-primary leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-            <Link href="/#insights" className="hover:underline">
+            <Link href={`/${locale}/#${category}`} className="hover:underline">
               {title}
             </Link>
           </h2>

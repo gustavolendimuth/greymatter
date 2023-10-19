@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
-import Img from 'app/_components/Img';
-import { WhatDoWeOfferCardComponent } from 'types/componentsTypes';
+
+import { WhatDoWeOfferCardComponent } from '../../../../types/componentsTypes';
+import Img from '../../../_components/Img';
 
 interface WhatDoWeOfferCardsProps {
   cards: WhatDoWeOfferCardComponent[];

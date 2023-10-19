@@ -2,6 +2,7 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import BlogHeader from 'components/BlogHeader';
+import { BlogCategory } from 'types/componentsTypes';
 import type { BlogSettings, Post } from 'types/sectionsTypes';
 
 import AlertBanner from './AlertBanner';
@@ -13,7 +14,7 @@ export interface IndexPageProps {
   posts: Post[];
   settings: BlogSettings;
   locale: string;
-  category: string;
+  category: BlogCategory;
 }
 
 export default function IndexPage(props: IndexPageProps) {
@@ -25,7 +26,7 @@ export default function IndexPage(props: IndexPageProps) {
       <Container fullHeight gap justify>
         <div id="spacer" />
         <AlertBanner preview={preview} loading={loading} />
-        <BlogHeader description={description} title={title} level={1} />
+        <BlogHeader category={category} locale={locale} description={description} title={title} level={1} />
         <Stories posts={posts} locale={locale} category={category} />
         <DownArrow className={`${category === 'news' ? 'fill-primary' : ''}`} to={`#${category === 'insights' ? 'news' : 'application'}`} />
       </Container>

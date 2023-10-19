@@ -14,7 +14,7 @@ interface PortfolioData {
   companies: Company[];
 }
 
-export default async function Portfolio({ locale }: { locale: string }) {
+export default function Portfolio({ locale }: { locale: string }) {
   const portfolio: PortfolioData = dataMock;
 
   if (!portfolio) return null;

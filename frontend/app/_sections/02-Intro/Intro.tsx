@@ -1,16 +1,13 @@
 import BackgroundImage from 'app/_components/BackgroundImage';
 import Container from 'app/_components/Container';
+import DownArrow from 'app/_components/DownArrow';
 import Img from 'app/_components/Img';
 import Section from 'app/_components/Section';
-import { getClient } from 'lib/sanityClient';
-import { getIntro } from 'lib/sanityFetch';
+import TextFill from 'app/_components/TextFill';
+import { IntroSection } from 'types/sectionsTypes';
 
-import DownArrow from '../../_components/DownArrow';
-import TextFill from '../../_components/TextFill';
-
-async function Intro({ locale }: { locale: string }) {
-  const client = getClient();
-  const { background, logo, subtitle, text } = await getIntro(client, locale);
+export default function Intro({ data }: { data: IntroSection }) {
+  const { background, logo, text, subtitle } = data;
 
   return (
     <Section className="relative" id="intro">
@@ -42,5 +39,3 @@ async function Intro({ locale }: { locale: string }) {
     </Section>
   );
 }
-
-export default Intro;

@@ -28,10 +28,10 @@ function Navbar({ locale, position, background }: NavbarProps) {
   const portugueseId = 'pt-br';
 
   const navigation = [
-    { name: dictionary.whoWeAre[locale], href: '/#who-we-are', current: false },
-    { name: dictionary.team[locale], href: '/#team', current: false },
-    { name: dictionary.community[locale], href: '/#community', current: false },
-    { name: dictionary.application[locale], href: '/#application', current: false },
+    { name: dictionary.whoWeAre[locale], href: `/${locale}/#who-we-are`, current: false },
+    { name: dictionary.team[locale], href: `/${locale}/#team`, current: false },
+    { name: dictionary.community[locale], href: `/${locale}/#community`, current: false },
+    { name: dictionary.application[locale], href: `/${locale}/#application`, current: false },
   ];
 
   const pathname = usePathname();
@@ -55,7 +55,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
-      className="bg-opacity-50 bg-ternary md:bg-transparent w-full"
+      className="bg-opacity-70 bg-ternary md:bg-transparent w-full"
     >
       {({ open }) => (
         <>
@@ -74,13 +74,6 @@ function Navbar({ locale, position, background }: NavbarProps) {
                 </Disclosure.Button>
               </div>
               <div className="flex items-center justify-center md:items-stretch md:justify-start">
-                {/* <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                </div> */}
                 <div className="hidden md:ml-6 md:block">
                   <div className="flex space-x-8 items-center">
                     {navigation.map((item) => (
@@ -89,7 +82,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
                         href={item.href}
                         className={classNames(
                           item.current ? '' : 'text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium uppercase tracking-widest',
+                          'rounded-md px-3 py-2 text-sm font-600 uppercase tracking-widest',
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
@@ -118,7 +111,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="md:hidden">
             <div className="space-y-2 px-2 pb-8 pt-2 mx-auto">
               {navigation.map((item) => (
                 <Link
@@ -126,7 +119,7 @@ function Navbar({ locale, position, background }: NavbarProps) {
                   href={item.href}
                   className={classNames(
                     item.current ? '' : 'text-white',
-                    'block px-3 py-2 text-base font-medium uppercase tracking-widest text-center',
+                    'block px-3 py-2 text-base font-600 uppercase tracking-widest text-center',
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >

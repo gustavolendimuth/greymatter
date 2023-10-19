@@ -85,11 +85,11 @@ export type Author = {
 
 export type Post = {
   _id: string;
-  title?: string;
+  title: string;
   coverImage?: any;
   date?: string;
   _updatedAt?: string;
-  excerpt?: TypedObject;
+  excerpt?: string;
   author?: Author;
   slug: string;
   content?: TypedObject;
@@ -102,9 +102,9 @@ export type BlogSettings = {
 };
 
 export type SiteSettings = {
-  title?: string;
-  description?: TypedObject;
-  logo?: ImageType;
+  title: string;
+  description: TypedObject;
+  logo: ImageType;
   keywords?: string[];
   ogImage?: {
     title?: string;

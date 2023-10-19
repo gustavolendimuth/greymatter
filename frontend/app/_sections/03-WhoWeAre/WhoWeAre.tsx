@@ -1,17 +1,14 @@
 import { PortableText } from '@portabletext/react';
 import BackgroundImage from 'app/_components/BackgroundImage';
 import Container from 'app/_components/Container';
+import DownArrow from 'app/_components/DownArrow';
 import Img from 'app/_components/Img';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getWhoWeAre } from 'lib/sanityFetch';
+import { WhoWeAreSection } from 'types/sectionsTypes';
 
-import DownArrow from '../../_components/DownArrow';
-
-async function WhoWeAre({ locale }: { locale: string }) {
-  const client = getClient();
-  const { title, text, image, background } = await getWhoWeAre(client, locale);
+export function WhoWeAre({ data }: { data: WhoWeAreSection }) {
+  const { title, text, image, background } = data;
 
   if (!title || !text) return null;
 
@@ -40,5 +37,3 @@ async function WhoWeAre({ locale }: { locale: string }) {
     </Section>
   );
 }
-
-export default WhoWeAre;

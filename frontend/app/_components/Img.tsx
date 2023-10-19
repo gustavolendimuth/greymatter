@@ -31,7 +31,7 @@ const buildUrl = ({ image, width, quality, format }: BuildUrlProps) => {
     urlBuilder.auto('format');
   }
 
-  return urlBuilder.fit('fill').url();
+  return urlBuilder.fit('crop').crop('focalpoint').url();
 };
 
 function Img({

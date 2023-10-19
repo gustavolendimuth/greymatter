@@ -54,7 +54,7 @@ export default defineType({
     defineField({
       name: 'excerpt',
       title: 'Resumo',
-      type: 'internationalizedArrayText',
+      type: 'string',
       validation: (rule) => fullValidation({ rule, title: 'Resumo', languages }),
     }),
     // Cover Image

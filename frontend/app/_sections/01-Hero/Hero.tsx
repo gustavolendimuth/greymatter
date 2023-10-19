@@ -3,13 +3,12 @@
 'use client';
 
 import Container from 'app/_components/Container';
+import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import { getClient } from 'lib/sanityClient';
 import { getHero } from 'lib/sanityFetch';
 import { useEffect, useState } from 'react';
 import { HeroVideo } from 'types/sectionsTypes';
-
-import DownArrow from '../../_components/DownArrow';
 
 export default function Hero({ locale }: { locale: string }) {
   const [heroVideo, setHeroVideo] = useState<HeroVideo>();

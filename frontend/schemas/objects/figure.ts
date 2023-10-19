@@ -1,11 +1,11 @@
-import { defineType } from 'sanity';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'figure',
   type: 'object',
   title: 'Figure',
   fields: [
-    {
+    defineField({
       name: 'image',
       type: 'image',
       title: 'Imagem',
@@ -14,13 +14,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
-    },
-    {
+    }),
+    defineField({
       name: 'alt',
       type: 'string',
       title: 'Texto Alternativo',
       validation: (rule) => rule.required(),
       description: 'Importante para SEO e acessibilidade.',
-    },
+    }),
   ],
 });

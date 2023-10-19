@@ -3,7 +3,6 @@ import Layout from 'components/BlogLayout';
 import MoreStories from 'components/MoreStories';
 import PostBody from 'components/PostBody';
 import PostHeader from 'components/PostHeader';
-import PostPageHead from 'components/PostPageHead';
 import PostTitle from 'components/PostTitle';
 import SectionSeparator from 'components/SectionSeparator';
 import { notFound } from 'next/navigation';
@@ -36,11 +35,11 @@ export default function PostPage(props: PostPageProps) {
 
   return (
     <>
-      <PostPageHead settings={settings} post={post} />
+      {/* <PostPageHead settings={settings} post={post} /> */}
 
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader description={description} title={title} level={2} />
+          <BlogHeader category={category} locale={locale} description={description} title={title} level={2} />
           {preview && !post ? (
             <PostTitle>Loading…</PostTitle>
           ) : (
@@ -52,6 +51,8 @@ export default function PostPage(props: PostPageProps) {
                   date={post.date}
                   author={post.author}
                   slug={post.slug}
+                  category={category}
+                  locale={locale}
                 />
                 <PostBody content={post.content} />
               </article>

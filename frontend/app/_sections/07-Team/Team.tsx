@@ -8,14 +8,12 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getTeam } from 'lib/sanityFetch';
+import { TeamSection } from 'types/sectionsTypes';
 
 import TeamCards from './components/TeamCards';
 
-export default async function Team({ locale }: { locale: string }) {
-  const client = getClient();
-  const { team, background, title } = await getTeam(client, locale);
+export default function Team({ data }: { data: TeamSection }) {
+  const { team, background, title } = data;
 
   if (!title || !team) return null;
 
