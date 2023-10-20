@@ -6,10 +6,7 @@ import Container from 'app/_components/Container';
 import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
-import { getClient } from 'lib/sanityClient';
-import { getCommunity } from 'lib/sanityFetch';
 import { CommunitySection } from 'types/sectionsTypes';
-// import { Tooltip } from 'react-tooltip';
 import sortMembers from 'utils/sort';
 
 import CommunityCards from './components/CommunityCards';
@@ -27,13 +24,9 @@ export default function Community({ data }: { data: CommunitySection }) {
       <Container justify gap fullHeight className="lg:max-w-[1200px]">
         <div />
         <Title className="text-deep-blue">{title}</Title>
-        <div className="max-w-[768px] text-ternary self-center flex flex-col gap-2 md:gap-5 text-center lg:text-left text-lg md:text-xl lg:text-2xl">
+        <div className="flex max-w-[768px] flex-col gap-2 self-center text-center text-lg text-ternary md:gap-5 md:text-xl lg:text-left lg:text-2xl">
           {text && <PortableText value={text} />}
         </div>
-        {/* <Tooltip
-          anchorSelect=".community-card-tooltip"
-          className="community-tooltip"
-        /> */}
         <CommunityCards members={sortedMembers} />
         <DownArrow className="fill-deep-blue" to="#portfolio" />
       </Container>
