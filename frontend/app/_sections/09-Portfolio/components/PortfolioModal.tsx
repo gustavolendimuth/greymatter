@@ -16,16 +16,11 @@ interface PortfolioModalProps {
 
 export default function PortfolioModal({ showModal, setShowModal, company }: PortfolioModalProps) {
   return (
-    <Modal
-      showModal={showModal}
-      setShowModal={setShowModal}
-    >
+    <Modal showModal={showModal} setShowModal={setShowModal}>
       <div className="text-2xl">
         <div className="flex items-center gap-1 font-700">
           <CgOrganisation />
-          <p>
-            {company?.companyName}
-          </p>
+          <p>{company?.companyName}</p>
         </div>
         <p className="text-sm">{company?.description}</p>
       </div>
@@ -33,10 +28,7 @@ export default function PortfolioModal({ showModal, setShowModal, company }: Por
       <div className="flex flex-col gap-3">
         <div className="flex gap-3 flex-wrap">
           {company?.categories?.map((category) => (
-            <p
-              className="font-700 text-lg flex gap-1 items-center"
-              key={category}
-            >
+            <p className="font-700 text-lg flex gap-1 items-center" key={category}>
               <TiTags />
               {category}
             </p>

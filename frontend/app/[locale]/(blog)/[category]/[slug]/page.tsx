@@ -7,16 +7,18 @@ import { getBlogSettings, getPostAndMoreStories } from 'lib/sanityFetch';
 
 type PageProps = {
   params: {
-    slug?: string,
-    locale?: string,
-    category?: 'news' | 'insights',
-  }
-}
+    slug?: string;
+    locale?: string;
+    category?: 'news' | 'insights';
+  };
+};
 
 export const revalidate = 60;
 
 export default async function ProjectSlugRoute(props: PageProps) {
-  const { params: { slug, category, locale } } = props;
+  const {
+    params: { slug, category, locale },
+  } = props;
   const client = getClient();
 
   if (!slug || !category || !locale) {
@@ -39,13 +41,7 @@ export default async function ProjectSlugRoute(props: PageProps) {
       <Navbar position="static" background locale={locale} />
       <Section>
         <Container className="pt-10 pb-14">
-          <PostPage
-            post={post}
-            morePosts={morePosts}
-            settings={settings}
-            locale={locale}
-            category={category}
-          />
+          <PostPage post={post} morePosts={morePosts} settings={settings} locale={locale} category={category} />
         </Container>
       </Section>
     </>

@@ -13,23 +13,13 @@ type Props = BlogSettings & {
   category: BlogCategory;
 };
 
-export default function BlogHeader({
-  title,
-  description,
-  level,
-  locale,
-  category
-}: Props) {
+export default function BlogHeader({ title, description, level, locale, category }: Props) {
   switch (level) {
     case 1:
       return (
         <div className="flex flex-col">
-          <Title className="text-secondary">
-            {title}
-          </Title>
-          <h4
-            className={`pt-5 text-center text-2xl text-secondary max-w-[1100px] ${styles.portableText}`}
-          >
+          <Title className="text-secondary">{title}</Title>
+          <h4 className={`pt-5 text-center text-2xl text-secondary max-w-[1100px] ${styles.portableText}`}>
             <PortableText value={description} />
           </h4>
         </div>
@@ -47,10 +37,6 @@ export default function BlogHeader({
       );
 
     default:
-      throw new Error(
-        `Invalid level: ${
-          JSON.stringify(level) || typeof level
-        }, only 1 or 2 are allowed`,
-      );
+      throw new Error(`Invalid level: ${JSON.stringify(level) || typeof level}, only 1 or 2 are allowed`);
   }
 }

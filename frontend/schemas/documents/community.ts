@@ -17,9 +17,7 @@ export default defineType({
     },
   },
   icon: FaUsers,
-  groups: [
-    { name: 'communityMembers', title: 'Membros da Comunidade' },
-  ],
+  groups: [{ name: 'communityMembers', title: 'Membros da Comunidade' }],
   fields: [
     documentType('section'),
     sectionTitle,

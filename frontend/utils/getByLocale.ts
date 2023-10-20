@@ -3,17 +3,21 @@ import { LocalizedObject, TypedObject } from 'types/propertiesTypes';
 
 // Overloaded function signatures
 export function getByLocale(
-  input: [LocalizedObject<string> | LocalizedObject<TypedObject>, LocalizedObject<TypedObject> | LocalizedObject<string>], locale: string
+  input: [
+    LocalizedObject<string> | LocalizedObject<TypedObject>,
+    LocalizedObject<TypedObject> | LocalizedObject<string>,
+  ],
+  locale: string
 ): [string | null, TypedObject | null];
 
-export function getByLocale<T>(
-  input: LocalizedObject<T>, locale: string
-): T | null;
+export function getByLocale<T>(input: LocalizedObject<T>, locale: string): T | null;
 
 // Implementation
 export function getByLocale(
-  input: [LocalizedObject<string> | LocalizedObject<TypedObject>, LocalizedObject<TypedObject> | LocalizedObject<string>] | LocalizedObject<any>,
-  locale: string,
+  input:
+    | [LocalizedObject<string> | LocalizedObject<TypedObject>, LocalizedObject<TypedObject> | LocalizedObject<string>]
+    | LocalizedObject<any>,
+  locale: string
 ): any {
   if (!input) return null;
 

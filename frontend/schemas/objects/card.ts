@@ -25,11 +25,12 @@ export default defineType({
       name: 'title',
       type: 'string',
       title: 'Título do Card',
-      validation: (Rule) => Rule.custom((fieldValue, context: any) => {
-        const titles = context?.document?.cards?.map((item: any) => item.title) || [];
-        const isUnique = titles?.filter((key: any) => key === fieldValue).length === 1;
-        return isUnique ? true : 'O título deve ser único';
-      }),
+      validation: (Rule) =>
+        Rule.custom((fieldValue, context: any) => {
+          const titles = context?.document?.cards?.map((item: any) => item.title) || [];
+          const isUnique = titles?.filter((key: any) => key === fieldValue).length === 1;
+          return isUnique ? true : 'O título deve ser único';
+        }),
     }),
     image(),
     defineField({

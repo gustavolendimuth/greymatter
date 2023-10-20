@@ -4,8 +4,7 @@ import { fullValidation } from 'schemas/utils/internationalizedArrayUtils';
 
 const title = 'Título da Seção';
 
-export default
-defineField({
+export default defineField({
   name: 'title',
   title: 'Título da Seção',
   type: 'internationalizedArrayString',

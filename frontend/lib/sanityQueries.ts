@@ -79,7 +79,8 @@ export const teamQuery = groq`
     "title": title[_key == $locale][0].value,
     background,
     "team": { 
-      "members": team.members[]-> { 
+      "members": team.members[]-> {
+        _id,
         name, 
         image, 
         position,
@@ -119,12 +120,11 @@ export const applicationQuery = groq`
   }
 `;
 
-export const BlogSettingsQuery = (category: BlogCategory) => (
+export const BlogSettingsQuery = (category: BlogCategory) =>
   groq`*[_type == "blogSettings"][0].${category} {
     "title": title[_key == $locale][0].value,
     "description": description[_key == $locale][0].value
-  }`
-);
+  }`;
 
 export const newsSettingsQuery = groq`
   *[_type == "blogSettings"][0] {

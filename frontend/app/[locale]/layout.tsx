@@ -19,20 +19,18 @@ type RootLayoutProps = {
   children: React.ReactNode;
   params: {
     locale: string;
-  }
+  };
 };
 
 export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
-   const client = getClient();
+  const client = getClient();
   const footer = await getFooter(client, locale);
   const { logo } = await getSiteSettings(client);
 
   return (
     <html lang={locale}>
       <body>
-        <HomeProvider>
-          {children}
-        </HomeProvider>
+        <HomeProvider>{children}</HomeProvider>
         <Footer locale={locale} data={footer} greymatterLogo={logo} />
       </body>
     </html>

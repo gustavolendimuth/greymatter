@@ -9,11 +9,11 @@ import { getCliClient } from '@sanity/cli';
 const client = getCliClient();
 
 // Fetch the documents we want to migrate, and return only the fields we need.
-const fetchDocuments = () => client.fetch('*[_type == \'author\' && defined(name)][0...100] {_id, _rev, name}');
+const fetchDocuments = () => client.fetch("*[_type == 'author' && defined(name)][0...100] {_id, _rev, name}");
 
 // Build a patch for each document, represented as a tuple of `[documentId, patch]`
-const buildPatches = (docs: any) => docs.map(
-  (doc: any) => ({
+const buildPatches = (docs: any) =>
+  docs.map((doc: any) => ({
     id: doc._id,
     patch: {
       set: { fullname: doc.name },
@@ -22,13 +22,10 @@ const buildPatches = (docs: any) => docs.map(
       // modified since it was fetched.
       ifRevisionID: doc._rev,
     },
-  }),
-);
+  }));
 
-const createTransaction = (patches: any) => patches.reduce(
-  (tx: any, patch: any) => tx.patch(patch.id, patch.patch),
-  client.transaction(),
-);
+const createTransaction = (patches: any) =>
+  patches.reduce((tx: any, patch: any) => tx.patch(patch.id, patch.patch), client.transaction());
 
 const commitTransaction = (tx: any) => tx.commit();
 
@@ -41,7 +38,7 @@ const migrateNextBatch: any = async () => {
   }
   console.log(
     'Migrating batch:\n %s',
-    patches.map((patch: any) => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n'),
+    patches.map((patch: any) => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
   );
   const transaction = createTransaction(patches);
   await commitTransaction(transaction);

@@ -4,8 +4,8 @@ import Head from 'next/head';
 import { BlogSettings, Post } from 'types/sectionsTypes';
 
 export interface PostPageHeadProps {
-  settings: BlogSettings
-  post: Post
+  settings: BlogSettings;
+  post: Post;
 }
 
 export default function PostPageHead({ settings, post }: PostPageHeadProps) {
@@ -14,14 +14,7 @@ export default function PostPageHead({ settings, post }: PostPageHeadProps) {
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
       {post.coverImage?.asset?._ref && (
-        <meta
-          property="og:image"
-          content={urlForImage(post.coverImage)
-            .width(1200)
-            .height(627)
-            .fit('crop')
-            .url()}
-        />
+        <meta property="og:image" content={urlForImage(post.coverImage).width(1200).height(627).fit('crop').url()} />
       )}
     </Head>
   );

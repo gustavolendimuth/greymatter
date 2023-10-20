@@ -1,7 +1,4 @@
-import {
-  PortableText,
-  type PortableTextReactComponents,
-} from '@portabletext/react';
+import { PortableText, type PortableTextReactComponents } from '@portabletext/react';
 import { TypedObject } from '@portabletext/types';
 
 import styles from './PostBody.module.css';

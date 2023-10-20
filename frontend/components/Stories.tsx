@@ -5,7 +5,15 @@ import { Post } from 'types/sectionsTypes';
 
 import PostPreview from './PostPreview';
 
-export default function Stories({ posts = [], locale, category }: { posts: Post[], locale: string, category: BlogCategory }) {
+export default function Stories({
+  posts = [],
+  locale,
+  category,
+}: {
+  posts: Post[];
+  locale: string;
+  category: BlogCategory;
+}) {
   return (
     <div className="max-w-[1320px] grid grid-cols-1 gap-y-7 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-7">
       {posts?.map((post) => (

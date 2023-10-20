@@ -1,4 +1,4 @@
-import { useEffect } from 'react';/* eslint-disable react-hooks/rules-of-hooks */
+import { useEffect } from 'react'; /* eslint-disable react-hooks/rules-of-hooks */
 
 export default function useScrollTo() {
   useEffect(() => {

@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-
 import { getClient } from 'lib/sanityClient';
 import { SanityClient } from 'next-sanity';
 import { BlogCategory } from 'types/componentsTypes';
@@ -77,7 +76,11 @@ export async function getCommunity(client: SanityClient, locale: string): Promis
   return client.fetch(communityQuery, { locale });
 }
 
-export async function getBlogSettings(client: SanityClient, locale: string, category: BlogCategory): Promise<BlogSettings> {
+export async function getBlogSettings(
+  client: SanityClient,
+  locale: string,
+  category: BlogCategory
+): Promise<BlogSettings> {
   return (await client.fetch(BlogSettingsQuery(category), { locale })) || {};
 }
 
@@ -99,7 +102,12 @@ export async function getPostBySlug(client: SanityClient, slug: string, locale: 
   return (await client.fetch(postBySlugQuery, { slug, locale })) || ({} as any);
 }
 
-export async function getPostAndMoreStories(client: SanityClient, slug: string, locale: string, category: Category): Promise<{ post: Post; morePosts: Post[] }> {
+export async function getPostAndMoreStories(
+  client: SanityClient,
+  slug: string,
+  locale: string,
+  category: Category
+): Promise<{ post: Post; morePosts: Post[] }> {
   return client.fetch(postAndMoreStoriesQuery, { slug, locale, category });
 }
 

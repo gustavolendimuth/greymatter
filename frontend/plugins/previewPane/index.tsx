@@ -7,11 +7,7 @@
 
 import { DRAFT_MODE_ROUTE, previewSecretId } from 'lib/sanityApi';
 import { DefaultDocumentNodeResolver } from 'sanity/desk';
-import {
-  defineUrlResolver,
-  Iframe,
-  type IframeOptions,
-} from 'sanity-plugin-iframe-pane';
+import { defineUrlResolver, Iframe, type IframeOptions } from 'sanity-plugin-iframe-pane';
 import authorType from 'schemas/documents/author';
 import postType from 'schemas/documents/posts';
 
@@ -27,27 +23,26 @@ const iframeOptions = {
   reload: { button: true },
 } satisfies IframeOptions;
 
-export const previewDocumentNode = (): DefaultDocumentNodeResolver => (S, { schemaType }) => {
-  switch (schemaType) {
-    case authorType.name:
-      return S.document().views([
-        S.view.form(),
-        S.view
-          .component(({ document }) => (
-            <AuthorAvatarPreviewPane
-              name={document.displayed.name as any}
-              picture={document.displayed.picture as any}
-            />
-          ))
-          .title('Preview'),
-      ]);
+export const previewDocumentNode =
+  (): DefaultDocumentNodeResolver =>
+  (S, { schemaType }) => {
+    switch (schemaType) {
+      case authorType.name:
+        return S.document().views([
+          S.view.form(),
+          S.view
+            .component(({ document }) => (
+              <AuthorAvatarPreviewPane
+                name={document.displayed.name as any}
+                picture={document.displayed.picture as any}
+              />
+            ))
+            .title('Preview'),
+        ]);
 
-    case postType.name:
-      return S.document().views([
-        S.view.form(),
-        S.view.component(Iframe).options(iframeOptions).title('Preview'),
-      ]);
-    default:
-      return null;
-  }
-};
+      case postType.name:
+        return S.document().views([S.view.form(), S.view.component(Iframe).options(iframeOptions).title('Preview')]);
+      default:
+        return null;
+    }
+  };

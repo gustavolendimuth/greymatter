@@ -29,7 +29,7 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
     setTimeout(() => {
       if (category) {
         const filteredCompanies = allCompanies?.filter(
-          (company) => company.categories && company.categories.includes(category),
+          (company) => company.categories && company.categories.includes(category)
         );
         setCompanies(filteredCompanies);
       } else {
@@ -56,11 +56,9 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
 
   return (
     <div className="flex flex-wrap justify-center gap-x-3 gap-y-4">
-      <CategoryButton onClick={() => handleCategoryChange(undefined)}>
-        All
-      </CategoryButton>
-      {categories
-        && categories.map((category, index) => (
+      <CategoryButton onClick={() => handleCategoryChange(undefined)}>All</CategoryButton>
+      {categories &&
+        categories.map((category, index) => (
           <CategoryButton
             active={selectedCategory === category}
             key={index}

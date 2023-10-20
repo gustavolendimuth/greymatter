@@ -31,13 +31,7 @@ export default function TextFill({ text, fontSize, lineHeight, height, width }: 
 
   return (
     <div ref={textRef} className={`h-[${height}px] lg:w-[${width}px] w-auto`}>
-      {
-        text
-        && (
-          typeof text === 'object' ? <PortableText value={text} />
-            : <p>{text}</p>
-        )
-      }
+      {text && (typeof text === 'object' ? <PortableText value={text} /> : <p>{text}</p>)}
     </div>
   );
 }

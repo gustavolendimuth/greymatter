@@ -25,13 +25,7 @@ export default function HowWeInvestTree({ cards, firstCard }: HowWeInvestTreePro
         nodePadding=""
         label={
           <div className="rounded-lg flex justify-center">
-            <Img
-              image={firstCard}
-              width={160}
-              height={160}
-              className="object-cover"
-              alt="Deal"
-            />
+            <Img image={firstCard} width={160} height={160} className="object-cover" alt="Deal" />
           </div>
         }
       >
@@ -49,9 +43,7 @@ export default function HowWeInvestTree({ cards, firstCard }: HowWeInvestTreePro
                     height={112}
                   />
                   <div className="pt-2 text-lg md:text-xl text-primary">
-                    {
-                      card?.text && <PortableText value={card.text} />
-                    }
+                    {card?.text && <PortableText value={card.text} />}
                   </div>
                 </div>
               </div>

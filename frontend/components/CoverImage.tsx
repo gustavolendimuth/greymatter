@@ -6,13 +6,13 @@ import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 interface CoverImageProps {
-  title: string
-  slug?: string
-  image: any
-  priority?: boolean,
-  thumbnail?: boolean,
-  category: string
-  locale: string
+  title: string;
+  slug?: string;
+  image: any;
+  priority?: boolean;
+  thumbnail?: boolean;
+  category: string;
+  locale: string;
 }
 
 export default function CoverImage(props: CoverImageProps) {

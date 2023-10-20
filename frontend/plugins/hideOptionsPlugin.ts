@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { definePlugin, PluginOptions } from 'sanity';
 
-export const hideOptionsPlugin = definePlugin<string[]>((types): PluginOptions[] => types.map((type) => (
-  {
+export const hideOptionsPlugin = definePlugin<string[]>((types): PluginOptions[] =>
+  types.map((type) => ({
     name: 'settings',
     document: {
       newDocumentOptions: (prev, { creationContext }) => {
@@ -20,5 +20,5 @@ export const hideOptionsPlugin = definePlugin<string[]>((types): PluginOptions[]
         return prev;
       },
     },
-  }
-)));
+  }))
+);

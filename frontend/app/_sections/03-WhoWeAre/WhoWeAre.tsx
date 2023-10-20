@@ -23,13 +23,7 @@ export function WhoWeAre({ data }: { data: WhoWeAreSection }) {
             <PortableText value={text} />
           </div>
           <div className="w-full lg:w-[284px] lg:h-[180px] flex justify-center order-first lg:order-last">
-            <Img
-              className="rounded-lg"
-              image={image}
-              alt={image.alt || 'Who we are'}
-              width={300}
-              height={300}
-            />
+            <Img className="rounded-lg" image={image} alt={image.alt || 'Who we are'} width={300} height={300} />
           </div>
         </div>
         <DownArrow className="fill-grey" to="#what-we-look-for" />

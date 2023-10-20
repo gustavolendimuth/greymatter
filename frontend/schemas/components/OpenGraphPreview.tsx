@@ -15,13 +15,13 @@ async function init(): Promise<SatoriOptions['fonts']> {
     globalThis.Intl = globalThis.Intl || {};
     // @ts-expect-error
     globalThis.Intl.Segmenter = await createIntlSegmenterPolyfill(
-      fetch(new URL('public/files/break_iterator.wasm', import.meta.url)),
+      fetch(new URL('public/files/break_iterator.wasm', import.meta.url))
     );
   }
 
-  const fontData = await fetch(
-    new URL('public/assets/fonts/Inter-Bold.woff', import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  const fontData = await fetch(new URL('public/assets/fonts/Inter-Bold.woff', import.meta.url)).then((res) =>
+    res.arrayBuffer()
+  );
 
   return [{ name: 'Inter', data: fontData, style: 'normal', weight: 700 }];
 }
@@ -57,12 +57,13 @@ export default function OpenGraphPreview(props: SiteSettings['ogImage']) {
   // Also handle the satori render call in SWR to enable caching and only re-render when the title changes or fonts hot reload
   const { data: __html } = useSWR(
     [props?.title, fonts satisfies SatoriOptions['fonts']],
-    ([title, fonts]) => satori(<OpenGraphImage title={title || ''} />, {
-      width,
-      height,
-      fonts,
-    }),
-    { suspense: true },
+    ([title, fonts]) =>
+      satori(<OpenGraphImage title={title || ''} />, {
+        width,
+        height,
+        fonts,
+      }),
+    { suspense: true }
   );
 
   return <OpenGraphSvg dangerouslySetInnerHTML={{ __html }} />;

@@ -24,9 +24,7 @@ export default function Portfolio({ locale }: { locale: string }) {
       {/* <BackgroundImage image={background} /> */}
       <Container fullHeight gap className="lg:max-w-[1320px]">
         <div />
-        <Title className="text-white">
-          {portfolio.title}
-        </Title>
+        <Title className="text-white">{portfolio.title}</Title>
         <div className="flex-grow flex flex-col gap-calc-sm" id="portfolio-content">
           <CategoryNavbar companies={portfolio.companies} />
           <PortfolioGrid />

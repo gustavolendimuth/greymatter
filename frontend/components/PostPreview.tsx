@@ -15,7 +15,7 @@ export default function PostPreview({
   slug,
   locale,
   category,
-}: Omit<Post, '_id'> & { locale: string, category: string }) {
+}: Omit<Post, '_id'> & { locale: string; category: string }) {
   if (!title || !excerpt) return null;
 
   return (
@@ -36,10 +36,8 @@ export default function PostPreview({
           <Date dateString={date} />
         </div>
 
-        <h3 className="pb-2 text-xl font-600">
-          {title}
-        </h3>
-        {excerpt && <p className="text-lg text-primary">{excerpt}</p>}
+        <h3 className="pb-2 text-xl font-600">{title}</h3>
+        {excerpt && <p className="text-md text-primary">{excerpt}</p>}
         <div className="pb-7 pt-5">
           <Link href={`/${locale}/${category}/${slug}`} className="bg-primary text-white px-6 py-2 rounded-md">
             {dictionary.readMore[locale]}

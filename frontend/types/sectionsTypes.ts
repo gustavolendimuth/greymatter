@@ -47,14 +47,14 @@ export type WhatDoWeOfferSection = {
 export type HowWeInvestSection = {
   title: string;
   firstCard: ImageType;
-  cards: HowWeInvestCardComponent[]
+  cards: HowWeInvestCardComponent[];
   background: BackgroundType | null;
 };
 
 export type TeamSection = {
   title: string;
   team: {
-    members: TeamMemberComponent[]
+    members: TeamMemberComponent[];
     sort: SortOptions;
   };
   background: BackgroundType | null;
@@ -66,7 +66,7 @@ export type CommunitySection = {
   community: {
     members: CommunityMemberComponent[];
     sort: SortOptions;
-  }
+  };
   background: BackgroundType | null;
 };
 
@@ -79,8 +79,8 @@ export type ApplicationSection = {
 };
 
 export type Author = {
-  name?: string
-  picture?: any
+  name?: string;
+  picture?: any;
 };
 
 export type Post = {
@@ -108,7 +108,7 @@ export type SiteSettings = {
   keywords?: string[];
   ogImage?: {
     title?: string;
-  }
+  };
 };
 
 export type Footer = {
@@ -117,9 +117,9 @@ export type Footer = {
 };
 
 export interface Settings {
-  title?: string
-  description?: any[]
+  title?: string;
+  description?: any[];
   ogImage?: {
-    title?: string
-  }
+    title?: string;
+  };
 }

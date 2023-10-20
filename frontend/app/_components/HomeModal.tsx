@@ -51,32 +51,20 @@ function HomeModal({ locale }: { locale: string }) {
         <div className="modal">
           <form onSubmit={handleSubmit}>
             <div className="modal-header border-b-0">
-              <h2 className="text-secondary">
-                {locale === 'en' ? 'RESEARCH' : 'PESQUISA'}
-              </h2>
+              <h2 className="text-secondary">{locale === 'en' ? 'RESEARCH' : 'PESQUISA'}</h2>
             </div>
             <div className="modal-body px-5 py-4">
               <div className="pb-3">
                 <p className="py-2 text-base">
-                  <strong>
-                    {locale === 'en'
-                      ? 'Subtitle in English'
-                      : 'Subtitle in Portuguese'}
-                  </strong>
+                  <strong>{locale === 'en' ? 'Subtitle in English' : 'Subtitle in Portuguese'}</strong>
                 </p>
-                <p className="py-2 text-base">
-                  {locale === 'en'
-                    ? 'Text in English'
-                    : 'Text in Portuguese'}
-                </p>
+                <p className="py-2 text-base">{locale === 'en' ? 'Text in English' : 'Text in Portuguese'}</p>
               </div>
               <div className="flex flex-col gap-3">
                 <div className="form-group">
                   <input
                     type="text"
-                    placeholder={
-                      locale === 'en' ? 'Full name' : 'Nome completo'
-                    }
+                    placeholder={locale === 'en' ? 'Full name' : 'Nome completo'}
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     required
@@ -93,11 +81,7 @@ function HomeModal({ locale }: { locale: string }) {
                 </div>
               </div>
               <div className="modal-footer border-t-0 pt-4 flex justify-center gap-4">
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  className="btn-secondary"
-                >
+                <button type="button" onClick={handleClose} className="btn-secondary">
                   {locale === 'en' ? 'Close' : 'Fechar'}
                 </button>
                 <button type="submit" className="btn-primary">

@@ -8,10 +8,7 @@ type NavbarLinkProps = ComponentProps<'div'> & {
 function NavbarLink({ children, href, ...navbarLinkProps }: NavbarLinkProps) {
   return (
     <Link href={href} scroll>
-      <div
-        {...navbarLinkProps}
-        className="uppercase w-full mx-auto tracking-widest text-center text-white"
-      >
+      <div {...navbarLinkProps} className="uppercase w-full mx-auto tracking-widest text-center text-white">
         {children}
       </div>
     </Link>

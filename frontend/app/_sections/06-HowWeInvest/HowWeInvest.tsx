@@ -21,13 +21,8 @@ export default function HowWeInvest({ data }: { data: HowWeInvestSection }) {
       <BackgroundImage image={background} />
       <Container gap fullHeight className="max-w-[1200px]">
         <div className="spacer" />
-        <Title className="text-primary">
-          {title}
-        </Title>
-        <HowWeInvestTree
-          cards={cards}
-          firstCard={firstCard}
-        />
+        <Title className="text-primary">{title}</Title>
+        <HowWeInvestTree cards={cards} firstCard={firstCard} />
         <DownArrow className="fill-primary" to="#team" />
       </Container>
     </Section>

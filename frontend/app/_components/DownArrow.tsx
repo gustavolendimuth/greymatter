@@ -14,11 +14,7 @@ type DownArrowProps = ComponentProps<'svg'> & {
   arrowColor?: string;
 };
 
-export default function DownArrow({
-  className,
-  to,
-  ...downArrowProps
-}: DownArrowProps) {
+export default function DownArrow({ className, to, ...downArrowProps }: DownArrowProps) {
   useScrollTo();
 
   function handleClick(event: any) {
@@ -29,6 +25,7 @@ export default function DownArrow({
 
     targetElement?.scrollIntoView({ behavior: 'smooth' });
   }
+
   return (
     <Link href={to} onClick={handleClick} className="w-full flex justify-center">
       <svg

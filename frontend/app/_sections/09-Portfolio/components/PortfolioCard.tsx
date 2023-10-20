@@ -19,9 +19,7 @@ type PortfolioCardsProps = {
 export default function PortfolioCard({ company }: PortfolioCardsProps) {
   const getFilterStyle = () => {
     if (company.logo.whiteBackground) return '';
-    return company.logo.tone === 'dark'
-      ? 'brightness(0.5)'
-      : 'brightness(0.15)';
+    return company.logo.tone === 'dark' ? 'brightness(0.5)' : 'brightness(0.15)';
   };
 
   return (

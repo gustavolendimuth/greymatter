@@ -1,10 +1,6 @@
 import { Url } from 'url';
 
-import {
-  ImageType,
-  LocalizedObject,
-  TypedObject,
-} from './propertiesTypes';
+import { ImageType, LocalizedObject, TypedObject } from './propertiesTypes';
 
 export type WhatWeLookForCardComponent = {
   image: ImageType;
@@ -27,11 +23,12 @@ export type HowWeInvestCardComponent = {
 export type BlogCategory = 'insights' | 'news';
 
 export type TeamMemberComponent = {
+  _id: string;
   name: string;
   image: ImageType;
   position: string;
   linkedin: Url | null;
-  bio: string;
+  bio: TypedObject;
   slug: {
     current: string;
   };

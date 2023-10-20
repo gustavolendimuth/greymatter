@@ -40,7 +40,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: (doc) => ((Array.isArray(doc.title)) && (doc.title.find((t) => t.value))?.value),
+        source: (doc) => Array.isArray(doc.title) && doc.title.find((t) => t.value)?.value,
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
@@ -54,7 +54,7 @@ export default defineType({
     defineField({
       name: 'excerpt',
       title: 'Resumo',
-      type: 'string',
+      type: 'internationalizedArrayString',
       validation: (rule) => fullValidation({ rule, title: 'Resumo', languages }),
     }),
     // Cover Image
@@ -85,10 +85,9 @@ export default defineType({
       media: 'coverImage',
     },
     prepare({ title, media, author, date }) {
-      const subtitles = [
-        author && `by ${author}`,
-        date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
-      ].filter(Boolean);
+      const subtitles = [author && `by ${author}`, date && `on ${format(parseISO(date), 'LLL d, yyyy')}`].filter(
+        Boolean
+      );
 
       return { title: preview(title), media, subtitle: subtitles.join(' ') };
     },

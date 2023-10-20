@@ -13,7 +13,11 @@ interface VideoPreviewProps {
   };
 }
 
-export function VideoPreview({ actions: { props: { value } } }: VideoPreviewProps) {
+export function VideoPreview({
+  actions: {
+    props: { value },
+  },
+}: VideoPreviewProps) {
   let site: string | null = null;
   let url: string | null = null;
 
@@ -29,40 +33,30 @@ export function VideoPreview({ actions: { props: { value } } }: VideoPreviewProp
   }
 
   if (!site || !url) {
-    return (
-      <div>Preencha com um endereço de Youtube ou Vimeo válido</div>
-    );
+    return <div>Preencha com um endereço de Youtube ou Vimeo válido</div>;
   }
 
-  return (
-    site === 'vimeo'
-      ? (
-        <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-          <iframe
-            title="Vimeo video player"
-            src={url}
-            style={{ position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%' }}
-            frameBorder="0"
-            allow="fullscreen; picture-in-picture"
-            allowFullScreen
-          />
-          <script src="https://player.vimeo.com/api/player.js" />
-        </div>
-      ) : (
-        <iframe
-          width="100%"
-          height="315px"
-          src={url}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      )
+  return site === 'vimeo' ? (
+    <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+      <iframe
+        title="Vimeo video player"
+        src={url}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        frameBorder="0"
+        allow="fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+      <script src="https://player.vimeo.com/api/player.js" />
+    </div>
+  ) : (
+    <iframe
+      width="100%"
+      height="315px"
+      src={url}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
   );
 }
-

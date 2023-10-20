@@ -1,6 +1,3 @@
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import './Team.css';
 
 import BackgroundImage from 'app/_components/BackgroundImage';
@@ -12,14 +9,18 @@ import { TeamSection } from 'types/sectionsTypes';
 
 import TeamCards from './components/TeamCards';
 
-export default function Team({ data }: { data: TeamSection }) {
+export default function Team({ data, locale }: { data: TeamSection; locale: string }) {
   const { team, background, title } = data;
 
   if (!title || !team) return null;
 
   return (
     <Section id="team" className="relative">
-      <BackgroundImage className="object-bottom mix-blend-overlay" backgroundColor="bg-ternary" image={background} />
+      <BackgroundImage
+        className="object-bottom mix-blend-overlay"
+        backgroundColor="bg-ternary"
+        image={background}
+      />
       <Container
         justify
         gap
@@ -29,7 +30,7 @@ export default function Team({ data }: { data: TeamSection }) {
       >
         <div />
         <Title>{title}</Title>
-        <TeamCards team={team} />
+        <TeamCards team={team} locale={locale} />
         <DownArrow to="#community" />
       </Container>
     </Section>

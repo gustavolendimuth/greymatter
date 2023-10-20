@@ -17,12 +17,7 @@ export default function Intro({ data }: { data: IntroSection }) {
         <div className="my-5 flex justify-center">
           <div className="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-5">
             <div className="flex justify-center lg:justify-start">
-              <Img
-                alt={logo?.alt}
-                width={404}
-                image={logo}
-                height={175}
-              />
+              <Img alt={logo?.alt} width={404} image={logo} height={175} />
             </div>
             <div className="text-lg md:text-xl lg:text-2xl leading-8 md:leading-9 lg:leading-10 text-center lg:text-start text-white max-w-[590px]">
               <TextFill text={text} height={250} width={590} fontSize={23} lineHeight={1.8} />

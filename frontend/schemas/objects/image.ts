@@ -23,7 +23,8 @@ export default ({
     name,
     type: 'image',
     title,
-    validation: (rule: any) => rule.custom((image: any) => image?.asset?._ref === undefined ? 'A imagem é obrigatória' : true),
+    validation: (rule: any) =>
+      rule.custom((image: any) => (image?.asset?._ref === undefined ? 'A imagem é obrigatória' : true)),
     description: description || 'Faça upload de uma imagem, ou selecione uma da galeria',
     options: {
       hotspot: true,
@@ -43,26 +44,22 @@ export default ({
 
   if (type === 'withCaption') {
     // @ts-expect-error
-    baseField.fields.push(
-      {
-        name: 'caption',
-        type: 'string',
-        title: 'Legenda',
-      },
-    );
+    baseField.fields.push({
+      name: 'caption',
+      type: 'string',
+      title: 'Legenda',
+    });
   } else if (type === 'withPortrait') {
     // @ts-expect-error
-    baseField.fields.push(
-      {
-        name: 'imagePortrait',
-        type: 'image',
-        title: 'Imagem Mobile',
-        description: 'Selecione somente quando necessário mostrar uma imagem diferente em telas menores.',
-        options: {
-          hotspot: true,
-        },
+    baseField.fields.push({
+      name: 'imagePortrait',
+      type: 'image',
+      title: 'Imagem Mobile',
+      description: 'Selecione somente quando necessário mostrar uma imagem diferente em telas menores.',
+      options: {
+        hotspot: true,
       },
-    );
+    });
   } else if (type === 'withDimensions') {
     // @ts-expect-error
     baseField.fields.push(
@@ -77,7 +74,7 @@ export default ({
         type: 'number',
         title: 'Altura',
         description: 'Medida em pixels.',
-      },
+      }
     );
   }
 

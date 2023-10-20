@@ -28,7 +28,10 @@ export default function IndexPage(props: IndexPageProps) {
         <AlertBanner preview={preview} loading={loading} />
         <BlogHeader category={category} locale={locale} description={description} title={title} level={1} />
         <Stories posts={posts} locale={locale} category={category} />
-        <DownArrow className={`${category === 'news' ? 'fill-primary' : ''}`} to={`#${category === 'insights' ? 'news' : 'application'}`} />
+        <DownArrow
+          className={`${category === 'news' ? 'fill-primary' : ''}`}
+          to={`#${category === 'insights' ? 'news' : 'application'}`}
+        />
       </Container>
     </Section>
   );

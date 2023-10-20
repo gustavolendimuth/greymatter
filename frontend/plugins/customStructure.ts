@@ -42,34 +42,28 @@ export const hiddenOptions = [
   author.name,
 ];
 
-const hiddenDocs: string[] = [
-  ...hiddenOptions,
-];
+const hiddenDocs: string[] = [...hiddenOptions];
 
 export const customStructure = (): StructureResolver => (S) => {
-  const defaultListItems = S.documentTypeListItems().filter(
-    (listItem) => {
-      const id = listItem.getId();
-      return id && ![...hiddenDocs].includes(id);
-    },
-  );
+  const defaultListItems = S.documentTypeListItems().filter((listItem) => {
+    const id = listItem.getId();
+    return id && ![...hiddenDocs].includes(id);
+  });
 
-  const simpleStructure = (types: DocumentDefinition[]) => types.map((type) => S.listItem()
-    .title(type.title || '')
-    .icon(type?.icon)
-    .child(
-      S.editor()
-        .id(type?.name)
-        .schemaType(type?.name)
-        .documentId(type?.name),
-    ));
+  const simpleStructure = (types: DocumentDefinition[]) =>
+    types.map((type) =>
+      S.listItem()
+        .title(type.title || '')
+        .icon(type?.icon)
+        .child(
+          S.editor()
+            .id(type?.name)
+            .schemaType(type?.name)
+            .documentId(type?.name)
+        )
+    );
 
   return S.list()
     .title('Content')
-    .items([
-      ...(simpleStructure(settingsDocs)),
-      S.divider(),
-      ...(simpleStructure(simpleDocs)),
-      ...defaultListItems,
-    ]);
+    .items([...simpleStructure(settingsDocs), S.divider(), ...simpleStructure(simpleDocs), ...defaultListItems]);
 };

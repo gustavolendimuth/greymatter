@@ -10,8 +10,16 @@ import dictionary from 'utils/dictionary';
 import FooterForm from './FooterForm';
 import Img from './Img';
 
-export default function Footer({ locale, greymatterLogo, data }: { locale: string, greymatterLogo: ImageType, data: Footer }) {
-  const { formText, logo } = data
+export default function Footer({
+  locale,
+  greymatterLogo,
+  data,
+}: {
+  locale: string;
+  greymatterLogo: ImageType;
+  data: Footer;
+}) {
+  const { formText, logo } = data;
 
   if (!formText || !logo || !greymatterLogo) return null;
 
@@ -19,21 +27,11 @@ export default function Footer({ locale, greymatterLogo, data }: { locale: strin
     <footer className="flex flex-col bg-ternary gap-3 pt-12 lg:pt-24 pb-3 lg:pb-7 text-white w-full">
       <div className="flex justify-center flex-col lg:flex-row sm:justify-between xl:w-[1140px] lg:w-[992px] gap-7 lg:gap-5 w-auto px-10 m-auto">
         <div className="flex lg:flex-col flex-row justify-center items-baseline flex-wrap gap-7 min-w-[120px]">
-          <p className="text-lg font-600 text-light hidden md:block">
-            Grey Matter
-          </p>
-          <Link href="#who-we-are">
-            { dictionary.whoWeAre[locale] }
-          </Link>
-          <Link href="#team">
-            { dictionary.team[locale] }
-          </Link>
-          <Link href="#community">
-            { dictionary.community[locale] }
-          </Link>
-          <Link href="#application">
-            { dictionary.application[locale] }
-          </Link>
+          <p className="text-lg font-600 text-light hidden md:block">Grey Matter</p>
+          <Link href="#who-we-are">{dictionary.whoWeAre[locale]}</Link>
+          <Link href="#team">{dictionary.team[locale]}</Link>
+          <Link href="#community">{dictionary.community[locale]}</Link>
+          <Link href="#application">{dictionary.application[locale]}</Link>
         </div>
         <div className="flex justify-center items-center flex-col pb-5 w-full">
           <div className="flex justify-center items-center">
@@ -61,23 +59,13 @@ export default function Footer({ locale, greymatterLogo, data }: { locale: strin
           </div>
           <FooterForm />
           <div className="py-4">
-            <Img
-              alt="Vieira Rezende logo"
-              className="object-contain"
-              image={logo}
-              width={280}
-              height={280}
-            />
+            <Img alt="Vieira Rezende logo" className="object-contain" image={logo} width={280} height={280} />
           </div>
         </div>
       </div>
       <div className="flex justify-center items-center flex-wrap gap-4 p-3">
-        <Link href="#terms-and-conditions">
-          { dictionary.terms[locale]}
-        </Link>
-        <Link href="#privacy-policy">
-          { dictionary.privacy[locale]}
-        </Link>
+        <Link href="#terms-and-conditions">{dictionary.terms[locale]}</Link>
+        <Link href="#privacy-policy">{dictionary.privacy[locale]}</Link>
         <Link href="#cookies">Cookies</Link>
       </div>
     </footer>

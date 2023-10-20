@@ -16,7 +16,5 @@ const button = tv({
 type ButtonProps = ComponentProps<'button'> & VariantProps<typeof button>;
 
 export default function CategoryButton({ active, ...props }: ButtonProps) {
-  return (
-    <button type="button" className={button({ active })} {...props} />
-  );
+  return <button type="button" className={button({ active })} {...props} />;
 }

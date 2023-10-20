@@ -8,20 +8,10 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export default function Modal({
-  showModal,
-  setShowModal,
-  children,
-}: ModalProps) {
+export default function Modal({ showModal, setShowModal, children }: ModalProps) {
   return (
-    <Transition
-      show={showModal}
-      as={Fragment}
-    >
-      <Dialog
-        className="relative z-50"
-        onClose={() => setShowModal(false)}
-      >
+    <Transition show={showModal} as={Fragment}>
+      <Dialog className="relative z-50" onClose={() => setShowModal(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"
@@ -44,11 +34,7 @@ export default function Modal({
             leaveTo="translate-y-[48px] transform opacity-0"
           >
             <Dialog.Panel className="w-full m-3 max-w-3xl rounded-xl bg-white text-primary flex flex-col gap-3 p-12">
-              <button
-                type="button"
-                className="absolute top-4 right-4"
-                onClick={() => setShowModal(false)}
-              >
+              <button type="button" className="absolute top-4 right-4" onClick={() => setShowModal(false)}>
                 <IoCloseSharp className="lg:text-4xl text-2xl" />
               </button>
               {children}

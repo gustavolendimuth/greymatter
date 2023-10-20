@@ -23,7 +23,9 @@ type BuildUrlProps = {
 };
 
 const buildUrl = ({ image, width, quality, format }: BuildUrlProps) => {
-  const urlBuilder = urlForImage(image?.asset).quality(quality).width(width);
+  const urlBuilder = urlForImage(image?.asset)
+    .quality(quality)
+    .width(width);
 
   if (format) {
     urlBuilder.format(format);
@@ -34,29 +36,12 @@ const buildUrl = ({ image, width, quality, format }: BuildUrlProps) => {
   return urlBuilder.fit('crop').crop('focalpoint').url();
 };
 
-function Img({
-  image,
-  width,
-  height,
-  quality = 90,
-  format,
-  className,
-  ...props
-}: ImgProps) {
+function Img({ image, width, height, quality = 90, format, className, ...props }: ImgProps) {
   if (!image) return null;
 
   const url = buildUrl({ image, width, height, quality, format });
 
-  return (
-    <Image
-      {...props}
-      alt={image?.alt}
-      className={className}
-      width={width}
-      height={height}
-      src={url}
-    />
-  );
+  return <Image {...props} alt={image?.alt} className={className} width={width} height={height} src={url} />;
 }
 
 export default Img;

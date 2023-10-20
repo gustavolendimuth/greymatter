@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 type FullValidationProps = SimpleValidadeProps & {
   title: string;
-  languages: { id: string, title: string }[];
+  languages: { id: string; title: string }[];
 };
 
 type SimpleValidadeProps = {
@@ -11,7 +11,7 @@ type SimpleValidadeProps = {
 
 export function fullValidation({ rule, title, languages }: FullValidationProps): any {
   return rule?.custom((fieldArray: any) => {
-    if ((fieldArray?.filter((field: { value: string }) => field.value))?.length === languages?.length) {
+    if (fieldArray?.filter((field: { value: string }) => field.value)?.length === languages?.length) {
       return true;
     }
     return `O campo ${title} é obrigatório`;

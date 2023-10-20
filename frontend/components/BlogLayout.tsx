@@ -5,9 +5,9 @@ export default function BlogLayout({
   loading,
   children,
 }: {
-  preview: boolean
-  loading?: boolean
-  children: React.ReactNode
+  preview: boolean;
+  loading?: boolean;
+  children: React.ReactNode;
 }) {
   return (
     <div>

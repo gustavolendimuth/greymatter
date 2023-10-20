@@ -1,9 +1,22 @@
 {
-  "extends": "next",
-  "plugins": ["simple-import-sort"],
+  "extends": ["next"],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "rules": {
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
-    "react-hooks/exhaustive-deps": "error"
+    "react-hooks/exhaustive-deps": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "no-html-link-for-pages": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }

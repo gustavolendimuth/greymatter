@@ -12,13 +12,13 @@ import { BlogSettings, Post } from 'types/sectionsTypes';
 import BlogHeader from './BlogHeader';
 
 export interface PostPageProps {
-  preview?: boolean
-  loading?: boolean
-  post: Post
-  morePosts: Post[]
-  settings: BlogSettings
-  locale: string
-  category: BlogCategory
+  preview?: boolean;
+  loading?: boolean;
+  post: Post;
+  morePosts: Post[];
+  settings: BlogSettings;
+  locale: string;
+  category: BlogCategory;
 }
 
 const NO_POSTS: Post[] = [];

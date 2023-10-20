@@ -1,7 +1,7 @@
 export interface TypedObject {
   _type: string;
   _key?: string;
-  asset?: Asset
+  asset?: Asset;
 }
 
 export type SortOptions = '["custom"]' | '["name"]' | '["position"]' | '["name", "position"]';

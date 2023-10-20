@@ -38,21 +38,14 @@ export default function Hero({ locale }: { locale: string }) {
     };
   }, []);
 
-  if (
-    (heroVideo?.landscape && !isPortrait)
-    || (heroVideo?.portrait && isPortrait)
-  ) {
+  if ((heroVideo?.landscape && !isPortrait) || (heroVideo?.portrait && isPortrait)) {
     return (
       <Section>
         <Container fullHeight justify>
           <div />
           <video
             className="w-full h-full object-fill absolute top-0 z-[-1]"
-            src={
-              isPortrait
-                ? heroVideo.portrait
-                : heroVideo.landscape
-            }
+            src={isPortrait ? heroVideo.portrait : heroVideo.landscape}
             autoPlay
             loop
             muted

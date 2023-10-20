@@ -19,11 +19,5 @@ export default defineType({
     },
   },
   fieldsets: [{ name: 'background', title: 'Background' }],
-  fields: [
-    documentType('section'),
-    sectionTitle,
-    sectionText,
-    image(),
-    backgroundImage(),
-  ],
+  fields: [documentType('section'), sectionTitle, sectionText, image(), backgroundImage()],
 });

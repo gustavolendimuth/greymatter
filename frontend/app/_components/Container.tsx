@@ -19,17 +19,6 @@ const div = tv({
   },
 });
 
-export default function Container({
-  fullHeight,
-  justify,
-  gap,
-  className,
-  ...sectionProps
-}: ContainerProps) {
-  return (
-    <div
-      {...sectionProps}
-      className={twMerge(div({ fullHeight, gap, justify }), className)}
-    />
-  );
+export default function Container({ fullHeight, justify, gap, className, ...sectionProps }: ContainerProps) {
+  return <div {...sectionProps} className={twMerge(div({ fullHeight, gap, justify }), className)} />;
 }

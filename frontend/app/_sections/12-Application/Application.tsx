@@ -16,9 +16,7 @@ export function Application({ data }: { data: ApplicationSection }) {
     <Section id="application" className="bg-primary">
       <Container gap>
         <div />
-        <Title className="text-white">
-          {title}
-        </Title>
+        <Title className="text-white">{title}</Title>
         <Img
           alt={image?.alt || 'Application image'}
           image={image}
@@ -33,12 +31,7 @@ export function Application({ data }: { data: ApplicationSection }) {
           className="uppercase font-600 bg-primary text-white rounded-lg border-2 flex items-center gap-2 px-12 py-4"
         >
           {buttonText}
-          <Image
-            alt="Action button"
-            src="/assets/img/greymatter-button-action.svg"
-            width="20"
-            height="20"
-          />
+          <Image alt="Action button" src="/assets/img/greymatter-button-action.svg" width="20" height="20" />
         </Link>
         <div />
       </Container>

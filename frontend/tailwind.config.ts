@@ -21,7 +21,7 @@ const config: Config = {
         'calc-md': 'calc(4vh + 2vw)',
         'calc-sm': 'calc(3vh + 1vw)',
       },
-      height: {
+      minHeight: {
         'calc-full': 'calc(var(--vh, 1vh) * 100)',
         'calc-2xfull': 'calc(var(--vh, 1vh) * 200)',
       },

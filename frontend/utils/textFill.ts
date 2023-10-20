@@ -13,10 +13,7 @@ export default function textFill({ textRef, height, width, fontSize, lineHeight 
     textElement.style.fontSize = `${fontSize}px`;
     textElement.style.lineHeight = `${lineHeight}`;
 
-    while (
-      textElement.scrollHeight > height
-        || textElement.scrollWidth > width
-    ) {
+    while (textElement.scrollHeight > height || textElement.scrollWidth > width) {
       fontSize -= 0.5;
       lineHeight -= 0.05; // ajusta o espaçamento entre linhas
       textElement.style.fontSize = `${fontSize}px`;

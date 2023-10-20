@@ -5,12 +5,7 @@
 'use client';
 
 import { Company } from 'app/_sections/09-Portfolio/components/PortfolioGrid';
-import React, { createContext,
-  Dispatch, useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import React, { createContext, Dispatch, useCallback, useContext, useMemo, useState } from 'react';
 
 type NavbarConfig = {
   position?: 'fixed' | 'absolute' | 'inherit';
@@ -45,25 +40,28 @@ export function HomeProvider({ children }: HomeProviderProps) {
 
   const getLocalStorage = useCallback((key: string) => key && JSON.parse(localStorage.getItem(key) || 'null'), []);
 
-  const contextValue = useMemo(() => ({
-    navbarConfig,
-    setNavbarConfig,
-    setLocalStorage,
-    getLocalStorage,
-    companies,
-    setCompanies,
-    animationClass,
-    setAnimationClass,
-  }), [
-    navbarConfig,
-    setNavbarConfig,
-    setLocalStorage,
-    getLocalStorage,
-    companies,
-    setCompanies,
-    animationClass,
-    setAnimationClass,
-  ]);
+  const contextValue = useMemo(
+    () => ({
+      navbarConfig,
+      setNavbarConfig,
+      setLocalStorage,
+      getLocalStorage,
+      companies,
+      setCompanies,
+      animationClass,
+      setAnimationClass,
+    }),
+    [
+      navbarConfig,
+      setNavbarConfig,
+      setLocalStorage,
+      getLocalStorage,
+      companies,
+      setCompanies,
+      animationClass,
+      setAnimationClass,
+    ]
+  );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
 }
