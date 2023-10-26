@@ -5,6 +5,7 @@ import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
 
+import BackgroundImage from '@/app/_components/BackgroundImage';
 import { getClient } from '@/lib/sanityClient';
 import { getPortfolio } from '@/lib/sanityFetch';
 
@@ -19,7 +20,7 @@ export default async function Portfolio({ locale }: { locale: string }) {
 
   return (
     <Section id="portfolio" className="bg-ternary">
-      {/* <BackgroundImage image={background} /> */}
+      <BackgroundImage image={portfolio.background} />
       <Container fullHeight gap className=" lg:max-w-6xl">
         <div />
         <Title className="text-white">{portfolio.title}</Title>

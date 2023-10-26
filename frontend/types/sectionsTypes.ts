@@ -82,6 +82,7 @@ export type Company = {
 export type PortfolioSection = {
   title: string;
   companies: Company[];
+  background: BackgroundType | null;
 };
 
 export type ApplicationSection = {

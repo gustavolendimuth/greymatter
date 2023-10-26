@@ -14,6 +14,7 @@ interface Props {
 export function SanityImage(props: Props) {
   const { asset, alt, caption } = props;
   const client = getClient();
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const { loader, ...imageProps } = useNextSanityImage(client, asset);
 
   if (!imageProps) return null;
@@ -22,7 +23,9 @@ export function SanityImage(props: Props) {
     <figure>
       <Image {...imageProps} alt={alt} sizes="(max-width: 800px) 100vw, 800px" />
       {caption && (
-        <figcaption className="mt-2 text-left italic text-sm text-gray-500 dark:text-gray-400">{caption}</figcaption>
+        <figcaption className="mt-2 text-left text-sm italic text-gray-500 dark:text-gray-400">
+          {caption}
+        </figcaption>
       )}
     </figure>
   );
