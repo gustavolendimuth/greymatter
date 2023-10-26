@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
-
 'use client';
 
 import './Navbar.css';
@@ -9,7 +7,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next-intl/client';
-import { Fragment } from 'react';
 import { ClassNameValue } from 'tailwind-merge';
 import dictionary from 'utils/dictionary';
 
@@ -67,11 +64,11 @@ function Navbar({ locale, position, background }: NavbarProps) {
       }}
       className="w-full bg-ternary bg-opacity-70 md:bg-transparent"
     >
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-center md:h-24">
-              <div className="absolute inset-y-0 left-0 z-20 flex items-center md:hidden">
+              <div className="absolute inset-y-0 left-0 z-10 flex items-center md:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
@@ -83,11 +80,12 @@ function Navbar({ locale, position, background }: NavbarProps) {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex items-center justify-center md:items-stretch md:justify-start">
+              <div className="absolute z-20 flex items-center justify-center md:items-stretch md:justify-start">
                 <div className="hidden md:ml-6 md:block">
                   <div className="flex items-center space-x-8">
                     {navigation.map((item) => (
                       <Link
+                        scroll={true}
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -99,29 +97,27 @@ function Navbar({ locale, position, background }: NavbarProps) {
                         {item.name}
                       </Link>
                     ))}
-                    <Link href={newUrl} scroll={false} className="px-3 py-2">
+                    <Link href={newUrl} scroll={true} className="px-3 py-2">
                       <Image
-                        src={
-                          locale === englishId
-                            ? 'https://flagcdn.com/w40/br.png'
-                            : 'https://flagcdn.com/w40/gb.png'
-                        }
+                        className="mx-auto"
+                        src={dictionary.languageFlags[locale]}
                         width="30"
-                        height={30}
-                        alt={locale === englishId ? 'Brazil' : 'United Kingdom'}
+                        height="30"
+                        alt={dictionary.languageFlagAlt[locale]}
                       />
                     </Link>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0" />
+              {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0" /> */}
             </div>
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className="mx-auto space-y-2 px-2 pb-8 pt-2">
+            <div className="relative z-30 mx-auto space-y-2 px-2 pb-8 pt-2">
               {navigation.map((item) => (
                 <Link
+                  onClick={() => close()}
                   key={item.name}
                   href={item.href}
                   className={classNames(
@@ -133,17 +129,13 @@ function Navbar({ locale, position, background }: NavbarProps) {
                   {item.name}
                 </Link>
               ))}
-              <Link href={newUrl} className="block px-3 py-2">
+              <Link onClick={() => close()} href={newUrl} className="block px-3 py-2">
                 <Image
                   className="mx-auto"
-                  src={
-                    locale === englishId
-                      ? 'https://flagcdn.com/w40/br.png'
-                      : 'https://flagcdn.com/w40/gb.png'
-                  }
+                  src={dictionary.languageFlags[locale]}
                   width="30"
                   height="30"
-                  alt={locale === englishId ? 'Brazil' : 'United Kingdom'}
+                  alt={dictionary.languageFlagAlt[locale]}
                 />
               </Link>
             </div>

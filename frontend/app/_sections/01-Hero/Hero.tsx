@@ -45,7 +45,7 @@ export default function Hero({ locale }: { locale: string }) {
         <Container fullHeight justify>
           <div />
           <video
-            className="absolute top-0 z-[-1] h-full w-full object-fill"
+            className="absolute top-0 z-[-10] h-full w-full object-fill"
             src={isPortrait ? heroVideo.portrait : heroVideo.landscape}
             autoPlay
             loop

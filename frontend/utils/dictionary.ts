@@ -1,5 +1,17 @@
+type DictionaryKeys =
+  | 'readMore'
+  | 'whoWeAre'
+  | 'team'
+  | 'community'
+  | 'application'
+  | 'terms'
+  | 'privacy'
+  | 'moreStories'
+  | 'languageFlags'
+  | 'languageFlagAlt';
+
 type Dictionary = {
-  [key: string]: {
+  [key in DictionaryKeys]: {
     [key: string]: string;
   };
 };
@@ -36,6 +48,15 @@ const dictionary: Dictionary = {
   moreStories: {
     en: 'More Stories',
     'pt-br': 'Mais Histórias',
+  },
+
+  languageFlags: {
+    en: 'https://flagcdn.com/w40/br.png',
+    'pt-br': 'https://flagcdn.com/w40/gb.png',
+  },
+  languageFlagAlt: {
+    en: 'Português',
+    'pt-br': 'English',
   },
 };
 
