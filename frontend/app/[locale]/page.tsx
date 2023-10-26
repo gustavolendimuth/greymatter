@@ -19,6 +19,7 @@ import {
   getCommunity,
   getHowWeInvest,
   getIntro,
+  getPortfolio,
   getTeam,
   getWhatDoWeOffer,
   getWhatWeLookFor,
@@ -43,6 +44,7 @@ export default async function Index({ params: { locale } }: IndexProps) {
     howWeInvest,
     team,
     community,
+    portfolio,
     insightsSettings,
     newsSettings,
     insights,
@@ -56,6 +58,7 @@ export default async function Index({ params: { locale } }: IndexProps) {
     getHowWeInvest(client, locale),
     getTeam(client, locale),
     getCommunity(client, locale),
+    getPortfolio(client, locale),
     getBlogSettings(client, locale, 'insights'),
     getBlogSettings(client, locale, 'news'),
     getAllPosts(client, locale, 'insights'),
@@ -76,7 +79,7 @@ export default async function Index({ params: { locale } }: IndexProps) {
         <HowWeInvest data={howWeInvest} />
         <Team data={team} locale={locale} />
         <Community data={community} />
-        <Portfolio locale={locale} />
+        <Portfolio data={portfolio} />
         <Insights locale={locale} posts={insights} settings={insightsSettings} />
         <News locale={locale} posts={news} settings={newsSettings} />
         <Application data={application} />
