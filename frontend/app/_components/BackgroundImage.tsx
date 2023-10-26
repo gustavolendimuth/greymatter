@@ -10,18 +10,22 @@ type BackgroundImageProps = {
   backgroundColor?: ClassNameValue;
 };
 
-export default function BackgroundImage({ image, className, backgroundColor }: BackgroundImageProps) {
+export default function BackgroundImage({
+  image,
+  className,
+  backgroundColor,
+}: BackgroundImageProps) {
   if (!image) return null;
 
   const backgroundHeight = `
-    ${image?.larger ? 'h-calc-2xfull' : 'h-full'}
+    ${image?.larger ? 'h-calc-2xfull' : 'min-h-calc-full'}
   `;
 
   return (
-    <div className={twMerge('bg-white absolute z-[-1] inset-0', backgroundColor)}>
+    <div className={twMerge('absolute inset-0 z-[-1] bg-white', backgroundColor, backgroundHeight)}>
       <Img
         image={{ ...image, alt: 'Section Background' }}
-        className={twMerge('w-full object-top object-cover', backgroundHeight, className, image?.align)}
+        className={twMerge('h-full w-screen object-cover', className, image?.align)}
         alt="Background image"
         width={2200}
         height={2200}
