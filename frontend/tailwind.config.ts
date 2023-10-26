@@ -26,6 +26,7 @@ const config: Config = {
         'calc-2xfull': 'calc(var(--vh, 1vh) * 200)',
       },
       screens: {
+        xs: '540px',
         '3xl': '1920px',
         '4xl': '2200px',
       },

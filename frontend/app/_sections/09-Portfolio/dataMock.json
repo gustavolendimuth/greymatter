@@ -69,7 +69,7 @@
           "asset": "/portfolio-images/real_valor-logo-v2.png"
         },
         "alt": "Real Valor logo",
-        "whiteBackground": true,
+        "whiteBackground": false,
         "tone": "dark"
       },
       "companyName": "Real Valor",

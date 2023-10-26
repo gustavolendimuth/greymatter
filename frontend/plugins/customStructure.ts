@@ -18,6 +18,8 @@ import whatDoWeOffer from 'schemas/documents/whatDoWeOffer';
 import whatWeLookFor from 'schemas/documents/whatWeLookFor';
 import whoWeAre from 'schemas/documents/whoWeAre';
 
+import portfolio from '@/schemas/documents/portfolio';
+
 const settingsDocs = [siteSettings, blogSettings] as DocumentDefinition[];
 
 const simpleDocs = [
@@ -29,6 +31,7 @@ const simpleDocs = [
   howWeInvest,
   team,
   community,
+  portfolio,
   application,
   applicationForm,
   footer,
@@ -65,5 +68,10 @@ export const customStructure = (): StructureResolver => (S) => {
 
   return S.list()
     .title('Content')
-    .items([...simpleStructure(settingsDocs), S.divider(), ...simpleStructure(simpleDocs), ...defaultListItems]);
+    .items([
+      ...simpleStructure(settingsDocs),
+      S.divider(),
+      ...simpleStructure(simpleDocs),
+      ...defaultListItems,
+    ]);
 };

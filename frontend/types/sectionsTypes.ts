@@ -70,6 +70,20 @@ export type CommunitySection = {
   background: BackgroundType | null;
 };
 
+export type Company = {
+  name: string;
+  exit: boolean;
+  categories: string[];
+  logo: ImageType;
+  description: string;
+  text: TypedObject;
+};
+
+export type PortfolioSection = {
+  title: string;
+  companies: Company[];
+};
+
 export type ApplicationSection = {
   title: string;
   text: TypedObject;

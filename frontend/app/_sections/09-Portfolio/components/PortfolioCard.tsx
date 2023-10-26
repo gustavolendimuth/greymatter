@@ -1,42 +1,41 @@
-import Image from 'next/image';
 import React from 'react';
 
-type LogoProps = {
-  alt?: string;
-  whiteBackground?: boolean;
-  tone?: string;
-  image?: { asset: string };
+import Img from '@/app/_components/Img';
+import { ImageType } from '@/types/propertiesTypes';
+import { Company } from '@/types/sectionsTypes';
+
+const getFilterStyle = ({ brighten }: ImageType) => {
+  return brighten ? 'brightness(0.15)' : 'brightness(0.5)';
 };
 
-type CompanyProps = {
-  logo: LogoProps;
+const getImageSize = ({ orientation }: ImageType) => {
+  return orientation === 'portrait' ? 'h-20' : 'h-12';
 };
 
-type PortfolioCardsProps = {
-  company: CompanyProps;
+const getContainerStyle = ({ orientation }: ImageType) => {
+  return orientation === 'portrait' ? 'py-4' : 'py-8';
 };
 
-export default function PortfolioCard({ company }: PortfolioCardsProps) {
-  const getFilterStyle = () => {
-    if (company.logo.whiteBackground) return '';
-    return company.logo.tone === 'dark' ? 'brightness(0.5)' : 'brightness(0.15)';
-  };
-
+export default function PortfolioCard({ company }: { company: Company }) {
   return (
-    <div className="p-7 flex flex-col items-center justify-center bg-white/0  hover:bg-white/25 transition rounded-lg border-white border">
+    <div
+      className={`${getContainerStyle(
+        company.logo
+      )} flex flex-col items-center justify-center rounded-lg border  border-white bg-white/0 px-10 transition hover:bg-white/25`}
+    >
       <div
         style={{
-          filter: `${getFilterStyle()} invert(1) grayscale(1)`,
+          filter: `${getFilterStyle(company.logo)} invert(1) grayscale(1)`,
           mixBlendMode: 'lighten',
         }}
         className="flex items-center justify-center"
       >
-        <Image
-          className="h-[80px] w-44 object-contain"
-          src={company?.logo?.image?.asset || ''}
+        <Img
+          className={`${getImageSize(company.logo)} object-contain`}
+          image={company.logo}
           alt={company.logo.alt || 'logo'}
-          width={200}
-          height={200}
+          width={128}
+          height={128}
         />
       </div>
     </div>

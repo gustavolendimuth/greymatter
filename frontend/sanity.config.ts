@@ -45,7 +45,16 @@ export default defineConfig({
     internationalizedArray({
       languages,
       // defaultLanguages: ['pt-br'],
-      fieldTypes: ['string', 'text', 'blogDescription', 'postContent', 'richText', 'heroVideo'],
+      fieldTypes: [
+        'string',
+        'text',
+        'blogDescription',
+        'postContent',
+        'richText',
+        'heroVideo',
+        'blockText',
+        'categories',
+      ],
       buttonAddAll: false,
     }),
   ],

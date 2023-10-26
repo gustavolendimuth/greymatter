@@ -2,10 +2,11 @@
 
 'use client';
 
-import useScrollTo from 'app/_Hooks/useScrollTo';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
+
+import useScrollTo from '../_Hooks/useScrollTo';
 
 type DownArrowProps = ComponentProps<'svg'> & {
   styles?: string;
@@ -27,7 +28,7 @@ export default function DownArrow({ className, to, ...downArrowProps }: DownArro
   }
 
   return (
-    <Link href={to} onClick={handleClick} className="w-full flex justify-center">
+    <Link href={to} onClick={handleClick} className="flex w-full justify-center">
       <svg
         {...downArrowProps}
         className={twMerge('w-16', className)}

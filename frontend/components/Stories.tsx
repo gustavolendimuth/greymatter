@@ -15,7 +15,7 @@ export default function Stories({
   category: BlogCategory;
 }) {
   return (
-    <div className="max-w-[1320px] grid grid-cols-1 gap-y-7 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-7">
+    <div className="grid max-w-[1320px] grid-cols-1 gap-3 gap-y-7 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-7 xl:grid-cols-4">
       {posts?.map((post) => (
         <PostPreview
           key={post._id}

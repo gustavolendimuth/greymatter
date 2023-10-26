@@ -2,8 +2,10 @@
 
 import { defineField } from 'sanity';
 
+type Options = 'caption' | 'portrait' | 'dimensions' | 'brighten' | 'orientation';
+
 type CreateImageFieldProps = {
-  type?: 'withCaption' | 'withPortrait' | 'withDimensions' | '';
+  options?: Array<Options> | Options;
   name?: string;
   title?: string;
   description?: string;
@@ -11,20 +13,30 @@ type CreateImageFieldProps = {
   group?: string;
 };
 
-export default ({
-  type = '',
+type FieldOptions = {
+  caption?: any;
+  portrait?: any;
+  dimensions?: any[];
+  brighten?: any;
+  orientation?: any;
+};
+
+function image({
+  options,
   name = 'image',
   title = 'Imagem',
   description = 'Faça upload de uma imagem, ou selecione uma da galeria',
   fieldset = '',
   group = '',
-}: CreateImageFieldProps = {}) => {
+}: CreateImageFieldProps = {}) {
   const baseField = defineField({
     name,
     type: 'image',
     title,
     validation: (rule: any) =>
-      rule.custom((image: any) => (image?.asset?._ref === undefined ? 'A imagem é obrigatória' : true)),
+      rule.custom((image: any) =>
+        image?.asset?._ref === undefined ? 'A imagem é obrigatória' : true
+      ),
     description: description || 'Faça upload de uma imagem, ou selecione uma da galeria',
     options: {
       hotspot: true,
@@ -42,41 +54,79 @@ export default ({
     ],
   });
 
-  if (type === 'withCaption') {
-    // @ts-expect-error
-    baseField.fields.push({
+  const fieldOptions: FieldOptions = {
+    caption: defineField({
       name: 'caption',
       type: 'string',
       title: 'Legenda',
-    });
-  } else if (type === 'withPortrait') {
-    // @ts-expect-error
-    baseField.fields.push({
+    }),
+    portrait: defineField({
       name: 'imagePortrait',
       type: 'image',
       title: 'Imagem Mobile',
-      description: 'Selecione somente quando necessário mostrar uma imagem diferente em telas menores.',
+      description:
+        'Selecione somente quando necessário mostrar uma imagem diferente em telas menores.',
       options: {
         hotspot: true,
       },
-    });
-  } else if (type === 'withDimensions') {
-    // @ts-expect-error
-    baseField.fields.push(
-      {
+    }),
+    dimensions: [
+      defineField({
         name: 'width',
         type: 'number',
         title: 'Largura',
         description: 'Medida em pixels.',
-      },
-      {
+      }),
+      defineField({
         name: 'height',
         type: 'number',
         title: 'Altura',
         description: 'Medida em pixels.',
+      }),
+    ],
+    brighten: defineField({
+      name: 'brighten',
+      type: 'boolean',
+      title: 'Clarear',
+      initialValue: false,
+    }),
+    orientation: defineField({
+      name: 'orientation',
+      type: 'string',
+      title: 'Orientação',
+      initialValue: 'landscape',
+      options: {
+        list: [
+          { title: 'Horizontal', value: 'landscape' },
+          { title: 'Vertical', value: 'portrait' },
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+    }),
+  };
+
+  if (options && !Array.isArray(options)) {
+    const fieldOption = fieldOptions[options];
+    if (Array.isArray(fieldOption)) {
+      baseField?.fields?.push(...fieldOption);
+    } else {
+      baseField?.fields?.push(fieldOption);
+    }
+  }
+
+  if (options && Array.isArray(options)) {
+    options.forEach((option) => {
+      const fieldOption = fieldOptions[option];
+      if (Array.isArray(fieldOption)) {
+        baseField?.fields?.push(...fieldOption);
+      } else if (typeof option === 'string') {
+        baseField?.fields?.push(fieldOption);
       }
-    );
+    });
   }
 
   return baseField;
-};
+}
+
+export default image;

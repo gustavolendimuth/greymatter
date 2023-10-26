@@ -1,11 +1,12 @@
 import { defineField } from 'sanity';
 
+type Options = 'larger' | 'align';
+
 type BackgroundImageProps = {
-  options?: ['larger', 'align'];
-  fieldset?: string;
+  options?: Array<Options> | Options;
 };
 
-export default ({ options }: BackgroundImageProps = {}) => {
+function backgroundImage({ options }: BackgroundImageProps = {}) {
   const backgroundImage = defineField({
     name: 'background',
     type: 'image',
@@ -39,11 +40,17 @@ export default ({ options }: BackgroundImageProps = {}) => {
     }),
   };
 
-  if (options) {
+  if (options && !Array.isArray(options)) {
+    backgroundImage?.fields?.push(fieldOptions[options]);
+  }
+
+  if (options && Array.isArray(options)) {
     options.forEach((option) => {
       backgroundImage?.fields?.push(fieldOptions[option]);
     });
   }
 
   return backgroundImage;
-};
+}
+
+export default backgroundImage;

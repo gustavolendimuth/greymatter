@@ -21,7 +21,7 @@ export default defineType({
       initialValue: 'insights',
       validation: (rule) => rule.required(),
       options: {
-        layout: 'radio', // This changes the layout to radio buttons
+        layout: 'radio',
         list: [
           { title: 'Insights', value: 'insights' },
           { title: 'News', value: 'news' },
@@ -40,7 +40,8 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: (doc) => Array.isArray(doc.title) && doc.title.find((t) => t.value)?.value,
+        source: (doc) =>
+          Array.isArray(doc.title) && doc.title.find((t) => t.value)?.value,
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
@@ -49,7 +50,8 @@ export default defineType({
       name: 'content',
       title: 'Conteúdo do Post',
       type: 'internationalizedArrayPostContent',
-      validation: (rule) => fullValidation({ rule, title: 'Conteúdo do Post', languages }),
+      validation: (rule) =>
+        fullValidation({ rule, title: 'Conteúdo do Post', languages }),
     }),
     defineField({
       name: 'excerpt',
@@ -57,7 +59,6 @@ export default defineType({
       type: 'internationalizedArrayString',
       validation: (rule) => fullValidation({ rule, title: 'Resumo', languages }),
     }),
-    // Cover Image
     image({ title: 'Imagem de Capa', name: 'coverImage' }),
     defineField({
       name: 'date',
@@ -85,9 +86,10 @@ export default defineType({
       media: 'coverImage',
     },
     prepare({ title, media, author, date }) {
-      const subtitles = [author && `by ${author}`, date && `on ${format(parseISO(date), 'LLL d, yyyy')}`].filter(
-        Boolean
-      );
+      const subtitles = [
+        author && `by ${author}`,
+        date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
+      ].filter(Boolean);
 
       return { title: preview(title), media, subtitle: subtitles.join(' ') };
     },

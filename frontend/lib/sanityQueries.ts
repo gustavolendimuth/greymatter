@@ -111,6 +111,20 @@ export const communityQuery = groq`
   }
 `;
 
+export const portfolioQuery = groq`
+  *[_type == "portfolio"][0] {
+    "title": title[_key == $locale].value,
+    "companies": companies[]{
+      name,
+      exit,
+      categories,
+      logo,
+      "description": description[_key == $locale][0].value,
+      "text": text[_key == $locale][0].value,
+    }
+  }
+`;
+
 export const applicationQuery = groq`
   *[_type == "application"][0] {
     "title": title[_key == $locale][0].value,

@@ -12,6 +12,7 @@ import footer from './documents/footer';
 import hero from './documents/hero';
 import howWeInvest from './documents/howWeInvest';
 import intro from './documents/intro';
+import portfolio from './documents/portfolio';
 import siteSettings from './documents/siteSettings';
 import team from './documents/team';
 import teamMembers from './documents/teamMembers';
@@ -19,14 +20,18 @@ import whatDoWeOffer from './documents/whatDoWeOffer';
 import whatWeLookFor from './documents/whatWeLookFor';
 import whoWeAre from './documents/whoWeAre';
 import applicationFormFields from './objects/applicationFormFields';
+import blockText from './objects/blockText';
 import blogDescription from './objects/blogDescription';
 import card from './objects/card';
+import categories from './objects/categories';
 import heroVideo from './objects/heroVideo';
 import postContent from './objects/postContent';
 import richText from './objects/richText';
 import video from './objects/video';
 
 export const schemaTypes = [
+  categories,
+  blockText,
   heroVideo,
   applicationFormFields,
   blogDescription,
@@ -46,6 +51,7 @@ export const schemaTypes = [
   teamMembers,
   community,
   communityMembers,
+  portfolio,
   authorType,
   postType,
   application,

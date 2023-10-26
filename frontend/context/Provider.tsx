@@ -4,8 +4,9 @@
 
 'use client';
 
-import { Company } from 'app/_sections/09-Portfolio/components/PortfolioGrid';
 import React, { createContext, Dispatch, useCallback, useContext, useMemo, useState } from 'react';
+
+import { Company } from '@/types/sectionsTypes';
 
 type NavbarConfig = {
   position?: 'fixed' | 'absolute' | 'inherit';
@@ -38,7 +39,10 @@ export function HomeProvider({ children }: HomeProviderProps) {
     if (key && value) localStorage.setItem(key, JSON.stringify(value));
   }, []);
 
-  const getLocalStorage = useCallback((key: string) => key && JSON.parse(localStorage.getItem(key) || 'null'), []);
+  const getLocalStorage = useCallback(
+    (key: string) => key && JSON.parse(localStorage.getItem(key) || 'null'),
+    []
+  );
 
   const contextValue = useMemo(
     () => ({

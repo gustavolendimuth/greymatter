@@ -2,13 +2,13 @@
 import { FaClipboard } from 'react-icons/fa';
 import { defineField, defineType } from 'sanity';
 import { languages } from 'sanity.config';
-import image from 'schemas/objects/image';
 import sectionText from 'schemas/objects/sectionText';
 import sectionTitle from 'schemas/objects/sectionTitle';
 import { fullValidation } from 'schemas/utils/internationalizedArrayUtils';
 
 import backgroundImage from '../objects/backgroundImage';
 import documentType from '../objects/documentType';
+import image from '../objects/image';
 
 export default defineType({
   name: 'application',
@@ -24,7 +24,7 @@ export default defineType({
     defineField(documentType('section')),
     sectionTitle,
     sectionText,
-    image({ type: 'withDimensions' }),
+    image({ options: 'dimensions' }),
     defineField({
       name: 'buttonText',
       type: 'internationalizedArrayString',

@@ -10,7 +10,6 @@ type TeamMembersCardProps = {
   member: TeamMemberComponent;
   showArrowDown: boolean;
   index: number;
-  locale: string;
   nextMemberSlug: string;
   key: string;
 };
@@ -18,13 +17,12 @@ type TeamMembersCardProps = {
 export default function TeamMembersCard({
   member,
   showArrowDown,
-  locale,
   nextMemberSlug,
 }: TeamMembersCardProps) {
   return (
     <div
       id={member.slug.current}
-      className="min-h-calc-full flex flex-col items-center justify-center gap-16 pb-24 pt-32"
+      className="flex min-h-calc-full flex-col items-center justify-center gap-16 pb-24 pt-32"
     >
       <div className="flex w-full flex-wrap justify-center">
         <div className="flex min-w-[328px] flex-col items-center gap-4 py-3 lg:w-1/3 lg:text-right">
@@ -37,10 +35,7 @@ export default function TeamMembersCard({
           />
           <div className="flex items-center gap-1 text-[1.5rem]">
             <FaLinkedin />
-            <Link
-              className="text-decoration-none flex items-center"
-              href={member.linkedin || ''}
-            >
+            <Link className="text-decoration-none flex items-center" href={member.linkedin || ''}>
               {member.position}
             </Link>
           </div>

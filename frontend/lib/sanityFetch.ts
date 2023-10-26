@@ -10,6 +10,7 @@ import {
   HeroSection,
   HowWeInvestSection,
   IntroSection,
+  PortfolioSection,
   Post,
   SiteSettings,
   TeamSection,
@@ -28,6 +29,7 @@ import {
   howWeInvestQuery,
   introQuery,
   newsSettingsQuery,
+  portfolioQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
   postSlugsQuery,
@@ -74,6 +76,10 @@ export async function getTeam(client: SanityClient, locale: string): Promise<Tea
 
 export async function getCommunity(client: SanityClient, locale: string): Promise<CommunitySection> {
   return client.fetch(communityQuery, { locale });
+}
+
+export async function getPortfolio(client: SanityClient, locale: string): Promise<PortfolioSection> {
+  return client.fetch(portfolioQuery, { locale });
 }
 
 export async function getBlogSettings(

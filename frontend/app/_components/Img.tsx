@@ -41,7 +41,16 @@ function Img({ image, width, height, quality = 90, format, className, ...props }
 
   const url = buildUrl({ image, width, height, quality, format });
 
-  return <Image {...props} alt={image?.alt} className={className} width={width} height={height} src={url} />;
+  return (
+    <Image
+      {...props}
+      alt={image?.alt}
+      className={className}
+      width={width}
+      height={height}
+      src={url}
+    />
+  );
 }
 
 export default Img;

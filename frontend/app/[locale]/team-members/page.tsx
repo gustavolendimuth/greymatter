@@ -35,7 +35,6 @@ export default async function TeamMembers({ params: { locale } }: TeamMembersPro
               showArrowDown={members.length - 1 !== index}
               member={member}
               index={index}
-              locale={locale}
               nextMemberSlug={members[index + 1]?.slug.current}
             />
           ))}

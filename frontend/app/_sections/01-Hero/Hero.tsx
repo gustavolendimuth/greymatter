@@ -12,7 +12,7 @@ import { HeroVideo } from 'types/sectionsTypes';
 
 export default function Hero({ locale }: { locale: string }) {
   const [heroVideo, setHeroVideo] = useState<HeroVideo>();
-  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+  const [isPortrait, setIsPortrait] = useState<boolean>();
   const client = getClient();
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export default function Hero({ locale }: { locale: string }) {
     };
 
     const mql = window.matchMedia('(orientation: portrait)');
+    setIsPortrait(mql.matches);
     mql.addEventListener('change', handleOrientationChange);
 
     return () => {
@@ -44,7 +45,7 @@ export default function Hero({ locale }: { locale: string }) {
         <Container fullHeight justify>
           <div />
           <video
-            className="w-full h-full object-fill absolute top-0 z-[-1]"
+            className="absolute top-0 z-[-1] h-full w-full object-fill"
             src={isPortrait ? heroVideo.portrait : heroVideo.landscape}
             autoPlay
             loop

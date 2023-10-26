@@ -33,9 +33,13 @@ export default function Modal({ showModal, setShowModal, children }: ModalProps)
             leaveFrom="translate-y-0 transform opacity-100"
             leaveTo="translate-y-[48px] transform opacity-0"
           >
-            <Dialog.Panel className="w-full m-3 max-w-3xl rounded-xl bg-white text-primary flex flex-col gap-3 p-12">
-              <button type="button" className="absolute top-4 right-4" onClick={() => setShowModal(false)}>
-                <IoCloseSharp className="lg:text-4xl text-2xl" />
+            <Dialog.Panel className="relative m-3 flex w-full max-w-3xl flex-col gap-3 rounded-xl bg-white p-12 text-primary">
+              <button
+                type="button"
+                className="absolute right-4 top-4"
+                onClick={() => setShowModal(false)}
+              >
+                <IoCloseSharp className="text-2xl text-ternary lg:text-4xl" />
               </button>
               {children}
             </Dialog.Panel>

@@ -24,6 +24,8 @@ export type ImageType = {
   width?: number;
   height?: number;
   caption?: LocalizedObject<string>;
+  brighten?: boolean;
+  orientation?: 'landscape' | 'portrait';
 };
 
 export type LocalizedValue<T> = { _key: string; value: T };

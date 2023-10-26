@@ -6,8 +6,9 @@ import { useHomeContext } from 'context/Provider';
 import { useRouter } from 'next-intl/client';
 import React, { useEffect, useState } from 'react';
 
+import { Company } from '@/types/sectionsTypes';
+
 import CategoryButton from './CategoryButton';
-import { Company } from './PortfolioGrid';
 
 export default function CategoryNavbar({ companies: allCompanies }: { companies: Company[] }) {
   const [categories, setCategories] = useState<string[]>();
@@ -28,9 +29,10 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
 
     setTimeout(() => {
       if (category) {
-        const filteredCompanies = allCompanies?.filter(
-          (company) => company.categories && company.categories.includes(category)
-        );
+        const filteredCompanies = allCompanies?.filter((company) => {
+          const companyCategories = company.categories.map((category) => category.toLowerCase());
+          return companyCategories.includes(category);
+        });
         setCompanies(filteredCompanies);
       } else {
         setCompanies(allCompanies);
@@ -46,7 +48,8 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
       const result: string[] = [];
       data?.forEach((company) => {
         company?.categories?.forEach((category) => {
-          if (!result?.includes(category)) result.push(category);
+          const lowerCaseCategory = category.toLowerCase();
+          if (!result?.includes(lowerCaseCategory)) result.push(lowerCaseCategory);
         });
       });
       return result;
@@ -64,7 +67,7 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
             key={index}
             onClick={() => handleCategoryChange(category)}
           >
-            {category}
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </CategoryButton>
         ))}
     </div>
