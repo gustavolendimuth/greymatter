@@ -8,7 +8,7 @@ const div = tv({
   base: 'flex flex-col items-center  m-auto container px-4 lg:px-10',
   variants: {
     fullHeight: {
-      true: 'min-h-[calc(var(--vh,1vh)*100)]',
+      true: 'min-h-calc-full',
     },
     gap: {
       true: 'gap-calc-lg',
@@ -19,6 +19,14 @@ const div = tv({
   },
 });
 
-export default function Container({ fullHeight, justify, gap, className, ...sectionProps }: ContainerProps) {
-  return <div {...sectionProps} className={twMerge(div({ fullHeight, gap, justify }), className)} />;
+export default function Container({
+  fullHeight,
+  justify,
+  gap,
+  className,
+  ...sectionProps
+}: ContainerProps) {
+  return (
+    <div {...sectionProps} className={twMerge(div({ fullHeight, gap, justify }), className)} />
+  );
 }
