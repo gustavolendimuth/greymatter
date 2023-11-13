@@ -25,15 +25,17 @@ export default function PortfolioCompanyInfo({
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex flex-nowrap items-center gap-1">
-        <CgOrganisation className="text-2xl" />
-        <span className="nowrap mb-0 pb-0 text-2xl font-700">{company?.name}</span>
-        <div className={exit({ exit: company.exit })}>
-          <span className=" text-base font-600">Exit</span>
-          <TbLogout />
+      <div>
+        <div className="flex flex-nowrap items-center gap-1">
+          <CgOrganisation className="text-2xl" />
+          <span className="nowrap mb-0 pb-0 text-2xl font-700">{company?.name}</span>
+          <div className={exit({ exit: company.exit })}>
+            <span className=" text-base font-600">Exit</span>
+            <TbLogout />
+          </div>
         </div>
+        {showText && <p className="text-left text-sm">{company?.description}</p>}
       </div>
-      {showText && <p className="text-left text-sm">{company?.description}</p>}
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap gap-2">
           {company?.categories?.map((category) => (

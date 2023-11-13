@@ -43,7 +43,7 @@ export default function PortfolioGrid() {
           onClick={() => {
             setSelectedCompany(company);
             setShowModal(true);
-            router.push('#portfolio', { scroll: true });
+            // router.push('#portfolio', { scroll: true });
           }}
         >
           <PortfolioCard company={company} />
@@ -51,7 +51,7 @@ export default function PortfolioGrid() {
       ))}
       <Tooltip
         anchorSelect=".portfolio-tooltip-anchor"
-        className="portfolio-tooltip nowrap w-fit rounded-lg"
+        className="portfolio-tooltip nowrap sm:none hidden w-fit md:block"
       >
         {hoveredCompany && <PortfolioCompanyInfo company={hoveredCompany} />}
       </Tooltip>
