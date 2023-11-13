@@ -9,7 +9,7 @@ const getFilterStyle = ({ brighten }: ImageType) => {
 };
 
 const getImageSize = ({ orientation }: ImageType) => {
-  return orientation === 'portrait' ? 'h-20' : 'h-12';
+  return orientation === 'portrait' ? 'h-16' : 'h-8';
 };
 
 const getContainerStyle = ({ orientation }: ImageType) => {
@@ -21,7 +21,7 @@ export default function PortfolioCard({ company }: { company: Company }) {
     <div
       className={`${getContainerStyle(
         company.logo
-      )} flex flex-col items-center justify-center rounded-lg border  border-white bg-white/0 px-10 transition hover:bg-white/25`}
+      )} flex flex-col items-center justify-center rounded-lg border  border-white bg-white/0 px-6 transition hover:bg-white/25`}
     >
       <div
         style={{

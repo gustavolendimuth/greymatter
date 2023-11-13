@@ -7,14 +7,14 @@ import DownArrow from 'app/_components/DownArrow';
 import Section from 'app/_components/Section';
 import Title from 'app/_components/Title';
 import { CommunitySection } from 'types/sectionsTypes';
-import sortMembers from 'utils/sort';
+import sort from 'utils/sort';
 
 import CommunityCards from './components/CommunityCards';
 
 export default function Community({ data }: { data: CommunitySection }) {
   const { title, text, community, background } = data;
 
-  const sortedMembers = sortMembers(community.members, JSON.parse(community.sort));
+  const sortedMembers = sort(community.members, JSON.parse(community.sort));
 
   if (!sortedMembers || !title) return null;
 

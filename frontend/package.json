@@ -39,7 +39,7 @@
     "react-icons": "^4.11.0",
     "react-is": "^18.2.0",
     "react-organizational-chart": "^2.2.1",
-    "react-tooltip": "^5.9.1",
+    "react-tooltip": "^5.23.0",
     "react-transition-group": "^4.4.5",
     "sanity": "^3.16.7",
     "sanity-plugin-asset-source-unsplash": "^1.1.1",

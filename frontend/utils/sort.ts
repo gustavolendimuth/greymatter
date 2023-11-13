@@ -1,4 +1,4 @@
-import { SortParams } from 'types/propertiesTypes';
+import { SortOption, SortParams } from 'types/propertiesTypes';
 
 type VariableObject = {
   [key: string]: any;
@@ -22,7 +22,11 @@ const sortCompare =
       return 0;
     }, 0);
 
-export default function sortMembers<T extends VariableObject>(members: T[], sortParams: SortParams): T[] {
-  if (sortParams.includes('custom')) return members;
-  return members.sort(sortCompare(sortParams));
+export default function sort<T extends VariableObject>(
+  items: T[],
+  sortParams: SortParams | SortOption
+): T[] {
+  const params = Array.isArray(sortParams) ? sortParams : [sortParams];
+  if (params.includes('custom')) return items;
+  return items.sort(sortCompare(params));
 }

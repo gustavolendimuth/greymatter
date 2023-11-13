@@ -5,7 +5,8 @@ export interface TypedObject {
 }
 
 export type SortOptions = '["custom"]' | '["name"]' | '["position"]' | '["name", "position"]';
-export type SortParams = Array<'custom' | 'name' | 'position'>;
+export type SortOption = 'custom' | 'name' | 'position';
+export type SortParams = Array<SortOption>;
 
 export type BackgroundType = {
   larger?: boolean;

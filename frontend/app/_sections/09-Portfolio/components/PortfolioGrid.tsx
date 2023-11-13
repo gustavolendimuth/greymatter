@@ -1,38 +1,45 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
+import './PortfolioGrid.css';
+
 import { useHomeContext } from 'context/Provider';
 import { useRouter } from 'next-intl/client';
 import React, { useEffect, useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 
 import { Company } from '@/types/sectionsTypes';
 
 import PortfolioCard from './PortfolioCard';
+import PortfolioCompanyInfo from './PortfolioCompanyInfo';
 import PortfolioModal from './PortfolioModal';
 
 export default function PortfolioGrid() {
   const [showModal, setShowModal] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company>();
+  const [hoveredCompany, setHoveredCompany] = useState<Company | null>(null);
   const router = useRouter();
 
   const { companies, setAnimationClass, animationClass } = useHomeContext();
 
   useEffect(() => {
     if (!companies) return;
-    setAnimationClass('fade-in'); // Apply the fade-in class
+    setAnimationClass('fade-in');
   }, [companies]);
 
   if (!companies) return null;
 
   return (
     <div
-      className={`xs:grid-cols-2 mx-auto grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ${animationClass}`}
+      className={`mx-auto grid grid-cols-2 gap-5 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ${animationClass}`}
     >
       {companies?.map((company, index) => (
         <button
           key={index}
-          className="focus:outline-none"
+          className="portfolio-tooltip-anchor focus:outline-none"
           type="button"
+          onMouseEnter={() => setHoveredCompany(company)}
+          onMouseLeave={() => setHoveredCompany(null)}
           onClick={() => {
             setSelectedCompany(company);
             setShowModal(true);
@@ -42,6 +49,12 @@ export default function PortfolioGrid() {
           <PortfolioCard company={company} />
         </button>
       ))}
+      <Tooltip
+        anchorSelect=".portfolio-tooltip-anchor"
+        className="portfolio-tooltip nowrap w-fit rounded-lg"
+      >
+        {hoveredCompany && <PortfolioCompanyInfo company={hoveredCompany} />}
+      </Tooltip>
       {selectedCompany && (
         <PortfolioModal
           showModal={showModal}

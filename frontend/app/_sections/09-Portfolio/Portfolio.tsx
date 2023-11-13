@@ -7,12 +7,15 @@ import Title from 'app/_components/Title';
 
 import BackgroundImage from '@/app/_components/BackgroundImage';
 import { PortfolioSection } from '@/types/sectionsTypes';
+import sort from '@/utils/sort';
 
 import CategoryNavbar from './components/CategoryNavbar';
 import PortfolioGrid from './components/PortfolioGrid';
 
 export default function Portfolio({ data }: { data: PortfolioSection }) {
   const { background, companies, title } = data;
+
+  const sortedCompanies = sort(companies, 'name');
 
   if (!data) return null;
 
@@ -23,7 +26,7 @@ export default function Portfolio({ data }: { data: PortfolioSection }) {
         <div />
         <Title className="text-white">{title}</Title>
         <div className="flex w-full flex-grow flex-col gap-calc-sm" id="portfolio-content">
-          <CategoryNavbar companies={companies} />
+          <CategoryNavbar companies={sortedCompanies} />
           <PortfolioGrid />
         </div>
 

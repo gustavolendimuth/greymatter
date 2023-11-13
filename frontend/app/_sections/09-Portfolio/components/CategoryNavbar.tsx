@@ -52,7 +52,7 @@ export default function CategoryNavbar({ companies: allCompanies }: { companies:
           if (!result?.includes(lowerCaseCategory)) result.push(lowerCaseCategory);
         });
       });
-      return result;
+      return result.sort();
     };
     setCategories(getCategories(allCompanies));
   }, [allCompanies]);
