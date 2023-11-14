@@ -4,7 +4,7 @@
 import './PortfolioGrid.css';
 
 import { useHomeContext } from 'context/Provider';
-import { useRouter } from 'next-intl/client';
+// import { useRouter } from 'next-intl/client';
 import React, { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
@@ -18,7 +18,7 @@ export default function PortfolioGrid() {
   const [showModal, setShowModal] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company>();
   const [hoveredCompany, setHoveredCompany] = useState<Company | null>(null);
-  const router = useRouter();
+  // const router = useRouter();
 
   const { companies, setAnimationClass, animationClass } = useHomeContext();
 

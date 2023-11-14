@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import React from 'react';
 import { CgOrganisation } from 'react-icons/cg';
+import { FaInfoCircle } from 'react-icons/fa';
 import { TbLogout } from 'react-icons/tb';
 import { TiTags } from 'react-icons/ti';
 import { tv } from 'tailwind-variants';
@@ -54,7 +55,12 @@ export default function PortfolioCompanyInfo({
           <PortableText value={company?.text} />
         </div>
       ) : (
-        <p className="underline">Clique para mais informações</p>
+        <div className="flex items-center gap-1 underline">
+          <span className="text-lg">
+            <FaInfoCircle />
+          </span>
+          Clique para mais informações
+        </div>
       )}
     </div>
   );
