@@ -3,6 +3,10 @@ type DictionaryKeys =
   | 'whoWeAre'
   | 'team'
   | 'community'
+  | 'portfolio'
+  | 'posts'
+  | 'insights'
+  | 'greyNews'
   | 'application'
   | 'terms'
   | 'privacy'
@@ -32,6 +36,22 @@ const dictionary: Dictionary = {
   community: {
     en: 'Community',
     'pt-br': 'Comunidade',
+  },
+  portfolio: {
+    en: 'Portfolio',
+    'pt-br': 'Portfólio',
+  },
+  posts: {
+    en: 'Posts',
+    'pt-br': 'Posts',
+  },
+  insights: {
+    en: 'Insights & Publications',
+    'pt-br': 'Insights & Publicações',
+  },
+  greyNews: {
+    en: 'Grey News',
+    'pt-br': 'Grey News',
   },
   application: {
     en: 'Application',
