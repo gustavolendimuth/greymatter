@@ -4,14 +4,14 @@ import Link from 'next/link';
 import type { Post } from 'types/sectionsTypes';
 import dictionary from 'utils/dictionary';
 
-import AuthorAvatar from './AuthorAvatar';
+// import AuthorAvatar from './AuthorAvatar';
 
 export default function PostPreview({
   title,
   coverImage,
   date,
   excerpt,
-  author,
+  // author,
   slug,
   locale,
   category,
@@ -38,7 +38,7 @@ export default function PostPreview({
 
         <h3 className="pb-2 text-xl font-600">{title}</h3>
         {excerpt && <p className="text-md text-primary">{excerpt}</p>}
-        <div className="pb-7 pt-5">
+        <div className="pt-6">
           <Link
             href={`/${locale}/${category}/${slug}`}
             className="rounded-md bg-primary px-6 py-2 text-white"
@@ -46,7 +46,7 @@ export default function PostPreview({
             {dictionary.readMore[locale]}
           </Link>
         </div>
-        {author && <AuthorAvatar name={author.name} picture={author.picture} />}
+        {/* {author && <AuthorAvatar name={author.name} picture={author.picture} />} */}
       </div>
     </div>
   );

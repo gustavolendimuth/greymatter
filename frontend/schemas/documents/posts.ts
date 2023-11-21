@@ -1,3 +1,4 @@
+// import { UserIcon } from '@sanity/icons';
 import { format, parseISO } from 'date-fns';
 import { BsFilePost } from 'react-icons/bs';
 import { defineField, defineType } from 'sanity';
@@ -5,7 +6,7 @@ import { languages } from 'sanity.config';
 import image from 'schemas/objects/image';
 import { fullValidation, preview } from 'schemas/utils/internationalizedArrayUtils';
 
-import authorDocument from './author';
+// import authorDocument from './author';
 
 export default defineType({
   name: 'posts',
@@ -40,8 +41,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: (doc) =>
-          Array.isArray(doc.title) && doc.title.find((t) => t.value)?.value,
+        source: (doc) => Array.isArray(doc.title) && doc.title.find((t) => t.value)?.value,
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
@@ -50,14 +50,13 @@ export default defineType({
       name: 'content',
       title: 'Conteúdo do Post',
       type: 'internationalizedArrayPostContent',
-      validation: (rule) =>
-        fullValidation({ rule, title: 'Conteúdo do Post', languages }),
+      validation: (rule) => fullValidation({ rule, title: 'Conteúdo do Post', languages }),
     }),
     defineField({
       name: 'excerpt',
       title: 'Resumo',
       type: 'internationalizedArrayString',
-      validation: (rule) => fullValidation({ rule, title: 'Resumo', languages }),
+      // validation: (rule) => fullValidation({ rule, title: 'Resumo', languages }),
     }),
     image({ title: 'Imagem de Capa', name: 'coverImage' }),
     defineField({
@@ -70,26 +69,24 @@ export default defineType({
       description: 'Para agendar um post, selecione uma data futura.',
       initialValue: () => new Date().toISOString(),
     }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      validation: (rule) => rule.required(),
-      to: [{ type: authorDocument.name }],
-    }),
+    // defineField({
+    //   name: 'author',
+    //   title: 'Author',
+    //   type: 'reference',
+    //   validation: (rule) => rule.required(),
+    //   to: [{ type: authorDocument.name }],
+    //   icon: UserIcon,
+    // }),
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      // author: 'author.name',
       date: 'date',
       media: 'coverImage',
     },
-    prepare({ title, media, author, date }) {
-      const subtitles = [
-        author && `by ${author}`,
-        date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
-      ].filter(Boolean);
+    prepare({ title, media, date }) {
+      const subtitles = [date && `on ${format(parseISO(date), 'LLL d, yyyy')}`].filter(Boolean);
 
       return { title: preview(title), media, subtitle: subtitles.join(' ') };
     },
