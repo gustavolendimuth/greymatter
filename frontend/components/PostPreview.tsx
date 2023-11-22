@@ -16,7 +16,7 @@ export default function PostPreview({
   locale,
   category,
 }: Omit<Post, '_id'> & { locale: string; category: string }) {
-  if (!title || !excerpt) return null;
+  if (!title) return null;
 
   return (
     <div className="mx-auto flex max-w-md flex-col justify-between rounded-xl border border-primary bg-white shadow-small transition-shadow duration-200 hover:shadow-medium">
@@ -38,15 +38,15 @@ export default function PostPreview({
 
         <h3 className="pb-2 text-xl font-600">{title}</h3>
         {excerpt && <p className="text-md text-primary">{excerpt}</p>}
-        <div className="pt-6">
-          <Link
-            href={`/${locale}/${category}/${slug}`}
-            className="rounded-md bg-primary px-6 py-2 text-white"
-          >
-            {dictionary.readMore[locale]}
-          </Link>
-        </div>
         {/* {author && <AuthorAvatar name={author.name} picture={author.picture} />} */}
+      </div>
+      <div className="mx-7 mb-7">
+        <Link
+          href={`/${locale}/${category}/${slug}`}
+          className="rounded-md bg-primary px-6 py-2 text-white"
+        >
+          {dictionary.readMore[locale]}
+        </Link>
       </div>
     </div>
   );
