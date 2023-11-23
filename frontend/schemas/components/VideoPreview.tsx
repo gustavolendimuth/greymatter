@@ -27,7 +27,7 @@ export function VideoPreview({
       url = `https://player.vimeo.com/video/${id}?h=343212dc82&autoplay=1&loop=1&title=0&byline=0&portrait=0`;
       console.log('pegou url');
     } else if (service === 'youtube') {
-      url = `https://www.youtube.com/embed/${id}?controls=0&modestbranding=1`;
+      url = `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`;
     }
   }
 
@@ -53,7 +53,7 @@ export function VideoPreview({
       src={url}
       title="YouTube video player"
       frameBorder="0"
-      allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
     />
   );
