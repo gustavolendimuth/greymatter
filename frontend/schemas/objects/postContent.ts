@@ -8,9 +8,5 @@ export default defineField({
   title: 'Post Content',
   validation: (rule) => rule.required(),
   type: 'array',
-  of: [
-    { type: 'block' },
-    image({ options: 'caption', title: 'figure' }),
-    { type: 'video' },
-  ],
+  of: [{ type: 'block' }, image({ options: 'caption', title: 'Figure' }), { type: 'video' }],
 });

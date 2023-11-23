@@ -2,21 +2,24 @@ import { defineField, defineType } from 'sanity';
 
 import { VideoPreview } from '../components/VideoPreview';
 
-export default {
+export default defineType({
   name: 'video',
   type: 'object',
-  title: 'Vídeo',
-  components: {
-    select: {
-      url: 'url',
-    },
-    preview: VideoPreview,
-  },
+  title: 'Video',
   fields: [
-    {
+    defineField({
       name: 'url',
       type: 'url',
       title: 'Endereço',
-    },
+    }),
   ],
-};
+  preview: {
+    select: {
+      url: 'url',
+    },
+  },
+  components: {
+    //@ts-ignore
+    preview: VideoPreview,
+  },
+});

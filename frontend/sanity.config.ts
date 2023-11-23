@@ -44,7 +44,7 @@ export default defineConfig({
     colorInput(),
     internationalizedArray({
       languages,
-      // defaultLanguages: ['pt-br'],
+      defaultLanguages: ['pt-br'],
       fieldTypes: [
         'string',
         'text',

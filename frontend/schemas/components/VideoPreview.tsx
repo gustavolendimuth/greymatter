@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import getVideoId from 'get-video-id';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 interface VideoPreviewProps {
@@ -37,11 +36,11 @@ export function VideoPreview({
   }
 
   return site === 'vimeo' ? (
-    <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+    <div>
       <iframe
         title="Vimeo video player"
         src={url}
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        style={{ width: '100%', aspectRatio: '16/9' }}
         frameBorder="0"
         allow="fullscreen; picture-in-picture"
         allowFullScreen
@@ -50,8 +49,7 @@ export function VideoPreview({
     </div>
   ) : (
     <iframe
-      width="100%"
-      height="315px"
+      style={{ width: '100%', aspectRatio: '16/9' }}
       src={url}
       title="YouTube video player"
       frameBorder="0"
