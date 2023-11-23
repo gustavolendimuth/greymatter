@@ -1,6 +1,7 @@
 import { PortableText, type PortableTextReactComponents } from '@portabletext/react';
 import { TypedObject } from '@portabletext/types';
 import React from 'react'; // Import React
+import { HiExternalLink } from 'react-icons/hi';
 
 import { VideoPreview } from '@/schemas/components/VideoPreview';
 
@@ -17,8 +18,14 @@ const myPortableTextComponents: Partial<PortableTextReactComponents> = {
   marks: {
     link: ({ children, value }: { children: React.ReactNode; value?: { href: string } }) => {
       return (
-        <a href={value?.href} target="_blank" rel="noopener noreferrer">
+        <a
+          href={value?.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline no-underline"
+        >
           {children}
+          <HiExternalLink className="inline" />
         </a>
       );
     },
