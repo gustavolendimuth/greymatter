@@ -22,12 +22,12 @@ const config: Config = {
         'calc-sm': 'calc(3vh + 1vw)',
       },
       height: {
-        'calc-full': 'calc(var(--vh, 1vh) * 100)',
-        'calc-2xfull': 'calc(var(--vh, 1vh) * 200)',
+        'calc-full': '100dvh',
+        'calc-2xfull': '200dvh',
       },
       minHeight: {
-        'calc-full': 'calc(var(--vh, 1vh) * 100)',
-        'calc-2xfull': 'calc(var(--vh, 1vh) * 200)',
+        'calc-full': '100dvh',
+        'calc-2xfull': '200dvh',
       },
       screens: {
         xs: '540px',
