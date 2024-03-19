@@ -3,6 +3,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import '../assets/styles/SegoeUI.css';
 
 import { toPlainText } from '@portabletext/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Footer from 'app/_components/Footer';
 import HomeProvider from 'context/Provider';
 import { getClient } from 'lib/sanityClient';
@@ -38,6 +39,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 
   return (
     <html lang={locale}>
+      <SpeedInsights />
       <body>
         <HomeProvider>{children}</HomeProvider>
         <Footer locale={locale} data={footer} greymatterLogo={logo} />
