@@ -1,5 +1,3 @@
-import '../../_styles/globals.css';
-
 import React from 'react';
 
 // Set the right `viewport`, `robots` and `referer` meta tags
