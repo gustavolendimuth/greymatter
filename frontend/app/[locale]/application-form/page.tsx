@@ -39,7 +39,9 @@ type ApplicationFormProps = {
 
 export default function ApplicationForm({ params: { locale } }: ApplicationFormProps) {
   const client = getClient();
+  const formRef = useRef(null);
   const [applicationForm, setApplicationForm] = useState<ApplicationFormSection>();
+
   useEffect(() => {
     const getFormFields = async (client: any, locale: string) => {
       const result = await getApplicationForm(client, locale);
@@ -52,18 +54,24 @@ export default function ApplicationForm({ params: { locale } }: ApplicationFormP
     $('#cnpj').mask('00.000.000/0000-00');
   });
 
-  const formRef = useRef(null);
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
-    const formData = new FormData(formRef.current!);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    console.log('Form data:', formData);
+    // Convert FormData to JSON
+    const data = Array.from(formData.entries()).reduce((main, [key, value]) => {
+      return { ...main, [key]: value };
+    }, {});
 
     const response = await fetch('https://sendemail.greymatter.technology/api/send', {
       method: 'POST',
-      body: formData,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'no-cors',
     });
 
     if (response.ok) {
