@@ -5,7 +5,7 @@ import { BackgroundType } from 'types/propertiesTypes';
 import Img from './Img';
 
 type BackgroundImageProps = {
-  image: BackgroundType | null;
+  image?: BackgroundType | null;
   className?: ClassNameValue;
   backgroundColor?: ClassNameValue;
 };

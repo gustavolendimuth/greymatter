@@ -193,3 +193,17 @@ export const footerQuery = groq`
     "formText": formText[_key == $locale][0].value
   }
 `;
+
+export const applicationFormQuery = groq`
+  *[_type == "applicationForm"][0] {
+    background,
+    "formFields": formFields[] {
+      columnSize,
+      required,
+      "title": title[_key == $locale][0].value,
+      type,
+      value
+    },
+    "text": text[_key == $locale][0].value,
+    "title": title[_key == $locale][0].value
+  }`;

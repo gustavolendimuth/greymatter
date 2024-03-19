@@ -3,6 +3,7 @@ import { getClient } from 'lib/sanityClient';
 import { SanityClient } from 'next-sanity';
 import { BlogCategory } from 'types/componentsTypes';
 import {
+  ApplicationFormSection,
   ApplicationSection,
   BlogSettings,
   CommunitySection,
@@ -21,6 +22,7 @@ import {
 
 import {
   allPostsQuery,
+  applicationFormQuery,
   applicationQuery,
   BlogSettingsQuery,
   communityQuery,
@@ -58,15 +60,24 @@ export async function getWhoWeAre(client: SanityClient, locale: string): Promise
   return client.fetch(whoWeAreQuery, { locale });
 }
 
-export async function getWhatWeLookFor(client: SanityClient, locale: string): Promise<WhatWeLookForSection> {
+export async function getWhatWeLookFor(
+  client: SanityClient,
+  locale: string
+): Promise<WhatWeLookForSection> {
   return client.fetch(whatWeLookForQuery, { locale });
 }
 
-export async function getWhatDoWeOffer(client: SanityClient, locale: string): Promise<WhatDoWeOfferSection> {
+export async function getWhatDoWeOffer(
+  client: SanityClient,
+  locale: string
+): Promise<WhatDoWeOfferSection> {
   return client.fetch(whatDoWeOfferQuery, { locale });
 }
 
-export async function getHowWeInvest(client: SanityClient, locale: string): Promise<HowWeInvestSection> {
+export async function getHowWeInvest(
+  client: SanityClient,
+  locale: string
+): Promise<HowWeInvestSection> {
   return client.fetch(howWeInvestQuery, { locale });
 }
 
@@ -74,11 +85,17 @@ export async function getTeam(client: SanityClient, locale: string): Promise<Tea
   return client.fetch(teamQuery, { locale });
 }
 
-export async function getCommunity(client: SanityClient, locale: string): Promise<CommunitySection> {
+export async function getCommunity(
+  client: SanityClient,
+  locale: string
+): Promise<CommunitySection> {
   return client.fetch(communityQuery, { locale });
 }
 
-export async function getPortfolio(client: SanityClient, locale: string): Promise<PortfolioSection> {
+export async function getPortfolio(
+  client: SanityClient,
+  locale: string
+): Promise<PortfolioSection> {
   return client.fetch(portfolioQuery, { locale });
 }
 
@@ -94,7 +111,11 @@ export async function getNewsSettings(client: SanityClient, locale: string): Pro
   return (await client.fetch(newsSettingsQuery, { locale })) || {};
 }
 
-export async function getAllPosts(client: SanityClient, locale: string, category: Category): Promise<Post[]> {
+export async function getAllPosts(
+  client: SanityClient,
+  locale: string,
+  category: Category
+): Promise<Post[]> {
   return (await client.fetch(allPostsQuery, { locale, category })) || [];
 }
 
@@ -104,7 +125,11 @@ export async function getAllPostsSlugs(category: Category): Promise<Pick<Post, '
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function getPostBySlug(client: SanityClient, slug: string, locale: string): Promise<Post> {
+export async function getPostBySlug(
+  client: SanityClient,
+  slug: string,
+  locale: string
+): Promise<Post> {
   return (await client.fetch(postBySlugQuery, { slug, locale })) || ({} as any);
 }
 
@@ -117,10 +142,20 @@ export async function getPostAndMoreStories(
   return client.fetch(postAndMoreStoriesQuery, { slug, locale, category });
 }
 
-export async function getApplication(client: SanityClient, locale: string): Promise<ApplicationSection> {
+export async function getApplication(
+  client: SanityClient,
+  locale: string
+): Promise<ApplicationSection> {
   return client.fetch(applicationQuery, { locale });
 }
 
 export async function getFooter(client: SanityClient, locale: string): Promise<Footer> {
   return client.fetch(footerQuery, { locale });
+}
+
+export async function getApplicationForm(
+  client: SanityClient,
+  locale: string
+): Promise<ApplicationFormSection> {
+  return client.fetch(applicationFormQuery, { locale });
 }

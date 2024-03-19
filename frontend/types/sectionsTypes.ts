@@ -1,3 +1,5 @@
+import { PortableTextBlock } from 'sanity';
+
 import {
   BlogCategory,
   CommunityMemberComponent,
@@ -19,7 +21,7 @@ export type HeroSection = {
 
 export type IntroSection = {
   title: string;
-  text: TypedObject;
+  text: PortableTextBlock[];
   subtitle: string;
   logo: ImageType;
   background: BackgroundType | null;
@@ -138,3 +140,19 @@ export interface Settings {
     title?: string;
   };
 }
+
+export type ApplicationFormFields = {
+  _key: string;
+  title: string;
+  type: string;
+  required: boolean;
+  columnSize: number;
+  value: string;
+};
+
+export type ApplicationFormSection = {
+  title: string;
+  text: TypedObject;
+  formFields: ApplicationFormFields[];
+  background: BackgroundType | null;
+};

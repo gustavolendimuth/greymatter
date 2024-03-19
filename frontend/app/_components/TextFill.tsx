@@ -4,11 +4,11 @@
 import { PortableText } from '@portabletext/react';
 // import $ from 'jquery';
 import React, { useEffect, useRef } from 'react';
-import { TypedObject } from 'types/propertiesTypes';
+import { PortableTextBlock } from 'sanity';
 import textFill from 'utils/textFill';
 
 type IntroTextProps = {
-  text: TypedObject | string;
+  text: PortableTextBlock[] | string;
   fontSize: number;
   lineHeight: number;
   height: number;
