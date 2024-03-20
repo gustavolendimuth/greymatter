@@ -66,7 +66,7 @@ export default function ApplicationForm({ params: { locale } }: ApplicationFormP
 
     const formInfo = {
       from: 'Application Form',
-      to: 'gustavolendimuth@gmail.com',
+      to: 'felipe@greymatter.online',
       subject: 'Application Form submission',
     };
 
