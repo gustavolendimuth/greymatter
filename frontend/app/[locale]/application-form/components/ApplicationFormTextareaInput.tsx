@@ -5,6 +5,7 @@ type ApplicationFormTextareaInputProps = {
     title: string;
     required: boolean;
     columnSize: number;
+    _key: string;
   };
   id: string;
 };
@@ -21,6 +22,7 @@ export default function ApplicationFormTextareaInput({
       <textarea
         className="w-full rounded-md border-2 border-primary p-2 shadow-sm"
         id={id}
+        name={id}
         required={field.required}
         minLength={field.required ? 3 : 0}
         rows={4}

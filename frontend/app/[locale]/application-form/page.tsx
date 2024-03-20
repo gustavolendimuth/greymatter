@@ -72,24 +72,39 @@ export default function ApplicationForm({ params: { locale } }: ApplicationFormP
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const files = formData.getAll('attachments');
+    const fileInputs = Array.from(form.querySelectorAll('input[type="file"].attachments')) || [];
 
-    const attachments = await Promise.all(
-      files?.map((file, index) => ({
-        content: new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
-          reader.onerror = reject;
-          reader.readAsDataURL(file as Blob);
-        }),
-        // content: new Buffer('hello world!', 'utf-8'),
-        filename: index,
-      }))
-    );
+    const attachmentsPromises = fileInputs.map(async (input: Element) => {
+      const files = Array.from((input as HTMLInputElement).files || []);
+      return Promise.all(
+        files.map(async (file: File) => {
+          const dataUrl = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+
+          const base64String = (dataUrl as string).split(',')[1];
+
+          return {
+            content: base64String,
+            filename: file.name,
+            encoding: 'base64',
+          };
+        })
+      );
+    });
+
+    const attachments = (await Promise.all(attachmentsPromises)).flat();
+
+    console.log('attachments', JSON.stringify(attachments));
 
     const data = Array.from(formData.entries())
       .map(([key, value]) => {
-        return `<h3>${key}</h3><p>${value}</p>`;
+        const label = form.querySelector(`label[for="${key}"]`);
+        const title = label ? label.textContent : key;
+        return `<h3>${title}</h3><p>${value}</p>`;
       })
       .join('');
 

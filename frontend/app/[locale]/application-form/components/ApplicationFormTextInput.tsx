@@ -6,6 +6,7 @@ type ApplicationFormTextInputProps = {
     required: boolean;
     columnSize: number;
     value: string;
+    _key: string;
   };
   id: string;
 };
@@ -22,8 +23,8 @@ export default function ApplicationFormTextInput({ field, id }: ApplicationFormT
       <input
         className="h-12 rounded-md border-2 border-primary p-2 shadow-sm"
         type={field.value === 'number' ? 'number' : 'text'}
-        id={field.value === 'cnpj' ? 'cnpj' : id}
-        name={field.title}
+        id={id}
+        name={field.value === 'cnpj' ? 'cnpj' : id}
         required={field.required}
         minLength={field.required ? 3 : undefined}
         placeholder={field.value === 'cnpj' ? '00.000.000/0000-00' : ''}

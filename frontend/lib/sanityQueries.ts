@@ -198,6 +198,7 @@ export const applicationFormQuery = groq`
   *[_type == "applicationForm"][0] {
     background,
     "formFields": formFields[] {
+      _key,
       columnSize,
       required,
       "title": title[_key == $locale][0].value,

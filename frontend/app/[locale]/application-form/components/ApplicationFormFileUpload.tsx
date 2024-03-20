@@ -15,8 +15,8 @@ export default function ApplicationFormFileUpload({ id, field }: ApplicationForm
     <>
       <ApplicationFormTitle field={field} />
       <input
-        className="form-control form-control-lg col-span-3"
-        name="attachments"
+        className="form-control form-control-lg attachments col-span-3"
+        name={field.title}
         type="file"
         id={id}
         multiple

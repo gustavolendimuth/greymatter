@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import * as nodemailer from 'nodemailer';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
-
-const NEXT_PUBLIC_RESEND_API_KEY = process.env.NEXT_PUBLIC_RESEND_API_KEY;
 
 export async function POST(req: NextRequest) {
   let requestBody;
@@ -14,28 +13,31 @@ export async function POST(req: NextRequest) {
     return new NextResponse('Invalid JSON in request body', { status: 400 });
   }
 
-  console.log('requestBody', requestBody);
-
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${NEXT_PUBLIC_RESEND_API_KEY}`,
+  const transporter = nodemailer.createTransport({
+    host: 'smtpout.secureserver.net',
+    port: 465,
+    secure: true, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: 'mail@greymatter.technology',
+      pass: 'cw!ysNsgJ8^YpZz',
     },
-    body: JSON.stringify({
-      from: `${requestBody.from} <noreply@greymatter.technology>`,
-      to: [requestBody.to],
-      subject: requestBody.subject,
-      html: requestBody.data,
-      attachments: requestBody.attachments,
-    }),
   });
 
-  const data = await res.json();
+  console.log('requestBody', requestBody);
+  let res;
 
-  if (!res.ok) {
-    return new NextResponse(`Error: ${data.message}`, { status: res.status });
+  try {
+    res = await transporter.sendMail({
+      from: '"Grey Matter" <mail@greymatter.technology>',
+      to: requestBody.to,
+      subject: requestBody.subject, // Subject line
+      html: requestBody.data, // html body
+      attachments: requestBody.attachments,
+    });
+  } catch (err) {
+    console.error('Error sending email', err);
+    return new NextResponse('Error sending email', { status: 500 });
   }
 
-  return new NextResponse('Email sent successfully');
+  return new NextResponse(`Message sent: ${res.response}`);
 }

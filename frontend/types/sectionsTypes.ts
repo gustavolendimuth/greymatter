@@ -151,6 +151,7 @@ export type ApplicationFormFields = {
 };
 
 export type ApplicationFormSection = {
+  _key: string;
   title: string;
   text: TypedObject;
   formFields: ApplicationFormFields[];
