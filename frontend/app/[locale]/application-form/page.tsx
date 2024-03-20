@@ -17,8 +17,10 @@ import { extract, numbers, words } from 'words-n-numbers';
 
 import BackgroundImage from '@/app/_components/BackgroundImage';
 import Container from '@/app/_components/Container';
+import Modal from '@/app/_components/Modal';
 import Navbar from '@/app/_components/Navbar';
 import Title from '@/app/_components/Title';
+import { useHomeContext } from '@/context/Provider';
 import { getClient } from '@/lib/sanityClient';
 import { getApplicationForm } from '@/lib/sanityFetch';
 import { ApplicationFormFields, ApplicationFormSection } from '@/types/sectionsTypes';
@@ -38,9 +40,13 @@ type ApplicationFormProps = {
 };
 
 export default function ApplicationForm({ params: { locale } }: ApplicationFormProps) {
+  const [showModal, setShowModal] = useState(false);
+  const { setLoading } = useHomeContext();
+  const [modalContent, setModalContent] = useState('');
   const client = getClient();
   const formRef = useRef(null);
   const [applicationForm, setApplicationForm] = useState<ApplicationFormSection>();
+  const NEXT_PUBLIC_SEND_EMAIL_URL = process.env.NEXT_PUBLIC_SEND_EMAIL_URL;
 
   useEffect(() => {
     const getFormFields = async (client: any, locale: string) => {
@@ -56,28 +62,57 @@ export default function ApplicationForm({ params: { locale } }: ApplicationFormP
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
+    setLoading(1);
+
+    const formInfo = {
+      from: 'Application Form',
+      to: 'gustavolendimuth@gmail.com',
+      subject: 'Application Form submission',
+    };
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const files = formData.getAll('attachments');
 
-    // Convert FormData to JSON
-    const data = Array.from(formData.entries()).reduce((main, [key, value]) => {
-      return { ...main, [key]: value };
-    }, {});
+    const attachments = await Promise.all(
+      files?.map((file, index) => ({
+        content: new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file as Blob);
+        }),
+        // content: new Buffer('hello world!', 'utf-8'),
+        filename: index,
+      }))
+    );
 
-    const response = await fetch('https://sendemail.greymatter.technology/api/send', {
+    const data = Array.from(formData.entries())
+      .map(([key, value]) => {
+        return `<h3>${key}</h3><p>${value}</p>`;
+      })
+      .join('');
+
+    const emailBody = { ...formInfo, data, attachments };
+
+    const response = await fetch(NEXT_PUBLIC_SEND_EMAIL_URL ?? '', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(emailBody),
       headers: {
         'Content-Type': 'application/json',
       },
       mode: 'no-cors',
     });
 
+    setLoading(-1);
+
     if (response.ok) {
-      // Handle successful response
+      setModalContent('Form submitted successfully');
+      setShowModal(true);
+      (formRef.current as HTMLFormElement | null)?.reset();
     } else {
-      // Handle error
+      setModalContent('Form submission failed. Please try again later.');
+      setShowModal(true);
     }
   };
 
@@ -116,6 +151,17 @@ export default function ApplicationForm({ params: { locale } }: ApplicationFormP
     <>
       <BackgroundImage image={applicationForm?.background} />
       <Navbar position="static" locale={locale} />
+      <Modal setShowModal={setShowModal} showModal={showModal}>
+        <div className="flex h-full flex-col items-center justify-center">
+          <p className="text-center text-2xl">{modalContent}</p>
+          <button
+            onClick={() => setShowModal(false)}
+            className="bold mt-5 rounded-md bg-primary px-10 py-3  text-white"
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
       <Container className="max-w-screen-lg">
         <div className="flex flex-col gap-5">
           <header className="flex flex-col justify-between gap-5 py-52">

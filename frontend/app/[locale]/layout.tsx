@@ -11,6 +11,10 @@ import { getFooter, getIntro, getSiteSettings } from 'lib/sanityFetch';
 import { Metadata } from 'next';
 import React from 'react';
 
+import Alert from '@/components/AlertBanner';
+
+import Loading from '../_components/Loading';
+
 type RootLayoutProps = {
   children: React.ReactNode;
   params: {
@@ -41,7 +45,11 @@ export default async function RootLayout({ children, params: { locale } }: RootL
     <html lang={locale}>
       <SpeedInsights />
       <body>
-        <HomeProvider>{children}</HomeProvider>
+        <HomeProvider>
+          <Loading />
+          <Alert />
+          {children}
+        </HomeProvider>
         <Footer locale={locale} data={footer} greymatterLogo={logo} />
       </body>
     </html>

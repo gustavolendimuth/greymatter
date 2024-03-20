@@ -13,6 +13,14 @@ type NavbarConfig = {
   background?: string;
 };
 
+type Alert = {
+  ok?: boolean;
+  message?: string;
+  overlay?: boolean;
+  time?: number;
+  keep?: boolean;
+};
+
 type ContextValue = {
   navbarConfig: NavbarConfig | undefined;
   setNavbarConfig: Dispatch<React.SetStateAction<NavbarConfig | undefined>>;
@@ -22,6 +30,10 @@ type ContextValue = {
   setCompanies: Dispatch<React.SetStateAction<Company[] | undefined>>;
   animationClass: string;
   setAnimationClass: Dispatch<React.SetStateAction<string>>;
+  loading: number;
+  setLoading: Dispatch<React.SetStateAction<number>>;
+  alert: Alert | undefined;
+  setAlert: Dispatch<React.SetStateAction<Alert | undefined>>;
 };
 
 const Context = createContext<ContextValue | undefined>(undefined);
@@ -34,6 +46,8 @@ export function HomeProvider({ children }: HomeProviderProps) {
   const [navbarConfig, setNavbarConfig] = useState<NavbarConfig | undefined>();
   const [companies, setCompanies] = useState<Company[]>();
   const [animationClass, setAnimationClass] = useState('fade-in');
+  const [loading, setLoading] = useState<number>(0);
+  const [alert, setAlert] = useState<Alert>();
 
   const setLocalStorage = useCallback((key: string, value: any) => {
     if (key && value) localStorage.setItem(key, JSON.stringify(value));
@@ -54,6 +68,10 @@ export function HomeProvider({ children }: HomeProviderProps) {
       setCompanies,
       animationClass,
       setAnimationClass,
+      loading,
+      setLoading,
+      alert,
+      setAlert,
     }),
     [
       navbarConfig,
@@ -64,6 +82,10 @@ export function HomeProvider({ children }: HomeProviderProps) {
       setCompanies,
       animationClass,
       setAnimationClass,
+      alert,
+      setAlert,
+      loading,
+      setLoading,
     ]
   );
 

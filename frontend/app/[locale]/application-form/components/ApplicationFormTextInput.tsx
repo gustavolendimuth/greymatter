@@ -20,13 +20,14 @@ export default function ApplicationFormTextInput({ field, id }: ApplicationFormT
         {field.title}
       </label>
       <input
-        className="w-full rounded-md border-2 border-primary p-2 shadow-sm"
+        className="h-12 rounded-md border-2 border-primary p-2 shadow-sm"
         type={field.value === 'number' ? 'number' : 'text'}
         id={field.value === 'cnpj' ? 'cnpj' : id}
+        name={field.title}
         required={field.required}
         minLength={field.required ? 3 : undefined}
         placeholder={field.value === 'cnpj' ? '00.000.000/0000-00' : ''}
-        spellCheck="true"
+        spellCheck="false"
       />
     </div>
   );
